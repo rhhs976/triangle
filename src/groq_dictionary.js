@@ -27,9 +27,6 @@ export class GroqDictionaryEngine {
   initDb() {
     this.db = new DatabaseSync(DB_FILE);
     this.db.exec(`
-      PRAGMA journal_mode = WAL;
-      PRAGMA synchronous = NORMAL;
-      PRAGMA busy_timeout = 5000;
       CREATE TABLE IF NOT EXISTS my_dictionary (
         word TEXT PRIMARY KEY,
         heading TEXT NOT NULL,

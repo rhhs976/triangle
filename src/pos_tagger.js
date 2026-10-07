@@ -15,7 +15,6 @@ function getDb() {
       throw new Error(`POS database not found at ${DB_FILE}. Please run scripts/build_pos_lexicon.js first.`);
     }
     db = new DatabaseSync(DB_FILE);
-    try { db.exec('PRAGMA busy_timeout = 5000;'); } catch (_) {}
     lookupStmt = db.prepare('SELECT primary_pos, all_pos FROM pos_lexicon WHERE word = ? LIMIT 1');
   }
   return { db, lookupStmt };

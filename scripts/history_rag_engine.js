@@ -11,13 +11,6 @@ const DB_PATH = path.join(FILES_DIR, 'historical_events_dictionary.db');
 export class HistoryRAGEngine {
   constructor() {
     this.db = new DatabaseSync(DB_PATH);
-    try {
-      this.db.exec(`
-        PRAGMA journal_mode = WAL;
-        PRAGMA synchronous = NORMAL;
-        PRAGMA busy_timeout = 5000;
-      `);
-    } catch (_) {}
     const raw = fs.readFileSync(JSON_PATH, 'utf-8');
     this.seedData = JSON.parse(raw);
 

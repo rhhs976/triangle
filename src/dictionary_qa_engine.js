@@ -9,7 +9,6 @@ const DB_FILE = path.resolve(__dirname, '../data/my_dictionary.db');
 export class DictionaryQAEngine {
   constructor() {
     this.db = new DatabaseSync(DB_FILE, { readOnly: true });
-    try { this.db.exec('PRAGMA busy_timeout = 5000;'); } catch (_) {}
     this.findWordStmt = this.db.prepare('SELECT word, heading, explanation, usage FROM my_dictionary WHERE word = ? LIMIT 1');
   }
 

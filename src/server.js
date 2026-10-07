@@ -13,14 +13,6 @@ import { formatDictionaryEntry } from './dictionary_formatter.js';
 import { DictionaryQAEngine } from './dictionary_qa_engine.js';
 import { getTopicWebsites } from './topic_sources.js';
 
-// Global Crash Guards: Catch errors so the server never crashes
-process.on('uncaughtException', (err) => {
-  console.error('[CRASH GUARD] Caught uncaughtException:', err?.stack || err);
-});
-process.on('unhandledRejection', (reason) => {
-  console.error('[CRASH GUARD] Caught unhandledRejection:', reason);
-});
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.resolve(__dirname, '../public');
 const PORT = process.env.PORT || 3000;
@@ -28,49 +20,55 @@ const PORT = process.env.PORT || 3000;
 const historyEngine = new HistoryRAGEngine();
 const dictQA = new DictionaryQAEngine();
 
-// Zero-RAM Static File Streamer: Streams straight from disk to network without loading into memory
-function streamStaticFile(req, res, filePath, contentType) {
-  fs.stat(filePath, (err, stats) => {
-    if (err || !stats.isFile()) {
-      res.writeHead(404, { 'Content-Type': 'text/plain' });
-      return res.end('404 Not Found');
-    }
-
-    const etag = `"${stats.size}-${stats.mtimeMs}"`;
-    if (req.headers['if-none-match'] === etag) {
-      res.writeHead(304);
-      return res.end();
-    }
-
-    res.writeHead(200, {
-      'Content-Type': contentType,
-      'Content-Length': stats.size,
-      'ETag': etag,
-      'Cache-Control': 'public, max-age=3600',
-      'Access-Control-Allow-Origin': '*'
-    });
-
-    const stream = fs.createReadStream(filePath);
-    stream.pipe(res);
-    stream.on('error', () => {
-      if (!res.headersSent) res.writeHead(500);
-      res.end();
-    });
-  });
-}
-
-// Helper to send standard JSON
+// Helper to send JSON responses
 function sendJson(res, statusCode, data) {
   res.writeHead(statusCode, {
     'Content-Type': 'application/json; charset=utf-8',
-    'Access-Control-Allow-Origin': '*',
-    'X-Content-Type-Options': 'nosniff'
+    'Access-Control-Allow-Origin': '*'
   });
   res.end(JSON.stringify(data));
 }
 
-// Search Handler
+// Helper to serve static files
+function serveStatic(res, filePath, contentType) {
+  fs.readFile(filePath, (err, content) => {
+    if (err) {
+      res.writeHead(404, { 'Content-Type': 'text/plain' });
+      res.end('404 Not Found');
+    } else {
+      res.writeHead(200, { 'Content-Type': contentType });
+      res.end(content);
+    }
+  });
+}
+
+function cleanDefinition(raw) {
+  if (!raw) return "";
+  let main = raw;
+  const dashIdx = main.indexOf(" -- ");
+  if (dashIdx > 50) {
+    main = main.slice(0, dashIdx).trim();
+  }
+  const noteIdx = main.indexOf("Note:");
+  if (noteIdx > 120) {
+    main = main.slice(0, noteIdx).trim();
+  }
+  main = main.replace(/\s+/g, " ").trim();
+  return main;
+}
+
+// Core search function wrapped with topic sources
 async function executeSearch(rawQuery) {
+  const result = await doSearch(rawQuery);
+  if (result && result.found && result.category !== 'Math') {
+    const topic = result.sourceWord || result.details?.word || result.title || rawQuery;
+    result.sources = getTopicWebsites(topic, result.category, result.details);
+  }
+  return result;
+}
+
+// Pure Search Engine Core
+async function doSearch(rawQuery) {
   const query = (rawQuery || '').trim();
   if (!query) {
     return {
@@ -80,19 +78,9 @@ async function executeSearch(rawQuery) {
     };
   }
 
-  const result = await doSearch(query);
-  if (result && result.found && result.category !== 'Math') {
-    const topic = result.sourceWord || result.details?.word || result.title || query;
-    result.sources = getTopicWebsites(topic, result.category, result.details);
-  }
-  return result;
-}
-
-// Search Logic
-async function doSearch(query) {
   const lower = query.toLowerCase();
 
-  // 1. Math Calculation
+  // 1. Math Calculation (Arithmetic & Algebraic expressions)
   const mathRes = solveArithmetic(query);
   if (mathRes.success) {
     return {
@@ -111,7 +99,7 @@ async function doSearch(query) {
     };
   }
 
-  // 2. Direct Question Answering from Dictionary (Pure local, ZERO Groq)
+  // 2. Direct Question Answering from Dictionary Explanations (Pure local, ZERO Groq)
   const isQuestionQuery = /^(?:where|what|who|when|how|which|why|is|are|can|does|do)\b/i.test(query) || query.endsWith('?');
   if (isQuestionQuery) {
     const qaRes = dictQA.answerQuestion(query);
@@ -140,7 +128,7 @@ async function doSearch(query) {
     }
   }
 
-  // 3. Dictionary / Vocabulary Query
+  // 3. Dictionary / Vocabulary Query ("define X", "meaning of X", "what is X", "the X", or single word)
   const defMatch = lower.match(/^(?:define|definition of|what is the definition of|what does|meaning of|lookup|what is an?|what is|what are)\s+([a-zA-Z\-]+)(?:\s+mean)?\??$/i);
   const words = query.split(/\s+/);
   const singleWord = words.length === 1 && /^[a-zA-Z\-]+$/.test(query);
@@ -179,7 +167,7 @@ async function doSearch(query) {
     }
   }
 
-  // 4. Grammar & Part of Speech Tagging
+  // 4. Grammar & Part of Speech Tagging ("tag: ...", "pos: ...", or complex sentences)
   const tagMatch = query.match(/^(?:tag|pos|grammar|syntax|analyze):\s*(.+)$/i);
   if (tagMatch || (words.length >= 4 && !isQuestionQuery)) {
     const sentenceToTag = tagMatch ? tagMatch[1] : query;
@@ -211,7 +199,7 @@ async function doSearch(query) {
     }
   }
 
-  // 5. Historical & Scientific Fact Search
+  // 5. Historical & Scientific Fact Search (RAG)
   const ragResult = historyEngine.search(query);
   if (ragResult && ragResult.found && (ragResult.score >= 5 || ragResult.verifiedFact)) {
     const factText = ragResult.verifiedFact || ragResult.summary || '';
@@ -233,7 +221,7 @@ async function doSearch(query) {
     };
   }
 
-  // Fallback
+  // Fallback: If nothing matched, suggest related terms
   return {
     found: false,
     query,
@@ -248,18 +236,9 @@ async function doSearch(query) {
   };
 }
 
-// Lightweight HTTP Server
+// HTTP Server
 const server = http.createServer((req, res) => {
-  // Connection timeout protection
-  req.setTimeout(10000, () => {
-    if (!res.headersSent) {
-      res.writeHead(504, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ error: 'Gateway timeout' }));
-    }
-    req.destroy();
-  });
-
-  const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+  const url = new URL(req.url, `http://${req.headers.host}`);
 
   // CORS
   if (req.method === 'OPTIONS') {
@@ -277,19 +256,15 @@ const server = http.createServer((req, res) => {
     executeSearch(q).then(result => {
       sendJson(res, 200, result);
     }).catch(err => {
-      console.error('[API ERROR]:', err);
-      sendJson(res, 500, { error: 'Internal server error' });
+      sendJson(res, 500, { error: err.message });
     });
     return;
   }
 
-  // POST /api/search
+  // POST /api/search (supports JSON body { query: "..." })
   if (url.pathname === '/api/search' && req.method === 'POST') {
     let body = '';
-    req.on('data', chunk => {
-      body += chunk;
-      if (body.length > 64 * 1024) req.destroy();
-    });
+    req.on('data', chunk => body += chunk);
     req.on('end', () => {
       try {
         const parsed = JSON.parse(body || '{}');
@@ -297,7 +272,7 @@ const server = http.createServer((req, res) => {
         executeSearch(q).then(result => {
           sendJson(res, 200, result);
         }).catch(err => {
-          sendJson(res, 500, { error: 'Internal server error' });
+          sendJson(res, 500, { error: err.message });
         });
       } catch (e) {
         sendJson(res, 400, { error: 'Invalid JSON request' });
@@ -306,24 +281,24 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // Static Assets (Streamed directly from disk, ZERO RAM footprint)
+  // Static Assets
   if (url.pathname === '/' || url.pathname === '/index.html') {
-    return streamStaticFile(req, res, path.join(PUBLIC_DIR, 'index.html'), 'text/html; charset=utf-8');
+    return serveStatic(res, path.join(PUBLIC_DIR, 'index.html'), 'text/html; charset=utf-8');
   }
   if (url.pathname === '/styles.css') {
-    return streamStaticFile(req, res, path.join(PUBLIC_DIR, 'styles.css'), 'text/css');
+    return serveStatic(res, path.join(PUBLIC_DIR, 'styles.css'), 'text/css');
   }
   if (url.pathname === '/app.js') {
-    return streamStaticFile(req, res, path.join(PUBLIC_DIR, 'app.js'), 'application/javascript');
+    return serveStatic(res, path.join(PUBLIC_DIR, 'app.js'), 'application/javascript');
   }
 
   res.writeHead(404, { 'Content-Type': 'text/plain' });
-  res.end('404 Not Found');
+  res.end('Not Found');
 });
 
 server.listen(PORT, () => {
   console.log(`========================================================`);
-  console.log(`   TRIANGLE SEARCH ENGINE ONLINE (LEAN ZERO-RAM MODE)   `);
+  console.log(`   TRIANGLE SEARCH ENGINE ONLINE                       `);
   console.log(`   URL: http://localhost:${PORT}                        `);
   console.log(`========================================================`);
 });

@@ -11,7 +11,6 @@ let exactStmt = null;
 function getDb() {
   if (!db) {
     db = new DatabaseSync(DICT_FILE, { readOnly: true });
-    try { db.exec('PRAGMA busy_timeout = 5000;'); } catch (_) {}
     exactStmt = db.prepare('SELECT word FROM pos_lexicon WHERE word = ? LIMIT 1');
   }
   return db;
