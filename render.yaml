@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: triangle
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: ""
+    startCommand: "node src/server.js"
+    envVars:
+      - key: NODE_VERSION
+        value: 22.12.0

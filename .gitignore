@@ -1,0 +1,6 @@
+*.log
+*.pid
+*.db-shm
+*.db-wal
+.DS_Store
+node_modules/

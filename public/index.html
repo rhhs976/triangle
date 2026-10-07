@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>triangle</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="home-view">
+  <div class="search-engine-container">
+    
+    <!-- Top Header (Visible in Results Mode) -->
+    <header class="top-header" id="top-header">
+      <div class="header-content">
+        <a href="#" class="brand-small" id="brand-logo-small">triangle</a>
+        <form class="search-form top-search-form" id="top-search-form">
+          <div class="search-input-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20">
+              <path fill="#5f6368" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+            <input type="text" class="search-input" id="top-search-input" placeholder="Search knowledge, dictionary, math, or grammar..." autocomplete="off">
+            <button type="button" class="clear-btn" id="top-clear-btn" title="Clear">✕</button>
+            <button type="submit" class="submit-search-btn" title="Search">
+              <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#1a73e8" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </header>
+
+    <!-- Main Center View (Home Mode) -->
+    <main class="center-stage" id="center-stage">
+      <div class="brand-title" id="brand-title">triangle</div>
+      
+      <form class="search-form center-search-form" id="center-search-form">
+        <div class="search-input-wrapper">
+          <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20">
+            <path fill="#5f6368" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+          <input type="text" class="search-input" id="center-search-input" placeholder="Search facts, definitions, math, or grammar..." autocomplete="off" autofocus>
+          <button type="button" class="clear-btn" id="center-clear-btn" title="Clear">✕</button>
+        </div>
+
+        <div class="search-actions">
+          <button type="submit" class="search-btn">Search</button>
+          <button type="button" class="search-btn" id="random-search-btn">Explore</button>
+        </div>
+      </form>
+
+      <!-- Quick sample queries -->
+      <div class="sample-queries">
+        <span>Try:</span>
+        <button class="sample-link" data-q="Apollo 11">Apollo 11</button>
+        <button class="sample-link" data-q="define serendipity">define serendipity</button>
+        <button class="sample-link" data-q="847392819 + 152607181">847392819 + 152607181</button>
+        <button class="sample-link" data-q="Higgs Boson">Higgs Boson</button>
+      </div>
+    </main>
+
+    <!-- Results Area (Underneath the Search Bar) -->
+    <section class="results-container" id="results-container">
+      <div class="results-wrapper" id="results-wrapper">
+        <!-- Results injected here via JavaScript -->
+      </div>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

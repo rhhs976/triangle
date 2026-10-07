@@ -1,0 +1,10 @@
+{
+  "state": "MONITORING_QUOTA",
+  "rateLimitsInLast2Min": 0,
+  "updatedAt": "2026-10-07T06:30:16.132Z",
+  "tokenPct": 99,
+  "reqPct": 38,
+  "remTokens": 7927,
+  "limitTokens": 8000,
+  "halfFree": false
+}

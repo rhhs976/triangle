@@ -1,0 +1,21 @@
+{
+  "name": "triangle",
+  "version": "1.0.0",
+  "description": "triangle — High-speed, self-contained knowledge & dictionary search engine",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "keywords": [
+    "search-engine",
+    "dictionary",
+    "qa",
+    "rag"
+  ],
+  "author": "",
+  "license": "MIT"
+}

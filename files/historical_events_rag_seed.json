@@ -1,0 +1,2133 @@
+{
+    "historical_eras": [
+        {
+            "era": "Ancient Civilizations & Antiquity",
+            "events": [
+                {
+                    "id": "cuneiform_writing_3400bc",
+                    "title": "Invention of Cuneiform Writing",
+                    "year": -3400,
+                    "exact_date": "c. 3400 BC",
+                    "summary": "In the fertile plains of southern Mesopotamia around 3400 BC, the ancient Sumerians developed cuneiform, which stands as humanity's earliest known writing system. Originating in the ancient city of Uruk as a simple pictographic method for tracking temple grain inventories, sheep livestock, and trade transactions, scribes soon refined the system by using blunt reed styluses to impress wedge-shaped marks into wet clay tablets. Over centuries, these marks evolved from literal picture drawings into sophisticated phonetic signs capable of recording abstract grammar, legal decrees, and literary epics like the Epic of Gilgamesh. The invention of cuneiform marked humanity's permanent transition from prehistory into recorded history, enabling complex administrative states and preserving human thoughts across thousands of years.",
+                    "keywords": [
+                        "Cuneiform",
+                        "Sumerians",
+                        "Mesopotamia",
+                        "Clay Tablets",
+                        "Writing",
+                        "Uruk",
+                        "Gilgamesh"
+                    ]
+                },
+                {
+                    "id": "giza_pyramid_2560bc",
+                    "title": "Construction of the Great Pyramid of Giza",
+                    "year": -2560,
+                    "exact_date": "c. 2560 BC",
+                    "summary": "The Great Pyramid of Giza was constructed on the rocky Giza plateau in ancient Egypt during the Fourth Dynasty as a monumental tomb for Pharaoh Khufu. Overseen by royal architect Hemiunu, the massive undertaking required tens of thousands of skilled workers and roughly two decades to complete, utilizing more than two million limestone and granite blocks. Originally standing at nearly four hundred and eighty-one feet tall, it was covered in polished white casing stones that reflected the desert sunlight and symbolized the Pharaoh's divine ascension. For over three thousand eight hundred years, it remained the tallest man-made structure in human civilization and endures today as the sole surviving wonder of the original Seven Wonders of the Ancient World.",
+                    "keywords": [
+                        "Great Pyramid",
+                        "Giza",
+                        "Khufu",
+                        "Pharaoh",
+                        "Ancient Egypt",
+                        "Seven Wonders",
+                        "Limestone"
+                    ]
+                },
+                {
+                    "id": "code_ur_nammu_2100bc",
+                    "title": "Promulgation of the Code of Ur-Nammu",
+                    "year": -2100,
+                    "exact_date": "c. 2100 BC",
+                    "summary": "Around 2100 BC in southern Mesopotamia, King Ur-Nammu of the Third Dynasty of Ur issued what is recognized by modern historians as humanity's earliest surviving written law code. Written in the Sumerian language on clay tablets, the code opened with a royal prologue declaring the king's mandate to establish equity in the land and protect the vulnerable from exploitation. Unlike later harsh penal traditions, the Code of Ur-Nammu was remarkably progressive, establishing financial monetary fines and compensatory restitutions for bodily injuries rather than physical retaliatory mutilation. By formally codifying civic rights and judicial procedures, Ur-Nammu established the foundational legal concept that societal order should rest upon written civic law rather than arbitrary monarchical decree.",
+                    "keywords": [
+                        "Code of Ur-Nammu",
+                        "Sumer",
+                        "Ur",
+                        "Mesopotamia",
+                        "Earliest Law",
+                        "Legal Code",
+                        "Justice"
+                    ]
+                },
+                {
+                    "id": "code_hammurabi_1754bc",
+                    "title": "Enactment of the Code of Hammurabi",
+                    "year": -1754,
+                    "exact_date": "c. 1754 BC",
+                    "summary": "Around 1754 BC, King Hammurabi of the First Babylonian Dynasty enacted one of humanity's earliest and most complete written legal codes. Inscribed in the Akkadian language using cuneiform script onto a massive seven-foot-tall black basalt stele, the code contained two hundred and eighty-two distinct laws governing criminal justice, contracts, agriculture, and domestic life. By carving the laws onto a public monument, Hammurabi established the revolutionary precedent that the law was fixed and public rather than subject to the arbitrary whims of an individual ruler. The code introduced the celebrated principle of reciprocal justice, famously summarized as an eye for an eye, while also codifying early legal ideas such as the presumption of innocence and sworn evidence.",
+                    "keywords": [
+                        "Hammurabi",
+                        "Babylon",
+                        "Legal Code",
+                        "Stele",
+                        "Justice",
+                        "Eye for an eye",
+                        "Cuneiform"
+                    ]
+                },
+                {
+                    "id": "cyrus_cylinder_539bc",
+                    "title": "Decree of the Cyrus Cylinder",
+                    "year": -539,
+                    "exact_date": "539 BC",
+                    "summary": "Following his conquest of Babylon in 539 BC, Cyrus the Great, founder of the Persian Achaemenid Empire, issued a sweeping royal declaration inscribed in Akkadian cuneiform upon a baked clay cylinder. The inscription recorded Cyrus's benevolent policy of religious tolerance, authorizing displaced captive peoples, including the Jewish population exiled under Nebuchadnezzar, to return peacefully to their ancestral homelands and rebuild their revered sanctuaries. Rather than imposing religious uniformity by military force, Cyrus recognized regional customs, reformed local temples, and abolished forced labor systems throughout his vast multi-ethnic realm. Modern historians frequently cite the Cyrus Cylinder as one of humanity's earliest declarations of human rights, religious freedom, and pluralistic governance.",
+                    "keywords": [
+                        "Cyrus Cylinder",
+                        "Cyrus the Great",
+                        "Persia",
+                        "Babylon",
+                        "Religious Freedom",
+                        "Human Rights",
+                        "Achaemenid"
+                    ]
+                },
+                {
+                    "id": "battle_marathon_490bc",
+                    "title": "The Battle of Marathon",
+                    "year": -490,
+                    "exact_date": "September 490 BC",
+                    "summary": "In September 490 BC, a heavily outnumbered Athenian army led by general Miltiades confronted an invading Persian expeditionary force on the coastal plain of Marathon in eastern Attica. Employing an ingenious tactical maneuver that reinforced his flanks while deliberately thinning his center, Miltiades ordered the Greek hoplite phalanx to charge across open ground, successfully encircling and routing the Persian lines. According to enduring Greek tradition, the herald Pheidippides ran the entire distance from the battlefield to Athens to deliver news of the triumph before collapsing, inspiring the modern marathon footrace. The victory proved that the seemingly invincible Persian Empire could be defeated, safeguarding the burgeoning democratic institutions of classical Athens and inspiring the subsequent Golden Age of Greece.",
+                    "keywords": [
+                        "Battle of Marathon",
+                        "Athens",
+                        "Miltiades",
+                        "Persian Wars",
+                        "Pheidippides",
+                        "Hoplite",
+                        "Democracy"
+                    ]
+                },
+                {
+                    "id": "parthenon_construction_447bc",
+                    "title": "Construction of the Parthenon in Athens",
+                    "year": -447,
+                    "exact_date": "447 - 432 BC",
+                    "summary": "Beginning in 447 BC during the political ascendancy of statesman Pericles, the city-state of Athens commenced construction of the magnificent Parthenon atop the rocky Acropolis, dedicated to the city's patron goddess Athena Parthenos. Designed by architects Ictinus and Callicrates with monumental sculptures directed by Phidias, the Doric temple incorporated sophisticated optical refinements, including subtle convex curves in the columns known as entasis to create the visual impression of perfect geometric symmetry. Financed in part through the treasury of the Delian League, the sanctuary celebrated Athenian cultural preeminence, military victory, and civic pride following the Persian Wars. The Parthenon remains the quintessential architectural icon of classical Greek civilization, embodying the enduring Western ideals of proportion, harmony, and democratic grandeur.",
+                    "keywords": [
+                        "Parthenon",
+                        "Athens",
+                        "Pericles",
+                        "Acropolis",
+                        "Athena",
+                        "Phidias",
+                        "Classical Architecture"
+                    ]
+                },
+                {
+                    "id": "library_alexandria_300bc",
+                    "title": "Founding of the Library of Alexandria",
+                    "year": -300,
+                    "exact_date": "c. 3rd Century BC",
+                    "summary": "Founded in northern Egypt during the early third century BC under the rule of Ptolemy I Soter and expanded by his son Ptolemy II, the Library of Alexandria was the ancient world's most ambitious intellectual center. Conceived as part of the royal research institution known as the Mouseion, the library sought to collect a copy of every written book in existence, eventually amassing hundreds of thousands of papyrus scrolls in Greek, Egyptian, Hebrew, and Persian. Renowned scholars from across the Mediterranean gathered there to map the stars, calculate the circumference of the Earth, edit classical literature, and catalog biological species. Although centuries of budget decline, urban warfare, and fires gradually destroyed its collections, the library remains history's enduring symbol of human curiosity and universal knowledge.",
+                    "keywords": [
+                        "Library of Alexandria",
+                        "Ptolemy",
+                        "Egypt",
+                        "Mouseion",
+                        "Papyrus",
+                        "Scholars",
+                        "Ancient World"
+                    ]
+                },
+                {
+                    "id": "qin_unification_221bc",
+                    "title": "Unification of China by Qin Shi Huang",
+                    "year": -221,
+                    "exact_date": "221 BC",
+                    "summary": "In 221 BC, the ambitious ruler of the state of Qin conquered the last rival realm of the Warring States period, unifying China under a single centralized authority and proclaiming himself Qin Shi Huang, the First Emperor. To bind the diverse regional provinces together, the emperor established a centralized administrative bureaucracy, connected defensive border walls into the earliest Great Wall of China, and enforced strict standardization of Chinese script characters, currency coins, cart axle widths, and measurement weights. The emperor's reign was characterized by rigid Legalist state philosophy, which suppressed dissent through the burning of philosophical books and the burial of critical scholars, yet laid the enduring structural foundation of Chinese imperial governance for the next two millennia.",
+                    "keywords": [
+                        "Qin Shi Huang",
+                        "Qin Dynasty",
+                        "China Unification",
+                        "Great Wall",
+                        "Standardization",
+                        "Terracotta Army"
+                    ]
+                },
+                {
+                    "id": "silk_road_130bc",
+                    "title": "Establishment of the Silk Road",
+                    "year": -130,
+                    "exact_date": "c. 130 BC",
+                    "summary": "During China's Han Dynasty around 130 BC, Emperor Wu dispatched imperial envoy Zhang Qian on diplomatic and commercial missions into Central Asia, formally inaugurating the vast network of trade routes known as the Silk Road. Spanning thousands of miles through mountain passes, fertile oases, and deserts, the network linked dynamic commercial hubs from Chang'an to Antioch, Rome, and Alexandria. Beyond transporting precious Chinese silk, Roman glassware, and fragrant Asian spices, the Silk Road served as a grand conduit for civilizational exchange, allowing mathematical discoveries, medical traditions, paper manufacturing, and world religions like Buddhism and Islam to cross continental borders. The routes created the earliest blueprint for global economic interdependence, enriching cultures from the Pacific to the Mediterranean.",
+                    "keywords": [
+                        "Silk Road",
+                        "Han Dynasty",
+                        "Zhang Qian",
+                        "China",
+                        "Trade",
+                        "Central Asia",
+                        "Mediterranean"
+                    ]
+                },
+                {
+                    "id": "roman_republic_44bc",
+                    "title": "Assassination of Julius Caesar",
+                    "year": -44,
+                    "exact_date": "15 March 44 BC",
+                    "summary": "On the Ides of March in 44 BC, Julius Caesar entered the Senate chamber in the Theatre of Pompey, where a conspiracy of roughly sixty Roman senators ambushed him. Led by Marcus Junius Brutus and Gaius Cassius Longinus, the conspirators believed eliminating the newly appointed dictator in perpetuity would restore the traditional governance of the Roman Republic. Instead of restoring civic liberty, Caesar's violent death triggered widespread outrage among the Roman populace and ignited a destructive series of civil wars. The ensuing power struggle ultimately brought down the centuries-old Republic, paving the way for Caesar's adopted heir, Octavian, to consolidate power and establish the Roman Empire as its first emperor, Augustus.",
+                    "keywords": [
+                        "Julius Caesar",
+                        "Rome",
+                        "Ides of March",
+                        "Brutus",
+                        "Cassius",
+                        "Roman Senate",
+                        "Roman Republic",
+                        "Augustus"
+                    ]
+                },
+                {
+                    "id": "pax_romana_27bc",
+                    "title": "Inauguration of the Pax Romana",
+                    "year": -27,
+                    "exact_date": "27 BC - 180 AD",
+                    "summary": "In 27 BC, following the defeat of Mark Antony and Cleopatra, the Roman Senate bestowed the title of Augustus upon Octavian, marking the transition from civil war into the celebrated two-century epoch known as the Pax Romana, or Roman Peace. Spanning from Augustus until the death of Emperor Marcus Aurelius in 180 AD, this era witnessed unprecedented political stability, economic prosperity, and urban expansion across three continents bordering the Mediterranean Sea. The empire constructed tens of thousands of miles of paved stone highways, stone aqueducts delivering fresh mountain water to bustling cities, and monumental amphitheaters while protecting maritime trade routes from piracy. Under the Pax Romana, Roman civil law, Latin and Greek culture, and widespread trade networks flourished across Europe, North Africa, and the Near East.",
+                    "keywords": [
+                        "Pax Romana",
+                        "Augustus",
+                        "Roman Peace",
+                        "Roman Empire",
+                        "Marcus Aurelius",
+                        "Aqueducts",
+                        "Roads"
+                    ]
+                },
+                {
+                    "id": "edict_milan_313",
+                    "title": "Issuance of the Edict of Milan",
+                    "year": 313,
+                    "exact_date": "February 313 AD",
+                    "summary": "In February 313 AD, Roman Emperors Constantine the Great ruling in the West and Licinius ruling in the East met in the Italian city of Mediolanum, modern Milan, and issued the historic Edict of Milan. The proclamation granted total religious tolerance throughout the Roman Empire, establishing the legal right for all citizens to practice Christianity and other faiths openly without threat of persecution or arrest. Crucially, the decree also ordered the immediate return of all confiscated church properties, meeting houses, and cemeteries without requiring financial compensation from the Christian congregations. The Edict of Milan ended centuries of sporadic Roman imperial persecutions, fundamentally transforming Christianity from an outlawed underground movement into an authorized religion that would shape the institutional fabric of Europe.",
+                    "keywords": [
+                        "Edict of Milan",
+                        "Constantine the Great",
+                        "Licinius",
+                        "Religious Tolerance",
+                        "Christianity",
+                        "Roman Empire"
+                    ]
+                },
+                {
+                    "id": "fall_western_rome_476",
+                    "title": "Fall of the Western Roman Empire",
+                    "year": 476,
+                    "exact_date": "4 September 476 AD",
+                    "summary": "On September 4, 476 AD, Germanic chieftain and Roman federated commander Odoacer deposed the sixteen-year-old Western Roman Emperor Romulus Augustulus in Ravenna, sending the imperial regalia eastward to Emperor Zeno in Constantinople. Weakened by severe economic inflation, relentless political assassinations, demographic contraction, and devastating migrations of Visigoths, Vandals, and Huns, the western half of the empire could no longer sustain centralized military defense or administrative cohesion. Odoacer assumed the title of King of Italy, effectively ending more than five centuries of Western Roman imperial rule. While the Eastern Roman or Byzantine Empire endured for nearly another millennium, the fall of the Western Empire inaugurated the Middle Ages and fragmented Western Europe into decentralized feudal kingdoms.",
+                    "keywords": [
+                        "Fall of Rome",
+                        "476 AD",
+                        "Odoacer",
+                        "Romulus Augustulus",
+                        "Ravenna",
+                        "Middle Ages",
+                        "Byzantine"
+                    ]
+                }
+            ]
+        },
+        {
+            "era": "The Middle Ages & The Islamic Golden Age",
+            "events": [
+                {
+                    "id": "hagia_sophia_537",
+                    "title": "Dedication of the Hagia Sophia",
+                    "year": 537,
+                    "exact_date": "27 December 537 AD",
+                    "summary": "On December 27, 537 AD, Byzantine Emperor Justinian I presided over the ceremonial dedication of the Hagia Sophia, or Church of Holy Wisdom, in Constantinople. Designed by mathematical physicist Isidore of Miletus and architect Anthemius of Tralles, the cathedral was constructed in less than six years following the destruction of the earlier church during the Nika Riots. The structure featured a soaring central pendentive dome that appeared to hover without support over a cavernous interior illuminated by rings of arched windows, establishing the pinnacle of Byzantine architectural ingenuity. For nearly a thousand years, it stood as the world's largest cathedral, serving as the spiritual heart of Eastern Orthodox Christianity before its later conversion into a historic imperial mosque under the Ottoman Empire.",
+                    "keywords": [
+                        "Hagia Sophia",
+                        "Justinian",
+                        "Constantinople",
+                        "Byzantine",
+                        "Architecture",
+                        "Pendentive Dome",
+                        "Cathedral"
+                    ]
+                },
+                {
+                    "id": "battle_tours_732",
+                    "title": "The Battle of Tours",
+                    "year": 732,
+                    "exact_date": "October 732 AD",
+                    "summary": "In October 732 AD, Frankish military leader Charles Martel led an army of seasoned Frankish infantry against an invading Umayyad cavalry force commanded by Abdul Rahman Al Ghafiqi between Tours and Poitiers in western central France. Positioning his disciplined troops on a wooded hill in a dense, solid square phalanx, Martel successfully repelled repeated cavalry assaults without breaking formation until the Umayyad commander was killed in the fray. The decisive Frankish victory halted the northward military expansion of the Umayyad Caliphate from the Iberian Peninsula into Western Europe. The battle cemented Charles Martel's political authority, paved the way for the rise of the Carolingian dynasty, and shaped the medieval religious and political boundaries of Western Europe.",
+                    "keywords": [
+                        "Battle of Tours",
+                        "Charles Martel",
+                        "Franks",
+                        "Umayyad",
+                        "Poitiers",
+                        "Carolingian",
+                        "Medieval Europe"
+                    ]
+                },
+                {
+                    "id": "house_of_wisdom_800",
+                    "title": "Founding of the House of Wisdom in Baghdad",
+                    "year": 800,
+                    "exact_date": "c. 8th Century",
+                    "summary": "Founded in Baghdad during the eighth century under the Abbasid Caliph Harun al-Rashid and reaching its zenith under Caliph al-Ma'mun, the House of Wisdom was the intellectual heart of the Islamic Golden Age. Operating as a royal library, translation bureau, and academy, it brought together Muslim, Christian, Jewish, and Persian scholars who painstakingly translated the scientific and philosophical heritage of ancient Greece, India, and Persia into Arabic. Rather than simply preserving classical learning, scholars at the House of Wisdom performed original research that transformed mathematics, optics, astronomy, and medicine. It was here that Muhammad ibn Musa al-Khwarizmi formulated algebra and introduced the Hindu-Arabic numeral system to the West, establishing Baghdad as the foremost beacon of enlightenment during the medieval era.",
+                    "keywords": [
+                        "House of Wisdom",
+                        "Baghdad",
+                        "Islamic Golden Age",
+                        "Abbasid",
+                        "Al-Khwarizmi",
+                        "Algebra",
+                        "Translation"
+                    ]
+                },
+                {
+                    "id": "coronation_charlemagne_800",
+                    "title": "Coronation of Charlemagne as Holy Roman Emperor",
+                    "year": 800,
+                    "exact_date": "25 December 800 AD",
+                    "summary": "On Christmas Day in the year 800 AD, King Charlemagne of the Franks knelt in prayer inside Old Saint Peter's Basilica in Rome, where Pope Leo III placed a golden crown upon his head and proclaimed him Emperor of the Romans. The historic coronation revived the imperial title in Western Europe for the first time since the fall of Ravenna in 476, cementing a crucial political and religious alliance between the papacy and the Frankish monarchy. Charlemagne used his vast realm, stretching from modern France to Germany and northern Italy, to sponsor the Carolingian Renaissance, building monastic schools, standardizing Latin literacy, and promoting clear Carolingian miniscule handwriting script. The event established the precedent for the Holy Roman Empire, which would shape European politics and religious authority for over a millennium.",
+                    "keywords": [
+                        "Charlemagne",
+                        "Holy Roman Empire",
+                        "Pope Leo III",
+                        "Coronation",
+                        "Carolingian",
+                        "Franks",
+                        "Rome"
+                    ]
+                },
+                {
+                    "id": "battle_hastings_1066",
+                    "title": "The Battle of Hastings",
+                    "year": 1066,
+                    "exact_date": "14 October 1066",
+                    "summary": "On October 14, 1066, Duke William of Normandy confronted King Harold Godwinson of England on a hill near Hastings in East Sussex following the disputed succession to the English throne. The Anglo-Saxon shield wall held firm through hours of fierce close-quarters combat until the Norman cavalry executed deceptive feigned retreats that drew English defenders out of their defensive formation, culminating in King Harold being struck by an arrow and killed. Crowned King of England on Christmas Day, William the Conqueror replaced the native Anglo-Saxon nobility with French-speaking Norman barons, compiled the comprehensive Domesday Book land survey, and transformed English culture, law, and vocabulary by infusing Norman French into Old English. The conquest permanently oriented England toward continental European affairs.",
+                    "keywords": [
+                        "Battle of Hastings",
+                        "William the Conqueror",
+                        "Harold Godwinson",
+                        "1066",
+                        "Normans",
+                        "Domesday Book",
+                        "Anglo-Saxons"
+                    ]
+                },
+                {
+                    "id": "magna_carta_1215",
+                    "title": "Signing of the Magna Carta",
+                    "year": 1215,
+                    "exact_date": "15 June 1215",
+                    "summary": "On June 15, 1215, King John of England met a faction of armed rebel barons in the meadow of Runnymede along the River Thames to seal the Magna Carta, or Great Charter. Frustrated by the monarch's heavy taxation, arbitrary royal land seizures, and judicial abuses, the barons forced John to agree to sixty-three clauses restricting royal authority. The document established the revolutionary constitutional principle that even the monarch is subordinate to the law of the land, safeguarding subjects from arbitrary imprisonment without lawful trial by peers. Although King John quickly sought papal annulment of the charter, the Magna Carta was repeatedly reissued in subsequent reigns, ultimately serving as the legal bedrock for the English Bill of Rights, the United States Constitution, and the Universal Declaration of Human Rights.",
+                    "keywords": [
+                        "Magna Carta",
+                        "King John",
+                        "Runnymede",
+                        "Barons",
+                        "Rule of Law",
+                        "Constitution",
+                        "Habeas Corpus"
+                    ]
+                },
+                {
+                    "id": "black_death_1347",
+                    "title": "The Black Death Pandemic",
+                    "year": 1347,
+                    "exact_date": "1347 - 1351",
+                    "summary": "Arriving on Genoese merchant ships from the Black Sea into Mediterranean ports in 1347, the Black Death bubonic plague tore through Europe, North Africa, and the Middle East in four devastating years. Caused by the bacterium Yersinia pestis carried by fleas living on black rats, the disease killed between seventy-five and two hundred million people, wiping out an estimated thirty to sixty percent of Europe's entire population. The staggering death toll shattered the medieval feudal order, creating an acute labor shortage that allowed surviving peasants to demand wages, purchase land, and break free from bondage to aristocratic estates. By undermining the unquestioned authority of established medieval institutions, the pandemic inadvertently accelerated the social, economic, and intellectual shifts that gave rise to the Renaissance.",
+                    "keywords": [
+                        "Black Death",
+                        "Bubonic Plague",
+                        "1347",
+                        "Yersinia pestis",
+                        "Feudalism",
+                        "Medieval Europe",
+                        "Peasant Labor"
+                    ]
+                },
+                {
+                    "id": "fall_constantinople_1453",
+                    "title": "Fall of Constantinople to the Ottoman Empire",
+                    "year": 1453,
+                    "exact_date": "29 May 1453",
+                    "summary": "On May 29, 1453, following an intense fifty-three-day siege, the Ottoman army commanded by twenty-one-year-old Sultan Mehmed II breached the legendary fifth-century Theodosian walls of Constantinople, bringing a decisive end to the Byzantine Empire. Utilizing massive gunpowder siege cannons engineered by the Hungarian founder Urban, Mehmed overwhelmed the defending forces of the last Byzantine Emperor, Constantine XI Palaiologos, who died fighting at the city gates. Renaming the city Kostantiniyye, or Istanbul, Mehmed established it as the thriving imperial capital of the expanding Ottoman Empire at the strategic crossroads of Europe and Asia. The fall of the city prompted waves of Greek scholars and classical manuscripts to flee westward to Italy, directly fueling the intellectual fires of the Italian Renaissance while forcing Western European powers to seek maritime sea routes to Asia.",
+                    "keywords": [
+                        "Fall of Constantinople",
+                        "Mehmed II",
+                        "Byzantine Empire",
+                        "1453",
+                        "Ottoman Empire",
+                        "Cannons",
+                        "Renaissance"
+                    ]
+                }
+            ]
+        },
+        {
+            "era": "The Renaissance & Scientific Revolution",
+            "events": [
+                {
+                    "id": "printing_press_1440",
+                    "title": "Invention of the Movable-Type Printing Press",
+                    "year": 1440,
+                    "exact_date": "c. 1440",
+                    "summary": "Around 1440 in Mainz, Germany, goldsmith Johannes Gutenberg perfected the movable-type mechanical printing press, creating one of the most transformative inventions in human history. By combining durable lead-alloy metal letters, a screw-based wooden press adapted from wine presses, and a newly formulated oil-based ink, Gutenberg made it possible to replicate entire pages of text rapidly and uniformly. His masterwork, the forty-two-line Gutenberg Bible printed in the 1450s, demonstrated that mechanically produced books could rival the finest hand-copied manuscripts at a fraction of the cost. Within decades, printing shops proliferated across European cities, democratizing literacy, undermining ecclesiastical monopolies on information, and directly sparking the Protestant Reformation, the Renaissance, and the Scientific Revolution.",
+                    "keywords": [
+                        "Johannes Gutenberg",
+                        "Printing Press",
+                        "Movable Type",
+                        "Mainz",
+                        "Gutenberg Bible",
+                        "Renaissance",
+                        "Literacy"
+                    ]
+                },
+                {
+                    "id": "columbus_voyage_1492",
+                    "title": "Christopher Columbus Reaches the Americas",
+                    "year": 1492,
+                    "exact_date": "12 October 1492",
+                    "summary": "On the morning of October 12, 1492, Genoese navigator Christopher Columbus, sailing under the royal sponsorship of Queen Isabella I and King Ferdinand II of Spain, made landfall on an island in the Bahamas that he named San Salvador. Commanding three ships—the Santa María, the Pinta, and the Niña—Columbus had embarked westward across the Atlantic Ocean aiming to establish a direct maritime trade passage to the prosperous spice markets of Asia. His historic arrival initiated permanent, continuous transatlantic contact between the Eastern and Western Hemispheres, launching the profound biological, agricultural, and demographic transfer known as the Columbian Exchange. While the voyage opened the Americas to Spanish exploration and global trade networks, it also brought devastating epidemic diseases and colonization to indigenous populations.",
+                    "keywords": [
+                        "Christopher Columbus",
+                        "1492",
+                        "San Salvador",
+                        "Columbian Exchange",
+                        "Transatlantic",
+                        "Spain",
+                        "Age of Exploration"
+                    ]
+                },
+                {
+                    "id": "mona_lisa_1503",
+                    "title": "Painting of the Mona Lisa",
+                    "year": 1503,
+                    "exact_date": "c. 1503",
+                    "summary": "Around 1503 in the vibrant Renaissance city of Florence, master painter and polymath Leonardo da Vinci began work on the portrait of Lisa Gherardini, the wife of wealthy silk merchant Francesco del Giocondo, widely known today as the Mona Lisa. Painted in thin oil glazes on a poplar wood panel, the portrait showcases Leonardo's groundbreaking mastery of sfumato, a subtle blending technique that softens sharp edges and creates atmospheric depth without visible brushstrokes. The subject's enigmatic smile, expressive eyes that seem to track the viewer, and the imaginary landscape background transformed Renaissance portraiture from rigid profile poses into dynamic, living psychology. Acquired by King Francis I of France after Leonardo's death, the masterpiece now hangs in the Louvre Museum in Paris as the world's most famous painting.",
+                    "keywords": [
+                        "Mona Lisa",
+                        "Leonardo da Vinci",
+                        "Florence",
+                        "Sfumato",
+                        "Louvre Museum",
+                        "Renaissance Art",
+                        "Portrait"
+                    ]
+                },
+                {
+                    "id": "sistine_chapel_1512",
+                    "title": "Completion of the Sistine Chapel Ceiling",
+                    "year": 1512,
+                    "exact_date": "October 1512",
+                    "summary": "In October 1512 in Rome, High Renaissance sculptor and painter Michelangelo Buonarroti completed his monumental fresco cycle across the curved vaulted ceiling of the Vatican's Sistine Chapel, commissioned by Pope Julius II. Working for four grueling years atop towering wooden scaffolding, Michelangelo single-handedly painted over five thousand square feet of plaster with more than three hundred dynamic figures depicting scenes from the Book of Genesis, culminating in the iconic Creation of Adam. Michelangelo's radical mastery of human anatomy, vibrant coloration, and monumental emotional expressiveness redefined European fine art and established a standard of artistic virtuosity that influenced generations of painters and sculptors.",
+                    "keywords": [
+                        "Michelangelo",
+                        "Sistine Chapel",
+                        "Vatican",
+                        "Creation of Adam",
+                        "Pope Julius II",
+                        "Frescoes",
+                        "High Renaissance"
+                    ]
+                },
+                {
+                    "id": "protestant_reformation_1517",
+                    "title": "Martin Luther Posts the Ninety-Five Theses",
+                    "year": 1517,
+                    "exact_date": "31 October 1517",
+                    "summary": "On October 31, 1517, German monk and university theology professor Martin Luther nailed his Ninety-Five Theses to the heavy wooden door of All Saints' Church in Wittenberg, Saxony, sparking the Protestant Reformation. Luther vehemently protested clerical corruption and the lucrative sale of papal indulgences, which falsely promised purchasers remission of sins in exchange for financial contributions toward the reconstruction of Saint Peter's Basilica. Rapidly translated into German and duplicated across Europe via Gutenberg's printing presses, Luther's writings asserted the radical theological doctrines of salvation by faith alone and the ultimate authority of the Bible over papal decree. The ensuing Reformation fractured Western Christendom, reshaped European political alliances, and spurred decades of theological debates and religious conflicts.",
+                    "keywords": [
+                        "Martin Luther",
+                        "Ninety-Five Theses",
+                        "Wittenberg",
+                        "Protestant Reformation",
+                        "Indulgences",
+                        "Faith Alone",
+                        "Reformation"
+                    ]
+                },
+                {
+                    "id": "first_circumnavigation_1519",
+                    "title": "First Global Circumnavigation",
+                    "year": 1519,
+                    "exact_date": "1519 - 1522",
+                    "summary": "In September 1519, Portuguese explorer Ferdinand Magellan set sail from Sanlúcar de Barrameda with five ships and roughly two hundred and seventy men under the Spanish Crown to find a western sea route to the wealthy Spice Islands of Indonesia. After navigating the treacherous strait at the southern tip of South America that now bears Magellan's name and enduring months crossing the vast Pacific Ocean, Magellan was killed in a skirmish in the Philippines in 1521. Spanish navigator Juan Sebastián Elcano assumed command of the sole surviving vessel, the Victoria, and guided eighteen surviving crew members safely across the Indian Ocean and around Africa back to Spain in September 1522. The arduous three-year expedition completed humanity's first full circumnavigation of the globe, definitively proving that the planet's oceans formed a continuous body of water.",
+                    "keywords": [
+                        "Ferdinand Magellan",
+                        "Juan Sebastian Elcano",
+                        "Circumnavigation",
+                        "Victoria",
+                        "Spice Islands",
+                        "Strait of Magellan",
+                        "Globe"
+                    ]
+                },
+                {
+                    "id": "galileo_telescope_1609",
+                    "title": "Galileo Observes the Moons of Jupiter",
+                    "year": 1609,
+                    "exact_date": "January 1610",
+                    "summary": "In late 1609, Italian astronomer Galileo Galilei built an improved refracting telescope with roughly twenty-times magnification and directed it toward the nighttime heavens, transforming observational astronomy forever. In January 1610, while observing Jupiter, he discovered four tiny celestial bodies orbiting the giant planet, now recognized as the Galilean moons: Io, Europa, Ganymede, and Callisto. This landmark discovery delivered conclusive optical proof that not all heavenly bodies circled the Earth, shattering the ancient Aristotelian and Ptolemaic earth-centered model of the universe. Galileo published his findings in his 1610 treatise Sidereus Nuncius, providing critical observational evidence in favor of Nicolaus Copernicus's heliocentric model, which positioned the Sun at the center of the solar system.",
+                    "keywords": [
+                        "Galileo Galilei",
+                        "Telescope",
+                        "Jupiter",
+                        "Galilean Moons",
+                        "Astronomy",
+                        "Heliocentrism",
+                        "Copernicus"
+                    ]
+                },
+                {
+                    "id": "newton_principia_1687",
+                    "title": "Publication of Newton's Principia Mathematica",
+                    "year": 1687,
+                    "exact_date": "5 July 1687",
+                    "summary": "On July 5, 1687, English mathematician and physicist Sir Isaac Newton published his landmark masterpiece, Philosophiæ Naturalis Principia Mathematica, fundamentally reshaping the scientific understanding of the physical universe. Written with the encouragement and financial backing of astronomer Edmond Halley, the work established the three universal laws of motion: inertia, force proportional to mass and acceleration, and action-reaction. Newton synthesized these mechanical laws with his groundbreaking law of universal gravitation, demonstrating with rigorous mathematical precision that the exact same gravitational force pulling an apple to Earth also holds planets in their elliptical orbits around the Sun. Principia united terrestrial and celestial physics under a single mathematical framework, laying the foundational cornerstone of classical mechanics for over two centuries.",
+                    "keywords": [
+                        "Isaac Newton",
+                        "Principia Mathematica",
+                        "Laws of Motion",
+                        "Universal Gravitation",
+                        "Classical Physics",
+                        "Calculus"
+                    ]
+                }
+            ]
+        },
+        {
+            "era": "Enlightenment, Revolutions & Industry",
+            "events": [
+                {
+                    "id": "declaration_independence_1776",
+                    "title": "Adoption of the US Declaration of Independence",
+                    "year": 1776,
+                    "exact_date": "4 July 1776",
+                    "summary": "On July 4, 1776, the Second Continental Congress meeting in the Pennsylvania State House in Philadelphia formally adopted the Declaration of Independence, drafted principally by thirty-three-year-old delegate Thomas Jefferson. The document articulated the moral and philosophical grounds for the thirteen North American colonies to dissolve their political allegiances to King George III and Great Britain. Grounded in Enlightenment concepts of natural rights popularized by philosopher John Locke, the preamble declared as self-evident truths that all individuals are created equal and endowed with inalienable rights to life, liberty, and the pursuit of happiness. By proclaiming that legitimate government derives its just authority solely from the consent of the governed, the Declaration established the democratic foundation of the United States and inspired national independence movements around the globe.",
+                    "keywords": [
+                        "Declaration of Independence",
+                        "Thomas Jefferson",
+                        "Philadelphia",
+                        "July 4 1776",
+                        "Natural Rights",
+                        "Democracy",
+                        "Colonies"
+                    ]
+                },
+                {
+                    "id": "watt_steam_engine_1776",
+                    "title": "Commercialization of James Watt's Steam Engine",
+                    "year": 1776,
+                    "exact_date": "1776",
+                    "summary": "In 1776, Scottish instrument maker and mechanical engineer James Watt, working in commercial partnership with industrialist Matthew Boulton in Birmingham, delivered the first successful commercial steam engines featuring his patented separate condenser. Recognizing that older Newcomen atmospheric engines wasted enormous energy by repeatedly heating and cooling the main cylinder, Watt introduced a dedicated cooling chamber that preserved cylinder heat and reduced coal consumption by more than seventy-five percent. Soon adapted from vertical pumping into smooth rotary motion, the Watt engine liberated factories from relying upon swift-flowing rivers or animal power, allowing textile mills, iron foundries, and manufacturing plants to operate continuously anywhere coal was available. The invention served as the vital mechanical workhorse that powered the Industrial Revolution and transformed global society from agrarian handcraft into modern mechanized industry.",
+                    "keywords": [
+                        "James Watt",
+                        "Steam Engine",
+                        "Separate Condenser",
+                        "Matthew Boulton",
+                        "Industrial Revolution",
+                        "Coal Power",
+                        "Factories"
+                    ]
+                },
+                {
+                    "id": "storming_bastille_1789",
+                    "title": "Storming of the Bastille",
+                    "year": 1789,
+                    "exact_date": "14 July 1789",
+                    "summary": "On the morning of July 14, 1789, an enraged crowd of Parisian citizens marched upon the Bastille, a formidable medieval stone fortress and prison that stood as a hated symbol of royal tyranny and absolute monarchy in the heart of Paris. Alarmed by the buildup of royal troops around Paris and the dismissal of popular reformist minister Jacques Necker, the insurgents sought the massive stores of gunpowder housed within the fortress walls. After hours of intense fighting, the garrison surrendered, and the crowd seized the stronghold, subsequently tearing down its massive stones by hand as a declaration of popular sovereignty. The storming of the Bastille directly ignited the French Revolution, forced King Louis XVI to recognize the newly formed National Assembly, and catalyzed the abolition of feudal aristocracy in France.",
+                    "keywords": [
+                        "Bastille",
+                        "French Revolution",
+                        "Paris",
+                        "July 14 1789",
+                        "Louis XVI",
+                        "Liberty",
+                        "National Assembly"
+                    ]
+                },
+                {
+                    "id": "rosetta_stone_1799",
+                    "title": "Discovery of the Rosetta Stone",
+                    "year": 1799,
+                    "exact_date": "15 July 1799",
+                    "summary": "On July 15, 1799, French engineering officer Pierre-François Bouchard discovered a large black granodiorite slab while directing fortification excavations near the port town of Rashid, known to Europeans as Rosetta, in the Nile Delta during Napoleon's Egyptian expedition. Carved in 196 BC during the reign of King Ptolemy V, the stele bore a single royal decree inscribed in three distinct scripts: ancient Egyptian hieroglyphs, Egyptian Demotic script, and ancient Greek. Because scholars could read ancient Greek, the stone provided the essential linguistic decipherment key, enabling French polymath Jean-François Champollion in 1822 to crack the phonetic grammar of ancient Egyptian hieroglyphs. The breakthrough unlocked thousands of years of recorded Egyptian history, monumental temple inscriptions, and literature that had remained unreadable for over fourteen centuries.",
+                    "keywords": [
+                        "Rosetta Stone",
+                        "Hieroglyphs",
+                        "Champollion",
+                        "Napoleon",
+                        "Egypt",
+                        "Decipherment",
+                        "Ptolemy"
+                    ]
+                },
+                {
+                    "id": "stephenson_rocket_1829",
+                    "title": "The Rainhill Trials and Stephenson's Rocket",
+                    "year": 1829,
+                    "exact_date": "October 1829",
+                    "summary": "In October 1829, English mechanical engineers George and Robert Stephenson entered their advanced steam locomotive, named Rocket, into the Rainhill Trials, an open competition organized to select the best motive power for the emerging Liverpool and Manchester Railway. Featuring innovative multi-tubular boilers that vastly accelerated steam generation and separate connecting rods driving the front wheels directly, Rocket reached astonishing speeds of twenty-nine miles per hour while demonstrating flawless mechanical reliability. Stephenson's triumphant design proved definitively that steam locomotives were far superior to stationary cable engines for transporting freight and passengers over steel rails. Rocket established the global engineering template for nineteenth-century steam railway locomotives, launching the railway age and accelerating industrial transportation across the globe.",
+                    "keywords": [
+                        "Stephenson Rocket",
+                        "Steam Locomotive",
+                        "Rainhill Trials",
+                        "Railways",
+                        "Industrial Transportation",
+                        "Steam Engine"
+                    ]
+                },
+                {
+                    "id": "morse_telegraph_1844",
+                    "title": "First Commercial Electric Telegraph Message",
+                    "year": 1844,
+                    "exact_date": "24 May 1844",
+                    "summary": "On May 24, 1844, American inventor Samuel F.B. Morse sat in the Supreme Court chamber of the United States Capitol in Washington, D.C., and transmitted the historic message 'What hath God wrought' across forty miles of copper wire to his assistant Alfred Vail in Baltimore, Maryland. Using an electromagnet to make rhythmic indentations on paper tape according to a system of dots and dashes now known worldwide as Morse Code, Morse demonstrated that instantaneous electronic telecommunication over vast physical distances was commercially practical. Within a few decades, vast networks of telegraph poles lined railway tracks and underwater cables spanned the Atlantic Ocean, collapsing global communication times from weeks of physical transport to fractions of a second. The electric telegraph marked the birth of the telecommunications industry and laid the earliest technical foundation for the interconnected modern communications age.",
+                    "keywords": [
+                        "Samuel Morse",
+                        "Electric Telegraph",
+                        "Morse Code",
+                        "May 24 1844",
+                        "Washington to Baltimore",
+                        "Telecommunications"
+                    ]
+                },
+                {
+                    "id": "emancipation_proclamation_1863",
+                    "title": "Issuance of the Emancipation Proclamation",
+                    "year": 1863,
+                    "exact_date": "1 January 1863",
+                    "summary": "On January 1, 1863, amid the bitter turmoil of the American Civil War, President Abraham Lincoln issued the Emancipation Proclamation using his constitutional authority as Commander-in-Chief of the armed forces. The executive order declared that all persons held as slaves within rebellious Confederate territories were and henceforward shall be free, immediately applying to more than three million enslaved men, women, and children. Crucially, the proclamation also authorized the enlistment of African American soldiers into the Union army and navy, resulting in nearly two hundred thousand Black troops joining the Union cause and altering the military balance of the conflict. By transforming the Civil War from a narrow struggle to preserve the Union into an uncompromising moral crusade for human freedom, the proclamation paved the direct path for the 1865 ratification of the Thirteenth Amendment, which forever abolished slavery across the entire United States.",
+                    "keywords": [
+                        "Abraham Lincoln",
+                        "Emancipation Proclamation",
+                        "Civil War",
+                        "January 1 1863",
+                        "Abolition of Slavery",
+                        "13th Amendment",
+                        "Union"
+                    ]
+                },
+                {
+                    "id": "bell_telephone_1876",
+                    "title": "Invention of the Commercial Telephone",
+                    "year": 1876,
+                    "exact_date": "10 March 1876",
+                    "summary": "On March 10, 1876, in his Boston workshop, Scottish-born inventor and speech educator Alexander Graham Bell spoke the first intelligible words over an electrical telephone line to his assistant Thomas Watson in the next room: 'Mr. Watson, come here, I want to see you.' Bell's breakthrough utilized a liquid transmitter and electromagnetic diaphragm that converted acoustic air pressure vibrations of human speech into corresponding fluctuating electrical currents transmitted along a wire and reconstituted back into sound. Granted United States Patent 174,465 just days earlier, Bell demonstrated the device at the 1876 Centennial Exposition in Philadelphia, astonishing international scientists and commercial financiers alike. The telephone replaced coded telegraph dots with direct two-way voice communication, revolutionizing commerce, emergency services, and human social connection.",
+                    "keywords": [
+                        "Alexander Graham Bell",
+                        "Telephone",
+                        "Thomas Watson",
+                        "1876",
+                        "Acoustics",
+                        "Telecommunications",
+                        "Invention"
+                    ]
+                },
+                {
+                    "id": "edison_light_bulb_1879",
+                    "title": "Development of the Practical Incandescent Light Bulb",
+                    "year": 1879,
+                    "exact_date": "21 October 1879",
+                    "summary": "On October 21, 1879, at his Menlo Park industrial research laboratory in New Jersey, American inventor Thomas Alva Edison and his team achieved a continuous forty-hour burn of an incandescent lamp utilizing a carbonized cotton thread filament sealed in a high-vacuum glass bulb. Recognizing that electric lighting required an integrated infrastructure to succeed commercially, Edison did not merely create a bulb, but engineered an entire centralized electrical distribution system including dynamos, underground wiring, safety fuses, and light sockets. When Edison threw the switch at the Pearl Street generating station in lower Manhattan in September 1882, electric light illuminated entire financial districts and residential buildings. The invention banished darkness from homes and factories, extending productive working hours and transforming modern urban civilization.",
+                    "keywords": [
+                        "Thomas Edison",
+                        "Incandescent Light Bulb",
+                        "Menlo Park",
+                        "1879",
+                        "Electricity",
+                        "Pearl Street",
+                        "Filament"
+                    ]
+                }
+            ]
+        },
+        {
+            "era": "The 20th Century & The Digital Age",
+            "events": [
+                {
+                    "id": "wright_brothers_flight_1903",
+                    "title": "First Powered Airplane Flight",
+                    "year": 1903,
+                    "exact_date": "17 December 1903",
+                    "summary": "On the morning of December 17, 1903, on the sandy dunes of Kill Devil Hills near Kitty Hawk, North Carolina, bicycle mechanics Orville and Wilbur Wright accomplished humanity's first controlled, sustained, and powered heavier-than-air airplane flight. Piloting the custom-built Wright Flyer—constructed with spruce wood, muslin cloth, a lightweight twelve-horsepower aluminum engine, and twin counter-rotating propellers—Orville achieved twelve seconds of sustained flight over a distance of one hundred and twenty feet into a stiff winter headwind. Across four progressive test flights that day, Wilbur extended the distance to eight hundred and fifty-two feet in fifty-nine seconds, proving that their revolutionary three-axis aerodynamic control system based on wing-warping, elevator pitch, and rudder yaw solved the fundamental problem of flight stability. Their historic triumph opened the skies to global transportation, transformed commercial trade, and launched modern aviation.",
+                    "keywords": [
+                        "Wright Brothers",
+                        "First Flight",
+                        "Kitty Hawk",
+                        "Wright Flyer",
+                        "Orville Wright",
+                        "Wilbur Wright",
+                        "Aviation",
+                        "1903"
+                    ]
+                },
+                {
+                    "id": "einstein_relativity_1905",
+                    "title": "Albert Einstein's Annus Mirabilis and Special Relativity",
+                    "year": 1905,
+                    "exact_date": "1905",
+                    "summary": "In 1905, while working as a humble third-class examiner in the Swiss patent office in Bern, twenty-six-year-old physicist Albert Einstein published four revolutionary papers in the German journal Annalen der Physik, a feat celebrated today as the Annus Mirabilis or Miracle Year. His papers explained the photoelectric effect through light quanta, provided empirical proof of atoms through Brownian motion, and introduced the theory of Special Relativity, which abolished the Newtonian concept of absolute space and time. Demonstrating that the speed of light is constant in all inertial frames of reference, Einstein revealed that time dilates and lengths contract at high velocities, culminating in his famous mass-energy equivalence formula E = mc². Einstein's visionary insights dismantled classical physics and created the foundations of modern quantum theory and astrophysics.",
+                    "keywords": [
+                        "Albert Einstein",
+                        "Special Relativity",
+                        "1905",
+                        "Annus Mirabilis",
+                        "Photoelectric Effect",
+                        "Mass-Energy Equivalence",
+                        "Physics"
+                    ]
+                },
+                {
+                    "id": "penicillin_discovery_1928",
+                    "title": "Discovery of Penicillin",
+                    "year": 1928,
+                    "exact_date": "September 1928",
+                    "summary": "In September 1928, Scottish physician and microbiologist Alexander Fleming returned from a family vacation to his laboratory at St. Mary's Hospital in London to find that a petri dish containing Staphylococcus bacteria had become contaminated with an airborne blue-green mold. Observing the culture under a microscope, Fleming noted with astonishment that the bacterial colonies surrounding the mold had dissolved, while those farther away remained intact. Identifying the fungus as Penicillium notatum, he recognized that the mold produced a potent natural substance capable of killing dangerous infectious bacteria without harming human tissue, which he named penicillin. Although over a decade passed before researchers Howard Florey and Ernst Chain at Oxford University successfully stabilized and mass-produced the drug during World War II, Fleming's serendipitous discovery introduced the antibiotic era, saving hundreds of millions of lives from previously fatal bacterial infections.",
+                    "keywords": [
+                        "Alexander Fleming",
+                        "Penicillin",
+                        "Antibiotic",
+                        "St Marys Hospital",
+                        "Howard Florey",
+                        "Medicine",
+                        "Bacteria",
+                        "1928"
+                    ]
+                },
+                {
+                    "id": "d_day_normandy_1944",
+                    "title": "Operation Overlord and the D-Day Landings",
+                    "year": 1944,
+                    "exact_date": "6 June 1944",
+                    "summary": "On the dawn of June 6, 1944, Allied forces launched Operation Overlord, the largest amphibious invasion in military history, landing more than one hundred and fifty-six thousand American, British, and Canadian troops along fifty miles of heavily fortified beaches in Normandy, France. Under the supreme command of General Dwight D. Eisenhower and preceded by thousands of paratroopers dropped behind enemy lines and extensive naval bombardments, Allied infantry stormed code-named beaches: Utah, Omaha, Gold, Juno, and Sword. Despite fierce German machine-gun and artillery resistance, particularly at Omaha Beach, the Allied soldiers established a permanent continental beachhead, fracturing Nazi Germany's western defenses. D-Day opened a decisive second front in Europe, leading to the liberation of Paris two months later and accelerating the final collapse of the Third Reich.",
+                    "keywords": [
+                        "D-Day",
+                        "Operation Overlord",
+                        "Normandy",
+                        "June 6 1944",
+                        "Eisenhower",
+                        "World War II",
+                        "Allies"
+                    ]
+                },
+                {
+                    "id": "united_nations_1945",
+                    "title": "Founding of the United Nations",
+                    "year": 1945,
+                    "exact_date": "24 October 1945",
+                    "summary": "On October 24, 1945, the United Nations officially came into existence when its founding Charter was ratified by the five permanent members of the Security Council—the United States, Great Britain, the Soviet Union, France, and China—and a majority of other signatory nations. Drafted during the San Francisco Conference in the closing months of World War II by delegates representing fifty nations, the Charter established a global international forum designed to prevent catastrophic future world conflicts through collective security, peaceful diplomacy, and international law. Unlike the earlier League of Nations, the UN established an executive Security Council with enforcement authority and specialized humanitarian agencies dedicated to human rights, public health, and refugee relief. The organization remains the central arena for international diplomacy and multilateral crisis resolution.",
+                    "keywords": [
+                        "United Nations",
+                        "UN Charter",
+                        "October 24 1945",
+                        "San Francisco Conference",
+                        "Peace",
+                        "Security Council",
+                        "Diplomacy"
+                    ]
+                },
+                {
+                    "id": "dna_double_helix_1953",
+                    "title": "Discovery of the DNA Double Helix",
+                    "year": 1953,
+                    "exact_date": "25 April 1953",
+                    "summary": "On April 25, 1953, young American biologist James Watson and British physicist Francis Crick published a groundbreaking nine-hundred-word paper in the scientific journal Nature revealing the double-helix molecular structure of deoxyribonucleic acid, or DNA. Drawing fundamentally upon high-resolution X-ray diffraction photographs captured by chemist Rosalind Franklin and biophysicist Maurice Wilkins at King's College London, Watson and Crick constructed a physical three-dimensional model featuring two antiparallel sugar-phosphate helical backbones joined by complementary adenine-thymine and guanine-cytosine nucleotide base pairs. The structural model famously explained how genetic material stores biological information and accurately replicates during cellular division. The discovery revolutionized modern biology, giving rise to molecular genetics, forensic DNA profiling, biotechnology, and personalized genomic medicine.",
+                    "keywords": [
+                        "DNA",
+                        "Double Helix",
+                        "Watson and Crick",
+                        "Rosalind Franklin",
+                        "Genetics",
+                        "Nature 1953",
+                        "Molecular Biology"
+                    ]
+                },
+                {
+                    "id": "salk_polio_vaccine_1955",
+                    "title": "Success of the Salk Inactivated Polio Vaccine",
+                    "year": 1955,
+                    "exact_date": "12 April 1955",
+                    "summary": "On April 12, 1955, at the University of Michigan, epidemiologist Dr. Thomas Francis Jr. announced to an anxious international public that Dr. Jonas Salk's inactivated poliovirus vaccine had been proven safe, potent, and remarkably effective in massive clinical trials involving nearly two million schoolchildren. Polio had terrified twentieth-century families for decades, causing sudden infantile paralysis, iron-lung confinement, and death in thousands of children each summer. Rejecting private patent profits and asserting that the vaccine belonged to the public, Salk famously declared when asked who owned the patent: 'There is no patent. Could you patent the sun?' The nationwide deployment of Salk's vaccine and Albert Sabin's later oral vaccine eradicated paralytic polio from most of the globe, standing as one of public health's greatest triumphs.",
+                    "keywords": [
+                        "Jonas Salk",
+                        "Polio Vaccine",
+                        "April 12 1955",
+                        "Medicine",
+                        "Public Health",
+                        "Immunization",
+                        "Eradication"
+                    ]
+                },
+                {
+                    "id": "gagarin_space_flight_1961",
+                    "title": "Yuri Gagarin Becomes the First Human in Space",
+                    "year": 1961,
+                    "exact_date": "12 April 1961",
+                    "summary": "On the morning of April 12, 1961, twenty-seven-year-old Soviet cosmonaut Yuri Gagarin launched aboard the Vostok 1 spacecraft from the Baikonur Cosmodrome in Kazakhstan, becoming the first human being to journey into outer space and complete a full orbit of planet Earth. Reaching a maximum altitude of two hundred and three miles and traveling at speeds exceeding seventeen thousand miles per hour during his one-hundred-and-eight-minute flight, Gagarin gazed down through the spacecraft porthole and exclaimed his famous joyful assessment of Earth's curved blue horizon. His triumphant re-entry and parachute landing in rural Russia marked an astonishing milestone in human exploration and intensified the Cold War Space Race between the Soviet Union and the United States. Gagarin's flight proved that humans could survive microgravity and paved the way for planetary space exploration.",
+                    "keywords": [
+                        "Yuri Gagarin",
+                        "Vostok 1",
+                        "First Human in Space",
+                        "April 12 1961",
+                        "Cosmonaut",
+                        "Space Race",
+                        "Orbit"
+                    ]
+                },
+                {
+                    "id": "apollo_11_moon_landing_1969",
+                    "title": "Apollo 11 Moon Landing",
+                    "year": 1969,
+                    "exact_date": "20 July 1969",
+                    "summary": "On July 20, 1969, American astronauts Neil Armstrong and Edwin 'Buzz' Aldrin successfully piloted the Apollo 11 Lunar Module Eagle to a touchdown on the basaltic plain of the Moon's Sea of Tranquility, while Command Module Pilot Michael Collins orbited overhead. Broadcast live to an estimated global television audience of more than six hundred million people, Armstrong opened the hatch and stepped onto the lunar surface, uttering the immortal words: 'That's one small step for man, one giant leap for mankind.' Over two and a half hours outside the spacecraft, the astronauts collected twenty-one kilograms of lunar rocks, planted the United States flag, and deployed scientific equipment, fulfilling President John F. Kennedy's 1961 challenge to land a human on the Moon before the end of the decade. The mission stood as one of the supreme technical achievements of human history, proving that humanity could reach beyond its home planet.",
+                    "keywords": [
+                        "Apollo 11",
+                        "Neil Armstrong",
+                        "Buzz Aldrin",
+                        "Moon Landing",
+                        "NASA",
+                        "Sea of Tranquility",
+                        "July 20 1969",
+                        "Space Exploration"
+                    ]
+                },
+                {
+                    "id": "berlin_wall_fall_1989",
+                    "title": "The Fall of the Berlin Wall",
+                    "year": 1989,
+                    "exact_date": "9 November 1989",
+                    "summary": "On 9 November 1989, East German official Günter Schabowski mistakenly announced that the new travel regulations would take effect immediately, causing thousands of East Berliners to flood into the city and crowd the checkpoints. The sudden announcement prompted citizens to storm the Brandenburg Gate, the Checkpoint Charlie, and other border posts, physically tearing down sections of the concrete barrier that had divided the city for 28 years. The spontaneous dismantling of the wall by jubilant crowds symbolized the collapse of the Soviet sphere of influence and the imminent end of the Cold War. The event was broadcast worldwide, galvanizing a wave of optimism and prompting the reunification of Germany within a year. The fall of the Berlin Wall remains a pivotal moment in 20th‑century history, marking the triumph of democratic ideals over authoritarian regimes.",
+                    "keywords": [
+                        "Berlin Wall",
+                        "Günter Schabowski",
+                        "November 9 1989",
+                        "Cold War",
+                        "East Germany",
+                        "Checkpoint Charlie",
+                        "German reunification",
+                        "Brandenburg Gate"
+                    ]
+                },
+                {
+                    "id": "world_wide_web_1989",
+                    "title": "Invention of the World Wide Web",
+                    "year": 1989,
+                    "exact_date": "March 1989",
+                    "summary": "In March 1989, British computer scientist Tim Berners-Lee, working at the European Organization for Nuclear Research (CERN) in Geneva, Switzerland, submitted a visionary proposal titled 'Information Management: A Proposal' to solve the problem of sharing research documents among global scientists. By integrating emerging concepts of hypertext with the existing global Internet network, Berners-Lee developed the three foundational building blocks of the modern web: HTML (HyperText Markup Language) for structuring documents, HTTP (HyperText Transfer Protocol) for transmitting data, and URI/URL addressing for locating resources. Working alongside Belgian engineer Robert Cailliau, he also designed the world's first web browser and web server. In a monumental decision in April 1993, CERN released the underlying Web source code into the public domain royalty-free, democratizing global access to knowledge and igniting the interconnected digital information era.",
+                    "keywords": [
+                        "Tim Berners-Lee",
+                        "World Wide Web",
+                        "CERN",
+                        "HTML",
+                        "HTTP",
+                        "Internet",
+                        "March 1989",
+                        "Hypertext",
+                        "Digital Age"
+                    ]
+                },
+                {
+                    "id": "human_genome_project_2003",
+                    "title": "Completion of the Human Genome Project",
+                    "year": 2003,
+                    "exact_date": "April 2003",
+                    "summary": "In April 2003, an international consortium of academic research institutions and commercial scientists announced the successful completion of the Human Genome Project, having sequenced more than ninety-nine percent of the three billion chemical base pairs comprising human DNA. Spanning thirteen years of coordinated research across the United States, the United Kingdom, Japan, France, Germany, and China, the landmark effort generated the first high-accuracy genetic blueprint of our species. The project cataloged approximately twenty thousand to twenty-five thousand human protein-coding genes and made all sequence data freely accessible to global researchers in public databases without patent restrictions. The complete human genome revolutionized modern medicine, enabling rapid gene-editing tools, targeted cancer therapies, and advanced diagnostics for hereditary genetic diseases.",
+                    "keywords": [
+                        "Human Genome Project",
+                        "DNA Sequencing",
+                        "Genomics",
+                        "April 2003",
+                        "Genetics",
+                        "Biotechnology",
+                        "Base Pairs"
+                    ]
+                },
+                {
+                    "era": "The 20th Century & The Digital Age",
+                    "id": "sputnik_launch_1957",
+                    "title": "Launch of Sputnik 1 and Beginning of the Space Age",
+                    "year": 1957,
+                    "exact_date": "4 October 1957",
+                    "summary": "On the evening of October 4, 1957, the Soviet Union launched Sputnik 1 from the Baikonur Cosmodrome in Kazakhstan aboard an R-7 intercontinental ballistic rocket, placing humanity's first artificial satellite into low Earth orbit. Weighing eighty-three kilograms and resembling a polished aluminum sphere with four trailing radio whip antennas, the satellite circled the globe once every ninety-six minutes at eighteen thousand miles per hour, transmitting a steady, audible radio beep that was picked up by amateur radio operators and military tracking stations across the planet. The achievement caught the Western world by complete surprise, triggering the Sputnik Crisis in the United States and directly igniting the Cold War Space Race. The event spurred the rapid expansion of American science education funding, the creation of NASA in 1958, and humanity's permanent leap into the modern space era.",
+                    "keywords": [
+                        "Sputnik 1",
+                        "Sputnik",
+                        "Space Age",
+                        "Soviet Union",
+                        "Space Race",
+                        "NASA",
+                        "4 October 1957",
+                        "Satellite"
+                    ]
+                },
+                {
+                    "id": "manhattan_project_trinity_test_1945",
+                    "title": "The Manhattan Project and the Trinity Nuclear Test",
+                    "year": 1945,
+                    "exact_date": "16 July 1945",
+                    "summary": "On 16 July 1945, the United States detonated the world’s first atomic bomb, code‑named Gadget, at the Trinity site in the Jornada del Muerto desert of New Mexico. The test concluded the secret, US‑led Manhattan Project, a massive wartime research effort coordinated by physicist J. Robert Oppenheimer and overseen by Army Corps of Engineers General Leslie R. Groves. Gadget, a plutonium‑implosion device, produced an explosive yield of approximately 20 kilotons, confirming the feasibility of nuclear weapons. The successful explosion inaugurated the Nuclear Age, demonstrating a new form of destructive power that would soon be employed over Hiroshima and Nagasaki. Its strategic and scientific impact reshaped international security, spurred rapid advances in physics, and established a lasting legacy of both awe and ethical debate.",
+                    "keywords": [
+                        "Manhattan Project",
+                        "Trinity test",
+                        "J. Robert Oppenheimer",
+                        "Leslie Groves",
+                        "Gadget",
+                        "New Mexico",
+                        "Atomic bomb",
+                        "Nuclear Age"
+                    ]
+                }
+            ]
+        },
+        {
+            "era": "Landmarks of Science & Technological Innovation",
+            "events": [
+                {
+                    "id": "copernican_heliocentrism_1543",
+                    "title": "Publication of Copernicus's Heliocentric Model",
+                    "year": 1543,
+                    "exact_date": "May 1543",
+                    "summary": "In 1543, Polish astronomer Nicolaus Copernicus published his monumental treatise De revolutionibus orbium coelestium on his deathbed, proposing that the Earth and other planets revolve around the Sun rather than the Earth sitting stationary at the center of the universe. Copernicus introduced mathematical calculations demonstrating that planetary retrograde motion was an optical perspective effect resulting from Earth's own orbital motion around the Sun. His revolutionary heliocentric model fundamentally challenged the millennia-old Aristotelian-Ptolemaic geocentric cosmology endorsed by religious and academic authorities across Europe. The work sparked the Copernican Revolution, laying the foundation for modern observational astronomy and inspiring subsequent breakthroughs by Johannes Kepler and Galileo Galilei.",
+                    "keywords": [
+                        "Copernicus",
+                        "Heliocentrism",
+                        "De revolutionibus",
+                        "Astronomy",
+                        "Solar System",
+                        "Planetary Motion",
+                        "Copernican Revolution"
+                    ]
+                },
+                {
+                    "id": "lavoisier_oxygen_conservation_1777",
+                    "title": "Discovery of Oxygen and Conservation of Mass",
+                    "year": 1777,
+                    "exact_date": "1777",
+                    "summary": "In 1777 in Paris, French chemist Antoine Lavoisier performed meticulous quantitative experiments showing that combustion and respiration require a specific gas component of air, which he named oxygen. By measuring the masses of reacting substances and gaseous products inside sealed glass vessels, Lavoisier decisively dismantled the long-standing phlogiston theory and established the foundational law of conservation of mass, proving that matter is neither created nor destroyed in chemical transformations. Lavoisier also co-authored a standardized chemical nomenclature system that replaced confusing medieval alchemical names with systematic descriptive terms. His rigorous quantitative methods transformed chemistry from an empirical art into an exact modern physical science, earning him recognition as the father of modern chemistry.",
+                    "keywords": [
+                        "Antoine Lavoisier",
+                        "Oxygen",
+                        "Conservation of Mass",
+                        "Chemistry",
+                        "Combustion",
+                        "Chemical Nomenclature",
+                        "Phlogiston"
+                    ]
+                },
+                {
+                    "id": "darwin_origin_species_1859",
+                    "title": "Publication of Darwin's On the Origin of Species",
+                    "year": 1859,
+                    "exact_date": "24 November 1859",
+                    "summary": "On November 24, 1859, English naturalist Charles Darwin published his groundbreaking book On the Origin of Species by Means of Natural Selection, forever transforming the biological sciences. Drawing upon five years of observational fieldwork aboard HMS Beagle in the Galápagos Islands and decades of subsequent selective breeding research, Darwin demonstrated that all living species evolved from common ancestors through gradual natural selection. Organisms with heritable variations better suited to their environments are more likely to survive, reproduce, and pass those favorable traits to future generations. The theory unified the disparate fields of botany, zoology, and paleontology into a cohesive scientific framework and remains the central organizing principle of modern evolutionary biology.",
+                    "keywords": [
+                        "Charles Darwin",
+                        "Origin of Species",
+                        "Natural Selection",
+                        "Evolution",
+                        "HMS Beagle",
+                        "Galapagos",
+                        "Biology"
+                    ]
+                },
+                {
+                    "id": "mendeleev_periodic_table_1869",
+                    "title": "Mendeleev's 1869 Presentation of the Periodic Table of Elements",
+                    "year": 1869,
+                    "exact_date": "6 March 1869",
+                    "summary": "On 6 March 1869 Dmitri Mendeleev presented his periodic table to the Russian Chemical Society, arranging the known elements by increasing atomic mass and grouping them according to recurring chemical properties. He highlighted the periodic recurrence of valence and predicted that gaps in the table corresponded to undiscovered elements. Mendeleev boldly forecasted the existence and properties of eka‑aluminium and eka‑silicon, later identified as gallium (discovered in 1875) and germanium (discovered in 1886). The table's predictive success established it as a unifying framework for chemistry and accelerated systematic element discovery. Mendeleev’s work also influenced the eventual adoption of atomic number as the ordering principle, cementing the periodic law as a cornerstone of modern science.",
+                    "keywords": [
+                        "Dmitri Mendeleev",
+                        "Periodic Table",
+                        "Russian Chemical Society",
+                        "1869",
+                        "gallium",
+                        "germanium",
+                        "atomic mass",
+                        "periodic law"
+                    ]
+                },
+                {
+                    "id": "maxwell_electromagnetism_1865",
+                    "title": "Formulation of Maxwell's Equations of Electromagnetism",
+                    "year": 1865,
+                    "exact_date": "1865",
+                    "summary": "In 1865, Scottish mathematical physicist James Clerk Maxwell published his landmark paper A Dynamical Theory of the Electromagnetic Field, unifying the previously separate phenomena of electricity, magnetism, and optics into a single comprehensive mathematical framework. Maxwell synthesized empirical laws established by Coulomb, Gauss, Ampère, and Faraday into four elegant differential equations, introducing the revolutionary concept of the electromagnetic field propagating through space. His equations revealed that oscillating electric and magnetic fields generate waves traveling at the speed of light, leading Maxwell to the profound insight that visible light is itself an electromagnetic wave. Maxwell's electromagnetic theory paved the direct technological path for radio telecommunications, radar, and electric power generation, while inspiring Albert Einstein's development of special relativity.",
+                    "keywords": [
+                        "James Clerk Maxwell",
+                        "Maxwell Equations",
+                        "Electromagnetism",
+                        "Light Waves",
+                        "Electromagnetic Field",
+                        "Physics",
+                        "Optics"
+                    ]
+                },
+                {
+                    "id": "curie_radioactivity_1898",
+                    "title": "Discovery of Polonium and Radium by Marie Curie",
+                    "year": 1898,
+                    "exact_date": "1898",
+                    "summary": "In 1898 in Paris, Polish-French scientist Marie Curie and her husband Pierre Curie discovered two previously unknown chemical elements, polonium and radium, extracted through exhausting chemical separations from tons of pitchblende uranium ore. Marie Curie coined the term radioactivity to describe the spontaneous emission of penetrating rays from unstable atomic nuclei, demonstrating that the radiation was an intrinsic property of the individual atoms rather than molecular interaction. Her pioneering research fundamentally altered atomic theory, proving that atoms are divisible and contain internal dynamic energy structures. Curie became the first woman to win a Nobel Prize and remains the only person to receive Nobel Prizes in two distinct scientific disciplines, Physics in 1903 and Chemistry in 1911, establishing the foundations of nuclear physics and radiotherapy.",
+                    "keywords": [
+                        "Marie Curie",
+                        "Radioactivity",
+                        "Polonium",
+                        "Radium",
+                        "Pierre Curie",
+                        "Nobel Prize",
+                        "Nuclear Physics",
+                        "Pitchblende"
+                    ]
+                },
+                {
+                    "id": "bell_labs_transistor_1947",
+                    "title": "Invention of the Transistor at Bell Labs",
+                    "year": 1947,
+                    "exact_date": "23 December 1947",
+                    "summary": "On December 23, 1947, at Bell Telephone Laboratories in Murray Hill, New Jersey, American physicists John Bardeen, Walter Brattain, and William Shockley successfully created the point-contact transistor, triggering the electronic revolution. Constructed from a crystalline germanium semiconductor with closely spaced gold-foil contacts, the miniature solid-state device amplified electrical signals and acted as a high-speed electronic switch without requiring fragile, hot vacuum tubes. Shockley soon perfected the junction transistor, making affordable mass production on silicon wafers possible. The transistor enabled modern electronic miniaturization, serving as the foundational building block for microchips, personal computers, smartphones, and the entire global digital infrastructure.",
+                    "keywords": [
+                        "Transistor",
+                        "Bell Labs",
+                        "John Bardeen",
+                        "Walter Brattain",
+                        "William Shockley",
+                        "Semiconductor",
+                        "Microprocessor",
+                        "Electronics"
+                    ]
+                },
+                {
+                    "id": "ligo_gravitational_waves_2015",
+                    "title": "First Direct Detection of Gravitational Waves",
+                    "year": 2015,
+                    "exact_date": "14 September 2015",
+                    "summary": "On September 14, 2015, the Laser Interferometer Gravitational-Wave Observatory (LIGO) facilities in Washington state and Louisiana made humanity's first direct observation of gravitational waves, confirming a landmark prediction Albert Einstein made in his 1916 General Theory of Relativity. The historic signal, designated GW150914, originated from the violent merger of two stellar-mass black holes roughly one point three billion light-years from Earth. As the spacetime ripples swept through Earth, LIGO's twin four-kilometer laser interferometers measured a distortion smaller than one ten-thousandth the diameter of a subatomic proton. The monumental discovery inaugurated the era of gravitational-wave astronomy, allowing astrophysicists to observe dark cosmic collisions that emit no optical light.",
+                    "keywords": [
+                        "LIGO",
+                        "Gravitational Waves",
+                        "Albert Einstein",
+                        "Black Holes",
+                        "General Relativity",
+                        "Astrophysics",
+                        "Interferometer"
+                    ]
+                },
+                {
+                    "id": "crispr_cas9_gene_editing_2012",
+                    "title": "Development of CRISPR-Cas9 Gene Editing",
+                    "year": 2012,
+                    "exact_date": "17 August 2012",
+                    "summary": "On August 17, 2012, biochemists Jennifer Doudna and Emmanuelle Charpentier published a landmark study in the journal Science demonstrating that the bacterial adaptive immune system CRISPR-Cas9 could be reprogrammed into a programmable molecular tool for targeted genome editing. By engineering a synthetic single-guide RNA molecule, the Cas9 endonuclease could be directed to make precise double-strand DNA cuts at exact genomic loci in any living organism. The method transformed molecular genetics by making gene modification fast, affordable, and extraordinarily accurate compared to earlier complex technologies. Awarded the 2020 Nobel Prize in Chemistry, CRISPR-Cas9 has revolutionized biomedical research, gene therapies for hereditary diseases, and agricultural biotechnology worldwide.",
+                    "keywords": [
+                        "CRISPR",
+                        "Cas9",
+                        "Jennifer Doudna",
+                        "Emmanuelle Charpentier",
+                        "Gene Editing",
+                        "Biotechnology",
+                        "Genomics",
+                        "Nobel Prize"
+                    ]
+                },
+                {
+                    "id": "jwst_first_deep_field_2022",
+                    "title": "James Webb Space Telescope Unveils First Deep Field",
+                    "year": 2022,
+                    "exact_date": "11 July 2022",
+                    "summary": "On July 11, 2022, NASA and its international partners revealed the first operational science image captured by the James Webb Space Telescope (JWST), titled Webb's First Deep Field, displaying the galaxy cluster SMACS 0723 in unprecedented infrared detail. Stationed one million miles from Earth at the Second Lagrange Point (L2), the observatory uses a twenty-one-foot gold-coated beryllium mirror and cryogenically cooled infrared detectors to look back more than thirteen billion years toward the cosmic dawn. The image revealed thousands of distant primordial galaxies, including gravitationally lensed background galaxies that formed just a few hundred million years following the Big Bang. JWST continues to rewrite astrophysics textbooks, characterizing exoplanet atmospheres and imaging the earliest stars and black holes in cosmic history.",
+                    "keywords": [
+                        "James Webb Space Telescope",
+                        "JWST",
+                        "Deep Field",
+                        "NASA",
+                        "Infrared Astronomy",
+                        "Galaxies",
+                        "SMACS 0723",
+                        "Big Bang"
+                    ]
+                },
+                {
+                    "era": "Landmarks of Science & Technological Innovation",
+                    "id": "penicillin_mass_production_1943",
+                    "title": "Mass Production of Penicillin During World War II",
+                    "year": 1943,
+                    "exact_date": "1943 - 1944",
+                    "summary": "Between 1943 and 1944, a collaborative effort among Oxford University scientists Howard Florey and Ernst Chain, American agricultural researchers in Peoria, Illinois, and commercial pharmaceutical manufacturers successfully developed deep-tank aerobic fermentation techniques to mass-produce penicillin. While Alexander Fleming had discovered the antimicrobial mold Penicillium in 1928, it remained a laboratory curiosity because researchers could only isolate microscopic amounts in flat laboratory bottles. By utilizing corn steep liquor as a nutrient broth and cultivating a hyper-productive mold strain discovered on a Peoria market cantaloupe, production exploded from just ounces to billions of doses in time for the Allied D-Day invasion of Normandy in June 1944. Mass-produced penicillin eliminated bacterial wound infections and gangrene among battlefield casualties, fundamentally launching the global commercial pharmaceutical industry and transforming modern clinical medicine.",
+                    "keywords": [
+                        "Penicillin",
+                        "Mass Production",
+                        "Howard Florey",
+                        "Ernst Chain",
+                        "Alexander Fleming",
+                        "World War II",
+                        "Antibiotics",
+                        "Medicine"
+                    ]
+                },
+                {
+                    "id": "apollo_11_moon_flight_1969",
+                    "title": "The Apollo 11 Lunar Flight Profile and Landing",
+                    "year": 1969,
+                    "exact_date": "20 July 1969",
+                    "summary": "On 16 July 1969 at 13:32 UTC, the Saturn V rocket carrying the Apollo 11 crew—Neil A. Armstrong, Michael Collins, and Edwin “Buzz” E. Aldrin—lifted from Kennedy Space Center Launch Complex 39A, delivering the 45‑ton spacecraft into a low‑Earth orbit. After completing two Earth orbits, the S‑IVB third stage reignited at 16:22 UTC on 16 July to perform the Trans‑Lunar Injection, placing the combined Command/Service Module Columbia and Lunar Module Eagle on a 3‑day, 384 000‑km trajectory toward the Moon. The spacecraft entered lunar orbit on 19 July 1969 at 17:21 UTC, and the following day at 04:48 UTC Armstrong and Aldrin separated Eagle from Columbia while Collins remained in orbit. Eagle’s descent stage fired its engine at 09:30 UTC on 20 July, executing a powered descent that slowed the craft to 1.6 m/s for the final hover over the Sea of Tranquility. At 20:17 UTC on 20 July, Armstrong announced “The Eagle has landed,” marking the first human touchdown on another celestial body and fulfilling President Kennedy’s 1961 national goal of landing a man on the Moon before the decade’s end.",
+                    "keywords": [
+                        "Apollo 11",
+                        "Saturn V",
+                        "Trans-Lunar Injection",
+                        "Neil Armstrong",
+                        "Buzz Aldrin",
+                        "Sea of Tranquility",
+                        "Lunar Module Eagle",
+                        "Command Module Columbia"
+                    ]
+                },
+                {
+                    "id": "apollo_11_astronauts_life_status",
+                    "title": "Apollo 11 Astronauts and Their Life Status",
+                    "year": 1969,
+                    "exact_date": "20 July 1969",
+                    "summary": "Neil Armstrong, Michael Collins, and Edwin \"Buzz\" Aldrin comprised the crew of Apollo 11, the United States’ first crewed lunar mission. Armstrong served as mission commander and became the first human to set foot on the Moon on 20 July 1969, while Aldrin acted as lunar module pilot and joined him on the surface, and Collins piloted the command module Columbia in lunar orbit. Armstrong died on 25 August 2012 at age 82, marking the loss of the iconic first steps on the Moon. Collins passed away on 28 April 2021, concluding the lives of the two astronauts who remained in orbit and later advocated for spaceflight. Buzz Aldrin, born 20 January 1930, remains the sole surviving member of the historic crew and continues to promote lunar exploration.",
+                    "keywords": [
+                        "Neil Armstrong",
+                        "Buzz Aldrin",
+                        "Michael Collins",
+                        "Apollo 11",
+                        "Moon landing",
+                        "space exploration",
+                        "surviving astronaut"
+                    ]
+                },
+                {
+                    "id": "einstein_relativity_theories_1905_1915",
+                    "title": "Einstein's Development of Special and General Relativity",
+                    "year": 1915,
+                    "exact_date": "November 1915",
+                    "summary": "In his 1905 Annus Mirabilis papers, Albert Einstein established the theory of special relativity, demonstrating that the speed of light is constant for all inertial observers and deriving the mass-energy equivalence formula E=mc². This foundational work was extended in 1915 with the general theory of relativity, which redefined gravity not as a force but as the curvature of spacetime caused by mass and energy. The theory predicted that massive objects like the Sun would bend the path of light passing nearby, a phenomenon that remained unverified until 1919. During the total solar eclipse of 29 May 1919, astronomer Arthur Eddington led an expedition to measure the deflection of starlight grazing the Sun's limb. The observations confirmed Einstein's predictions with high accuracy, instantly transforming him into a global scientific icon and revolutionizing modern cosmology.",
+                    "keywords": [
+                        "Albert Einstein",
+                        "Special Relativity",
+                        "General Relativity",
+                        "E=mc²",
+                        "Arthur Eddington",
+                        "1919 Solar Eclipse",
+                        "Spacetime Curvature",
+                        "Annus Mirabilis"
+                    ]
+                },
+                {
+                    "id": "einstein_special_general_relativity_1905_1915",
+                    "title": "Einstein's Theories of Special and General Relativity",
+                    "year": 1915,
+                    "exact_date": "25 November 1915",
+                    "summary": "On 30 June 1905 Albert Einstein published his paper on the electrodynamics of moving bodies, establishing the constancy of the speed of light and introducing the relativity of simultaneity that formed the core of special relativity. Later that year, in the paper \"Does the Inertia of a Body Depend Upon Its Energy Content?\" he derived the mass-energy equivalence E=mc², reshaping physics' understanding of matter and energy. A decade of work culminated on 25 November 1915 when Einstein presented the field equations of general relativity, describing how mass and energy curve spacetime. The theory predicted the deflection of starlight by the Sun, a phenomenon confirmed on 29 May 1919 during a total solar eclipse observed by Arthur Eddington and his team. This empirical validation propelled general relativity to worldwide acclaim and laid the foundation for modern cosmology and gravitational physics.",
+                    "keywords": [
+                        "Albert Einstein",
+                        "Special Relativity",
+                        "General Relativity",
+                        "E=mc²",
+                        "1919 solar eclipse",
+                        "Arthur Eddington",
+                        "spacetime curvature",
+                        "mass-energy equivalence"
+                    ]
+                },
+                {
+                    "id": "founding_quantum_mechanics_copenhagen_interpretation",
+                    "title": "Founding of Quantum Mechanics and the Copenhagen Interpretation",
+                    "year": 1927,
+                    "exact_date": "24 October 1927",
+                    "summary": "In 1900 Max Planck introduced the quantum of action, proposing that electromagnetic energy is emitted in discrete packets of size h, a hypothesis that resolved the black‑body radiation paradox. Niels Bohr built on this in 1913 with his atomic model, quantizing electron orbits to explain hydrogen spectra and establishing the principle of stationary states. Louis de Broglie's 1924 hypothesis that particles possess wavelength λ = h/p extended wave‑particle duality beyond photons, prompting the development of matter‑wave mechanics. Werner Heisenberg formalized the uncertainty principle in 1927, showing that position and momentum cannot be simultaneously known with arbitrary precision, thereby reshaping the conceptual foundations of measurement. Erwin Schrödinger's 1926 wave equation provided a deterministic mathematical framework for the evolution of quantum states, unifying the earlier discrete and wave ideas. The convergence of these breakthroughs was crystallized at the 1927 Solvay Conference, where Bohr articulated the Copenhagen interpretation, declaring that quantum phenomena are fundamentally probabilistic and that the observer plays an essential role in defining physical reality.",
+                    "keywords": [
+                        "Max Planck",
+                        "Niels Bohr",
+                        "Louis de Broglie",
+                        "Werner Heisenberg",
+                        "Erwin Schrödinger",
+                        "Copenhagen interpretation",
+                        "quantum mechanics"
+                    ]
+                },
+                {
+                    "id": "discovery_radioactivity_curie_1898",
+                    "title": "Discovery of Radioactivity and Radium by Marie and Pierre Curie",
+                    "year": 1898,
+                    "exact_date": "30 July 1898",
+                    "summary": "On 26 March 1896 Henri Becquerel observed that uranium salts emitted penetrating rays that fogged photographic plates, marking the first documented discovery of natural radioactivity. Inspired by this, Marie Curie and her husband Pierre began systematic studies of the mineral pitchblende and, on 30 July 1898, announced the isolation of a new intensely radioactive element they named polonium after Marie’s native Poland. Continuing their work, the Curies separated another previously unknown element, radium, from pitchblende and presented their findings on 18 December 1898, demonstrating that radium emitted radiation far more powerful than any known substance. Their research established that the emissions arose from the spontaneous decay of unstable atomic nuclei, a concept that fundamentally altered the understanding of atomic structure and energy. In recognition of these breakthroughs, Marie Curie became the first woman to receive a Nobel Prize in 1903, sharing the Physics award with Pierre Curie and Henri Becquerel, and later the first person to win two Nobel Prizes.",
+                    "keywords": [
+                        "Henri Becquerel",
+                        "Marie Curie",
+                        "Pierre Curie",
+                        "polonium",
+                        "radium",
+                        "radioactivity",
+                        "spontaneous decay",
+                        "Nobel Prize"
+                    ]
+                },
+                {
+                    "id": "big_bang_cmb_discovery_1965",
+                    "title": "The Big Bang Theory and the Discovery of the Cosmic Microwave Background",
+                    "year": 1965,
+                    "exact_date": "20 May 1965",
+                    "summary": "In 1927 Georges Lemaître mathematically derived an expanding universe solution to Einstein’s field equations, proposing that space itself was stretching and that the cosmos originated from a primordial “primeval atom.” Two years later, Edwin Hubble’s 1929 observations of galactic redshifts provided empirical confirmation, showing that distant galaxies recede proportionally to their distance—a relationship now known as Hubble’s law. The theoretical framework of a hot, dense beginning gained decisive support on 20 May 1965 when Arno Penzias and Robert Wilson, while calibrating the Holmdel Horn Antenna at Bell Labs, detected an isotropic 2.7 K microwave noise that could not be attributed to terrestrial sources. Their measurement matched the predicted relic radiation of a cooling universe, confirming a central prediction of the Big Bang model. The discovery prompted immediate publication in the Astrophysical Journal and earned the pair the 1978 Nobel Prize in Physics. Together, Lemaître’s hypothesis, Hubble’s redshift data, and the Cosmic Microwave Background detection cemented the Big Bang Theory as the prevailing explanation for the origin and evolution of the universe.",
+                    "keywords": [
+                        "Georges Lemaître",
+                        "Edwin Hubble",
+                        "Arno Penzias",
+                        "Robert Wilson",
+                        "Cosmic Microwave Background",
+                        "Big Bang Theory",
+                        "expanding universe",
+                        "redshift"
+                    ]
+                },
+                {
+                    "id": "discovery_nuclear_fission_1938",
+                    "title": "Discovery of Nuclear Fission",
+                    "year": 1938,
+                    "exact_date": "16 December 1938",
+                    "summary": "On 16 December 1938, Otto Hahn and Fritz Strassmann in Berlin bombarded uranium with neutrons and chemically identified barium among the reaction products, a result that defied the prevailing understanding of nuclear transmutation. Their meticulous radiochemical analysis demonstrated that the uranium nucleus had split into lighter elements, releasing a substantial amount of energy. Lise Meitner, who had fled to Sweden, and her nephew Otto Frisch interpreted the findings using liquid‑drop nuclear theory, coining the term “fission” to describe the process. Frisch’s subsequent experiments in January 1939 confirmed the release of kinetic energy and neutrons, establishing the phenomenon as a reproducible physical reaction. The discovery fundamentally altered nuclear physics, paving the way for both the development of nuclear reactors and the atomic bomb, and marked a turning point in 20th‑century science.",
+                    "keywords": [
+                        "Otto Hahn",
+                        "Fritz Strassmann",
+                        "Lise Meitner",
+                        "Otto Frisch",
+                        "nuclear fission",
+                        "uranium",
+                        "barium",
+                        "1938"
+                    ]
+                },
+                {
+                    "id": "point_contact_transistor_1947",
+                    "title": "Invention of the Point‑Contact Transistor",
+                    "year": 1947,
+                    "exact_date": "December 16, 1947",
+                    "summary": "On December 16, 1947, John Bardeen, Walter Brattain, and William Shockley at Bell Labs successfully built the first point‑contact transistor using germanium, a device that amplified electrical signals without the heat and size of vacuum tubes. The transistor’s operation relied on a pair of metal contacts pressed onto a single crystal of germanium, creating a junction that could control current flow. This breakthrough eliminated the need for large, fragile vacuum tubes in radios, televisions, and early computers, dramatically reducing power consumption and physical footprint. The invention sparked a revolution in solid‑state electronics, leading to the development of integrated circuits, microprocessors, and the entire digital age. By replacing vacuum tubes, the point‑contact transistor laid the foundation for modern microelectronics and the rapid miniaturization of computing devices.",
+                    "keywords": [
+                        "point-contact transistor",
+                        "John Bardeen",
+                        "Walter Brattain",
+                        "William Shockley",
+                        "Bell Labs",
+                        "germanium",
+                        "solid-state electronics",
+                        "vacuum tubes"
+                    ]
+                },
+                {
+                    "id": "thomson_electron_discovery_1897",
+                    "title": "Discovery of the Electron by J.J. Thomson",
+                    "year": 1897,
+                    "exact_date": "April 30, 1897",
+                    "summary": "On April 30, 1897, J.J. Thomson at the Cavendish Laboratory in Cambridge used cathode ray tubes to measure the charge-to-mass ratio of corpuscles, discovering that they were far smaller than atoms and carried a negative charge. By observing the deflection of the rays in electric and magnetic fields, Thomson calculated a value of 1.7588206×10^11 C/kg, which implied a particle with a mass about 1/1836 that of a proton. This experiment proved the existence of subatomic particles, challenging the prevailing indivisibility of atoms and laying the foundation for modern atomic theory. Thomson’s work also introduced the concept of the electron as a fundamental constituent of matter, influencing subsequent research in physics and chemistry. The discovery marked a pivotal moment in the 19th‑century scientific revolution, reshaping our understanding of the composition of matter.",
+                    "keywords": [
+                        "J.J. Thomson",
+                        "electron",
+                        "cathode ray tube",
+                        "charge-to-mass ratio",
+                        "Cavendish Laboratory",
+                        "subatomic particles",
+                        "atomic theory",
+                        "1897"
+                    ]
+                },
+                {
+                    "id": "germ_theory_formulation_1882",
+                    "title": "Formulation of the Germ Theory of Disease (1860s–1880s)",
+                    "year": 1882,
+                    "exact_date": "24 March 1882",
+                    "summary": "Louis Pasteur's 1861 experiments in the swan-necked flask conclusively disproved spontaneous generation, and his 1864 development of pasteurization demonstrated that heating liquids could destroy microbial spoilage, establishing a practical application of the germ concept. In 1865 he extended the technique to milk, reinforcing the link between microbes and disease. Robert Koch isolated Bacillus anthracis in 1876, fulfilling the first of his postulates and proving that a single bacterial species could cause anthrax in animals. By 1881 he formalized Koch's postulates, providing a methodological framework for identifying pathogenic microbes. On 24 March 1882 Koch announced the discovery of Mycobacterium tuberculosis, confirming a specific bacterial cause for human tuberculosis and cementing the germ theory as the foundation of modern aseptic medicine.",
+                    "keywords": [
+                        "Louis Pasteur",
+                        "Robert Koch",
+                        "germ theory",
+                        "spontaneous generation",
+                        "pasteurization",
+                        "anthrax",
+                        "tuberculosis",
+                        "aseptic medicine"
+                    ]
+                },
+                {
+                    "id": "continental_drift_plate_tectonics_1963",
+                    "title": "Theory of Continental Drift and Plate Tectonics",
+                    "year": 1963,
+                    "exact_date": "1963-01-01",
+                    "summary": "Alfred Wegener presented the hypothesis of continental drift on 23 June 1912, arguing that the continents had once formed a supercontinent called Pangaea and had since drifted apart. His ideas were initially dismissed, but the 1963 publication by Harry Hess of seafloor spreading provided a mechanism that linked continental movement to tectonic activity. Subsequent discoveries of magnetic striping on the ocean floor in the late 1960s confirmed that new crust was being created at mid‑ocean ridges and pushed plates apart. The identification of subduction zones in the 1970s explained how older plates were recycled, accounting for the distribution of earthquakes and the formation of mountain ranges such as the Andes and Himalayas. Together, these observations established the modern theory of plate tectonics, reshaping our understanding of Earth's dynamic surface. The theory now explains the distribution of fossils, mineral deposits, and the global pattern of seismic and volcanic activity.",
+                    "keywords": [
+                        "Alfred Wegener",
+                        "Pangaea",
+                        "Harry Hess",
+                        "seafloor spreading",
+                        "magnetic striping",
+                        "subduction zones",
+                        "plate tectonics",
+                        "continental drift"
+                    ]
+                },
+                {
+                    "id": "crispr_cas9_bacterial_immunity_2012",
+                    "title": "CRISPR‑Cas9: From Bacterial Immunity to Programmable Genome Editing",
+                    "year": 2012,
+                    "exact_date": "28 June 2012",
+                    "summary": "On 28 June 2012 Jennifer Doudna and Emmanuelle Charpentier reported that the Streptococcus pyogenes Cas9 endonuclease, guided by a synthetic dual‑RNA, could be reprogrammed to cut any DNA sequence matching the guide, converting a bacterial immune component into a versatile molecular scissor. Their engineering demonstrated that a single‑protein system could be directed by a 20‑nucleotide guide RNA to introduce double‑strand breaks at predetermined loci in vitro, establishing the core principle of programmable genome editing. The discovery linked the natural CRISPR adaptive immunity mechanism to a practical tool for precise genetic manipulation across diverse organisms. Within months the method was adapted for use in mammalian cells, catalyzing a rapid expansion of functional genomics, disease modeling, and therapeutic research. The 2012 breakthrough is widely credited with launching the modern era of gene‑editing technologies and earned its architects the 2020 Nobel Prize in Chemistry.",
+                    "keywords": [
+                        "CRISPR",
+                        "Cas9",
+                        "Jennifer Doudna",
+                        "Emmanuelle Charpentier",
+                        "Streptococcus pyogenes",
+                        "guide RNA",
+                        "genome editing",
+                        "adaptive immunity"
+                    ]
+                },
+                {
+                    "id": "first_ligo_gravitational_wave_detection_2015",
+                    "title": "First Direct Detection of Gravitational Waves by LIGO",
+                    "year": 2015,
+                    "exact_date": "September 14, 2015",
+                    "summary": "On September 14, 2015, the Laser Interferometer Gravitational‑Wave Observatory (LIGO) recorded the first direct detection of gravitational waves, labeled GW150914, produced by the merger of two black holes about 1.3 billion light‑years from Earth. The signal, observed simultaneously by the Hanford and Livingston detectors, matched the waveform predicted by general relativity for a binary black‑hole inspiral and coalescence. The two black holes, with masses roughly 36 and 29 solar masses, spiraled inward over a fraction of a second before merging into a single ~62‑solar‑mass black hole, radiating about three solar masses as gravitational‑wave energy. This observation, announced by LIGO scientists Rainer Weiss, Kip Thorne, and Barry Barish, confirmed Einstein’s 1915 prediction of gravitational waves and inaugurated a new era of observational astronomy. The detection also demonstrated the extraordinary sensitivity of LIGO’s kilometer‑scale interferometers, capable of measuring distortions smaller than a thousandth of a proton’s diameter.",
+                    "keywords": [
+                        "LIGO",
+                        "gravitational waves",
+                        "GW150914",
+                        "black hole merger",
+                        "Einstein 1915",
+                        "Rainer Weiss",
+                        "Kip Thorne",
+                        "Barry Barish"
+                    ]
+                },
+                {
+                    "id": "theodore_maiman_ruby_laser_1960",
+                    "title": "The Invention of the Working Ruby Laser by Theodore Maiman",
+                    "year": 1960,
+                    "exact_date": "16 May 1960",
+                    "summary": "On 16 May 1960 Theodore Maiman at Hughes Research Laboratories produced the first operational laser by stimulating a synthetic ruby crystal with a high‑energy xenon flash lamp, generating a brief pulse of coherent optical radiation at 694 nm. This breakthrough demonstrated that stimulated emission could be harnessed in a practical device, confirming the theoretical work of Albert Einstein and the earlier maser developments of Charles Townes. Maiman’s ruby laser emitted a tightly collimated, monochromatic beam that could be repeatedly pulsed, establishing the fundamental principles of laser optics. The invention rapidly opened new research fields and led to early applications in medicine, where the precise, high‑intensity beam enabled pioneering surgical techniques, and in telecommunications, where it suggested possibilities for long‑distance optical signal transmission. The success of the ruby laser cemented lasers as a transformative technology and spurred a cascade of subsequent solid‑state, gas, and semiconductor laser developments.",
+                    "keywords": [
+                        "Theodore Maiman",
+                        "ruby laser",
+                        "Hughes Research Laboratories",
+                        "16 May 1960",
+                        "coherent optical radiation",
+                        "laser surgery",
+                        "optical telecommunications",
+                        "xenon flash lamp"
+                    ]
+                },
+                {
+                    "id": "hubble_launch_and_discoveries_1990",
+                    "title": "Launch and Discoveries of the Hubble Space Telescope",
+                    "year": 1990,
+                    "exact_date": "24 April 1990",
+                    "summary": "On 24 April 1990, the Space Shuttle Discovery, commanded by Commander James D. Halsell, deployed the Hubble Space Telescope into low Earth orbit, placing it above atmospheric distortion and enabling unprecedented optical clarity. The telescope's primary mirror, 2.4 meters in diameter, was engineered by NASA's Goddard Space Flight Center and built by the European Space Agency, with key contributions from astronomer Edwin Hubble's legacy. In 1995, Hubble captured the Hubble Deep Field, a 100‑second exposure of a seemingly empty patch of sky that revealed thousands of distant galaxies and provided evidence for the accelerating expansion of the universe. By measuring the redshifts of these galaxies, Hubble's team, led by astronomer Edwin Hubble's namesake, determined a precise Hubble constant, refining the rate of cosmic expansion to about 70 km/s/Mpc. These discoveries reshaped cosmology, confirming the Big Bang model and prompting the development of dark energy theories. The telescope continues to deliver high‑resolution images, cementing its role as a cornerstone of modern astronomy.",
+                    "keywords": [
+                        "Hubble Space Telescope",
+                        "Space Shuttle Discovery",
+                        "24 April 1990",
+                        "Hubble Deep Field",
+                        "Hubble constant",
+                        "cosmic expansion",
+                        "James D. Halsell",
+                        "NASA Goddard Space Flight Center"
+                    ]
+                },
+                {
+                    "id": "higgs_boson_discovery_2012",
+                    "title": "Discovery of the Higgs Boson at the Large Hadron Collider",
+                    "year": 2012,
+                    "exact_date": "4 July 2012",
+                    "summary": "On 4 July 2012, CERN's ATLAS and CMS experiments at the Large Hadron Collider in Geneva announced the observation of a new particle with a mass of about 125 GeV that matched the long‑predicted Higgs boson. The announcement was made by the spokespersons of the two collaborations, confirming the existence of the Brout‑Englert‑Higgs field, the mechanism that endows elementary particles with mass and underpins the Standard Model of particle physics. The result was based on data collected at 7 and 8 TeV proton‑proton collisions, with a statistical significance exceeding five standard deviations. The observation marked the culmination of decades of theoretical work by physicists such as Peter Higgs, François Englert, and Robert Brout, and it earned the 2013 Nobel Prize in Physics for Higgs and Englert. The discovery was celebrated worldwide and led to a surge in public interest in fundamental physics. The confirmation of the Higgs mechanism has opened new avenues for exploring physics beyond the Standard Model, including searches for supersymmetry and dark matter candidates.",
+                    "keywords": [
+                        "Higgs boson",
+                        "Large Hadron Collider",
+                        "CERN",
+                        "ATLAS experiment",
+                        "CMS experiment",
+                        "Brout-Englert-Higgs field",
+                        "Peter Higgs",
+                        "Standard Model"
+                    ]
+                }
+            ]
+        },
+        {
+            "era": "Classical Antiquity & Ancient Empires",
+            "events": [
+                {
+                    "id": "battle_thermopylae_480bc",
+                    "title": "The Battle of Thermopylae",
+                    "year": -480,
+                    "exact_date": "August 480 BC",
+                    "summary": "In August 480 BC, King Leonidas I of Sparta led an allied Greek force of roughly seven thousand soldiers, including his legendary three hundred Spartan royal bodyguard, to block the narrow coastal pass of Thermopylae against a massive invading Persian army commanded by King Xerxes I. For three intense days, the heavily armored Greek hoplites utilized their dense phalanx formation and the narrow terrain to repel repeated assaults by Persian infantry and elite Immortals. When a local resident named Ephialtes betrayed the Greeks by revealing a secret mountain pathway around the pass, Leonidas dismissed the majority of the army and fought a heroic rearguard defense to the death alongside his Spartans and Thespians. Although the battle ended in tactical Persian victory, the sacrifice delayed the Persian advance, rallied Greek morale, and paved the way for decisive naval victory at Salamis.",
+                    "keywords": [
+                        "Battle of Thermopylae",
+                        "Leonidas",
+                        "Sparta",
+                        "Xerxes",
+                        "Persian Wars",
+                        "Hoplite",
+                        "Salamis"
+                    ]
+                },
+                {
+                    "id": "alexander_gaugamela_331bc",
+                    "title": "Alexander the Great and the Battle of Gaugamela",
+                    "year": -331,
+                    "exact_date": "1 October 331 BC",
+                    "summary": "On October 1, 331 BC, young Macedonian king Alexander the Great confronted King Darius III of Persia on the open plains of Gaugamela in modern-day northern Iraq. Outnumbered by the Persian imperial host and facing scythed chariots and war elephants, Alexander executed a brilliant angled cavalry charge that drew Persian defenses outward, creating a critical gap in their center through which he led his elite Companion cavalry straight toward Darius. Darius fled the battlefield in panic, collapsing Persian command cohesion and resulting in a decisive rout that dismantled the Achaemenid Persian Empire. Following the triumph, Alexander was proclaimed King of Asia, conquered the historic capitals of Babylon and Persepolis, and expanded Macedonian rule all the way to India. His conquests initiated the Hellenistic period, spreading Greek language, architecture, and scientific philosophy across the Mediterranean and Near East.",
+                    "keywords": [
+                        "Alexander the Great",
+                        "Battle of Gaugamela",
+                        "Darius III",
+                        "Macedonia",
+                        "Persian Empire",
+                        "Hellenistic",
+                        "Cavalry"
+                    ]
+                },
+                {
+                    "id": "ashoka_edicts_268bc",
+                    "title": "Reign and Edicts of Ashoka the Great",
+                    "year": -268,
+                    "exact_date": "c. 268 - 232 BC",
+                    "summary": "Reigning over the Indian subcontinent's Mauryan Empire from roughly 268 to 232 BC, Emperor Ashoka the Great experienced a profound spiritual transformation following his bloody conquest of the coastal kingdom of Kalinga, which resulted in more than one hundred thousand deaths. Overcome by grief and moral remorse at the carnage of war, Ashoka embraced Buddhism and renounced aggressive military conquest in favor of Dhamma, a moral philosophy founded on non-violence, social welfare, and religious tolerance. To communicate his royal principles directly to subjects across his vast empire, he erected towering stone pillars and carved thirty-three major Rock Edicts in regional languages from modern Afghanistan to southern India. Ashoka funded free medical clinics for humans and animals, planted shade trees along trade routes, and dispatched Buddhist missionary monks across Asia and the Mediterranean, establishing Buddhism as a major world religion.",
+                    "keywords": [
+                        "Ashoka the Great",
+                        "Mauryan Empire",
+                        "Kalinga",
+                        "Buddhism",
+                        "Edicts of Ashoka",
+                        "Rock Edicts",
+                        "India"
+                    ]
+                },
+                {
+                    "id": "fall_of_carthage_146bc",
+                    "title": "Destruction of Carthage in the Third Punic War",
+                    "year": -146,
+                    "exact_date": "Spring 146 BC",
+                    "summary": "In the spring of 146 BC, Roman legions commanded by Scipio Aemilianus breached the formidable defensive fortifications of Carthage, concluding a bitter three-year siege and bringing a catastrophic end to the Third Punic War. For over a century, the maritime Phoenician commercial empire of Carthage had contested Rome for supremacy across the Mediterranean, led by brilliant commanders such as Hannibal Barca. After six days of relentless street-to-street urban combat, Roman forces captured the citadel of Byrsa, burned the ancient metropolis to the ground, and sold roughly fifty thousand surviving inhabitants into slavery. The complete destruction of Carthage eliminated Rome's greatest geopolitical rival, transforming the western Mediterranean into a Roman lake and paving the way for Rome's undisputed dominance over the classical world.",
+                    "keywords": [
+                        "Carthage",
+                        "Third Punic War",
+                        "Scipio Aemilianus",
+                        "Hannibal",
+                        "Roman Republic",
+                        "Mediterranean",
+                        "Siege"
+                    ]
+                },
+                {
+                    "id": "pompeii_vesuvius_79",
+                    "title": "Eruption of Mount Vesuvius and Destruction of Pompeii",
+                    "year": 79,
+                    "exact_date": "October 79 AD",
+                    "summary": "In the autumn of 79 AD, Mount Vesuvius erupted violently in the Bay of Naples, burying the thriving Roman resort cities of Pompeii and Herculaneum beneath thick layers of pumice, volcanic ash, and lethal pyroclastic surges. The catastrophic eruption, famously recorded in eyewitness letters written by Pliny the Younger, caught thousands of residents unprepared, encasing homes, vibrant wall frescoes, bakeries, and public baths in an airtight volcanic tomb. Over roughly two days, the mountain released hundreds of thousands of tons of molten rock per second, obliterating coastal towns and claiming thousands of lives. Forgotten for more than fifteen centuries until accidental rediscoveries in the eighteenth century, the preserved ruins provided historians with an unprecedented snapshot of everyday ancient Roman life, architecture, and urban culture.",
+                    "keywords": [
+                        "Pompeii",
+                        "Mount Vesuvius",
+                        "Herculaneum",
+                        "Pliny the Younger",
+                        "Roman Empire",
+                        "Volcano",
+                        "Archaeology"
+                    ]
+                },
+                {
+                    "id": "council_nicaea_325",
+                    "title": "The First Council of Nicaea",
+                    "year": 325,
+                    "exact_date": "May - August 325 AD",
+                    "summary": "Between May and August 325 AD, Roman Emperor Constantine I convened the First Council of Nicaea in the city of Nicaea, located in modern-day Iznik, Turkey, marking Christianity's first ecumenical gathering of bishops. Seeking theological unity to stabilize his newly unified empire, Constantine brought together approximately three hundred bishops from across the Mediterranean to resolve the divisive Arian controversy regarding the divine nature of Jesus Christ. Led by theologians like Athanasius of Alexandria, the council rejected the teachings of Arius and formulated the Nicene Creed, affirming that the Son is of the same divine substance as the Father. The council also standardized the date of Easter celebration and established twenty fundamental canons of ecclesiastical administration, defining Christian theological orthodoxy for centuries to come.",
+                    "keywords": [
+                        "Council of Nicaea",
+                        "Constantine",
+                        "Nicene Creed",
+                        "Arianism",
+                        "Athanasius",
+                        "Christianity",
+                        "Church History"
+                    ]
+                },
+                {
+                    "era": "Classical Antiquity & Ancient Empires",
+                    "id": "colosseum_construction_80",
+                    "title": "Inauguration of the Roman Colosseum",
+                    "year": 80,
+                    "exact_date": "80 AD",
+                    "summary": "In 80 AD, Emperor Titus officially inaugurated the Flavian Amphitheatre, known today worldwide as the Colosseum, with one hundred consecutive days of lavish imperial games, gladiatorial combats, and simulated naval battles in the heart of Rome. Commissioned by Emperor Vespasian on the site of Nero's reviled Golden House palace, the monumental freestanding concrete and travertine amphitheater could accommodate an estimated fifty thousand to eighty thousand spectators sheltered beneath a massive retractable canvas awning known as the velarium. Its four-tiered exterior showcased superimposed Doric, Ionic, and Corinthian classical architectural columns, while an intricate subterranean network of tunnels, cages, and mechanical elevators called the hypogeum operated below the wooden arena floor. Standing for nearly two millennia through earthquakes and stone scavenging, the Colosseum endures as the ultimate architectural symbol of ancient Roman imperial engineering and urban spectacle.",
+                    "keywords": [
+                        "Colosseum",
+                        "Flavian Amphitheatre",
+                        "Titus",
+                        "Vespasian",
+                        "Gladiators",
+                        "Rome",
+                        "Architecture",
+                        "80 AD"
+                    ]
+                },
+                {
+                    "era": "Classical Antiquity & Ancient Empires",
+                    "id": "cai_lun_paper_105",
+                    "title": "Invention of Papermaking by Cai Lun",
+                    "year": 105,
+                    "exact_date": "105 AD",
+                    "summary": "In 105 AD, Chinese court official Cai Lun presented a revolutionary method for manufacturing lightweight, flexible writing paper to Emperor He of the Eastern Han Dynasty. By mashing mulberry tree bark, hemp fishing nets, old rags, and plant fibers into a wet pulp and pressing it through fine wooden screens to dry in the sun, Cai Lun produced a durable writing surface that was far cheaper and more portable than traditional cumbersome bamboo slats or luxurious silk scrolls. The breakthrough dramatically accelerated administrative communication, record-keeping, and the preservation of literary classics across imperial China. Papermaking gradually spread along the Silk Road into the Islamic world following the Battle of Talas in 751, eventually reaching medieval Europe to lay the essential material foundation for the printing revolution and universal literacy.",
+                    "keywords": [
+                        "Cai Lun",
+                        "Papermaking",
+                        "Paper",
+                        "Han Dynasty",
+                        "China",
+                        "Writing Material",
+                        "Silk Road",
+                        "105 AD"
+                    ]
+                },
+                {
+                    "id": "peloponnesian_war_431_404_bc",
+                    "title": "The Peloponnesian War (431–404 BC)",
+                    "year": -431,
+                    "exact_date": "27 July 431 BC",
+                    "summary": "The Peloponnesian War, a protracted conflict from 431 to 404 BC, pitted the democratic Delian League led by Athens against the militaristic Peloponnesian League under Sparta. The war began in summer 431 BC when Sparta, under King Archidamus II, responded to Athenian imperial expansion and the siege of Potidaea, prompting a formal declaration of hostilities on 27 July 431 BC. Pericles, the Athenian statesman, directed the early strategy of relying on naval superiority and the Long Walls, while Sparta adopted annual invasions of Attica. The conflict saw several pivotal phases, including the disastrous Sicilian Expedition (415–413 BC) led by Alcibiades and Nicias, and the eventual rise of the Spartan admiral Lysander, who secured Persian funding to build a fleet. Thucydides, an Athenian general, chronicled the war in his seminal work, providing a rigorous empirical account that remains a cornerstone of historiography. The war concluded with Athens' surrender on 4 August 404 BC after a blockade of Piraeus, marking the collapse of the Athenian Golden Age and the temporary hegemony of Sparta over the Greek world, and its aftermath reshaped Greek politics, weakened the city‑states, and set the stage for Macedonian ascendancy under Philip II.",
+                    "keywords": [
+                        "Peloponnesian War",
+                        "Athens",
+                        "Sparta",
+                        "Thucydides",
+                        "Pericles",
+                        "Lysander",
+                        "Delian League",
+                        "Peloponnesian League"
+                    ]
+                },
+                {
+                    "id": "fall_of_western_roman_empire_476",
+                    "title": "The Fall of the Western Roman Empire",
+                    "year": 476,
+                    "exact_date": "4 September 476",
+                    "summary": "On 4 September 476 AD, the Germanic chieftain Odoacer deposed the sixteen‑year‑old Western Roman Emperor Romulus Augustulus in the city of Ravenna, ending the line of emperors that had ruled the western provinces for nearly a millennium. Odoacer declared himself king of Italy, but he did not assume the imperial title, instead sending the imperial insignia to the Eastern emperor in Constantinople as a gesture of respect and to legitimize his own authority. This act marked the formal dissolution of the Western Roman Empire and the beginning of the early medieval era in Western Europe, a period characterized by the rise of Germanic kingdoms and the gradual shift from Roman administrative structures to feudal systems. The deposition also signaled the loss of Roman political unity in the West, as the Eastern Empire continued to exist under the Byzantine court. Odoacer's reign would last until 493, when he was overthrown by the Ostrogothic king Theodoric the Great, further reshaping the political landscape of Italy. The event remains a pivotal moment in history, often cited as the symbolic end of antiquity and the dawn of the Middle Ages.",
+                    "keywords": [
+                        "Odoacer",
+                        "Romulus Augustulus",
+                        "Ravenna",
+                        "Western Roman Empire",
+                        "Eastern Roman Empire",
+                        "Constantinople",
+                        "Theodoric the Great",
+                        "early medieval era"
+                    ]
+                }
+            ]
+        },
+        {
+            "era": "The Medieval Era & Global Dynasties",
+            "events": [
+                {
+                    "id": "justinian_code_534",
+                    "title": "Promulgation of the Justinian Code",
+                    "year": 534,
+                    "exact_date": "534 AD",
+                    "summary": "In 534 AD, Byzantine Emperor Justinian I completed the comprehensive compilation of Roman statutory law known as the Corpus Juris Civilis, directed by his brilliant legal jurist Tribonian. Over six centuries of sprawling, contradictory imperial edicts, classical legal opinions, and judicial precedents were systematically organized, harmonized, and edited into four coherent works: the Code, the Digest, the Institutes, and the Novellae. By extracting rational legal principles and discarding obsolete decrees, the Justinian Code established systematic legal concepts including contract enforceability, property rights, civil liability, and family law. Rediscovered in Bologna in the late eleventh century, the Justinian Code became the foundational cornerstone of civil law legal systems adopted across continental Europe, Latin America, and much of the modern world.",
+                    "keywords": [
+                        "Justinian Code",
+                        "Corpus Juris Civilis",
+                        "Tribonian",
+                        "Byzantine",
+                        "Roman Law",
+                        "Legal History",
+                        "Jurisprudence"
+                    ]
+                },
+                {
+                    "id": "islamic_hijra_622",
+                    "title": "The Hijra of Muhammad from Mecca to Medina",
+                    "year": 622,
+                    "exact_date": "September 622 AD",
+                    "summary": "In September 622 AD, the Islamic prophet Muhammad and his early followers fled intensifying religious persecution and economic boycotts in Mecca to the northern oasis city of Yathrib, later renamed Medina. Known as the Hijra or migration, the journey was completed following negotiations with Medinan clan leaders who invited Muhammad to serve as an impartial arbiter to resolve bitter tribal feuds. In Medina, Muhammad drafted the Constitution of Medina, establishing a mutual defense pact and civic framework uniting Muslims, non-Muslim Arabs, and Jewish communities under a single civic umbrella. The Hijra marked the pivotal transition of Islam from an oppressed local minority into a self-governing political and spiritual community, and was later designated by Caliph Umar as the foundational starting point (Year 1 AH) of the Islamic lunar calendar.",
+                    "keywords": [
+                        "The Hijra",
+                        "Muhammad",
+                        "Mecca",
+                        "Medina",
+                        "Islamic Calendar",
+                        "Constitution of Medina",
+                        "Islam"
+                    ]
+                },
+                {
+                    "id": "lindisfarne_viking_793",
+                    "title": "Viking Raid on Lindisfarne",
+                    "year": 793,
+                    "exact_date": "8 June 793",
+                    "summary": "On June 8, 793, a fleet of Norse longships made a surprise landfall on the holy tidal island of Lindisfarne off the coast of Northumbria in northeastern England, brutally sacking the venerable Christian monastery of Saint Cuthbert. The raiders slaughtered monks, desecrated church sanctuaries, and looted precious gold-leaf illuminated manuscripts, silver chalices, and jeweled relics before sailing away across the North Sea. The unprecedented assault on an unarmed spiritual sanctuary sent shockwaves through Christian Europe, with Northumbrian scholar Alcuin famously writing in lamentation that such terror had never before appeared in Britain. The sack of Lindisfarne formally marked the beginning of the Viking Age, initiating three centuries of Scandinavian maritime raids, trading expeditions, and permanent colonial settlements across Britain, Ireland, Normandy, and Russia.",
+                    "keywords": [
+                        "Lindisfarne",
+                        "Viking Raid",
+                        "793 AD",
+                        "Saint Cuthbert",
+                        "Northumbria",
+                        "Viking Age",
+                        "Norse Longships"
+                    ]
+                },
+                {
+                    "id": "great_schism_1054",
+                    "title": "The East-West Schism of 1054",
+                    "year": 1054,
+                    "exact_date": "July 1054",
+                    "summary": "In July 1054 in Constantinople, deep-seated theological, liturgical, and political tensions culminated in the East-West Schism, which permanently divided the Christian Church into the Roman Catholic Church in the West and the Eastern Orthodox Church in the East. Cardinal Humbert of Silva Candida, acting on behalf of Pope Leo IX, marched into the cathedral of Hagia Sophia and placed a bull of excommunication upon the high altar against Ecumenical Patriarch Michael I Cerularius, who promptly responded with a retaliatory counter-excommunication. The historic fracture was fueled by long-standing disputes over papal jurisdictional authority over eastern patriarchates, the insertion of the Filioque clause into the Nicene Creed, and liturgical differences such as the use of unleavened bread. The Great Schism split medieval European Christendom along enduring cultural and geographic lines that persist into the modern era.",
+                    "keywords": [
+                        "Great Schism",
+                        "1054",
+                        "Eastern Orthodox",
+                        "Roman Catholic",
+                        "Hagia Sophia",
+                        "Michael Cerularius",
+                        "Filioque"
+                    ]
+                },
+                {
+                    "id": "first_crusade_jerusalem_1099",
+                    "title": "Capture of Jerusalem in the First Crusade",
+                    "year": 1099,
+                    "exact_date": "15 July 1099",
+                    "summary": "On July 15, 1099, Western European Christian crusaders commanded by Godfrey of Bouillon and Raymond IV of Toulouse breached the fortified stone walls of Jerusalem, culminating the First Crusade called four years earlier by Pope Urban II at the Council of Clermont. After an arduous three-year expedition across Anatolia and Syria and a difficult month-long siege utilizing mobile wooden siege towers, the crusaders captured the Holy City from its Fatimid garrison. The victorious forces unleashed a devastating sack of the city, slaughtering thousands of Muslim and Jewish defenders and inhabitants inside the Al-Aqsa Mosque and local synagogues. The triumph led to the establishment of the Crusader States, including the Kingdom of Jerusalem, and set in motion two centuries of intense military and religious conflict between Christian Europe and the Islamic world.",
+                    "keywords": [
+                        "First Crusade",
+                        "Jerusalem",
+                        "1099",
+                        "Godfrey of Bouillon",
+                        "Pope Urban II",
+                        "Crusader States",
+                        "Holy Land"
+                    ]
+                },
+                {
+                    "id": "genghis_khan_mongol_1206",
+                    "title": "Unification of the Mongol Tribes by Genghis Khan",
+                    "year": 1206,
+                    "exact_date": "1206",
+                    "summary": "In 1206, at a general assembly of nomadic chieftains along the Onon River known as the Kurultai, charismatic warrior Temüjin united the warring nomadic pastoral confederations of the Mongolian steppe, receiving the supreme title of Genghis Khan, or Universal Ruler. Reorganizing steppe society along meritocratic decimal military units rather than traditional aristocratic clans, Genghis Khan combined rapid horse archery, psychological warfare, and sophisticated mobility to launch sweeping campaigns across Eurasia. Over subsequent decades, the Mongol Empire expanded relentlessly, conquering northern China, Central Asia, Persia, and the Kievan Rus to become the largest contiguous land empire in human history. Under the subsequent Pax Mongolica, trade, diplomatic missions, and technological exchanges flourished safely along the revitalized Silk Road between Europe and East Asia.",
+                    "keywords": [
+                        "Genghis Khan",
+                        "Mongol Empire",
+                        "1206",
+                        "Temujin",
+                        "Kurultai",
+                        "Pax Mongolica",
+                        "Silk Road",
+                        "Nomads"
+                    ]
+                },
+                {
+                    "id": "mansa_musa_hajj_1324",
+                    "title": "Mansa Musa's Famous Pilgrimage to Mecca",
+                    "year": 1324,
+                    "exact_date": "1324",
+                    "summary": "In 1324, Mansa Musa, the devout Muslim ruler of the prosperous Mali Empire in West Africa, embarked upon a legendary pilgrimage to Mecca accompanied by an entourage of tens of thousands of soldiers, officials, and merchants, alongside camels carrying tons of pure gold bullion. Traveling across the Sahara Desert through Cairo, Musa distributed gold so lavishly to charities, citizens, and royal courts that he caused severe currency inflation across Egypt and the Mediterranean that lasted for over a decade. His breathtaking display of African wealth placed Mali prominently on European maps, including the renowned Catalan Atlas of 1375 which depicted Musa holding a golden orb upon a royal throne. Upon his return, Musa used his imperial wealth to build magnificent mosques and universities in Timbuktu and Djenné, transforming Mali into a renowned international center of Islamic scholarship and trade.",
+                    "keywords": [
+                        "Mansa Musa",
+                        "Mali Empire",
+                        "Pilgrimage to Mecca",
+                        "Timbuktu",
+                        "Gold",
+                        "West Africa",
+                        "1324",
+                        "Catalan Atlas"
+                    ]
+                },
+                {
+                    "id": "joan_of_arc_orleans_1429",
+                    "title": "Joan of Arc Relieves the Siege of Orléans",
+                    "year": 1429,
+                    "exact_date": "8 May 1429",
+                    "summary": "On May 8, 1429, a seventeen-year-old French peasant girl named Joan of Arc, claiming divine inspiration from the Archangel Michael and Saint Catherine, led French royal forces to lift the grueling seven-month English siege of Orléans during the Hundred Years' War. Donning full white armor and carrying a sacred banner, Joan inspired demoralized French troops to launch aggressive counterattacks against surrounding English redoubts and fortresses, driving the English army into retreat within days of her arrival. Her stunning victory broke the myth of English military invincibility, reopened the Loire Valley, and enabled the coronation of Charles VII as King of France in Reims Cathedral shortly thereafter. Captured in 1430 and executed at the stake in Rouen following a politically motivated heresy trial, Joan became an enduring national heroine and saint of France.",
+                    "keywords": [
+                        "Joan of Arc",
+                        "Siege of Orleans",
+                        "1429",
+                        "Hundred Years War",
+                        "Charles VII",
+                        "France",
+                        "Battle of Orleans"
+                    ]
+                },
+                {
+                    "id": "black_death_pandemic_europe_1347_1351",
+                    "title": "The Black Death Pandemic in Europe (1347–1351)",
+                    "year": 1347,
+                    "exact_date": "1347-09-01",
+                    "summary": "In September 1347, Genoese merchant ships carrying infected black rats docked in Messina, Sicily, marking the first confirmed outbreak of the bubonic plague in Europe. The pathogen, Yersinia pestis, spread rapidly through flea vectors, decimating populations across the continent and killing an estimated one‑third to one‑half of the European populace by 1351. The pandemic prompted a range of responses, including King Louis I of Hungary's quarantine measures and Pope Clement VI's declaration of a crusade against the disease. The demographic collapse triggered profound socioeconomic shifts, weakening the feudal system, accelerating labor shortages, and fostering the rise of wage labor. By 1351, the plague had reached the heart of Europe, leaving a legacy of altered trade routes, religious fervor, and a reevaluation of public health practices.",
+                    "keywords": [
+                        "Black Death",
+                        "Yersinia pestis",
+                        "Genoese merchants",
+                        "King Louis I of Hungary",
+                        "Pope Clement VI",
+                        "Messina",
+                        "feudalism",
+                        "plague quarantine"
+                    ]
+                }
+            ]
+        },
+        {
+            "era": "Age of Discovery & Global Encounters",
+            "events": [
+                {
+                    "id": "reconquista_granada_1492",
+                    "title": "Fall of Granada and Completion of the Reconquista",
+                    "year": 1492,
+                    "exact_date": "2 January 1492",
+                    "summary": "On January 2, 1492, Catholic Monarchs Isabella I of Castile and Ferdinand II of Aragon received the ceremonial keys to the Alhambra palace from Muhammad XII, known as Boabdil, concluding the ten-year Granada War and ending nearly eight centuries of Islamic rule on the Iberian Peninsula. The surrender of the Emirate of Granada completed the long medieval Reconquista, politically unifying Spain under a centralized Catholic crown. Shortly after the triumph, Isabella and Ferdinand issued the Alhambra Decree ordering the expulsion of all practicing Jewish populations from Spain, while also granting royal authorization and financial sponsorship to Christopher Columbus for his transatlantic voyage of exploration. The fall of Granada signaled Spain's emergence as an aggressive global maritime superpower poised to establish vast colonial realms across the Americas.",
+                    "keywords": [
+                        "Fall of Granada",
+                        "Reconquista",
+                        "Alhambra",
+                        "Ferdinand and Isabella",
+                        "Boabdil",
+                        "Spain",
+                        "1492"
+                    ]
+                },
+                {
+                    "id": "treaty_tordesillas_1494",
+                    "title": "Signing of the Treaty of Tordesillas",
+                    "year": 1494,
+                    "exact_date": "7 June 1494",
+                    "summary": "On June 7, 1494, in the Castilian town of Tordesillas, representatives of the Spanish Crown and King John II of Portugal signed the Treaty of Tordesillas, formally dividing newly discovered lands outside Europe between the two Iberian maritime powers. Brokered through papal mediation by Pope Alexander VI, the treaty established a meridian line of demarcation three hundred and seventy leagues west of the Cape Verde islands, awarding all newly discovered lands to the west of the line to Spain and all lands to the east to Portugal. This compromise preserved Portuguese trade supremacy along African sea routes to India while accidentally granting Portugal future legal title to eastern South America, modern-day Brazil, discovered by Pedro Álvares Cabral six years later. The treaty represented an unprecedented early effort to partition global colonial territories between European sovereign powers.",
+                    "keywords": [
+                        "Treaty of Tordesillas",
+                        "Spain",
+                        "Portugal",
+                        "Pope Alexander VI",
+                        "Line of Demarcation",
+                        "Brazil",
+                        "Age of Discovery"
+                    ]
+                },
+                {
+                    "id": "vasco_da_gama_india_1498",
+                    "title": "Vasco da Gama Reaches India by Sea",
+                    "year": 1498,
+                    "exact_date": "20 May 1498",
+                    "summary": "On May 20, 1498, Portuguese explorer Vasco da Gama dropped anchor off the Malabar Coast near the bustling trading port of Calicut, modern Kozhikode, in southwestern India, completing humanity's first direct ocean voyage from Western Europe to the Indian subcontinent. Sailing around Africa's stormy Cape of Good Hope with four caravels and guided by an experienced Arab pilot across the Arabian Sea, da Gama spent nearly a year at sea to bypass land-based Venetian and Ottoman monopolies on the lucrative Asian spice trade. Although initial trade negotiations with the Zamorin of Calicut were contentious, da Gama returned safely to Lisbon with valuable cargoes of black pepper and cinnamon. His voyage opened the Cape Route, establishing the Portuguese Estado da Índia and inaugurating five centuries of European commercial and colonial dominance across maritime Asia.",
+                    "keywords": [
+                        "Vasco da Gama",
+                        "Calicut",
+                        "India",
+                        "Cape of Good Hope",
+                        "Spice Trade",
+                        "Portugal",
+                        "1498"
+                    ]
+                },
+                {
+                    "id": "fall_aztec_empire_1521",
+                    "title": "Fall of the Aztec Empire to Hernán Cortés",
+                    "year": 1521,
+                    "exact_date": "13 August 1521",
+                    "summary": "On August 13, 1521, following a brutal ninety-three-day amphibious siege, Spanish conquistador Hernán Cortés and hundreds of thousands of indigenous allies, primarily from the rival city of Tlaxcala, captured the Aztec island capital of Tenochtitlan, capturing Emperor Cuauhtémoc. Combining European steel armor, cannons, and brigantine warboats on Lake Texcoco with devastating outbreaks of smallpox that wiped out nearly half the defending population, the invaders systematically leveled the majestic temple metropolis. Cortés claimed the immense territories of the Aztec Empire for the Spanish Crown, constructing Mexico City atop the smoking ruins of Tenochtitlan as the colonial seat of the Viceroyalty of New Spain. The conquest opened Central America to Spanish colonization, silver mining, and the profound demographic transformation of the indigenous Americas.",
+                    "keywords": [
+                        "Hernan Cortes",
+                        "Fall of Tenochtitlan",
+                        "Aztec Empire",
+                        "Cuauhtemoc",
+                        "Tlaxcala",
+                        "Conquistadors",
+                        "Mexico City",
+                        "1521"
+                    ]
+                },
+                {
+                    "id": "fall_inca_empire_1533",
+                    "title": "Conquest of the Inca Empire by Francisco Pizarro",
+                    "year": 1533,
+                    "exact_date": "1532 - 1533",
+                    "summary": "In November 1532, Spanish conquistador Francisco Pizarro and a small force of one hundred and sixty-eight men ambushed and captured Inca Emperor Atahualpa in the Andean highland plaza of Cajamarca following a bitter civil war that had weakened the Inca Empire. Despite Atahualpa fulfilling a legendary promise to fill a large stone room once with gold and twice with silver as a royal ransom, Pizarro executed the emperor in July 1533 and marched victoriously into the imperial capital of Cusco later that year. The collapse of the Inca administration allowed the Spanish Crown to establish the Viceroyalty of Peru, gaining control over vast mountain networks, royal treasuries, and the fabulous silver deposits of Potosí. The conquest resulted in the rapid collapse of Andean administrative autonomy and the integration of western South America into the Spanish Empire.",
+                    "keywords": [
+                        "Francisco Pizarro",
+                        "Inca Empire",
+                        "Atahualpa",
+                        "Cajamarca",
+                        "Cusco",
+                        "Potosi",
+                        "Peru",
+                        "Conquest"
+                    ]
+                },
+                {
+                    "id": "spanish_armada_1588",
+                    "title": "Defeat of the Spanish Armada",
+                    "year": 1588,
+                    "exact_date": "August 1588",
+                    "summary": "In August 1588, King Philip II of Spain dispatched the Great and Most Fortunate Navy, known commonly as the Spanish Armada—comprising one hundred and thirty galleons and roughly thirty thousand men—to overthrow Protestant Queen Elizabeth I and end English privateering in the Atlantic. Commanded by the Duke of Medina Sidonia, the fleet intended to rendezvous with a veteran Spanish invasion army in Flanders, but was disrupted by aggressive English naval tactics, long-range naval artillery, and nocturnal fireship attacks off the port of Gravelines. Broken from their tight crescent defensive formation and battered by fierce northern gales known as the Protestant Wind, the surviving Spanish ships were forced to circumnavigate Scotland and Ireland, where dozens of vessels were wrecked upon rocky reefs. The defeat preserved English national sovereignty, secured the Protestant Reformation in Britain, and marked a turning point in European naval power.",
+                    "keywords": [
+                        "Spanish Armada",
+                        "1588",
+                        "Queen Elizabeth I",
+                        "Philip II",
+                        "Francis Drake",
+                        "Gravelines",
+                        "Protestant Wind",
+                        "Naval Battle"
+                    ]
+                },
+                {
+                    "id": "dutch_east_india_1602",
+                    "title": "Founding of the Dutch East India Company",
+                    "year": 1602,
+                    "exact_date": "20 March 1602",
+                    "summary": "On March 20, 1602, the States General of the Dutch Republic chartered the Vereenigde Oostindische Compagnie (VOC), or Dutch East India Company, creating the world's first publicly traded corporation and the first company to issue shares of stock to the general public. Granted an exclusive national monopoly on Dutch maritime trade eastward past the Cape of Good Hope, the VOC possessed quasi-governmental powers to maintain private armies, establish overseas forts, negotiate treaties, and mint its own coinage. Operating from its fortified headquarters in Batavia, modern Jakarta, the company dominated the lucrative Southeast Asian spice trade in nutmeg, cloves, and cinnamon throughout the seventeenth century. The VOC pioneered modern corporate governance, institutional joint-stock financing, and the world's first modern stock exchange in Amsterdam, providing the commercial blueprint for global multinational capitalism.",
+                    "keywords": [
+                        "Dutch East India Company",
+                        "VOC",
+                        "1602",
+                        "Amsterdam",
+                        "Joint-Stock Company",
+                        "Stock Market",
+                        "Spice Trade",
+                        "Batavia"
+                    ]
+                },
+                {
+                    "id": "peace_westphalia_1648",
+                    "title": "Signing of the Peace of Westphalia",
+                    "year": 1648,
+                    "exact_date": "October 1648",
+                    "summary": "In October 1648, diplomatic delegates from across Europe signed treaties in the Westphalian cities of Münster and Osnabrück, bringing a negotiated conclusion to the devastating Thirty Years' War in Germany and the Eighty Years' War between Spain and the Netherlands. Having claimed an estimated four to eight million lives through combat, famine, and typhus epidemics, the conflict shattered the political and religious cohesion of Central Europe. The treaties recognized the independence of the Swiss Confederacy and the Dutch Republic, granted legal recognition to Calvinism alongside Lutheranism and Catholicism, and established the foundational doctrine of Westphalian sovereignty, which asserts that sovereign nation-states possess exclusive domestic authority over their territories free from outside religious intervention. The Peace of Westphalia established the structural template for modern international law and diplomatic statecraft.",
+                    "keywords": [
+                        "Peace of Westphalia",
+                        "1648",
+                        "Thirty Years War",
+                        "Westphalian Sovereignty",
+                        "Nation-State",
+                        "International Law",
+                        "Munster"
+                    ]
+                }
+            ]
+        },
+        {
+            "era": "Revolutions, Rights & Modern Transformations",
+            "events": [
+                {
+                    "id": "glorious_revolution_1688",
+                    "title": "The Glorious Revolution and English Bill of Rights",
+                    "year": 1688,
+                    "exact_date": "1688 - 1689",
+                    "summary": "In late 1688, a coalition of English parliamentarians invited Dutch stadtholder William of Orange and his English wife Mary Stuart to depose Catholic King James II in the largely bloodless political transfer known as the Glorious Revolution. Following James's flight to France, Parliament enacted the 1689 English Bill of Rights, which permanently established constitutional monarchy by subordinating royal authority to regular parliamentary consent. The document prohibited royal suspension of laws without parliament, abolished cruel and unusual punishments, safeguarded free parliamentary elections and debate, and guaranteed petition rights for citizens. The Glorious Revolution permanently shifted the balance of power from autocratic monarchy to representative parliament in Britain, profoundly influencing John Locke's political philosophy and the United States Constitution.",
+                    "keywords": [
+                        "Glorious Revolution",
+                        "1688",
+                        "Bill of Rights",
+                        "William and Mary",
+                        "James II",
+                        "Constitutional Monarchy",
+                        "Parliament"
+                    ]
+                },
+                {
+                    "id": "rights_of_man_1789",
+                    "title": "Declaration of the Rights of Man and of the Citizen",
+                    "year": 1789,
+                    "exact_date": "26 August 1789",
+                    "summary": "On August 26, 1789, in Paris, the National Constituent Assembly of Revolutionary France formally adopted the Declaration of the Rights of Man and of the Citizen, drafted by the Marquis de Lafayette in consultation with Thomas Jefferson. Inspired by Enlightenment ideals of natural rights and Jean-Jacques Rousseau's social contract theory, the seventeen-article manifesto proclaimed as universal and inalienable that all men are born free and remain equal in rights. The declaration asserted the core civic principles of liberty, private property, security, resistance to oppression, equality before the law, freedom of speech, and popular sovereignty, asserting that authority resides fundamentally in the nation rather than the royal person of the king. The document dismantled the feudal social order of the Ancien Régime and established the philosophical foundation for modern universal human rights law.",
+                    "keywords": [
+                        "Rights of Man",
+                        "French Revolution",
+                        "1789",
+                        "Lafayette",
+                        "Thomas Jefferson",
+                        "Human Rights",
+                        "Liberty Equality Fraternity"
+                    ]
+                },
+                {
+                    "id": "haitian_revolution_1791",
+                    "title": "The Haitian Revolution Led by Toussaint Louverture",
+                    "year": 1791,
+                    "exact_date": "1791 - 1804",
+                    "summary": "Beginning in August 1791 with a coordinated uprising across northern plantations in the French Caribbean colony of Saint-Domingue, the Haitian Revolution stands as history's only successful slave revolt that established an independent sovereign nation. Led by formerly enslaved general Toussaint Louverture and later Jean-Jacques Dessalines, Haitian revolutionary forces fought and decisively defeated British, Spanish, and elite French expeditionary armies dispatched by Napoleon Bonaparte. On January 1, 1804, Dessalines proclaimed the independence of Haiti, restoring the island's indigenous Taíno name and creating the world's first Black republic and the second independent nation in the Western Hemisphere. The revolution fundamentally challenged global racial hierarchies, dealt a catastrophic blow to Atlantic plantation slavery, and forced Napoleon to abandon his North American colonial ambitions, leading directly to the 1803 Louisiana Purchase.",
+                    "keywords": [
+                        "Haitian Revolution",
+                        "Toussaint Louverture",
+                        "Jean-Jacques Dessalines",
+                        "Saint-Domingue",
+                        "Abolition",
+                        "Haiti",
+                        "1804"
+                    ]
+                },
+                {
+                    "id": "battle_waterloo_1815",
+                    "title": "The Battle of Waterloo",
+                    "year": 1815,
+                    "exact_date": "18 June 1815",
+                    "summary": "On June 18, 1815, near the Belgian village of Waterloo, an allied Seventh Coalition army commanded by the British Duke of Wellington and Prussian Field Marshal Gebhard Leberecht von Blücher decisively defeated Emperor Napoleon Bonaparte, ending the Napoleonic Wars. Napoleon had escaped exile on the island of Elba in March 1815 to reclaim the French imperial throne during his dramatic Hundred Days, seeking to divide and destroy allied armies in Belgium before they could unite. Wellington's disciplined British and allied infantry held firm in defensive squares against repeated French heavy cavalry charges and artillery bombardments throughout the afternoon, until Prussian troops arrived on Napoleon's right flank to shatter the French lines. Napoleon abdicated four days later and was exiled permanently to the remote South Atlantic island of Saint Helena, restoring the Bourbon monarchy and inaugurating decades of peace under the Concert of Europe.",
+                    "keywords": [
+                        "Battle of Waterloo",
+                        "Napoleon",
+                        "Duke of Wellington",
+                        "Blucher",
+                        "1815",
+                        "Napoleonic Wars",
+                        "Saint Helena"
+                    ]
+                },
+                {
+                    "id": "simon_bolivar_1819",
+                    "title": "Simón Bolívar and the Liberation of South America",
+                    "year": 1819,
+                    "exact_date": "1819 - 1824",
+                    "summary": "Between 1819 and 1824, Venezuelan military leader and statesman Simón Bolívar, celebrated throughout South America as El Libertador, led revolutionary armies across rugged Andean peaks and plains to liberate northern South America from Spanish colonial rule. Following his daring winter crossing of the freezing Andes mountains in 1819, Bolívar triumphed at the pivotal Battle of Boyacá, freeing modern Colombia and establishing the republic of Gran Colombia, serving as its first president. Coordinating with general Antonio José de Sucre, Bolívar went on to secure the definitive independence of Venezuela at Carabobo, Ecuador at Pichincha, and Peru and Bolivia at the landmark Battle of Ayacucho in 1824. Bolívar envisioned a unified South American federation capable of resisting foreign imperialism, and his military campaigns permanently ended three centuries of Spanish imperial dominion on the continent.",
+                    "keywords": [
+                        "Simon Bolivar",
+                        "El Libertador",
+                        "Gran Colombia",
+                        "Battle of Boyaca",
+                        "Ayacucho",
+                        "South American Independence",
+                        "Venezuela"
+                    ]
+                },
+                {
+                    "id": "meiji_restoration_1868",
+                    "title": "The Meiji Restoration in Japan",
+                    "year": 1868,
+                    "exact_date": "1868",
+                    "summary": "In 1868, a political revolution orchestrated by reformist samurai and imperial court nobles overthrew the two-hundred-and-fifty-year-old Tokugawa military shogunate, officially restoring practical imperial governance to sixteen-year-old Emperor Meiji. Galvanized by the sudden arrival of Western gunboats led by Commodore Matthew Perry in 1853 and alarmed by unequal treaties imposed upon neighboring China, Japan launched one of the most rapid and comprehensive modernization programs in world history under the slogan 'Enrich the Country, Strengthen the Armed Forces'. The new government dismantled feudal samurai class privileges, constructed modern telegraph and railway networks, established universal public schooling, and adopted a Western-style constitutional monarchy with a national parliament. Within four decades, Japan transformed from an isolated agrarian society into an industrialized global military and economic powerhouse.",
+                    "keywords": [
+                        "Meiji Restoration",
+                        "Japan",
+                        "Emperor Meiji",
+                        "Tokugawa Shogunate",
+                        "Samurai",
+                        "Modernization",
+                        "1868"
+                    ]
+                },
+                {
+                    "id": "suez_canal_1869",
+                    "title": "Opening of the Suez Canal",
+                    "year": 1869,
+                    "exact_date": "17 November 1869",
+                    "summary": "On November 17, 1869, following a lavish opening ceremony attended by international royalty, the Suez Canal was officially opened to international commercial navigation, connecting the Mediterranean Sea to the Red Sea across the Isthmus of Suez in Egypt. Masterminded by French diplomat and developer Ferdinand de Lesseps and constructed over ten grueling years by hundreds of thousands of forced Egyptian laborers, the hundred-mile artificial sea-level waterway eliminated the arduous five-thousand-mile voyage around the southern tip of Africa. The canal collapsed global shipping times between Europe and Asia by weeks, transforming international maritime trade, naval strategy, and imperial communications. Because of its supreme geopolitical importance, control of the canal became a focal point of British imperial policy and remained central to Middle Eastern geopolitical conflicts throughout the twentieth century.",
+                    "keywords": [
+                        "Suez Canal",
+                        "Ferdinand de Lesseps",
+                        "Egypt",
+                        "Red Sea",
+                        "Mediterranean",
+                        "1869",
+                        "Maritime Trade"
+                    ]
+                },
+                {
+                    "id": "titanic_sinking_1912",
+                    "title": "Sinking of the RMS Titanic",
+                    "year": 1912,
+                    "exact_date": "15 April 1912",
+                    "summary": "In the early morning hours of April 15, 1912, the British luxury passenger ocean liner RMS Titanic sank in the icy waters of the North Atlantic Ocean roughly four days into its maiden voyage from Southampton to New York City after striking an iceberg. Regarded prior to its voyage as virtually unsinkable due to sixteen watertight compartments with automatic doors, the massive vessel carried insufficient lifeboats for the more than two thousand two hundred passengers and crew aboard. More than one thousand five hundred people perished in the freezing ocean, including prominent international industrialists, artists, and hundreds of emigrant families traveling in third-class steerage. The tragedy shocked the global public and prompted sweeping international maritime safety reforms, leading to the 1914 International Convention for the Safety of Life at Sea (SOLAS), mandatory 24-hour shipboard radio watches, and the International Ice Patrol.",
+                    "keywords": [
+                        "Titanic",
+                        "RMS Titanic",
+                        "15 April 1912",
+                        "Iceberg",
+                        "North Atlantic",
+                        "SOLAS",
+                        "Maritime Safety"
+                    ]
+                },
+                {
+                    "id": "outbreak_ww1_1914",
+                    "title": "Assassination of Franz Ferdinand and Outbreak of World War I",
+                    "year": 1914,
+                    "exact_date": "28 June 1914",
+                    "summary": "On June 28, 1914, in the Bosnian city of Sarajevo, nineteen-year-old Serbian nationalist Gavrilo Princip, a member of the Black Hand secret society, assassinated Archduke Franz Ferdinand, heir to the Austro-Hungarian throne, and his wife Sophie. The political killing ignited the volatile July Crisis, as Austria-Hungary issued an uncompromising ultimatum to Serbia, triggering a catastrophic chain reaction among Europe's interlocking military alliance treaties. Within weeks, Russia mobilized to protect Serbia, leading Germany to declare war on Russia and France, while the German invasion of neutral Belgium prompted Great Britain to enter the conflict. The ensuing World War I lasted four devastating years, introduced industrialized trench warfare, claimed over twenty million military and civilian lives, and toppled four centuries-old European imperial dynasties: the Russian, German, Austro-Hungarian, and Ottoman empires.",
+                    "keywords": [
+                        "World War I",
+                        "Franz Ferdinand",
+                        "Gavrilo Princip",
+                        "Sarajevo",
+                        "1914",
+                        "Black Hand",
+                        "Alliances",
+                        "July Crisis"
+                    ]
+                },
+                {
+                    "id": "october_revolution_1917",
+                    "title": "The Russian October Revolution",
+                    "year": 1917,
+                    "exact_date": "7 November 1917",
+                    "summary": "On the night of November 7, 1917 (October 25 on the Julian calendar), Bolshevik Red Guards commanded by Vladimir Lenin and Leon Trotsky stormed the Winter Palace in Petrograd, modern Saint Petersburg, deposing the provisional government and seizing state power in Russia. Exploiting widespread public exhaustion with Russia's devastating participation in World War I, runaway food inflation, and land inequality, the Bolsheviks rallied urban workers and soldier soviets under the resonant slogans 'Peace, Land, and Bread' and 'All Power to the Soviets'. Lenin immediately signed the Treaty of Brest-Litovsk to withdraw Russia from World War I and nationalized land, banking, and heavy industry. The revolution ignited a brutal five-year Russian Civil War, brought an end to centuries of Tsarist imperial rule, and established the Soviet Union as the world's first communist state, fundamentally reshaping twentieth-century global geopolitics.",
+                    "keywords": [
+                        "October Revolution",
+                        "Bolsheviks",
+                        "Vladimir Lenin",
+                        "Leon Trotsky",
+                        "Petrograd",
+                        "Winter Palace",
+                        "Soviet Union",
+                        "1917"
+                    ]
+                },
+                {
+                    "id": "womens_suffrage_1920",
+                    "title": "Ratification of the 19th Amendment (Women's Suffrage)",
+                    "year": 1920,
+                    "exact_date": "18 August 1920",
+                    "summary": "On August 18, 1920, the United States Constitution's Nineteenth Amendment was officially ratified when Tennessee became the thirty-sixth state to approve the measure, forever prohibiting the federal government and individual states from denying the right to vote on the basis of sex. The landmark victory was achieved following more than seven decades of relentless public activism by the women's suffrage movement, initiated nationally at the 1848 Seneca Falls Convention and spearheaded by visionary leaders including Susan B. Anthony, Elizabeth Cady Stanton, Sojourner Truth, and Alice Paul. Suffragists organized nationwide protest marches, silent pickets outside the White House, and hunger strikes in prison to demand equal democratic participation. The amendment enfranchised over twenty-six million American women in time for the 1920 presidential election, standing as one of the greatest civil rights milestones in democratic history.",
+                    "keywords": [
+                        "Womens Suffrage",
+                        "19th Amendment",
+                        "1920",
+                        "Susan B Anthony",
+                        "Alice Paul",
+                        "Seneca Falls",
+                        "Voting Rights"
+                    ]
+                },
+                {
+                    "id": "wall_street_crash_1929",
+                    "title": "The Wall Street Crash of 1929",
+                    "year": 1929,
+                    "exact_date": "29 October 1929",
+                    "summary": "On October 29, 1929, a day remembered as Black Tuesday, the New York Stock Exchange collapsed in a catastrophic wave of panic selling, with investors dumping a record sixteen million shares in a single trading session and wiping out billions of dollars in market valuation. Triggered by years of speculative margin borrowing, industrial overproduction, and weak agricultural commodity prices during the Roaring Twenties, the crash triggered nationwide bank runs, commercial bankruptcies, and massive factory closures. The financial panic directly ignited the Great Depression, the most severe economic crisis in modern industrial history, causing global unemployment to surge past twenty-five percent and slashing international trade by half. The crisis prompted the election of President Franklin D. Roosevelt, the enactment of the New Deal, and the establishment of regulatory bodies like the Securities and Exchange Commission (SEC) to oversee financial markets.",
+                    "keywords": [
+                        "Wall Street Crash",
+                        "Black Tuesday",
+                        "1929",
+                        "Great Depression",
+                        "Stock Market",
+                        "New Deal",
+                        "Franklin D Roosevelt"
+                    ]
+                },
+                {
+                    "id": "indian_independence_1947",
+                    "title": "Indian Independence and Partition",
+                    "year": 1947,
+                    "exact_date": "15 August 1947",
+                    "summary": "At the stroke of midnight on August 15, 1947, British colonial rule on the Indian subcontinent officially came to an end after nearly two centuries, as Prime Minister Jawaharlal Nehru delivered his celebrated 'Tryst with Destiny' address proclaiming the birth of independent India. The historic achievement followed decades of mass non-violent resistance and civil disobedience campaigns led by Mahatma Gandhi and the Indian National Congress. Concurrently, the British partition plan divided the subcontinent along religious lines into the sovereign states of India and Pakistan, triggering the mass displacement of more than fourteen million Hindus, Muslims, and Sikhs across hastily drawn borders and resulting in tragic communal violence that claimed hundreds of thousands of lives. Indian independence dismantled the cornerstone of the British Empire and inspired anti-colonial liberation movements across Africa and Asia.",
+                    "keywords": [
+                        "Indian Independence",
+                        "Mahatma Gandhi",
+                        "Jawaharlal Nehru",
+                        "Partition",
+                        "15 August 1947",
+                        "British Raj",
+                        "Pakistan"
+                    ]
+                },
+                {
+                    "id": "mlk_i_have_a_dream_1963",
+                    "title": "Martin Luther King Jr.'s 'I Have a Dream' Speech",
+                    "year": 1963,
+                    "exact_date": "28 August 1963",
+                    "summary": "On August 28, 1963, speaking from the marble steps of the Lincoln Memorial to an integrated gathering of more than two hundred and fifty thousand demonstrators during the March on Washington for Jobs and Freedom, Dr. Martin Luther King Jr. delivered his immortal 'I Have a Dream' speech. King articulated an impassioned moral vision of racial harmony, civil equality, and economic justice, declaring his dream that his four young children would one day live in a nation where they would not be judged by the color of their skin but by the content of their character. Combining prophetic biblical cadence with references to the US Declaration of Independence and the Emancipation Proclamation, King's soaring rhetoric mobilized nationwide public conscience against racial segregation. The historic address created decisive political momentum that pressured the United States Congress to enact the Civil Rights Act of 1964 and the Voting Rights Act of 1965.",
+                    "keywords": [
+                        "Martin Luther King Jr",
+                        "I Have a Dream",
+                        "March on Washington",
+                        "1963",
+                        "Civil Rights Movement",
+                        "Lincoln Memorial",
+                        "Equality"
+                    ]
+                },
+                {
+                    "id": "mandela_freedom_1990",
+                    "title": "Release of Nelson Mandela and the End of Apartheid",
+                    "year": 1990,
+                    "exact_date": "11 February 1990",
+                    "summary": "On February 11, 1990, South African anti-apartheid leader Nelson Mandela walked out of Victor Verster Prison near Cape Town as a free man after twenty-seven years of political imprisonment, greeted by ecstatic crowds and televised live to hundreds of millions worldwide. Following decades of internal strikes, international economic sanctions, and escalating civil unrest, South African State President F.W. de Klerk unbanned the African National Congress and initiated bilateral negotiations with Mandela to dismantle the institutionalized racial segregation system known as apartheid. Working together through intense national tensions, Mandela and de Klerk guided South Africa through a peaceful transition toward inclusive non-racial democracy, jointly receiving the 1993 Nobel Peace Prize. In April 1994, South Africa held its first fully democratic multiracial elections, and Nelson Mandela was inaugurated as the country's first Black president.",
+                    "keywords": [
+                        "Nelson Mandela",
+                        "Apartheid",
+                        "South Africa",
+                        "11 February 1990",
+                        "FW de Klerk",
+                        "African National Congress",
+                        "Human Rights"
+                    ]
+                },
+                {
+                    "era": "Revolutions, Rights & Modern Transformations",
+                    "id": "boston_tea_party_1773",
+                    "title": "The Boston Tea Party",
+                    "year": 1773,
+                    "exact_date": "16 December 1773",
+                    "summary": "On the chilly night of December 16, 1773, a group of American colonial activists known as the Sons of Liberty, loosely disguised as Native American Mohawk warriors and led by Samuel Adams, boarded three British merchant ships docked in Boston Harbor. Protesting the British Tea Act and the principle of taxation without parliamentary representation, the demonstrators smashed open three hundred and forty-two chests of British East India Company tea and dumped the entire cargo into the ocean waters. The coordinated act of commercial defiance infuriated the British government, which retaliated by passing the punitive Coercive Acts, commonly known in the colonies as the Intolerable Acts, closing Boston Harbor and suspending colonial self-governance in Massachusetts. The confrontation galvanized inter-colonial resistance across North America, prompting the meeting of the First Continental Congress and directly escalating the crisis into the American Revolutionary War.",
+                    "keywords": [
+                        "Boston Tea Party",
+                        "Sons of Liberty",
+                        "Samuel Adams",
+                        "Tea Act",
+                        "Taxation without representation",
+                        "American Revolution",
+                        "1773"
+                    ]
+                },
+                {
+                    "era": "Revolutions, Rights & Modern Transformations",
+                    "id": "good_friday_agreement_1998",
+                    "title": "Signing of the Good Friday Agreement",
+                    "year": 1998,
+                    "exact_date": "10 April 1998",
+                    "summary": "On April 10, 1998, British Prime Minister Tony Blair, Irish Taoiseach Bertie Ahern, and leaders of the major political parties in Northern Ireland signed the Belfast Agreement, commonly celebrated as the Good Friday Agreement, bringing an end to three decades of sectarian conflict known as the Troubles. Brokered through intense multilateral negotiations chaired by former United States Senator George Mitchell, the historic peace accord established a power-sharing devolved Northern Ireland Assembly and mandatory cross-community executive governance between unionist and nationalist parties. The agreement also mandated the decommissioning of paramilitary weapons, major reform of civil policing, and the constitutional recognition that Northern Ireland remains part of the United Kingdom unless a majority of its citizens vote otherwise in a future border poll. The Good Friday Agreement transformed Northern Ireland from a zone of violent political strife into a framework of peaceful democratic power-sharing and regional stability.",
+                    "keywords": [
+                        "Good Friday Agreement",
+                        "Belfast Agreement",
+                        "Northern Ireland",
+                        "The Troubles",
+                        "Tony Blair",
+                        "Bertie Ahern",
+                        "George Mitchell",
+                        "Peace Accord"
+                    ]
+                },
+                {
+                    "id": "protestant_reformation_luther_95_theses_1517",
+                    "title": "The Protestant Reformation and Luther's Ninety‑Five Theses",
+                    "year": 1517,
+                    "exact_date": "31 October 1517",
+                    "summary": "On 31 October 1517, the German Augustinian monk and theology professor Martin Luther nailed his Ninety‑Five Theses to the door of the Castle Church (All Saints' Church) in Wittenberg. The theses challenged the Catholic Church’s practice of selling indulgences, arguing that forgiveness of sins could not be purchased and that repentance required sincere faith. Luther’s act quickly spread through printed pamphlets, provoking debate among scholars, clergy, and laypeople across the Holy Roman Empire. By 1521, the controversy had escalated into a full‑scale schism, leading Luther to be declared an outlaw at the Diet of Worms and prompting the formation of autonomous Protestant congregations. The Reformation reshaped European religious, political, and cultural landscapes, inspiring further reform movements and ultimately contributing to the rise of nation‑states and the modern concept of religious liberty.",
+                    "keywords": [
+                        "Martin Luther",
+                        "Ninety-Five Theses",
+                        "1517",
+                        "Indulgences",
+                        "Protestant Reformation",
+                        "Wittenberg",
+                        "Diet of Worms",
+                        "Religious liberty"
+                    ]
+                },
+                {
+                    "id": "american_civil_war_emancipation_proclamation",
+                    "title": "The American Civil War and the Emancipation Proclamation",
+                    "year": 1863,
+                    "exact_date": "1 January 1863",
+                    "summary": "The American Civil War, fought from 1861 to 1865, was a devastating conflict between the United States Union and eleven seceding Confederate states primarily over the institution of slavery. President Abraham Lincoln issued the Emancipation Proclamation on January 1, 1863, declaring all persons held as slaves in the rebellious states to be thenceforward free. This executive order fundamentally transformed the war's objective from preserving the Union to a moral crusade for human liberty, while also authorizing the enlistment of African American soldiers into the Union Army. The military and political momentum generated by this decree paved the way for the passage of the Thirteenth Amendment to the United States Constitution. Ratified on December 6, 1865, the Thirteenth Amendment permanently abolished slavery throughout the entire nation, ensuring that neither slavery nor involuntary servitude, except as punishment for crime, would exist in the United States.",
+                    "keywords": [
+                        "American Civil War",
+                        "Emancipation Proclamation",
+                        "Abraham Lincoln",
+                        "Thirteenth Amendment",
+                        "Confederate States",
+                        "Union Army",
+                        "Abolition of Slavery",
+                        "1863"
+                    ]
+                }
+            ]
+        }
+    ]
+}

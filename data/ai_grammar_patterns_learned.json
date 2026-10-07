@@ -1,0 +1,1842 @@
+{
+  "totalSentencesAnalyzed": 3000,
+  "syntaxRulesCount": 280,
+  "partOfSpeechLearned": {
+    "verbsCount": 3445,
+    "adjectivesCount": 2164,
+    "nounsCount": 5250,
+    "adverbsCount": 277,
+    "determinersCount": 20,
+    "prepositionsCount": 31,
+    "sampleVerbs": [
+      "paints",
+      "hues",
+      "elucidated",
+      "of",
+      "cataloged",
+      "assigning",
+      "code",
+      "peak",
+      "avantgarde",
+      "sculpture",
+      "elucidates",
+      "have",
+      "mapped",
+      "vent",
+      "determine",
+      "its",
+      "withstand",
+      "refused",
+      "rhyme",
+      "believed",
+      "emerges",
+      "lived",
+      "experience",
+      "could",
+      "enjoy",
+      "succeed",
+      "schedule",
+      "exploded",
+      "vermilion",
+      "hailed",
+      "experiment",
+      "yielded",
+      "team",
+      "persisted",
+      "their",
+      "fell",
+      "scattering",
+      "leaves",
+      "experienced",
+      "contemplated",
+      "free",
+      "will",
+      "quiet",
+      "debated",
+      "caf",
+      "drafted",
+      "volunteered",
+      "mentor",
+      "interns",
+      "season"
+    ],
+    "sampleAdjectives": [
+      "amber",
+      "rose",
+      "paradoxical",
+      "entangled",
+      "ancient",
+      "unique",
+      "sunrise",
+      "crowned",
+      "radiant",
+      "gold",
+      "elusive",
+      "human",
+      "new",
+      "accompanying",
+      "philosophical",
+      "contemporary",
+      "extreme",
+      "conventional",
+      "taken",
+      "driven",
+      "scenic",
+      "coastal",
+      "roses",
+      "wilted",
+      "diligent",
+      "reviving",
+      "careful",
+      "cerulean",
+      "revolutionary",
+      "inconclusive",
+      "next",
+      "sudden",
+      "nutrient",
+      "bustling",
+      "meticulous",
+      "ecological",
+      "subtle",
+      "anomalous",
+      "extraordinary",
+      "fragmented",
+      "speculative",
+      "annual",
+      "mere",
+      "continued",
+      "derived",
+      "experimental",
+      "only",
+      "accompanied",
+      "one",
+      "unexpected"
+    ],
+    "sampleNouns": [
+      "aurora",
+      "dawn",
+      "of",
+      "quantum",
+      "physicist",
+      "behavior",
+      "particles",
+      "archivist",
+      "manuscripts",
+      "a",
+      "reference",
+      "mountain",
+      "halo",
+      "existence",
+      "remains",
+      "mystery",
+      "comprehension",
+      "museums",
+      "exhibition",
+      "showcases",
+      "lecture",
+      "series",
+      "underpinnings",
+      "art",
+      "researchers",
+      "genome",
+      "deepsea",
+      "bacterium",
+      "how",
+      "proteins",
+      "pressure",
+      "poet",
+      "meter",
+      "true",
+      "rhythm",
+      "cadence",
+      "subway",
+      "conference",
+      "might",
+      "route",
+      "over",
+      "cliffs",
+      "gardens",
+      "drought",
+      "did",
+      "gardener",
+      "despite",
+      "irrigation",
+      "painters",
+      "palette"
+    ],
+    "sampleAdverbs": [
+      "forever",
+      "furthermore",
+      "as",
+      "nevertheless",
+      "consequently",
+      "meanwhile",
+      "moreover",
+      "throughout",
+      "flawlessly",
+      "newly",
+      "within",
+      "wherever",
+      "already",
+      "rather",
+      "previously",
+      "today",
+      "uniformly",
+      "boiling",
+      "now",
+      "ever",
+      "fully",
+      "abruptly",
+      "finally",
+      "tomorrow",
+      "beneath",
+      "invariably",
+      "typically",
+      "often",
+      "dramatically",
+      "vigorously",
+      "not",
+      "seldom",
+      "rarely",
+      "also",
+      "scarcely",
+      "never",
+      "seamlessly",
+      "thereby",
+      "annually",
+      "publicly",
+      "merely",
+      "meticulously",
+      "widely",
+      "convincingly",
+      "tomorrows",
+      "purely",
+      "however",
+      "profoundly",
+      "likewise",
+      "extensively"
+    ]
+  },
+  "posTransitions": {
+    "NOUN": {
+      "VERB": 9688,
+      "PREP": 2081,
+      "ADJ": 1316,
+      "NOUN": 3021,
+      "PRON": 202,
+      "DET": 2425,
+      "ADV": 765,
+      "CONJ": 760,
+      "PUNCT": 6
+    },
+    "VERB": {
+      "DET": 4289,
+      "NOUN": 3047,
+      "ADJ": 2581,
+      "VERB": 2700,
+      "CONJ": 380,
+      "PREP": 1532,
+      "ADV": 793,
+      "PRON": 159,
+      "PUNCT": 10
+    },
+    "DET": {
+      "NOUN": 6094,
+      "ADJ": 4165,
+      "VERB": 477,
+      "ADV": 132,
+      "DET": 762,
+      "PRON": 16,
+      "PUNCT": 22,
+      "CONJ": 6
+    },
+    "PREP": {
+      "VERB": 847,
+      "ADJ": 955,
+      "DET": 1702,
+      "PRON": 29,
+      "NOUN": 740,
+      "PREP": 12,
+      "PUNCT": 35,
+      "ADV": 25,
+      "CONJ": 5
+    },
+    "ADJ": {
+      "CONJ": 85,
+      "NOUN": 8154,
+      "ADJ": 647,
+      "DET": 498,
+      "PREP": 417,
+      "PRON": 23,
+      "VERB": 250,
+      "ADV": 77,
+      "PUNCT": 2
+    },
+    "CONJ": {
+      "ADJ": 171,
+      "DET": 842,
+      "PRON": 105,
+      "PREP": 15,
+      "NOUN": 181,
+      "VERB": 87,
+      "ADV": 83,
+      "CONJ": 5,
+      "PUNCT": 1
+    },
+    "PRON": {
+      "NOUN": 110,
+      "VERB": 670,
+      "ADJ": 67,
+      "DET": 12,
+      "ADV": 70,
+      "PREP": 44,
+      "CONJ": 4
+    },
+    "ADV": {
+      "ADJ": 279,
+      "DET": 377,
+      "PRON": 47,
+      "NOUN": 238,
+      "VERB": 1071,
+      "CONJ": 19,
+      "PREP": 46,
+      "ADV": 35,
+      "PUNCT": 6
+    },
+    "PUNCT": {
+      "NOUN": 42,
+      "ADV": 4,
+      "DET": 8,
+      "ADJ": 11,
+      "VERB": 11,
+      "CONJ": 1,
+      "PREP": 1,
+      "PUNCT": 1
+    }
+  },
+  "topPosFormulaPatterns": [
+    {
+      "formula": "[ADV] [NOUN] [DET] [ADJ] [NOUN] [VERB] [ADJ] [NOUN] [ADJ] [NOUN] [VERB] [ADJ] [NOUN] [CONJ] [ADJ] [NOUN] [DET] [NOUN] [DET] [VERB] [VERB] [ADJ] [NOUN]",
+      "count": 2
+    },
+    {
+      "formula": "[DET] [NOUN] [VERB] [NOUN] [VERB] [DET] [ADJ] [NOUN] [VERB] [ADV] [ADJ] [NOUN] [VERB] [ADJ] [NOUN]",
+      "count": 2
+    },
+    {
+      "formula": "[NOUN] [VERB] [DET] [NOUN] [PREP] [VERB] [NOUN] [ADJ] [CONJ] [ADJ]",
+      "count": 1
+    },
+    {
+      "formula": "[DET] [NOUN] [NOUN] [VERB] [DET] [ADJ] [NOUN] [VERB] [ADJ] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[DET] [NOUN] [VERB] [DET] [ADJ] [NOUN] [VERB] [DET] [NOUN] [ADJ] [NOUN] [VERB]",
+      "count": 1
+    },
+    {
+      "formula": "[DET] [ADJ] [ADJ] [DET] [NOUN] [VERB] [DET] [ADJ] [NOUN] [VERB] [ADJ]",
+      "count": 1
+    },
+    {
+      "formula": "[NOUN] [PRON] [NOUN] [DET] [NOUN] [ADV] [ADJ] [PREP] [ADJ] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[DET] [NOUN] [ADJ] [NOUN] [NOUN] [VERB] [VERB] [CONJ] [DET] [ADJ] [NOUN] [NOUN] [VERB] [DET] [ADJ] [NOUN] [VERB] [ADJ] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[NOUN] [VERB] [VERB] [DET] [NOUN] [VERB] [DET] [NOUN] [VERB] [NOUN] [CONJ] [PRON] [VERB] [CONJ] [PREP] [VERB] [NOUN] [VERB] [NOUN] [VERB] [ADJ] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[DET] [NOUN] [VERB] [PREP] [VERB] [PREP] [DET] [ADJ] [NOUN] [PREP] [PRON] [VERB] [DET] [NOUN] [NOUN] [VERB] [PREP] [DET] [NOUN] [VERB] [VERB] [VERB]",
+      "count": 1
+    },
+    {
+      "formula": "[PRON] [VERB] [VERB] [ADJ] [DET] [NOUN] [PREP] [DET] [NOUN] [CONJ] [PRON] [NOUN] [VERB] [ADJ] [DET] [ADJ] [ADJ] [NOUN] [PREP] [VERB] [DET] [ADJ] [NOUN] [DET] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[DET] [NOUN] [ADJ] [ADJ] [PREP] [DET] [NOUN] [CONJ] [NOUN] [DET] [ADJ] [NOUN] [VERB] [PREP] [ADJ] [PRON] [NOUN] [PRON] [ADJ] [NOUN] [VERB]",
+      "count": 1
+    },
+    {
+      "formula": "[DET] [NOUN] [NOUN] [VERB] [PREP] [ADJ] [CONJ] [VERB] [VERB] [ADV] [DET] [NOUN] [VERB] [DET] [NOUN] [ADV] [DET] [ADJ] [NOUN] [VERB] [NOUN] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[DET] [NOUN] [NOUN] [NOUN] [VERB] [VERB] [ADJ] [NOUN] [ADV] [DET] [NOUN] [VERB] [VERB] [NOUN] [VERB] [NOUN] [PREP] [DET] [ADJ] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[DET] [ADJ] [NOUN] [VERB] [PREP] [DET] [NOUN] [VERB] [NOUN] [VERB] [PREP] [DET] [NOUN] [ADV] [DET] [NOUN] [VERB] [DET] [ADJ] [NOUN] [PREP] [ADJ] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[DET] [NOUN] [VERB] [DET] [NOUN] [VERB] [VERB] [VERB] [PREP] [VERB] [NOUN] [ADV] [PRON] [NOUN] [VERB] [NOUN] [PREP] [DET] [ADJ] [NOUN] [VERB]",
+      "count": 1
+    },
+    {
+      "formula": "[PRON] [VERB] [DET] [ADJ] [NOUN] [NOUN] [PREP] [DET] [ADJ] [NOUN] [ADV] [PRON] [VERB] [PREP] [VERB] [NOUN] [VERB] [ADV] [DET] [NOUN] [VERB]",
+      "count": 1
+    },
+    {
+      "formula": "[CONJ] [DET] [NOUN] [VERB] [DET] [NOUN] [DET] [NOUN] [VERB] [DET] [ADJ] [NOUN] [DET] [NOUN] [VERB] [NOUN] [PREP] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[PREP] [DET] [NOUN] [VERB] [NOUN] [NOUN] [DET] [NOUN] [VERB] [DET] [ADJ] [NOUN] [PREP] [VERB] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[CONJ] [DET] [ADJ] [NOUN] [VERB] [VERB] [DET] [NOUN] [VERB] [DET] [NOUN] [VERB] [DET] [NOUN] [VERB] [NOUN] [VERB] [ADJ] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[NOUN] [DET] [NOUN] [VERB] [DET] [NOUN] [VERB] [VERB] [VERB] [PRON] [VERB] [VERB] [ADJ] [CONJ] [ADJ]",
+      "count": 1
+    },
+    {
+      "formula": "[CONJ] [DET] [NOUN] [VERB] [VERB] [NOUN] [NOUN] [DET] [NOUN] [NOUN] [VERB] [DET] [ADJ] [NOUN] [NOUN] [VERB] [ADV] [NOUN] [VERB] [NOUN] [PREP] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[CONJ] [DET] [NOUN] [NOUN] [VERB] [DET] [NOUN] [VERB] [ADV] [ADJ] [NOUN] [PRON] [VERB] [ADJ] [PREP] [VERB] [VERB] [VERB] [VERB]",
+      "count": 1
+    },
+    {
+      "formula": "[VERB] [CONJ] [DET] [NOUN] [NOUN] [VERB] [ADJ] [DET] [NOUN] [ADV] [DET] [ADJ] [NOUN] [VERB] [PREP] [VERB] [DET] [VERB] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[CONJ] [DET] [ADJ] [NOUN] [VERB] [NOUN] [VERB] [NOUN] [DET] [ADV] [VERB] [NOUN] [VERB] [ADV] [NOUN] [VERB] [NOUN] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[DET] [NOUN] [VERB] [VERB] [PRON] [NOUN] [PREP] [VERB] [VERB] [ADJ] [CONJ] [DET] [NOUN] [VERB] [PRON] [DET] [NOUN] [NOUN] [PREP] [NOUN] [VERB] [PRON] [NOUN] [VERB] [VERB] [ADJ]",
+      "count": 1
+    },
+    {
+      "formula": "[PRON] [VERB] [DET] [NOUN] [VERB] [ADV] [PRON] [VERB] [CONJ] [PRON] [VERB] [ADJ] [PREP] [DET] [NOUN] [PRON] [ADV] [VERB] [ADJ] [NOUN] [VERB] [DET] [ADJ] [NOUN] [VERB]",
+      "count": 1
+    },
+    {
+      "formula": "[DET] [NOUN] [PRON] [VERB] [DET] [NOUN] [ADJ] [NOUN] [VERB] [DET] [NOUN] [VERB] [VERB] [DET] [NOUN] [PREP] [PRON] [ADJ] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[DET] [ADJ] [NOUN] [VERB] [DET] [NOUN] [ADJ] [NOUN] [PREP] [DET] [NOUN] [VERB] [ADJ] [NOUN] [VERB] [VERB] [DET] [NOUN] [VERB] [PREP] [NOUN] [NOUN]",
+      "count": 1
+    },
+    {
+      "formula": "[DET] [NOUN] [PRON] [VERB] [ADJ] [DET] [ADJ] [NOUN] [PREP] [NOUN] [CONJ] [ADJ] [NOUN] [VERB] [PRON] [NOUN] [PREP] [DET] [ADJ] [NOUN]",
+      "count": 1
+    }
+  ],
+  "grammarRules": {
+    "SV (Subject‑Verb)": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The sentence consists of a subject (Aurora) and an intransitive verb (paints) that together form a complete thought; no object follows, making it a simple SV structure.",
+      "frequencyCount": 1
+    },
+    "SVO (Subject‑Verb‑Object)": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "Here the subject (The quantum physicist) performs the transitive verb (elucidated) on a direct object (the paradoxical behavior of entangled particles), fulfilling the classic SVO pattern.",
+      "frequencyCount": 1
+    },
+    "SVIODO (Subject‑Verb‑Indirect Object‑Direct Object)": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The subject (The archivist) verbs (cataloged) taking a direct object (the ancient manuscripts) and an indirect object expressed by the participial phrase (assigning each a unique reference code), which indicates the benefit or result of the action.",
+      "frequencyCount": 1
+    },
+    "SVOC (Subject‑Verb‑Object‑Complement)": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The subject (The sunrise) acts on the object (the mountain peak) with the verb (crowned); the complement (a radiant halo of gold) renames or describes the object, completing the SVOC construction.",
+      "frequencyCount": 1
+    },
+    "SVC (Subject‑Verb‑Complement)": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The subject (Existence itself) links via the linking verb (remains) to the subject complement (a mystery), which characterizes the subject, exemplifying the SVC pattern.",
+      "frequencyCount": 1
+    },
+    "Compound sentence joined by the coordinating conjunction \"and\"": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "Two independent clauses—\"The museum's new exhibition showcases avant‑garde sculpture\" and \"the accompanying lecture series elucidates the philosophical underpinnings of contemporary art\"—are linked by the conjunction \"and,\" creating a balanced compound sentence.",
+      "frequencyCount": 1
+    },
+    "Compound sentence joined by the coordinating conjunction \"yet\"": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The sentence contains two independent clauses—\"Researchers have mapped the genome of the deep‑sea vent bacterium\" and \"they have yet to determine how its proteins withstand extreme pressure\"—connected by \"yet,\" which introduces a contrast while maintaining grammatical parity.",
+      "frequencyCount": 1
+    },
+    "Compound sentence joined by the coordinating conjunction \"for\"": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "Here, \"The poet refused to rhyme in the conventional meter\" and \"she believed that true rhythm emerges from the cadence of lived experience\" are both complete clauses; the conjunction \"for\" supplies a causal relationship, linking them into a single compound structure.",
+      "frequencyCount": 1
+    },
+    "Compound sentence joined by the coordinating conjunction \"or\"": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The sentence presents two alternative independent clauses—\"He could have taken the subway to the conference\" and \"he might have driven the scenic coastal route to enjoy the sunrise over the cliffs\"—joined by \"or,\" which signals choice while preserving equal grammatical weight.",
+      "frequencyCount": 1
+    },
+    "Compound sentence joined by the coordinating conjunction \"nor\"": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "Both clauses—\"The garden's roses wilted under the drought\" and \"the diligent gardener succeed in reviving them despite his careful irrigation schedule\"—are independent; the negative conjunction \"nor\" links them, indicating an additional negative outcome and maintaining structural balance.",
+      "frequencyCount": 1
+    },
+    "Compound sentence with a semicolon and the conjunctive adverb 'furthermore' linking two independent clauses": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The semicolon joins two complete sentences, and 'furthermore' introduces an additional, supportive idea, functioning as a conjunctive adverb that requires a comma after it.",
+      "frequencyCount": 1
+    },
+    "Compound sentence with a semicolon and the conjunctive adverb 'nevertheless' linking contrasting independent clauses": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "A semicolon connects two independent clauses; 'nevertheless' signals contrast and is followed by a comma, linking the second clause while preserving its independence.",
+      "frequencyCount": 1
+    },
+    "Compound sentence with a semicolon and the conjunctive adverb 'consequently' indicating result": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The semicolon joins two complete thoughts; 'consequently' introduces the result of the first clause and is set off by a comma, functioning as a transitional adverb.",
+      "frequencyCount": 1
+    },
+    "Compound sentence with a semicolon and the conjunctive adverb 'meanwhile' showing simultaneous actions": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The semicolon links two independent clauses; 'meanwhile' signals that the second action occurs at the same time as the first and is followed by a comma.",
+      "frequencyCount": 1
+    },
+    "Compound sentence with a semicolon and the conjunctive adverb 'moreover' adding information": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "A semicolon joins two independent clauses; 'moreover' adds an extra, reinforcing point and is followed by a comma, serving as a conjunctive adverb linking the clauses.",
+      "frequencyCount": 1
+    },
+    "Complex sentence with an adverbial clause of time introduced by \"while\"": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The clause \"While the violinist refined the crescendo\" functions as an adverbial of time, indicating that the audience's absorption occurred concurrently with the violinist's action.",
+      "frequencyCount": 1
+    },
+    "Complex sentence with an adverbial clause of time introduced by \"before\"": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The clause \"Before the laboratory completed its calibration\" sets a temporal boundary; the main clause describes an action that must be finished prior to that point.",
+      "frequencyCount": 1
+    },
+    "Complex sentence with an adverbial clause of cause introduced by \"since\" (causal sense)": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "Here \"Since the ancient oak had survived the winter frost\" provides the reason for the ecologists' conclusion, linking cause to the main clause.",
+      "frequencyCount": 1
+    },
+    "Complex sentence with an adverbial clause of time introduced by \"until\"": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The clause \"Until the philosopher reconciled the paradox of free will\" specifies the time limit; the main clause states the condition that persisted up to that point.",
+      "frequencyCount": 1
+    },
+    "Complex sentence with two adverbial clauses of cause introduced by \"because\" and \"inasmuch as\"": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The first clause \"Because the river had overflowed its banks\" gives the primary cause for postponement, while the second clause \"inasmuch as safety took precedence over tradition\" elaborates the justification, both functioning as adverbial reasons for the action in the main clause.",
+      "frequencyCount": 1
+    },
+    "Complex sentence with concessive clause introduced by although": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The concessive clause 'Although the avant‑garde painter dismissed the critics' disdain as mere provincialism' is subordinate and contrasts with the main clause 'his canvases continued to command record‑breaking auction prices', showing a surprising outcome despite the painter's attitude.",
+      "frequencyCount": 1
+    },
+    "Complex sentence with concessive clause introduced by even though": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The subordinate concessive clause 'Even though the quantum physicist had derived the equation flawlessly' sets up an expectation that is contradicted by the main clause 'the experimental apparatus failed to corroborate the predicted anomaly', illustrating contrast between theoretical certainty and empirical failure.",
+      "frequencyCount": 1
+    },
+    "Complex sentence with concessive clause introduced by whereas": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The concessive clause 'Whereas the ancient oak endured centuries of drought' juxtaposes the resilience of the oak with the main clause 'the newly planted sapling wilted within weeks of its transplantation', highlighting a contrast between two subjects.",
+      "frequencyCount": 1
+    },
+    "Complex sentence with conditional clause introduced by if": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The conditional clause 'if the university grants him the research fellowship' is a protasis that sets a condition for the apodosis 'The philosopher will publish his treatise on free will', linking the two clauses with a cause‑effect relationship.",
+      "frequencyCount": 1
+    },
+    "Complex sentence with multiple conditional clauses introduced by unless and in case": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The sentence contains two conditional clauses: 'unless she is accompanied by a guide who already possesses one' (negative condition) and 'in case an unexpected storm arises' (preventive condition). Both modify the main clause 'She carries an emergency kit wherever she hikes', showing layered contingencies.",
+      "frequencyCount": 1
+    },
+    "Restrictive relative clause introduced by \"who\"": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The clause \"who charted the pulsar's erratic emissions\" restricts the noun \"astronomer\" to the specific individual being honored; it is essential information and therefore lacks commas.",
+      "frequencyCount": 2
+    },
+    "Non-restrictive relative clause introduced by \"which\" with commas": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The clause \"which depicts the city's industrial heritage through a cascade of muted tones\" adds extra information about the mural; because the noun is already identified, the clause is set off by commas.",
+      "frequencyCount": 2
+    },
+    "Restrictive relative clause introduced by \"whose\"": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The clause \"whose research unveiled the symbiotic relationship between lichens and alpine mosses\" limits \"the botanist\" to the one who made that discovery; it is essential, so no commas are used.",
+      "frequencyCount": 1
+    },
+    "Noun clause as subject": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The clause \"What the curator revealed about the Renaissance frescoes\" functions as the subject of the verb \"astonished,\" answering the question \"what astonished even the most seasoned art historians?\"",
+      "frequencyCount": 2
+    },
+    "Noun clause as direct object": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The clause \"whether the newly synthesized polymer could withstand the extreme pressures of deep‑sea exploration\" serves as the direct object of the verb \"debated,\" representing the content of the debate.",
+      "frequencyCount": 1
+    },
+    "Noun clause as predicate nominative": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "After the linking verb \"is,\" the clause \"that consciousness emerges from complex neural interactions rather than from a singular locus\" acts as a predicate nominative, renaming the subject \"the most compelling argument.\"",
+      "frequencyCount": 1
+    },
+    "Noun clause as object of a preposition": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The preposition \"when\" introduces the noun clause \"that the ancient oak had survived a century of lightning strikes,\" which functions as the object of the preposition, specifying the timing of her awe.",
+      "frequencyCount": 1
+    },
+    "Compound‑complex sentence (one dependent adverbial clause + two independent clauses joined by a coordinating conjunction)": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The sentence begins with the dependent adverbial clause \"While the violinist coaxed a trembling melody from her instrument,\" which sets a temporal context. This is followed by two independent clauses: \"the audience inhaled the lingering reverberations\" and \"the conductor, noting the subtle shifts in tempo, signaled a seamless transition to the next movement.\" The independent clauses are linked by the coordinating conjunction \"and,\" while the participial phrase \"noting the subtle shifts in tempo\" functions as a non‑essential modifier within the second independent clause.",
+      "frequencyCount": 1
+    },
+    "Compound‑complex sentence (dependent causal clause + two coordinated independent clauses)": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The dependent clause \"Because the astrophysicist had calibrated the telescope to detect faint infrared signatures\" explains the cause. It is followed by two independent clauses: \"she observed a distant galaxy erupting in star formation\" and \"her colleague, interpreting the data, hypothesized a previously unknown gravitational lens effect.\" The independent clauses are joined by the coordinating conjunction \"and,\" and the participial phrase \"interpreting the data\" modifies the subject of the second independent clause.",
+      "frequencyCount": 1
+    },
+    "Compound‑complex sentence (dependent concessive clause + two independent clauses)": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The concessive dependent clause \"Although the rainforest canopy shrouded the forest floor in perpetual twilight\" introduces a contrast. It is followed by two independent clauses: \"researchers recorded the chorus of nocturnal insects\" and \"the conservationist, aware of the ecosystem's fragility, advocated for immediate protective legislation.\" The independent clauses are linked by \"and,\" and the adjective phrase \"aware of the ecosystem's fragility\" serves as a non‑essential modifier.",
+      "frequencyCount": 1
+    },
+    "Compound‑complex sentence (dependent temporal clause + two independent clauses)": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The temporal dependent clause \"When the philosopher contemplated the paradox of free will\" sets the time frame. The first independent clause \"he drafted a treatise that intertwined existential inquiry with empirical evidence\" contains a relative clause \"that intertwined...\" as a modifier. The second independent clause \"his students, intrigued by the synthesis, engaged in spirited debates that lasted well into the night\" is coordinated with \"and\" and includes a participial phrase \"intrigued by the synthesis\" and a relative clause \"that lasted well into the night.\"",
+      "frequencyCount": 1
+    },
+    "Compound‑complex sentence (dependent causal clause + two independent clauses)": {
+      "category": "Sentence Structure",
+      "ruleExplanation": "The causal dependent clause \"Since the chef experimented with molecular gastronomy\" explains the reason for the subsequent events. It is followed by two independent clauses: \"the diners tasted aromas that evoked distant memories\" and \"the food critic, impressed by the innovative palate, penned a review that praised both technique and imagination.\" The clauses are linked by \"and,\" and each independent clause contains a relative clause (\"that evoked distant memories\" and \"that praised both technique and imagination\") and a participial phrase modifying the subject of the second clause.",
+      "frequencyCount": 1
+    },
+    "Simple present with a stative verb to express a universal truth": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The verb \"rises\" is in the simple present, which is used here because the statement describes an unchanging natural fact that holds at all times.",
+      "frequencyCount": 1
+    },
+    "Present continuous to describe a temporary, ongoing action": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The progressive form \"is arranging\" indicates an action in progress at the moment of speaking, contrasting with the simple present's static description.",
+      "frequencyCount": 1
+    },
+    "Simple present for a scientific law or general truth": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The verb \"postulated\" is past, but the clause \"accelerates uniformly\" uses the simple present to state a timeless scientific law.",
+      "frequencyCount": 1
+    },
+    "Present continuous to express a temporary, evolving mental state": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "\"Is drafting\" signals an activity currently underway, while the progressive aspect underscores the fleeting, momentary nature of the poet's inspiration.",
+      "frequencyCount": 1
+    },
+    "Juxtaposition of simple present for a universal fact and present continuous for an immediate action": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The clause \"boils\" uses the simple present to state a constant scientific fact, while \"is boiling\" employs the present continuous to describe a specific, ongoing activity.",
+      "frequencyCount": 1
+    },
+    "Present Perfect (experiential) with 'for'": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The present perfect 'has documented' conveys an action that began in the past and continues to be relevant, while the prepositional phrase 'for over a decade' specifies the duration of the experience up to the present.",
+      "frequencyCount": 2
+    },
+    "Present Perfect (experiential) with 'since'": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The verb phrase 'has contemplated' is in the present perfect, indicating a continuous mental activity that started at a specific past point ('since beginning her doctoral research') and persists to the present.",
+      "frequencyCount": 1
+    },
+    "Present Perfect Continuous with 'since'": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The construction 'has been refining' is present perfect continuous, expressing an ongoing activity that started at a definite past moment ('since relocating to the coastal village') and continues into the present, emphasizing its progressive nature.",
+      "frequencyCount": 1
+    },
+    "Present Perfect Continuous with 'for'": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The verb phrase 'have been monitoring' employs the present perfect continuous to highlight a sustained investigative effort that began six months ago and is still in progress, with 'for the past six months' indicating the elapsed duration.",
+      "frequencyCount": 1
+    },
+    "Simple past for a sequential narrative": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "Both verbs 'calibrated' and 'unfolded' are in the simple past, indicating completed actions that occurred one after the other in the past.",
+      "frequencyCount": 1
+    },
+    "Past continuous for background action interrupted by simple past event": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The clause 'While the painter mixed ochre with ultramarine' uses the past continuous 'mixed' to set a ongoing background; the main clause 'a sudden gust shattered the studio window' uses the simple past 'shattered' to depict the interrupting event.",
+      "frequencyCount": 1
+    },
+    "Past continuous background with simple past interruption": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "'Contemplated' is simple past describing a completed mental action; the subordinate clause 'when the lecture hall lights flickered and dimmed abruptly' employs simple past verbs 'flickered' and 'dimmed' to show sudden actions that occurred during the contemplation.",
+      "frequencyCount": 1
+    },
+    "Past continuous background action with simple past main clause": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "'While the river surged' uses the past continuous 'surged' to portray an ongoing natural event; the main clause 'the botanist recorded...' uses the simple past 'recorded' to indicate the specific action taken amid that background.",
+      "frequencyCount": 1
+    },
+    "Simple past sequence of completed actions": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "Both verbs 'finished' and 'erupted' are simple past, conveying two discrete actions that followed one another in chronological order.",
+      "frequencyCount": 1
+    },
+    "Past Perfect (had completed) expressing an action completed prior to another past event (the orchestra arrived)": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The past perfect verb 'had completed' places the finishing of the symphony earlier than the past reference point of the orchestra's arrival, establishing a clear temporal sequence.",
+      "frequencyCount": 1
+    },
+    "Past Perfect Continuous (had been analyzing) indicating a prolonged activity that occurred before a subsequent past event (the laboratory identified)": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The continuous form 'had been analyzing' conveys the ongoing duration of the analysis leading up to the later past moment when the isotopic signature was identified.",
+      "frequencyCount": 1
+    },
+    "Past Perfect (had withstood) denoting an action completed before another past occurrence (the wildfire felled)": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "'Had withstood' situates the oak's endurance as having been completed prior to the later past event of the wildfire, emphasizing the chronological order.",
+      "frequencyCount": 1
+    },
+    "Past Perfect Continuous (had been debating) showing an extended past activity preceding a later past development (the breakthrough)": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The phrase 'had been debating' highlights the sustained, repeated discussions that took place up to the point when the neuroscientific breakthrough occurred, marking the temporal relationship.",
+      "frequencyCount": 1
+    },
+    "Past Perfect (had finished) indicating a completed action prior to another past action (the editor called)": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The past perfect verb 'had finished' places the manuscript's completion before the subsequent past event of the editor's call, clarifying that the finishing occurred earlier.",
+      "frequencyCount": 1
+    },
+    "Simple Future with 'will' for spontaneous prediction": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The modal 'will' expresses a future event that the speaker predicts will occur without prior planning; it conveys a confident, on‑the‑spot forecast about the unveiling.",
+      "frequencyCount": 1
+    },
+    "Future 'be going to' for planned future action": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The construction 'be going to' indicates a premeditated intention; the sentence shows that the scientists have already arranged to deploy the equipment, reflecting a planned future activity.",
+      "frequencyCount": 1
+    },
+    "Future Continuous to describe an ongoing action at a specific future time": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The Future Continuous ('will be flowing') portrays an action that will be in progress at a particular future moment, emphasizing the continuity of the river's movement during the described scene.",
+      "frequencyCount": 1
+    },
+    "Future Perfect to denote a completed action before another future point": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The Future Perfect ('will have synthesized') signals that the synthesis will be finished prior to the future reference point ('the symposium concludes'), highlighting the completion of a complex intellectual undertaking.",
+      "frequencyCount": 1
+    },
+    "Future Perfect combined with a future time clause": {
+      "category": "Tenses & Aspects",
+      "ruleExplanation": "The Future Perfect ('will have recorded') is used within a temporal clause introduced by 'when' to indicate that the recording will be completed before the sunrise event, demonstrating precise sequencing of future actions.",
+      "frequencyCount": 1
+    },
+    "Zero Conditional (If + present simple, present simple)": {
+      "category": "Conditionals & Mood",
+      "ruleExplanation": "The clause 'When a painter mixes...' uses present simple to describe a universal, repeatable outcome, and the main clause 'the resulting hue invariably shifts...' also uses present simple, indicating an immutable fact about color mixing.",
+      "frequencyCount": 1
+    },
+    "First Conditional (If + present simple, will + base verb)": {
+      "category": "Conditionals & Mood",
+      "ruleExplanation": "The 'if' clause presents a realistic future condition ('cultivates') and the main clause predicts a future result ('it typically blossoms') using the simple present to express certainty within the conditional framework.",
+      "frequencyCount": 2
+    },
+    "Zero Conditional (When + present simple, present simple)": {
+      "category": "Conditionals & Mood",
+      "ruleExplanation": "Both clauses employ present simple to state a regular, observable natural phenomenon, illustrating the zero conditional's function of expressing general truths.",
+      "frequencyCount": 2
+    },
+    "Second conditional (hypothetical present/future)": {
+      "category": "Conditionals & Mood",
+      "ruleExplanation": "The clause \"If the curator were to acquire...\" uses the past subjunctive \"were\" to denote an unreal present/future possibility, and the main clause employs \"would gain\" to express the consequent hypothetical result.",
+      "frequencyCount": 2
+    },
+    "Third conditional (counterfactual past)": {
+      "category": "Conditionals & Mood",
+      "ruleExplanation": "The past perfect \"had documented\" expresses an unreal condition in the past, and the modal perfect \"would have possessed\" conveys the hypothetical result that did not occur.",
+      "frequencyCount": 3
+    },
+    "Mixed conditional (past condition → present result)": {
+      "category": "Conditionals & Mood",
+      "ruleExplanation": "The past unreal condition \"Had the composer embraced...\" (inverted past perfect) expresses a counterfactual action that did not occur; the consequent clause uses \"would be performed\" to describe a present reality that would exist now if the past condition had been fulfilled.",
+      "frequencyCount": 5
+    },
+    "Mandative subjunctive after a verb of insistence": {
+      "category": "Conditionals & Mood",
+      "ruleExplanation": "The verb \"insisted\" triggers the mandative subjunctive; the subordinate clause uses the base form \"be\" instead of \"is\" to express a demanded action.",
+      "frequencyCount": 1
+    },
+    "Mandative subjunctive after a verb of demand": {
+      "category": "Conditionals & Mood",
+      "ruleExplanation": "Following the verb \"demanded,\" the clause employs the subjunctive \"submit\" (base form) to convey a requirement, irrespective of the subject's number or tense.",
+      "frequencyCount": 1
+    },
+    "Expressive subjunctive in a comparative clause introduced by \"as if\"": {
+      "category": "Conditionals & Mood",
+      "ruleExplanation": "The phrase \"as if\" introduces a hypothetical situation; the subjunctive \"were\" is used instead of \"was\" to indicate unreality.",
+      "frequencyCount": 1
+    },
+    "Expressive subjunctive after \"as though\"": {
+      "category": "Conditionals & Mood",
+      "ruleExplanation": "\"As though\" signals a counter‑factual comparison; the subjunctive \"were\" conveys that the moon is not actually a sentinel, but is imagined as one.",
+      "frequencyCount": 1
+    },
+    "Mandative subjunctive after the verb \"argued that\" expressing a prescriptive ideal": {
+      "category": "Conditionals & Mood",
+      "ruleExplanation": "Although \"argued\" is not a classic mandative verb, the clause presents a normative proposition; the subjunctive \"be pursued\" expresses the ideal action demanded by the argument.",
+      "frequencyCount": 1
+    },
+    "Inverted conditional with past perfect (Had + subject + past participle)": {
+      "category": "Conditionals & Mood",
+      "ruleExplanation": "The clause begins with 'Had I examined', which inverts the usual 'if I had examined' structure; it uses the past perfect to refer to a counterfactual condition in the past, and the main clause expresses the hypothetical result with 'might have avoided'.",
+      "frequencyCount": 2
+    },
+    "Inverted conditional with modal 'were to' (Were + subject + to + base verb)": {
+      "category": "Conditionals & Mood",
+      "ruleExplanation": "The phrase 'Were we to embark' substitutes for 'if we were to embark', presenting a future hypothetical scenario; the modal 'could' in the consequent clause indicates a possible outcome of that imagined action.",
+      "frequencyCount": 2
+    },
+    "Inverted conditional with modal 'should' (Should + subject + base verb)": {
+      "category": "Conditionals & Mood",
+      "ruleExplanation": "Here 'Should you encounter' replaces 'if you should encounter', forming a formal conditional; the sentence presents advice contingent on that potential event, using 'lest' to introduce a preventive clause.",
+      "frequencyCount": 1
+    },
+    "Negative inversion with 'Seldom had...'": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The adverb 'seldom' triggers subject‑auxiliary inversion; the auxiliary verb 'had' precedes the subject 'the curator's meticulous cataloguing', forming a negative/inverse construction that emphasizes rarity.",
+      "frequencyCount": 1
+    },
+    "Negative inversion with 'Rarely does...'": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The adverb 'rarely' initiates inversion, causing the auxiliary 'does' to precede the singular subject 'the astrophysicist', thereby highlighting the infrequency of the action.",
+      "frequencyCount": 1
+    },
+    "Correlative conjunction 'Not only... but also' with inversion after 'Not only'": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "When 'not only' begins a clause, inversion is required; the auxiliary 'did' precedes the subject 'the poet', and the second clause mirrors the structure with 'but also' to link two parallel predicates.",
+      "frequencyCount": 1
+    },
+    "Negative inversion with 'Scarcely had... when'": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The adverb 'scarcely' forces inversion, placing the auxiliary verb 'had' before the subject 'the storm'; the temporal clause introduced by 'when' follows, indicating an event that occurred immediately after the inverted clause.",
+      "frequencyCount": 1
+    },
+    "Negative inversion with 'Never before had...'": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The phrase 'never before' acts as a negative adverbial, prompting inversion; the auxiliary verb 'had' is positioned before the subject 'a single theatrical performance', underscoring the unprecedented nature of the event.",
+      "frequencyCount": 1
+    },
+    "Fronted temporal adverbial followed by a main clause; commas set off the adverbial": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The temporal phrase \"At dawn\" is placed at the beginning of the sentence to establish the time frame; the comma after it signals that this fronted adverbial modifies the entire clause that follows.",
+      "frequencyCount": 1
+    },
+    "Fronted locative adverbial with a comma; main clause follows": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "\"Beyond the misty cliffs\" functions as a locative fronted adverbial, indicating where the action occurs. The comma separates it from the main clause, allowing the phrase to modify the whole sentence.",
+      "frequencyCount": 1
+    },
+    "Fronted manner adverbial set off by commas; main clause follows": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The manner phrase \"With deliberate patience\" precedes the main clause, describing how the botanist performed the action. The commas delimit the fronted adverbial, linking it to the subsequent clause.",
+      "frequencyCount": 1
+    },
+    "Fronted viewpoint adverbial introduced by a prepositional phrase, comma-separated": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The viewpoint adverbial \"From a philosopher's perspective\" is fronted to frame the sentence; the comma after it separates the adverbial from the main clause, indicating that the entire statement is being considered through that lens.",
+      "frequencyCount": 1
+    },
+    "Fronted directional prepositional phrase with commas; main clause follows": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The directional phrase \"Through the bustling market streets\" is placed at the sentence's start to convey movement. The commas isolate this fronted adverbial, showing it modifies the entire subsequent clause.",
+      "frequencyCount": 1
+    },
+    "Present participial phrase modifying the subject": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The present participle 'playing' introduces a participial phrase that describes an ongoing action of the subject 'the violinist' at the time of captivating the audience.",
+      "frequencyCount": 1
+    },
+    "Past participial phrase modifying the subject": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The past participle 'preserved' forms a participial phrase that provides additional information about the state of the manuscript, indicating a completed action affecting the noun.",
+      "frequencyCount": 1
+    },
+    "Perfect participial phrase indicating prior completed action": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The perfect participle 'Having exhausted' denotes an action completed before the main clause's action, establishing a temporal sequence where the exhaustion of hypotheses precedes the decision to collaborate.",
+      "frequencyCount": 1
+    },
+    "Present participial phrase describing simultaneous action": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The present participle 'painting' creates a vivid image of the sunrise's ongoing effect, occurring concurrently with the heralding of the day's activities.",
+      "frequencyCount": 1
+    },
+    "Past participial phrase indicating a passive condition": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The past participle 'confronted' functions as a passive participial phrase, indicating that the philosopher is the recipient of the paradox, and it modifies the subject to set the context for the ensuing action.",
+      "frequencyCount": 1
+    },
+    "Nominative absolute (noun + participle) preceding the main clause": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The phrase \"The comet blazing a phosphorescent trail across the midnight sky\" is a nominative absolute; it contains a noun (comet) and a participle phrase (blazing ...) that provides circumstantial information for the main clause that follows.",
+      "frequencyCount": 1
+    },
+    "Nominative absolute (noun + adjective) inserted mid‑sentence": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "\"Her mind, exhausted by years of relentless inquiry,\" is an absolute construction where the noun \"mind\" is modified by the past participle adjective \"exhausted,\" adding background context to the main assertion about yielding a hypothesis.",
+      "frequencyCount": 1
+    },
+    "Nominative absolute (noun + participle) at the beginning of the sentence": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The absolute phrase \"The garden, its roses wilting under an unexpected frost\" supplies a descriptive circumstance; the noun \"garden\" is linked to the participial clause \"its roses wilting...,\" setting the scene for the main clause about the gardener.",
+      "frequencyCount": 1
+    },
+    "Nominative absolute (noun + adjective) preceding the main clause": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "Here \"His conscience, unburdened after the confession,\" functions as an absolute; the noun \"conscience\" is described by the adjective phrase \"unburdened after the confession,\" establishing the mental state that informs the subsequent action.",
+      "frequencyCount": 1
+    },
+    "Nominative absolute (noun + participle) embedded within the sentence": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The phrase \"The ancient oak, its bark scarred by lightning strikes,\" is a nominative absolute that provides contextual imagery; the noun \"oak\" is paired with the participial clause \"its bark scarred...,\" which modifies the main narrative about the hikers.",
+      "frequencyCount": 1
+    },
+    "It‑cleft emphasizing the subject": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The construction 'It was X who Y' isolates the noun phrase 'the astronomer' as the focus of the clause, while the relative clause 'who charted…' supplies the essential information about that subject.",
+      "frequencyCount": 1
+    },
+    "It‑cleft highlighting a specific agent": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "Here 'It is X whose Y' foregrounds the painter as the focal element; the relative clause 'whose chiaroscuro technique renders…' provides the defining attribute, thereby directing attention to the artist's method.",
+      "frequencyCount": 1
+    },
+    "Wh‑cleft focusing on the predicative complement": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The wh‑cleft 'What X was Y' places the clause 'the sudden proliferation…' in the subject position, emphasizing the unexpected event as the focal point of the sentence.",
+      "frequencyCount": 1
+    },
+    "Wh‑cleft emphasizing a proposition": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The structure 'What X contended was Y' isolates the proposition 'that moral agency arises…' as the focal information, while the main clause attributes this proposition to the philosopher.",
+      "frequencyCount": 1
+    },
+    "It‑cleft drawing attention to an unexpected subject": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The sentence uses 'It was X who…' to spotlight the commuter as the focus; the subsequent relative clause provides the narrative detail, thereby shifting emphasis from the ordinary setting to the individual's experience.",
+      "frequencyCount": 1
+    },
+    "Essential appositive noun phrase set off by commas because it provides necessary identification of the subject": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The phrase \"the pioneering computer programmer of the nineteenth century\" renames and specifies Ada Lovelace; without it the sentence would lose the precise identification, so the commas delimit an essential appositive that is integral to the meaning.",
+      "frequencyCount": 1
+    },
+    "Non‑essential appositive noun phrase enclosed in commas": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "\"A sprawling mosaic of biodiversity\" adds extra information about the Amazon rainforest but is not required to identify it; the commas signal a non‑essential (parenthetical) appositive that enriches the sentence.",
+      "frequencyCount": 1
+    },
+    "Parenthetical insertion using em dashes to set off an appositive phrase": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The dash‑enclosed phrase \"an elegant synthesis of space, time, and gravitation\" functions as an appositive that elaborates on the theory; the em dashes create a strong parenthetical pause, emphasizing the insertion.",
+      "frequencyCount": 1
+    },
+    "Non‑essential appositive noun phrase with commas": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "\"A sentinel of centuries\" provides descriptive, non‑restrictive information about the oak; commas indicate that the appositive is parenthetical and could be omitted without altering the core proposition.",
+      "frequencyCount": 1
+    },
+    "Parenthetical insertion of an appositive within a complex sentence, set off by em dashes": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The phrase \"an alumnus of the Vienna Conservatory\" renames \"the conductor\" and is inserted parenthetically between dashes; this appositive supplies supplementary detail while the surrounding clauses remain grammatically independent.",
+      "frequencyCount": 1
+    },
+    "Gerund as subject vs. infinitive as purpose clause": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The gerund phrase \"Observing the aurora borealis\" functions as the grammatical subject of the sentence, while the infinitive clause \"to replicate\" (here expressed as \"that no telescope can ever replicate\") indicates the purpose or result that the subject cannot achieve, highlighting the contrast between a gerund‑subject and an infinitival complement.",
+      "frequencyCount": 1
+    },
+    "Gerund as object of preposition vs. infinitive of purpose": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The gerund \"questioning\" is the object of the preposition \"of\" within the noun phrase \"habit of questioning every premise,\" whereas the infinitive \"to discover\" expresses the purpose of the habit, showing how gerunds can serve as objects while infinitives introduce purpose.",
+      "frequencyCount": 1
+    },
+    "Gerund vs. infinitive after comparative \"prefer\"": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "After the verb \"prefers,\" the gerund \"composing\" follows the first element of the comparative structure, and the infinitive \"to perform\" follows the comparative \"to,\" illustrating the rule that \"prefer\" can take a gerund‑noun phrase contrasted with an infinitival phrase.",
+      "frequencyCount": 1
+    },
+    "Gerund as object of verb vs. infinitive of intention": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The verb \"advocated\" takes the gerund phrase \"preserving wetlands\" as its direct object, while the infinitive \"to safeguard\" expresses the speaker's intention, demonstrating the distinct syntactic roles of gerunds and infinitives within the same clause.",
+      "frequencyCount": 1
+    },
+    "Gerund as complement after \"after\" vs. infinitive of future action": {
+      "category": "Advanced Syntax",
+      "ruleExplanation": "The clause \"after finishing the manuscript\" uses the gerund \"finishing\" as the complement of the preposition \"after,\" whereas the main clause contains the infinitive \"to travel,\" indicating a planned future action, thereby contrasting gerundial temporal clauses with infinitival purpose clauses.",
+      "frequencyCount": 1
+    },
+    "Standard passive voice with explicit agent": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The active clause 'A team of conservators meticulously restored the frescoes' is transformed by moving the object 'the frescoes' to subject position, inserting the auxiliary 'were' plus past participle 'restored', and optionally adding the agent phrase introduced by 'by'.",
+      "frequencyCount": 3
+    },
+    "Double‑object passive (recipient passive)": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "In the active construction 'The committee bestowed the award upon the young poet', the indirect object 'the young poet' is promoted to subject in the passive, while the direct object 'the award' remains as the object of the preposition 'upon'. The auxiliary 'was' and past participle 'bestowed' create the passive form.",
+      "frequencyCount": 1
+    },
+    "Impersonal passive reporting construction": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The clause employs an impersonal passive where 'it' functions as a dummy subject; the true subject of the belief is expressed in the following 'that'-clause. The verb phrase 'is believed' combines the auxiliary 'is' with the past participle 'believed', conveying a general consensus without specifying the agents.",
+      "frequencyCount": 166
+    },
+    "Epistemic deduction with modal perfect (must have + past participle)": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The modal 'must' expresses a strong inference about a past event; it is followed by the perfect infinitive 'have seen' to indicate that the seeing occurred before the present moment.",
+      "frequencyCount": 1
+    },
+    "Epistemic denial with modal perfect (could not have + past participle)": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The negative modal phrase 'could not have known' conveys the speaker's judgment that the knowledge was impossible in the past, using the perfect infinitive 'have known' to refer to a prior state of awareness.",
+      "frequencyCount": 1
+    },
+    "Epistemic possibility with modal perfect (might have + past participle)": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The modal 'might' signals a tentative inference about a past action; the perfect infinitive 'have overlooked' situates the possible overlooking before the present assessment.",
+      "frequencyCount": 1
+    },
+    "Deontic expectation with modal perfect (ought to have been + past participle)": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "Here 'ought to have been persuaded' combines the deontic modal 'ought' with the perfect infinitive, indicating that, according to normative expectation, the persuasion should have occurred in the past.",
+      "frequencyCount": 1
+    },
+    "Epistemic deduction with modal perfect (must have deduced)": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The modal 'must' conveys a logical conclusion about a past intellectual act; the perfect infinitive 'have deduced' links the deduction to a time preceding the present discussion.",
+      "frequencyCount": 1
+    },
+    "Correlative conjunction \"neither...nor\" with parallel verb phrases": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The correlative pair \"neither...nor\" joins two parallel noun phrases (the avant‑garde painter, the classical sculptor) that share the same verb phrase \"could capture...\"; the structure demands symmetry, ensuring each element occupies the same grammatical slot.",
+      "frequencyCount": 1
+    },
+    "Correlative conjunction \"either...or\" with parallel independent clauses": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The correlative \"either...or\" links two complete clauses, each containing a subject, modal verb, and predicate. Parallelism is maintained by mirroring the verb phrase structure (will present... / will unveil...), which clarifies that one of the two mutually exclusive events will occur.",
+      "frequencyCount": 1
+    },
+    "Correlative conjunction \"not only...but also\" with parallel verb phrases": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The sentence begins with the inverted form \"Not only did...\" and continues with \"but also\" to introduce a second verb phrase. Both clauses share the same subject \"the philosopher\" and parallel verb structures (interrogate... / illuminated...), demonstrating balanced emphasis.",
+      "frequencyCount": 1
+    },
+    "Correlative conjunction \"whether...or\" with parallel subordinate clauses": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The correlative \"whether...or\" introduces two parallel subordinate clauses describing distinct environmental conditions. Each clause follows the same pattern (subject + verb + prepositional phrase), ensuring syntactic parallelism before the main clause.",
+      "frequencyCount": 1
+    },
+    "Correlative conjunction \"neither...nor\" with parallel noun phrases and shared verb phrase": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "Here \"neither...nor\" connects two parallel noun phrases (the novelist's melancholic protagonist, the filmmaker's stoic antagonist). Both subjects share the same verb phrase \"relinquishes hope,\" preserving parallel structure and reinforcing the contrast between characters.",
+      "frequencyCount": 1
+    },
+    "Polite inquiry inversion with embedded indirect yes‑no question": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The sentence uses the auxiliary verb \"do\" followed by the subject \"you\" and the main verb \"happen\" to form a courteous inversion; the embedded indirect question \"whether the curator intends…\" functions as the object of \"know,\" preserving the declarative word order within the clause.",
+      "frequencyCount": 1
+    },
+    "Embedded indirect question introduced by \"I wonder\"": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The clause \"how the quantum physicist reconciles…\" is an indirect question serving as the complement of \"wonder\"; it retains subject‑verb order and does not require inversion or a question mark, thereby embedding the inquiry within a statement.",
+      "frequencyCount": 1
+    },
+    "Embedded indirect question introduced by a reporting verb \"asked\"": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The clause \"what philosophical ramifications would arise…\" is an indirect interrogative functioning as the object of \"asked\"; it employs conditional mood and maintains standard subject‑verb order, illustrating how reported questions are embedded without inversion.",
+      "frequencyCount": 1
+    },
+    "Tag question attached to an indirect inquiry": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "A tag question \"didn't he?\" follows an elaborate statement containing an indirect question; the tag mirrors the auxiliary \"did\" from the main clause and adopts the negative form to seek confirmation, demonstrating how tags can be appended to complex sentences.",
+      "frequencyCount": 1
+    },
+    "Polite request with embedded indirect yes‑no question": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The sentence begins with the modal \"Could\" to soften the request, followed by the subject \"you\" and infinitive \"tell\"; the embedded clause \"if the playwright's latest work…\" is an indirect question serving as the object of \"tell,\" illustrating the combination of politeness and indirect interrogation.",
+      "frequencyCount": 1
+    },
+    "Pro‑form substitution with \"does so\" to avoid repetition of the verb phrase \"captivates passers‑by\"": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The verb phrase \"captivates passers‑by\" is expressed once in the first clause; in the second clause it is replaced by the pro‑form \"does so\", which stands for the entire preceding VP, thereby preventing redundancy while preserving meaning.",
+      "frequencyCount": 1
+    },
+    "Ellipsis of the verb phrase \"celebrated\" in the second conjunct, leaving only the subject and adverbial modifier": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "In the second clause the predicate \"celebrated\" is omitted because it is recoverable from the preceding clause; the reader infers \"celebrated\" after \"the theorists\", resulting in a concise parallel structure.",
+      "frequencyCount": 1
+    },
+    "Topicalization/fronting of the adverbial phrase \"Rarely\" and the subject‑verb inversion that follows for emphasis": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The adverb \"Rarely\" is fronted to the clause-initial position, triggering subject‑auxiliary inversion (\"do we\") to maintain the grammatical requirement of English negative/inverse constructions, thereby emphasizing the scarcity of the phenomenon.",
+      "frequencyCount": 1
+    },
+    "Substitution with the demonstrative pronoun \"its\" referring back to \"the philosopher's treatise\" and fronting of the contrastive adverbial \"nevertheless\"": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The noun phrase \"the philosopher's treatise\" is replaced by the possessive pronoun \"its\" in the second clause, avoiding repetition; the adverb \"nevertheless\" is fronted to the clause-initial position to highlight the contrast between abstract theory and lived reality.",
+      "frequencyCount": 1
+    },
+    "Ellipsis of the verb phrase \"found solace\" in the second clause, with substitution of the prepositional phrase \"in its renewed tranquility\"": {
+      "category": "Voice & Modality",
+      "ruleExplanation": "The verb phrase \"found solace\" is omitted after \"the hikers\" because it is recoverable from the first clause; the prepositional phrase \"in its renewed tranquility\" substitutes for the longer expression \"in the meadow's renewed tranquility\", streamlining the sentence while preserving the semantic link.",
+      "frequencyCount": 1
+    },
+    "Appositive phrase clarifying an abstract noun with concrete apposition": {
+      "category": "Voice, Modality & Precision",
+      "ruleExplanation": "The abstract noun \"insight\" is immediately followed by an appositive phrase \"a meticulous mapping of neural correlates\" that concretizes the otherwise intangible concept, functioning as a non‑restrictive appositive and preserving the sentence’s main clause structure.",
+      "frequencyCount": 154
+    },
+    "Compound sentence with semicolon and conjunctive adverb (nevertheless)": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "Two independent clauses are joined by a semicolon; the second clause begins with the conjunctive adverb \"nevertheless,\" which signals a contrast to the first clause while preserving grammatical independence.",
+      "frequencyCount": 38
+    },
+    "Compound sentence with semicolon and conjunctive adverb (furthermore)": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "A semicolon links two complete thoughts; the conjunctive adverb \"furthermore\" adds additive information, emphasizing that the stratigraphic evidence complements the artistic findings.",
+      "frequencyCount": 37
+    },
+    "Compound sentence with semicolon and conjunctive adverb (conversely)": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The sentence contains two independent clauses separated by a semicolon; \"conversely\" introduces a clause that presents a contrasting consequence, highlighting the dual impact of the trade network.",
+      "frequencyCount": 26
+    },
+    "Inverted conditional (Had + subject + past participle)": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The clause begins with the inverted conditional marker \"Had\" followed by the subject \"Homer\" and the past participle \"possessed\"; the protasis omits \"if\" and the apodosis follows with \"would have resonated,\" fulfilling the standard structure of a past unreal condition.",
+      "frequencyCount": 14
+    },
+    "Correlative conjunction structure (not only... but also) with parallel clauses": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The sentence employs the correlative pair \"not only... but also\" to link two parallel verb phrases (cues the violins / signals the brass section). Both clauses share the same subject (the conductor) and are balanced by identical infinitival complements, illustrating parallelism within a compound-complex structure.",
+      "frequencyCount": 19
+    },
+    "Correlative conjunction structure (neither... nor) with parallel clauses": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "Here \"neither... nor\" introduces two coordinated verb phrases (disregards... / neglects...), each governed by the same subject (the composer). The parallel infinitival objects (the harmonic function... / the rhythmic vitality...) create balanced clauses, fulfilling the correlative requirement.",
+      "frequencyCount": 19
+    },
+    "Sequence of tenses in reported speech with backshifting": {
+      "category": "Tenses & Aspect Nuances",
+      "ruleExplanation": "The original utterance was present: \"These tablets reveal unknown trade routes.\" In reported speech, the present simple \"reveal\" is backshifted to the conditional \"would reveal,\" and the present perfect \"have been unearthed\" becomes past perfect \"had been unearthed,\" demonstrating the systematic backshifting of present to past forms.",
+      "frequencyCount": 169
+    },
+    "Compound-complex sentence with one dependent time clause and two independent clauses": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The dependent time clause \"When the sun set over the ancient academy\" modifies the entire sentence; the two independent clauses \"scholars debated the morality of artificial consciousness\" and \"the council convened to draft a new ethical charter\" are coordinated by the conjunction \"and,\" yielding a compound‑complex structure.",
+      "frequencyCount": 74
+    },
+    "Embedded indirect question inside a formal declarative inquiry": {
+      "category": "Voice, Modality & Precision",
+      "ruleExplanation": "The main clause is a formal request ('Could you elucidate'), followed by an embedded indirect question introduced by 'whether' that inquires about the maître d's intention; the sentence maintains declarative syntax while embedding the interrogative content.",
+      "frequencyCount": 145
+    },
+    "Mixed conditional: past counterfactual hypothesis creating a present enduring consequence": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The protasis uses the past perfect (had embraced) to denote a counterfactual action in the past; the apodosis employs would + base verb (would be performing) to describe a present state that results from that unreal past decision.",
+      "frequencyCount": 144
+    },
+    "Epistemic modal deduction about the past (must have deduced)": {
+      "category": "Voice, Modality & Precision",
+      "ruleExplanation": "The main clause employs the epistemic modal verb phrase \"must have deduced\" to express a logical conclusion about a past mental act; the past perfect infinitive \"have deduced\" anchors the deduction to a completed event, while the prepositional phrase \"from the lingering shadows on the façade\" supplies the evidential basis.",
+      "frequencyCount": 24
+    },
+    "Epistemic modal deduction about the past (could not have known)": {
+      "category": "Voice, Modality & Precision",
+      "ruleExplanation": "The modal construction \"could not have known\" conveys impossibility of knowledge in retrospect; the perfect infinitive \"have known\" situates the epistemic state before the present, and the subordinate clause \"that the planner intended such a chaotic pedestrian flow\" specifies the content of the unattainable knowledge.",
+      "frequencyCount": 24
+    },
+    "Inverted conditional with initial 'Were [subject] to [verb]...'": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The clause begins with the inverted subjunctive construction 'Were the municipal council to approve', which functions as a hypothetical condition; the main clause uses 'would' to express the projected future result.",
+      "frequencyCount": 24
+    },
+    "Future perfect expressing completed state prior to a specified benchmark time": {
+      "category": "Tenses & Aspect Nuances",
+      "ruleExplanation": "The clause \"will have finalized\" is in the future perfect, indicating an action (finalizing the façade details) that will be completed before the benchmark event \"the new civic plaza opens in 2030\".",
+      "frequencyCount": 111
+    },
+    "Negative restrictive inversion with 'Rarely'": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The adverbial 'Rarely' initiates a negative restrictive clause, triggering subject‑auxiliary inversion; the auxiliary 'have' precedes the subject 'botanists', emphasizing the scarcity of such discoveries.",
+      "frequencyCount": 9
+    },
+    "Negative restrictive inversion with 'Seldom'": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "Beginning with the negative adverb 'Seldom' forces inversion of the auxiliary verb 'does' before the subject 'the understory', highlighting the rarity of the phenomenon.",
+      "frequencyCount": 9
+    },
+    "Negative restrictive inversion with 'Little did'": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The phrase 'Little did' introduces a negative restrictive construction; the auxiliary 'did' precedes the subject 'the early ecologists', conveying unexpected outcome.",
+      "frequencyCount": 6
+    },
+    "Correlative conjunction (not only... but also) with parallel clauses": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The sentence links two parallel verb phrases—'evokes the tragic hubris of Achilles' and 'delineates the subtle vanity of Odysseus'—with the correlative pair not only... but also, maintaining parallel structure and a shared subject 'The poet'.",
+      "frequencyCount": 8
+    },
+    "Correlative conjunction (neither... nor) with parallel clauses": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "Two coordinated verb phrases—'romanticizes the Norse sagas' and 'trivializes the Celtic epics'—are balanced by neither... nor, preserving parallelism and a common verb 'chooses' governing the infinitive phrase.",
+      "frequencyCount": 8
+    },
+    "Inverted conditional with initial 'Were [subject] to [verb]...',' projecting hypothetical future": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The clause begins with the inverted conditional \"Were the neuropsychologist to propose\" (subjunctive were + infinitive), omitting \"if\". It sets a hypothetical future action; the main clause uses the conditional modal \"would\" to indicate the projected consequence.",
+      "frequencyCount": 16
+    },
+    "It-cleft": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The clause 'It is the unequivocal obligation of sovereign states' functions as the cleft, foregrounding the subject 'the unequivocal obligation of sovereign states' and contrasting it with the subordinate relative clause 'that underpins the enforcement of treaty obligations,' thereby emphasizing the legal duty over political whims.",
+      "frequencyCount": 58
+    },
+    "Wh-cleft": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The wh‑cleft begins with the interrogative pronoun 'What' introducing a focal clause; the verb phrase 'chiefly safeguard' follows, and the complement 'the inviolable dignity of non‑combatants' is highlighted as the focal element, while the relative clause 'that eclipses any strategic expediency' provides further specification.",
+      "frequencyCount": 18
+    },
+    "Past perfect continuous showing duration interrupted by a sudden simple past event": {
+      "category": "Tenses & Aspect Nuances",
+      "ruleExplanation": "The clause \"had been contemplating\" is past perfect continuous, indicating an ongoing mental activity that started before a reference point in the past and continued up to that point. The simple past verb \"shattered\" marks an abrupt event that interrupts the ongoing contemplation, fulfilling the pattern of a duration interrupted by a sudden past action.",
+      "frequencyCount": 56
+    },
+    "Mandative subjunctive after verbs of demand/recommendation": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The verb \"insists\" governs a that‑clause; the subjunctive \"remain\" (bare infinitive) follows, expressing a demanded state rather than a factual one.",
+      "frequencyCount": 16
+    },
+    "Present perfect continuous illustrating ongoing research with evidential present results": {
+      "category": "Tenses & Aspect Nuances",
+      "ruleExplanation": "The clause \"have been sampling\" is present perfect continuous, indicating an action that began in the past and continues to the present; the coordinating clause \"the preliminary data now reveal\" presents current evidential results derived from that ongoing research.",
+      "frequencyCount": 128
+    },
+    "Participial phrase opening (Having completed the analysis, ...)": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The sentence opens with the perfect‑aspect participial clause \"Having completed the stratigraphic analysis of the Royal Tomb of Ur,\" which functions as an adjunct that establishes a prior action; the main clause follows with the subject‑verb‑object structure, preserving subject‑verb agreement and proper punctuation.",
+      "frequencyCount": 48
+    },
+    "Negative restrictive inversion": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The adverbial clause begins with the negative adverb 'Rarely', triggering subject‑auxiliary inversion ('does the pelagic zone reveal') and placing the main clause after the comma; the inversion emphasizes the rarity of the observation.",
+      "frequencyCount": 16
+    },
+    "Future perfect": {
+      "category": "Tenses & Aspect Nuances",
+      "ruleExplanation": "The clause \"will have delineated\" is in the future perfect, indicating that the action of delineating will be completed before the future reference point \"the longitudinal study concludes\".",
+      "frequencyCount": 8
+    },
+    "Mandative subjunctive after verb of insist": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The verb *insists* triggers the mandative subjunctive; the subordinate clause uses the base form *remain* rather than *remains*, reflecting the required mood.",
+      "frequencyCount": 20
+    },
+    "Mandative subjunctive after verb of require": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "*Requires* introduces a subjunctive clause; the verb *be* appears in its bare infinitive form, showing the obligatory nature of the action.",
+      "frequencyCount": 15
+    },
+    "Mandative subjunctive after verb of recommend": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "Following *recommends*, the clause employs the subjunctive *be cleansed* (base form), indicating a suggestion rather than a factual statement.",
+      "frequencyCount": 12
+    },
+    "Mandative subjunctive after verb of demand": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "*Demands* triggers the subjunctive; the verb *arrive* remains uninflected, reflecting the imperative nature of the command.",
+      "frequencyCount": 14
+    },
+    "Inverted conditional with initial 'Had [subject] [verb-ed]...', omitting 'if'": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The clause begins with 'Had' followed by the subject 'the ancient Sumerians' and the past participle 'devised', forming an inverted conditional that replaces the protasis 'If the ancient Sumerians had devised...'. The apodosis follows, using modal 'might have' to express a speculative result.",
+      "frequencyCount": 16
+    },
+    "Fronted prepositional phrase of location followed by full subject-verb inversion": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The sentence begins with the prepositional phrase \"Within the lattice of a graphene sheet,\" which is fronted for emphasis. The main clause follows the inversion pattern: the subject \"quantum entanglement\" is placed after the verb phrase \"manifests itself,\" producing a subject‑verb inversion that is permissible because the fronted phrase occupies the initial position.",
+      "frequencyCount": 32
+    },
+    "Inverted conditional with initial 'Were [subject] to [verb]...' projecting hypothetical future": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The clause begins with the inverted conditional 'Were Socrates to contemplate', which substitutes the protasis 'If Socrates were to contemplate' and places the subject before the infinitive. The modal 'would' in the apodosis projects a speculative future outcome, exemplifying the subjunctive mood's use for unreal or unlikely conditions.",
+      "frequencyCount": 8
+    },
+    "Inverted conditional with initial 'Were [subject] to [verb]...', projecting hypothetical future": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The clause begins with the inverted subjunctive construction 'Were the municipal council to commission', which functions as a conditional antecedent; the main clause 'the city skyline would acquire...' uses the modal 'would' to indicate a hypothetical future result.",
+      "frequencyCount": 24
+    },
+    "Inverted conditional with initial \"Had [subject] [verb-ed]...\" (omitting if)": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The clause begins with the auxiliary \"Had\" followed by the subject \"Homer’s Iliad\" and the past participle \"been composed,\" forming a past‑perfect conditional without the protasis marker \"if.\" The main clause employs the conditional perfect \"would have resonated,\" indicating a counterfactual past scenario.",
+      "frequencyCount": 8
+    },
+    "Wh‑cleft": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "A wh‑cleft clause begins with the interrogative pronoun 'What', introducing the focus 'the nanoscopic lattice achieves'. The main clause follows with the verb 'is', placing the highlighted achievement before the predicate and emphasizing its novelty.",
+      "frequencyCount": 16
+    },
+    "Epistemic modal deduction about the past": {
+      "category": "Voice, Modality & Precision",
+      "ruleExplanation": "The clause \"must have deduced\" expresses a present epistemic judgment about a past inference; the main verb \"must\" (modal of necessity) combined with perfect aspect \"have deduced\" signals that the deduction occurred earlier and is now considered certain.",
+      "frequencyCount": 112
+    },
+    "Fronted prepositional phrase of location followed by subject‑verb inversion": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The prepositional phrase \"Within the vaulted halls of the United Nations\" is placed at the beginning of the clause, and the verb \"stands\" precedes the subject \"the seasoned envoy,\" creating inversion after the fronted location.",
+      "frequencyCount": 8
+    },
+    "Correlative conjunction structure (not only... but also, neither... nor) with parallel clauses": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The sentence employs the correlative pair \"not only... but also\" to join two parallel main clauses: \"does the philosopher interrogate the nature of duty\" and \"he scrutinizes the moral weight of intention in every ethical deliberation.\" Both clauses share the same subject‑verb inversion structure, preserving parallelism and emphasizing the dual investigative focus.",
+      "frequencyCount": 32
+    },
+    "Nominative absolute phrase (noun + participle modifier)": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The opening clause \"The superconducting lattice, its electrons delocalized by a precisely tuned magnetic field,\" is a nominative absolute: the noun \"lattice\" is paired with the participial modifier \"delocalized...\"; this phrase sets the physical context before the main clause \"emitted a faint hum...\".",
+      "frequencyCount": 16
+    },
+    "Impersonal passive construction": {
+      "category": "Voice, Modality & Precision",
+      "ruleExplanation": "The sentence opens with the impersonal passive 'It was firmly contended' and a that‑clause specifying the contention, thereby presenting the argument as a neutral report.",
+      "frequencyCount": 1
+    },
+    "Complex sentence with concessive clause (even though)": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The main clause ‘the nanofabricated waveguide maintains classical transmission efficiency, thereby illustrating the coexistence of quantum paradox and engineering pragmatism’ is introduced by the concessive subordinate clause ‘Even though the entangled photons exhibit nonlocal correlations’; the concessive conjunction ‘even though’ signals a contrast between quantum behavior and classical performance, creating a complex sentence.",
+      "frequencyCount": 38
+    },
+    "Complex sentence with concessive clause (whereas)": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The concessive clause ‘Whereas quantum decoherence threatens the fidelity of qubit operations’ precedes the main clause ‘recent advances in nanostructured superconductors suppress environmental noise to unprecedented levels, enabling scalable quantum processors’; the conjunction ‘whereas’ introduces a contrast, forming a complex sentence.",
+      "frequencyCount": 36
+    },
+    "Complex sentence with concessive clause (despite the fact that)": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The concessive clause ‘Despite the fact that the Heisenberg uncertainty principle imposes fundamental limits on measurement precision’ precedes the main clause ‘researchers have engineered nanomechanical resonators that approach the standard quantum limit, demonstrating remarkable control over quantum fluctuations’; the prepositional phrase ‘Despite the fact that’ introduces a concession, yielding a complex sentence.",
+      "frequencyCount": 27
+    },
+    "Compound sentence with semicolon and conjunctive adverb (furtherby)": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "Two complete clauses are connected by a semicolon; the conjunctive adverb 'furthermore' adds an additional claim, illustrating the targeted grammatical pattern.",
+      "frequencyCount": 1
+    },
+    "Negative restrictive inversion (Rarely)": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The adverbial clause 'Rarely' initiates a negative restrictive inversion, prompting auxiliary‑subject inversion ('does the understory...'); the main clause follows, preserving subject‑verb order after the inversion.",
+      "frequencyCount": 9
+    },
+    "Negative restrictive inversion (Seldom)": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "'Seldom' triggers inversion of the auxiliary 'have' before the subject 'botanists', creating a fronted negative adverbial that restricts the clause, while the subsequent relative clause provides the specific botanical phenomenon.",
+      "frequencyCount": 9
+    },
+    "Negative restrictive inversion (Little did)": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The idiomatic 'Little did' introduces a clause with auxiliary inversion ('did the dendrologist'), emphasizing the unexpected discovery; the subordinate clause details the ancient ecological context.",
+      "frequencyCount": 6
+    },
+    "It‑cleft": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The clause 'It is the thermohaline circulation' foregrounds the subject by using the dummy pronoun 'it' followed by the copula 'is' and a noun phrase, a classic It‑cleft construction that highlights the focus element.",
+      "frequencyCount": 12
+    },
+    "Impersonal passive reporting construction ('It was widely hypothesized that...')": {
+      "category": "Voice, Modality & Precision",
+      "ruleExplanation": "The clause begins with the impersonal dummy subject *it*, followed by the passive verb *was hypothesized*. The complementizer *that* introduces a content clause containing the proposition about the broth; the whole structure reports a hypothesis without attributing it to a specific author, fulfilling the impersonal passive reporting pattern.",
+      "frequencyCount": 8
+    },
+    "Not only... but also (correlative conjunction with parallel clauses)": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The sentence employs the correlative conjunction 'not only... but also' to link two parallel independent clauses: 'do pulsars emit beams of radio waves with clockwork precision' and 'they also sculpt surrounding nebulae through their intense magnetic winds'. Both clauses share the same subject ('pulsars'/'they') and verb structure, fulfilling the requirement for parallelism.",
+      "frequencyCount": 4
+    },
+    "Neither... nor (correlative conjunction with parallel clauses)": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "Here 'neither... nor' connects two parallel noun phrases—'the cosmic microwave background' and 'the faint glow of distant quasars'—as the objects of the verb phrase 'can be ignored'. The parallel structure is maintained by using comparable noun phrases within the same syntactic slot.",
+      "frequencyCount": 4
+    },
+    "Compound‑complex sentence with one dependent time clause and two independent clauses": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The clause *When the tide receded* is a dependent temporal clause that sets the time frame. The first independent clause *the bioluminescent plankton swam into the dark waters* describes an action occurring during that time. The second independent clause *the researchers recorded the sudden luminescent bloom* follows, joined by the coordinating conjunction *and*, indicating a sequential event.",
+      "frequencyCount": 40
+    },
+    "Compound sentence with semicolon and conjunctive adverb": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The sentence contains two independent clauses joined by a semicolon, followed by the conjunctive adverb ‘nevertheless’ that introduces a contrasting idea, satisfying the required grammatical pattern.",
+      "frequencyCount": 24
+    },
+    "Mandative Subjunctive after verb of insist": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The verb *insist* triggers a subjunctive clause; the verb *remain* is in the bare infinitive form, expressing a mandatory state.",
+      "frequencyCount": 5
+    },
+    "Mandative Subjunctive after verb of require": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "*Require* governs a subjunctive clause with the bare infinitive *be*, indicating a compulsory action.",
+      "frequencyCount": 4
+    },
+    "Mandative Subjunctive after verb of demand": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "*Demand* introduces a negative subjunctive construction; *not disclose* remains in the bare infinitive form.",
+      "frequencyCount": 5
+    },
+    "Mandative Subjunctive after verb of advise": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "*Advise* is a verb of recommendation, followed by the bare infinitive *submit*, forming a subjunctive clause.",
+      "frequencyCount": 1
+    },
+    "Mandative Subjunctive after verb of recommend": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "*Recommend* governs a subjunctive clause; *be translated* uses the passive form of the bare infinitive.",
+      "frequencyCount": 2
+    },
+    "Inverted conditional with initial 'Were [subject] to [verb]...','projecting hypothetical future": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The sentence employs an inverted conditional: the auxiliary 'were' precedes the subject 'the ancient oaks', followed by the infinitive 'to awaken'. The main clause describes a future consequence—'the entire understory would immediately transform'—using the modal 'would' to indicate a hypothetical result.",
+      "frequencyCount": 16
+    },
+    "Fronted prepositional phrase of location + subject‑verb inversion": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The sentence opens with a prepositional phrase \"Within the mist‑shrouded canopy\" that front‑positions the locative element. This fronting triggers a subject‑verb inversion, placing the subject \"the elusive epiphytic orchid\" after the verb \"thrived,\" creating a dramatic, poetic rhythm.",
+      "frequencyCount": 8
+    },
+    "Past perfect continuous interrupted by simple past": {
+      "category": "Tenses & Aspect Nuances",
+      "ruleExplanation": "The clause \"had been monitoring\" establishes a continuous action that persisted over a duration; the following simple past clause \"tore through\" interrupts this action with a sudden event.",
+      "frequencyCount": 40
+    },
+    "Mandative subjunctive after verb of requirement": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "\"Required\" governs a subjunctive clause; the infinitive \"be\" indicates an obligatory state, not a real condition.",
+      "frequencyCount": 9
+    },
+    "Mandative subjunctive after verb of command": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The imperative verb \"ordered\" triggers a subjunctive clause, with the base form \"be\" denoting a necessary action.",
+      "frequencyCount": 1
+    },
+    "Mandative subjunctive after verb of insistence": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "\"Insisted\" introduces a subjunctive clause; the verb \"use\" remains in the base form, and the conditional clause expresses a hypothetical consequence.",
+      "frequencyCount": 10
+    },
+    "Participial Phrase Opening": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The sentence begins with the participial phrase \"Having meticulously deconstructed the sous‑vide technique,\" which functions as an adverbial modifier of time, indicating that the action of deconstructing precedes the main clause. This inversion foregrounds the preparatory work, a hallmark of advanced rhetorical syntax.",
+      "frequencyCount": 16
+    },
+    "Nominative absolute phrase (noun + participle modifier) setting the scene for main clause": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The phrase \"With the sun setting over the crumbling walls of Persepolis\" functions as a nominative absolute, comprising a noun phrase \"the sun\" plus a participle clause \"setting over the crumbling walls of Persepolis\". It provides background context without being syntactically bound to the main clause, which begins with \"the scholars hurried...\". The absolute phrase sets the temporal and spatial scene, allowing the main clause to focus on the action of securing the tablets.",
+      "frequencyCount": 32
+    },
+    "Compound‑complex with one dependent time clause and two independent clauses": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The dependent time clause \"When the cosmic microwave background cools below the threshold for recombination\" introduces a temporal condition. The first independent clause \"the universe expands at an accelerating rate\" states a consequence, while the second independent clause \"astronomers detect subtle anisotropies in the relic radiation\" adds another related outcome, forming a compound‑complex structure.",
+      "frequencyCount": 16
+    },
+    "Participial phrase opening": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The sentence begins with the participial phrase \"Having concluded the treaty negotiations,\" which functions as an adverbial modifier of time, indicating that the action of presenting the memorandum occurs after the negotiations are finished. This inversion places the subordinate clause before the main clause, a hallmark of advanced rhetorical syntax. The main clause follows the subject \"Ambassador Li\" and the verb \"presented,\" maintaining subject‑verb agreement and a clear, formal register.",
+      "frequencyCount": 48
+    },
+    "Past Perfect Continuous interrupted by Simple Past": {
+      "category": "Tenses & Aspect Nuances",
+      "ruleExplanation": "The clause \"had been tracing…\" establishes a continuous action that began earlier and continued up to a point in the past. The subsequent simple past verb \"revealed\" marks the abrupt interruption, illustrating the tense pattern of a prolonged activity disrupted by a sudden event.",
+      "frequencyCount": 16
+    },
+    "Compound‑complex (one time clause + two independent clauses)": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The clause \"When the sun dipped below the horizon\" is a dependent time clause. The two independent clauses are \"the chef plated the seared scallops\" and \"the diners inhaled the aroma of saffron‑infused broth.\" The sentence links temporal context with simultaneous actions, forming a compound‑complex structure.",
+      "frequencyCount": 8
+    },
+    "Fronted Prepositional Phrase Inversion": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The prepositional phrase \"Beyond the crumbling walls of the ancient citadel\" is fronted, setting the spatial context. The inversion follows the rule for fronted adverbial phrases: the subject \"the weary archaeologists\" precedes the auxiliary verb \"had\" to maintain emphasis on the location and to achieve a more dramatic, literary rhythm.",
+      "frequencyCount": 8
+    },
+    "Inverted conditional (past perfect subjunctive)": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The sentence begins with the inverted conditional clause ‘Had the experimental paradigm elicited…’, omitting the usual ‘if’. This clause employs the past perfect tense to express a hypothetical past condition that did not occur. The main clause, ‘the researchers would have observed…’, uses the modal ‘would have’ to indicate the counterfactual result.",
+      "frequencyCount": 8
+    },
+    "Second Conditional Inversion": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "This inverted conditional starts with the past tense verb 'were' followed by the subject 'the Iliad's heroes' and the infinitive phrase 'to be reborn', forming a hypothetical future scenario; the main clause presents the consequent in a future orientation.",
+      "frequencyCount": 8
+    },
+    "Not only... but also": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "This correlative conjunction links two parallel noun phrases: the trench’s extremophiles and its microbial ecosystem, each introduced by a clause beginning with a verb phrase that is syntactically balanced.",
+      "frequencyCount": 20
+    },
+    "Neither... nor": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The correlative conjunction connects two noun phrases—kelp forests and coral reefs—followed by a compound predicate that parallels the subjects.",
+      "frequencyCount": 20
+    },
+    "Inverted conditional with initial 'Were [subject] to [verb]...','projecting hypothetical future'": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The inversion places the auxiliary 'were' before the subject 'we', followed by the infinitive phrase 'to embrace the principle of utilitarianism'. This structure expresses a hypothetical condition in the future. The main clause describes the projected consequence—society evolving toward harmony—using the future simple tense, thereby illustrating the subjunctive mood.",
+      "frequencyCount": 8
+    },
+    "Participial phrase opening (inversion)": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The participial phrase “Having surveyed the skyline’s fractured silhouette” precedes the main clause, creating a temporal inversion that foregrounds the preparatory action. The clause’s perfect participle indicates completion before the proposal, while the main clause’s subject–verb order remains standard, satisfying advanced rhetorical syntax.",
+      "frequencyCount": 8
+    },
+    "Present Perfect Continuous (ongoing research with evidential present results)": {
+      "category": "Tenses & Aspect Nuances",
+      "ruleExplanation": "The verb phrase \"have been tracing\" demonstrates the present perfect continuous, indicating an action that began in the past and continues into the present. The clause \"recent comparative analyses confirm\" supplies present evidence that the research has yielded observable results, satisfying the requirement for evidential present outcomes.",
+      "frequencyCount": 8
+    },
+    "Negative Restrictive Inversion": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The clause begins with the negative adverb \"Rarely\" followed by inversion of the auxiliary verb \"do\" and the subject \"the neural substrates\". This structure emphasizes the rarity of synchronous oscillations in working memory during complex tasks.",
+      "frequencyCount": 8
+    },
+    "Fronted prepositional phrase of location with subject-verb inversion": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The prepositional phrase \"Within the dimly lit kitchen\" is fronted, and the clause is inverted so that the verb \"swirled\" precedes the subject \"the aroma\".",
+      "frequencyCount": 8
+    },
+    "Mixed Conditional (Past Counterfactual → Present Consequence)": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The if‑clause uses the past perfect to express an unreal past event, while the main clause employs the present conditional ‘would still exhibit’, indicating a lasting present effect.",
+      "frequencyCount": 8
+    },
+    "not only... but also": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The sentence uses a correlative conjunction to link two parallel noun phrases—‘abundant in biodiversity’ and ‘rich in symbiotic algae’—both modifying ‘the coral reefs’. The structure emphasizes that both qualities coexist, creating a balanced compound‑complex clause with a main clause and an embedded relative clause.",
+      "frequencyCount": 12
+    },
+    "neither... nor": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "Here ‘neither… nor’ introduces two parallel noun phrases, ‘the pelagic predators’ and ‘the benthic scavengers’, both negated in the main clause. The subsequent coordinating conjunction ‘yet’ introduces a contrasting clause that parallels the negation, forming a compound‑complex sentence.",
+      "frequencyCount": 12
+    },
+    "Inverted conditional (Second conditional with subjunctive)": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The inversion places the auxiliary verb before the subject, a formal alternative to ‘If the Roman Senate granted…’. The clause expresses a hypothetical future that would result from a past decision, using ‘would have extended’ to denote a counterfactual outcome.",
+      "frequencyCount": 8
+    },
+    "Negative restrictive inversion starting with Rarely": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The auxiliary ‘have’ precedes the subject ‘the deep‑sea bioluminescent communities’, creating a negative restrictive inversion that emphasizes the rarity of the phenomenon.",
+      "frequencyCount": 6
+    },
+    "Negative restrictive inversion starting with Seldom": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The inversion places the auxiliary ‘does’ before the subject ‘the pelagic kelp forest’, highlighting the infrequency of such structural degradation.",
+      "frequencyCount": 6
+    },
+    "Negative restrictive inversion starting with Little did": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The inversion with ‘Little did’ precedes the subject ‘the oceanographers’, underscoring the unexpected nature of the discovery.",
+      "frequencyCount": 4
+    },
+    "Compound-Complex with one dependent time clause and two independent clauses": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The dependent clause \"When the sun dipped below the skyline\" sets a temporal context. Two independent clauses follow: \"the architects unveiled a translucent glass pavilion\" and \"the city’s residents marveled at its seamless integration with the surrounding historic facades,\" linked by a comma and coordinating conjunction.",
+      "frequencyCount": 8
+    },
+    "Inverted conditional": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The sentence omits the subordinating conjunction \"if,\" placing the perfect verb phrase \"Had the Sumerian scribes deciphered\" at the beginning. This inversion signals a hypothetical past situation whose consequences are expressed in the main clause with \"would have been unveiled.\" The structure follows the classic subjunctive conditional pattern: Had + subject + past participle, ... would have + past participle.",
+      "frequencyCount": 16
+    },
+    "Mandative subjunctive after verb of urge": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "\"Urged\" signals a recommendation, and the subjunctive clause \"that the pedestrian corridor remain wide\" employs the bare infinitive \"remain\" to express the desired condition.",
+      "frequencyCount": 2
+    },
+    "Inverted conditional with initial \"Were [subject] to [verb]...\"": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The sentence begins with an inversion of the subject and auxiliary verb, a hallmark of subjunctive mood in hypothetical future contexts. The clause \"were the participant to exhibit...\" functions as a protasis, while the consequent clause \"the ensuing neural activation patterns would reveal...\" serves as the apodosis, illustrating a conditional relationship that projects a future outcome.",
+      "frequencyCount": 8
+    },
+    "Mixed Conditional: Past Counterfactual Hypothesis → Present Enduring Consequence": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The if‑clause uses the past perfect (‘had he not dismissed’) to express a counterfactual past condition. The main clause employs the present perfect continuous (‘would still be grappling’) to show an ongoing present state that results from that unrealized past action.",
+      "frequencyCount": 8
+    },
+    "Not only... but also (parallel clauses)": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The sentence employs a correlative conjunction pairing to link two independent clauses that are syntactically parallel; both clauses begin with a verb phrase in the subjunctive mood and are coordinated by the correlative pair, creating a balanced, compound‑complex structure.",
+      "frequencyCount": 8
+    },
+    "Neither... nor (parallel clauses)": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "This construction juxtaposes two nominal phrases functioning as subjects of a single verb, using the correlative conjunction to create an equidistant, parallel relationship between the clauses.",
+      "frequencyCount": 8
+    },
+    "Mandative Subjunctive after Verbs of Demand/Recommendation": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The verb ‘insisted’ demands a subjunctive clause; ‘remain’ is in the base form, indicating a non‑real, obligatory condition.",
+      "frequencyCount": 8
+    },
+    "Mandative Subjunctive after verbs of demand/recommendation": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The verb \"insists\" introduces a clause requiring the subjunctive mood. The verb \"remain\" is in the base form, reflecting the non‑indicative, hypothetical nature of the demand, and the clause expresses a condition that must be satisfied for the experiment to proceed.",
+      "frequencyCount": 8
+    },
+    "Participial phrase opening (Having + past participle + clause)": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The participial phrase \"Having charted the trajectories of interstellar dust grains\" functions as an adverbial modifier of the main clause, indicating a prior action that establishes context for the subsequent action of presenting a model. The verb \"chart\" is in past participle form, and the clause is in the perfect aspect to show completion before the main verb.",
+      "frequencyCount": 8
+    },
+    "Future Perfect (completed state prior to benchmark time)": {
+      "category": "Tenses & Aspect Nuances",
+      "ruleExplanation": "The clause ‘would have composed’ uses the future perfect tense to indicate that the action of composing will be fully completed before the specified future benchmark ‘the time the moon’s silver light finally washed over the ancient grove’.",
+      "frequencyCount": 8
+    },
+    "Participial phrase opening (Having + participle)": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The opening participial phrase ‘Having convened…’ functions as an adverbial modifier of the main clause, indicating the prior action that enables the Secretary-General’s subsequent action. It follows the advanced rhetorical device of inversion, placing the subordinate clause before the main clause for emphasis.",
+      "frequencyCount": 8
+    },
+    "Embedded indirect question within a formal declarative inquiry": {
+      "category": "Voice, Modality & Precision",
+      "ruleExplanation": "The main clause is a formal interrogative (‘Could you elucidate…?’) that requests information. Nested within it is an indirect question (‘whether the stratigraphic layers…contain the hypothesized burial chambers’), which is introduced by the subordinating conjunction ‘whether’ and functions as the object of the verb ‘elucidate.’ The sentence adheres to standard subject‑verb‑object order, uses modal ‘could’ for politeness, and maintains precise academic diction.",
+      "frequencyCount": 8
+    },
+    "Prepositional Phrase Inversion": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The sentence begins with the fronted prepositional phrase \"Within the crystalline lattice of the nanodevice,\" which locates the action. This is followed by an inverted subject‑verb construction: the subject \"the electrons\" follows the verb phrase \"were observed to exhibit,\" creating a dramatic emphasis on the observed phenomenon.",
+      "frequencyCount": 8
+    },
+    "Participial Phrase Opening (Having completed the analysis, ... )": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The sentence begins with a participial phrase—\"Having completed the analysis of moral relativism\"—which functions as an adverbial modifier, indicating the antecedent action that sets the stage for the main clause. The main clause follows the inverted order, placing the subject \"the scholar\" after the verb phrase, thereby emphasizing the action performed before the argument.",
+      "frequencyCount": 8
+    },
+    "Nominative absolute (noun + participle)": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The opening clause \"The nebula expanding in luminous ribbons\" is a nominative absolute: the noun \"nebula\" is paired with the present participle \"expanding\" and its complement, forming a self‑contained phrase that sets the scene for the main clause that follows.",
+      "frequencyCount": 8
+    },
+    "Compound‑complex (one time‑dependent clause + two independent clauses)": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The clause \"When the sun of reason finally sets upon the horizon of doubt\" is a dependent time clause. The two independent clauses are \"philosophers debate the moral implications of utilitarianism\" and \"students compile rigorous ethical treatises.\" The sentence links them with commas and coordinating conjunctions, satisfying the compound‑complex structure.",
+      "frequencyCount": 8
+    },
+    "Future Perfect with Benchmark Time": {
+      "category": "Tenses & Aspect Nuances",
+      "ruleExplanation": "The clause \"would have exhausted\" uses the future perfect tense to describe a state completed before the benchmark time \"by the time the last amber leaf fell.\" The main clause sets the temporal reference, ensuring the completed action precedes the specified event.",
+      "frequencyCount": 8
+    },
+    "Future Perfect (completed state before a specified time)": {
+      "category": "Tenses & Aspect Nuances",
+      "ruleExplanation": "The clause \"will have rehearsed\" uses the future perfect to indicate that the rehearsing will be fully completed before the benchmark event of the conductor raising the baton.",
+      "frequencyCount": 8
+    },
+    "Mandative subjunctive after verbs of insist": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The verb ‘insists’ governs a subjunctive clause introduced by ‘that’. The clause is in the subjunctive mood (remain) and expresses a demand; the conditional ‘lest’ introduces a potential negative consequence, reinforcing the necessity of the action.",
+      "frequencyCount": 3
+    },
+    "Mandative subjunctive after verbs of require": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "‘Requires’ triggers a subjunctive clause ‘be fabricated’. The subjunctive form ‘be fabricated’ indicates an obligatory action. The conditional ‘otherwise’ presents the consequence of non‑compliance.",
+      "frequencyCount": 1
+    },
+    "Mandative subjunctive after verbs of admonish": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "‘Admonishes’ introduces a subjunctive clause ‘remain unchanged’. The clause conveys a recommendation. The subordinate clause ‘until the convergence criteria are satisfied’ sets a temporal boundary for the action.",
+      "frequencyCount": 1
+    },
+    "Mandative subjunctive after verbs of decree": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "‘Decrees’ governs the subjunctive ‘must incorporate’. The clause expresses a mandate. The conditional ‘unless’ introduces an exception condition.",
+      "frequencyCount": 1
+    },
+    "Mandative subjunctive after verbs of demand": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "‘Demands’ introduces the subjunctive ‘remain contamination‑free’. The clause is a direct order. The subordinate clause ‘so that’ explains the purpose of the demand.",
+      "frequencyCount": 1
+    },
+    "Mandative subjunctive after verbs of urge": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "‘Urges’ triggers the subjunctive ‘be validated’. The conditional ‘otherwise’ indicates the negative outcome if the action is not taken.",
+      "frequencyCount": 1
+    },
+    "Inverted conditional with initial 'Had [subject] [verb-ed]...',' omitting 'if'": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The sentence employs a past perfect verb form in the inverted clause (Had convened) to express a hypothetical condition that did not occur. The main clause uses the past perfect of 'would have unfolded,' indicating the result that would have followed if the condition had been met. This structure is a classic third‑person conditional, omitting the explicit 'if' and placing the conditional verb at the sentence’s start.",
+      "frequencyCount": 8
+    },
+    "Mandative subjunctive after verb of urging": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "\"Urged\" necessitates a subjunctive construction; the clause uses the base form \"remain\" to convey a recommendation for methodological rigor.",
+      "frequencyCount": 1
+    },
+    "Mandative subjunctive after verb of mandating": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "\"Mandated\" introduces a subjunctive clause where the base verb \"refrain\" signals an obligatory restraint.",
+      "frequencyCount": 1
+    },
+    "Mandative subjunctive after verb of demanding": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The verb \"demanded\" necessitates a subjunctive clause with \"be reviewed\" to denote an obligatory procedural step.",
+      "frequencyCount": 1
+    },
+    "Mandative Subjunctive after insist": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The verb \"insisted\" is a demand verb that triggers the subjunctive mood; the clause \"that the ancient oak remain untouched\" uses the base form \"remain\" without a verb tense, illustrating the mandative subjunctive.",
+      "frequencyCount": 4
+    },
+    "Mandative Subjunctive after require": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "\"Requires\" is a demanding verb; the subjunctive clause \"that all saplings be planted\" employs the base verb \"be\" plus the past participle \"planted,\" conforming to the mandative subjunctive pattern.",
+      "frequencyCount": 2
+    },
+    "Mandative Subjunctive after demand": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "\"Demands\" is a verb of demand; the subjunctive clause \"that the soil pH remain consistently acidic\" employs the base verb \"remain\" to denote an obligatory state.",
+      "frequencyCount": 2
+    },
+    "Compound‑complex with one time clause and two independent clauses": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The dependent clause \"When the moonlit river reflected the ancient myths\" sets the temporal context. The first independent clause \"the scholars debated the parallels between Greek and Norse heroism\" and the second independent clause \"the librarian catalogued the obscure manuscripts\" are joined by a coordinating conjunction, satisfying the compound‑complex requirement.",
+      "frequencyCount": 8
+    },
+    "Nominative absolute phrase": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The absolute phrase \"Ancient pines, their crowns shrouded in mist\" consists of a noun phrase (ancient pines) and a participial modifier (shrouded in mist) that provides background context, independent of the main clause. The main clause \"whispered stories of forgotten epochs\" follows, illustrating a temporal and spatial setting without grammatical attachment to the absolute phrase.",
+      "frequencyCount": 8
+    },
+    "Fronted prepositional phrase of location + full subject-verb inversion": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The prepositional phrase \"In the hushed alcove of the concert hall\" is fronted to establish setting. The inversion follows the full subject \"the conductor's baton\" and the verb \"arced\"—the normal order would be \"the conductor's baton arced\". This inversion emphasizes the action and the dramatic spatial context, a hallmark of advanced rhetorical syntax.",
+      "frequencyCount": 8
+    },
+    "Mandative Subjunctive after verb of insistence": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The verb \"insisted\" triggers the subjunctive mood; \"remain\" is in the bare infinitive form, expressing a demand that the sous‑chef continue to be vigilant.",
+      "frequencyCount": 4
+    },
+    "Mandative Subjunctive after verb of requirement": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The verb \"requires\" necessitates the subjunctive; \"submit\" remains in the bare infinitive, indicating the mandatory action for apprentices.",
+      "frequencyCount": 2
+    },
+    "Mandative Subjunctive after verb of recommendation": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The verb \"recommended\" governs the subjunctive; \"be overly salted\" is a passive subjunctive form, expressing a suggested restraint.",
+      "frequencyCount": 1
+    },
+    "Prepositional phrase fronting with inversion": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The prepositional phrase \"Beyond the dimming horizon of human conscience\" is moved to the front of the clause. The main clause then begins with the inverted verb phrase \"the paradox of moral obligation swells\" where the subject \"the paradox of moral obligation\" follows the verb \"swells\", creating a full subject‑verb inversion that emphasizes the philosophical idea.",
+      "frequencyCount": 8
+    },
+    "Mandative subjunctive after verb of advice": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "\"Advised\" is a verb of recommendation; the clause \"be updated\" employs the subjunctive base form \"be\" without an auxiliary, signifying a suggested action.",
+      "frequencyCount": 2
+    },
+    "Inverted conditional (past perfect)": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The sentence omits the explicit 'if' and places the past perfect clause at the beginning. This inversion emphasizes the hypothetical nature of the Security Council’s action, and the main clause uses the modal perfect 'would have held' to indicate the resulting past consequence.",
+      "frequencyCount": 8
+    },
+    "Inverted third conditional": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The sentence employs an inverted conditional, beginning with 'Had' followed by the subject and past participle. The omission of 'if' signals a hypothetical past condition whose outcome is expressed in a past perfect form, illustrating the subjunctive mood.",
+      "frequencyCount": 8
+    },
+    "Inverted conditional (past perfect with omitted \"if\")": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The clause begins with \"Had\" and the subject \"the ancient canopy\" followed by the past participle \"thinned\", creating a subjunctive conditional that omits the conjunction \"if\". The main clause describes the hypothetical consequence, using \"would have\" to indicate the counterfactual result.",
+      "frequencyCount": 8
+    },
+    "Mandative subjunctive after insist": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The verb \"insisted\" governs a subjunctive clause introduced by \"that\", expressing a demand that the vessel \"remain\" (subjunctive form of remain) rather than a statement of fact.",
+      "frequencyCount": 7
+    },
+    "Mandative subjunctive after require": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "Here \"requires\" mandates a subjunctive clause: \"that all students submit\" uses the bare infinitive \"submit\" to indicate a required action, not a simple present tense.",
+      "frequencyCount": 5
+    },
+    "Mandative subjunctive after urge": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "\"Urged\" introduces a subjunctive clause with \"be conducted\", a passive subjunctive form, reflecting a recommendation rather than a statement of fact.",
+      "frequencyCount": 1
+    },
+    "Mandative subjunctive after demand": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "\"Demanded\" necessitates a subjunctive clause; the verb phrase \"refrain from dredging\" employs the subjunctive \"refrain\" to express a strict prohibition.",
+      "frequencyCount": 1
+    },
+    "Concessive clause with \"even though\"": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The sentence is a complex structure: a main clause \"the nanofabricated lattice remains stable enough to sustain coherent quantum operations at room temperature\" is preceded by a concessive subordinate clause \"Even though the electron’s spin entangles with distant qubits\" that introduces a contrasting idea. The subordinating conjunction \"even though\" signals that the stability persists despite the entanglement.",
+      "frequencyCount": 3
+    },
+    "Concessive clause with \"despite the fact that\"": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "This sentence combines a main clause describing the achievement with a concessive subordinate clause. The phrase \"Despite the fact that\" introduces a known obstacle—thermal fluctuations—and the main clause asserts that the obstacle is overcome by engineering a topological insulator.",
+      "frequencyCount": 3
+    },
+    "Concessive clause with \"whereas\"": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The sentence juxtaposes two contrasting facts: the typical behavior of quantum dots and the exceptional property of the new nanostructures. The concessive clause \"Whereas most quantum dots suffer from rapid decoherence\" sets up the contrast, and the main clause presents the improvement.",
+      "frequencyCount": 2
+    },
+    "Nominative Absolute Phrase (noun + participle modifier) setting the scene for main clause": {
+      "category": "Advanced Rhetorical Syntax & Inversion",
+      "ruleExplanation": "The phrase \"The sun, having set behind the crumbling pyramids\" functions as a nominative absolute, providing temporal and locational context for the main clause \"illuminated the forgotten inscriptions…\". The participle clause \"having set\" modifies the noun \"sun\" and is separated by commas, satisfying the pattern.",
+      "frequencyCount": 8
+    },
+    "Compound‑complex (one time-dependent clause + two independents)": {
+      "category": "Clause Combinations & Compound-Complex",
+      "ruleExplanation": "The dependent clause \"When the sous‑chef arrives\" sets a temporal condition. The first independent clause \"the mise‑en‑place is already perfected\" states a fact, while the second independent clause \"the head chef begins plating the risotto with a flourish\" shows the consequent action. The two independents are joined by a coordinating conjunction, satisfying the compound‑complex requirement.",
+      "frequencyCount": 8
+    },
+    "Inverted conditional (past perfect + omitted \"if\")": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The sentence uses an inverted conditional structure, beginning with \"Had\" followed by the subject \"the Phoenicians\" and the past participle \"mastered\", omitting the typical \"if\". It presents a counterfactual scenario in the past that would have led to a different historical outcome.",
+      "frequencyCount": 8
+    },
+    "Embedded indirect question within formal declarative inquiry": {
+      "category": "Voice, Modality & Precision",
+      "ruleExplanation": "The outer clause is a formal declarative inquiry, “Could you clarify…?” The embedded clause, “whether the participants’ reaction times truly reflect… or if alternative mechanisms might better account…”, is an indirect question introduced by the subordinating conjunction ‘whether’, functioning as the object of the verb ‘clarify’.",
+      "frequencyCount": 8
+    },
+    "Mandative subjunctive after mandate": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "\"Mandates\" functions as a verb of obligation, and the that‑clause (remain) is subjunctive, reflecting a legal requirement.",
+      "frequencyCount": 2
+    },
+    "Inverted conditional (Had + past perfect)": {
+      "category": "Conditionals & Subjunctive Mood",
+      "ruleExplanation": "The sentence employs a past perfect construction after 'Had' to express a hypothetical past condition that did not occur; the main clause uses a conditional perfect, illustrating the subjunctive mood.",
+      "frequencyCount": 8
+    }
+  },
+  "timestamp": "2026-10-06T18:45:16.336Z"
+}
