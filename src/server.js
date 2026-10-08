@@ -430,9 +430,9 @@ const server = http.createServer((req, res) => {
   res.end('Not Found');
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`========================================================`);
   console.log(`   TRIANGLE SEARCH ENGINE ONLINE                       `);
-  console.log(`   URL: http://localhost:${PORT}                        `);
+  console.log(`   URL: http://0.0.0.0:${PORT}                         `);
   console.log(`========================================================`);
 });
