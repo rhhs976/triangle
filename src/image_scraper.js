@@ -132,10 +132,10 @@ async function scrapeWikipediaMedia(query) {
   return { images, challenge: false };
 }
 
-// 3. Scrape Openverse Creative Commons Photo Index
+// 3. Scrape Openverse Creative Commons Photo Index (with SafeSearch mature=false)
 async function scrapeOpenverse(query) {
   const clean = encodeURIComponent(query.trim());
-  const url = `https://api.openverse.org/v1/images/?q=${clean}&page_size=12`;
+  const url = `https://api.openverse.org/v1/images/?q=${clean}&page_size=12&mature=false`;
 
   const res = await httpsGetJson(url);
 
@@ -172,6 +172,19 @@ export async function scrapeOnlineImages(rawQuery) {
       query: '',
       message: 'Please provide a search term to find images.',
       images: []
+    };
+  }
+
+  // SafeSearch Guard: Block explicit, adult, or harmful image searches
+  const NSFW_PATTERN = /\b(?:porn|xxx|nsfw|nude|nudity|sex|erotic|gore|explicit)\b/i;
+  if (NSFW_PATTERN.test(query)) {
+    return {
+      found: false,
+      query,
+      count: 0,
+      images: [],
+      blocked: true,
+      message: 'Image search for this term is blocked by SafeSearch filters.'
     };
   }
 
