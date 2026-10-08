@@ -66,22 +66,23 @@ function getWebsites(topic) {
 
 async function callGroqQA(question, apiKey) {
   const models = ['qwen/qwen3.8-27b', 'openai/gpt-oss-120b', 'openai/gpt-oss-20b'];
-  const prompt = `You are an authoritative encyclopedic knowledge search engine. Provide a comprehensive, accurate answer to the question: "${question}".
+  const prompt = `You are an authoritative encyclopedic knowledge search engine. Answer the question: "${question}".
 
-Strict Requirements:
-1. Provide an exact, bold direct answer first.
-2. The explanation MUST be at least 1 rich, informative, factual paragraph long (minimum 4 to 6 full sentences), explaining the background, context, mechanics, and key details.
-3. No conversational filler or chatbot greetings.
+Strict Formatting Requirements:
+1. Provide an answer of EXACTLY 4 sentences in total.
+2. Sentence 1 MUST be the direct, bold answer.
+3. The remaining 3 sentences MUST provide clear, factual context and mechanics underneath.
+4. Absolutely no conversational filler, chatbot greetings, or intros.
 
 Format EXACTLY:
 Direct Answer:
-[Bold, exact factual answer]
+**[Sentence 1: The bold direct answer]**
 
 Explanation:
-[At least 1 rich, comprehensive factual paragraph containing 4-6 sentences]
+[Sentences 2, 3, and 4: Exactly 3 sentences of concise factual context and explanation]
 
 Category:
-[e.g. Geography, Science, History, Technology, Nature, General Knowledge]`;
+[e.g. Science, Geography, History, Technology, General Knowledge]`;
 
   for (const model of models) {
     try {
@@ -92,7 +93,7 @@ Category:
           model,
           messages: [{ role: 'user', content: prompt }],
           temperature: 0.2,
-          max_tokens: 700
+          max_tokens: 350
         })
       });
 
@@ -119,7 +120,7 @@ Category:
             fullExplanation = parts.slice(1).join('\n\n').trim() || content;
           }
 
-          if (fullExplanation.length >= 150) {
+          if (fullExplanation.length >= 50 && directAnswer.length >= 10) {
             return { directAnswer, fullExplanation, category };
           }
         }
