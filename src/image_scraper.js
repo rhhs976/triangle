@@ -176,7 +176,7 @@ export async function scrapeOnlineImages(rawQuery) {
   }
 
   // SafeSearch Guard: Block explicit, adult, or harmful image searches
-  const NSFW_PATTERN = /\b(?:porn|xxx|nsfw|nude|nudity|sex|erotic|gore|explicit)\b/i;
+  const NSFW_PATTERN = /\b(?:porn\w*|xxx|nsfw|nude\w*|nudity|sex\w*|erotic\w*|gore|explicit)\b/i;
   if (NSFW_PATTERN.test(query)) {
     return {
       found: false,

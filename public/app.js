@@ -17,7 +17,9 @@ const randomSearchBtn = document.getElementById('random-search-btn');
 const searchTabsBar = document.getElementById('search-tabs-bar');
 const tabBtnAll = document.getElementById('tab-btn-all');
 const tabBtnImages = document.getElementById('tab-btn-images');
+const tabBtnVideos = document.getElementById('tab-btn-videos');
 const imagesWrapper = document.getElementById('images-wrapper');
+const videosWrapper = document.getElementById('videos-wrapper');
 
 const imageModal = document.getElementById('image-modal');
 const imageModalBackdrop = document.getElementById('image-modal-backdrop');
@@ -30,6 +32,7 @@ const modalLink = document.getElementById('modal-link');
 let currentQuery = '';
 let currentTab = 'all';
 let cachedImages = null;
+let cachedVideos = null;
 
 // Sample queries
 const sampleQueries = [
@@ -52,14 +55,17 @@ function showHomeView() {
   topInput.value = '';
   resultsWrapper.innerHTML = '';
   imagesWrapper.innerHTML = '';
+  if (videosWrapper) videosWrapper.innerHTML = '';
   if (searchTabsBar) searchTabsBar.style.display = 'none';
   resultsWrapper.style.display = 'block';
   imagesWrapper.style.display = 'none';
+  if (videosWrapper) videosWrapper.style.display = 'none';
   switchTab('all');
   centerClearBtn.style.display = 'none';
   topClearBtn.style.display = 'none';
   currentQuery = '';
   cachedImages = null;
+  cachedVideos = null;
   window.history.pushState({}, '', window.location.pathname);
   setTimeout(() => centerInput.focus(), 50);
 }
@@ -75,21 +81,35 @@ function showResultsView(query) {
   topInput.focus();
 }
 
-// Tab Switching ("All" vs "Image")
+// Tab Switching ("All", "Image", "Video")
 function switchTab(tab) {
   currentTab = tab;
   if (tab === 'all') {
     tabBtnAll.classList.add('active');
     tabBtnImages.classList.remove('active');
+    if (tabBtnVideos) tabBtnVideos.classList.remove('active');
     resultsWrapper.style.display = 'block';
     imagesWrapper.style.display = 'none';
+    if (videosWrapper) videosWrapper.style.display = 'none';
   } else if (tab === 'images') {
     tabBtnImages.classList.add('active');
     tabBtnAll.classList.remove('active');
+    if (tabBtnVideos) tabBtnVideos.classList.remove('active');
     resultsWrapper.style.display = 'none';
     imagesWrapper.style.display = 'block';
+    if (videosWrapper) videosWrapper.style.display = 'none';
     if (currentQuery) {
       loadAndRenderImages(currentQuery);
+    }
+  } else if (tab === 'videos') {
+    if (tabBtnVideos) tabBtnVideos.classList.add('active');
+    tabBtnAll.classList.remove('active');
+    tabBtnImages.classList.remove('active');
+    resultsWrapper.style.display = 'none';
+    imagesWrapper.style.display = 'none';
+    if (videosWrapper) videosWrapper.style.display = 'block';
+    if (currentQuery) {
+      loadAndRenderVideos(currentQuery);
     }
   }
 }
@@ -100,12 +120,17 @@ async function performSearch(query) {
   if (!clean) return;
 
   currentQuery = clean;
-  cachedImages = null; // Invalidate previous cached images on new search
+  cachedImages = null; // Invalidate cached media on new search
+  cachedVideos = null;
   showResultsView(clean);
   window.history.pushState({ q: clean }, '', `?q=${encodeURIComponent(clean)}`);
 
   if (currentTab === 'images') {
     loadAndRenderImages(clean);
+    return;
+  }
+  if (currentTab === 'videos') {
+    loadAndRenderVideos(clean);
     return;
   }
 
@@ -224,6 +249,84 @@ window.addEventListener('keydown', (e) => {
     closeModal();
   }
 });
+
+// Load and Render Scraped Videos
+async function loadAndRenderVideos(query) {
+  if (cachedVideos && cachedVideos.query === query) {
+    renderVideos(cachedVideos);
+    return;
+  }
+
+  videosWrapper.innerHTML = `
+    <div class="videos-loading-wrap">
+      <div class="loading-spinner">Scraping online video archives for "${escapeHtml(query)}"...</div>
+    </div>
+  `;
+
+  try {
+    const res = await fetch(`/api/videos?q=${encodeURIComponent(query)}`);
+    const data = await res.json();
+    cachedVideos = data;
+    renderVideos(data);
+  } catch (err) {
+    videosWrapper.innerHTML = `
+      <div class="result-card no-results-card">
+        <div class="no-images-blocked-card">
+          <svg viewBox="0 0 24 24" width="36" height="36" class="blocked-icon"><path fill="#5f6368" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+          <h3 class="blocked-title">No videos available</h3>
+          <p class="blocked-desc">No video results found due to copyright protections, Cloudflare verification, or source restrictions.</p>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function renderVideos(data) {
+  if (!data || !data.found || !data.videos || data.videos.length === 0) {
+    videosWrapper.innerHTML = `
+      <div class="result-card no-results-card">
+        <div class="no-images-blocked-card">
+          <svg viewBox="0 0 24 24" width="36" height="36" class="blocked-icon"><path fill="#5f6368" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+          <h3 class="blocked-title">No videos available</h3>
+          <p class="blocked-desc">${escapeHtml(data?.message || 'No video results found due to copyright protections, Cloudflare verification, or source restrictions.')}</p>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  videosWrapper.innerHTML = `
+    <div class="videos-container">
+      <div class="videos-header-meta">
+        <span class="videos-count-tag">${data.videos.length} verified public video records found</span>
+      </div>
+      <div class="videos-grid">
+        ${data.videos.map(v => `
+          <div class="video-card">
+            <div class="video-player-wrap">
+              ${v.type === 'direct_stream' ? `
+                <video controls preload="metadata" playsinline poster="${escapeHtml(v.thumbnail || '')}">
+                  <source src="${escapeHtml(v.videoUrl)}" type="${escapeHtml(v.mime || 'video/webm')}">
+                  Your browser does not support HTML5 video.
+                </video>
+              ` : `
+                <iframe src="${escapeHtml(v.embedUrl)}" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen loading="lazy"></iframe>
+              `}
+            </div>
+            <div class="video-info-box">
+              <h4 class="video-title" title="${escapeHtml(v.title)}">${escapeHtml(v.title)}</h4>
+              ${v.description ? `<p class="video-desc">${escapeHtml(v.description)}</p>` : ''}
+              <div class="video-meta-row">
+                <span class="video-source">${escapeHtml(v.source)}</span>
+                <a href="${escapeHtml(v.sourceUrl || v.videoUrl)}" target="_blank" rel="noopener noreferrer" class="video-link">Source ↗</a>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
 
 function escapeHtml(text) {
   if (!text) return '';
@@ -557,7 +660,7 @@ topClearBtn.addEventListener('click', () => {
   topInput.focus();
 });
 
-// Tabs ("All" & "Image")
+// Tabs ("All", "Image", "Video")
 if (tabBtnAll) {
   tabBtnAll.addEventListener('click', (e) => {
     e.preventDefault();
@@ -568,6 +671,12 @@ if (tabBtnImages) {
   tabBtnImages.addEventListener('click', (e) => {
     e.preventDefault();
     switchTab('images');
+  });
+}
+if (tabBtnVideos) {
+  tabBtnVideos.addEventListener('click', (e) => {
+    e.preventDefault();
+    switchTab('videos');
   });
 }
 
