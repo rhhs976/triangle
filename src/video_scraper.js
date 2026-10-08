@@ -133,7 +133,72 @@ async function scrapeArchiveOrgVideos(query) {
   return { videos, challenge: false };
 }
 
+let ytClientPromise = null;
+
+// Warm up / Lazy-initialize YouTube InnerTube client
+function getYouTubeClient() {
+  if (!ytClientPromise) {
+    ytClientPromise = (async () => {
+      const { Innertube } = await import('youtubei.js');
+      return await Innertube.create({
+        fetch: fetch,
+        cache: undefined
+      });
+    })().catch(err => {
+      ytClientPromise = null; // Allow retry on next call if it failed
+      throw err;
+    });
+  }
+  return ytClientPromise;
+}
+
+// Pre-warm client in background
+setTimeout(() => {
+  getYouTubeClient().catch(() => {});
+}, 1000);
+
+// Search YouTube with a timeout guard
+async function searchYouTubeVideos(query) {
+  const timeoutPromise = new Promise((_, reject) => {
+    setTimeout(() => reject(new Error('YouTube search timed out')), 9000);
+  });
+
+  const fetchPromise = (async () => {
+    const yt = await getYouTubeClient();
+    const search = await yt.search(query, { type: 'video' });
+    const rawVideos = search.videos || [];
+    const videos = [];
+
+    for (const v of rawVideos) {
+      if (!v.id) continue;
+      const title = v.title?.text || v.title || 'YouTube Video';
+      const duration = v.duration?.text || null;
+      const channel = v.author?.name || 'YouTube';
+      const thumbnail = v.thumbnails?.[0]?.url || '';
+      const description = v.description_snippet?.text || (channel ? `Uploaded by ${channel}` : '');
+
+      videos.push({
+        id: `yt-${v.id}`,
+        title,
+        type: 'embed_player',
+        embedUrl: `https://www.youtube-nocookie.com/embed/${v.id}`,
+        videoUrl: `https://www.youtube.com/watch?v=${v.id}`,
+        thumbnail,
+        duration,
+        channel,
+        source: 'YouTube',
+        sourceUrl: `https://www.youtube.com/watch?v=${v.id}`,
+        description
+      });
+    }
+    return videos;
+  })();
+
+  return Promise.race([fetchPromise, timeoutPromise]);
+}
+
 // Automatic Multi-Source Video Scraper Orchestrator
+// Strategy: Try youtube.js first; if it crashes, times out, or fails, gracefully fall back to scrapers
 export async function scrapeOnlineVideos(rawQuery) {
   const query = (rawQuery || '').trim();
   if (!query) {
@@ -158,10 +223,26 @@ export async function scrapeOnlineVideos(rawQuery) {
     };
   }
 
+  // 1. Primary Strategy: YouTube via youtube.js
+  try {
+    const ytVideos = await searchYouTubeVideos(query);
+    if (Array.isArray(ytVideos) && ytVideos.length > 0) {
+      return {
+        found: true,
+        query,
+        count: ytVideos.length,
+        source: 'YouTube',
+        videos: ytVideos
+      };
+    }
+  } catch (ytErr) {
+    console.warn(`[Video Scraper] YouTube.js encountered an issue (${ytErr.message}). Automatically falling back to archive scrapers...`);
+  }
+
+  // 2. Fallback Strategy: Internet Archive & Wikimedia Commons scrapers
   let allVideos = [];
   let facedChallenge = false;
 
-  // Run scraper sources concurrently
   const [wikiRes, iaRes] = await Promise.all([
     scrapeWikimediaVideos(query).catch(() => ({ videos: [], challenge: false })),
     scrapeArchiveOrgVideos(query).catch(() => ({ videos: [], challenge: false }))
@@ -195,6 +276,7 @@ export async function scrapeOnlineVideos(rawQuery) {
       found: true,
       query,
       count: dedupedVideos.length,
+      source: 'Archives (Fallback)',
       videos: dedupedVideos
     };
   }
