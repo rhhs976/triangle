@@ -432,7 +432,7 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`========================================================`);
-  console.log(`   KEA SEARCH ENGINE ONLINE                            `);
+  console.log(`   TRIANGLE SEARCH ENGINE ONLINE                       `);
   console.log(`   URL: http://0.0.0.0:${PORT}                         `);
   console.log(`========================================================`);
 });

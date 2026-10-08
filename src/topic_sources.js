@@ -17,12 +17,12 @@ export function getTopicWebsites(topic, category, details = {}) {
   if (lower === 'fargenegletasanduegomadhascarsgask') {
     return [
       {
-        siteName: 'kea Knowledge Registry',
-        domain: 'kea.local',
+        siteName: 'triangle Knowledge Registry',
+        domain: 'triangle.local',
         url: `http://localhost:3000/?q=${encodeURIComponent(cleanTopic)}`,
         logo: TRIANGLE_LOGO,
         title: 'Fargenegletasanduegomadhascarsgask',
-        description: 'Official user-coined declarative vow signifying an absolute refusal to fly or travel by airplane. Preserved in the kea lexicon.',
+        description: 'Official user-coined declarative vow signifying an absolute refusal to fly or travel by airplane. Preserved in the triangle lexicon.',
         image: 'https://images.unsplash.com/photo-1542296332-2e4473faf563?w=500&auto=format&fit=crop&q=80' // Airplane on tarmac / grounded
       },
       {
