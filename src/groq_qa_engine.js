@@ -2,7 +2,7 @@
 // and caches them semantically in Turso Cloud
 
 import { turso } from './turso_client.js';
-import { lookupSemanticQA, saveSemanticQA, normalizeQuestionToCanonicalKey, isCacheLimitReached, MAX_QA_CACHE_LIMIT } from './semantic_qa_cache.js';
+import { lookupSemanticQA, saveSemanticQA, normalizeQuestionToCanonicalKey, isCacheLimitReached, isTemporalQuestion, MAX_QA_CACHE_LIMIT } from './semantic_qa_cache.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -96,13 +96,20 @@ export class GroqQAEngine {
   }
 
   async _fetchFromGroqAndSave(question) {
-    const prompt = `You are an authoritative encyclopedic knowledge search engine. Answer the question: "${question}".
+    const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    const isTemporal = isTemporalQuestion(question);
+    const temporalInstruction = isTemporal
+      ? `\n5. This question asks about dynamic/current information (e.g. leaders, roles, champions, populations, statistics). You MUST state the verified status as of today (${today}) accurately.`
+      : '';
+
+    const prompt = `Today's Date: ${today}.
+You are an authoritative encyclopedic knowledge search engine. Answer the question: "${question}".
 
 Strict Formatting Requirements:
 1. Provide an answer of EXACTLY 4 sentences in total.
 2. Sentence 1 MUST be the direct, bold answer.
 3. The remaining 3 sentences MUST provide clear, factual context and mechanics underneath.
-4. Absolutely no conversational filler, chatbot greetings, or intros (no "Sure", "Here is", "Certainly").
+4. Absolutely no conversational filler, chatbot greetings, or intros (no "Sure", "Here is", "Certainly").${temporalInstruction}
 
 Format EXACTLY:
 Direct Answer:
@@ -112,7 +119,7 @@ Explanation:
 [Sentences 2, 3, and 4: Exactly 3 sentences of concise factual context and explanation]
 
 Category:
-[e.g. Science, Geography, History, Technology, General Knowledge]`;
+[e.g. Politics, Science, Geography, History, Technology, General Knowledge]`;
 
     for (const model of MODELS) {
       try {
