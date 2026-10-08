@@ -194,9 +194,30 @@ export async function onRequestGet(context) {
       }
     } catch (_) {}
 
-    // Groq On-Demand Generation for Question (At least 1 full paragraph)
+    // Groq On-Demand Generation for Question (with Storage Cap Guard)
+    const MAX_LIMIT = parseInt(env?.MAX_QA_CACHE_LIMIT || '5000000', 10);
     const groqKey = env?.GROQ_API_KEY;
     if (groqKey) {
+      // Check if limit is reached before calling Groq
+      try {
+        const countRes = await client.execute('SELECT COUNT(1) AS total FROM qa_cache');
+        const currentTotal = Number(countRes?.rows?.[0]?.total) || 0;
+        if (currentTotal >= MAX_LIMIT) {
+          return new Response(JSON.stringify({
+            found: true,
+            query: q,
+            category: 'Storage Limit',
+            title: '**The knowledge database has reached its maximum storage capacity limit.**',
+            directAnswer: '**The knowledge database has reached its maximum storage capacity limit.**',
+            fullExplanation: `The search engine has stored the maximum allowed cap of ${MAX_LIMIT.toLocaleString()} questions. Generation has safely stopped to prevent exceeding storage quotas. Existing cached answers remain fully accessible.`,
+            snippet: 'Storage capacity limit reached.',
+            sources: getWebsites(q)
+          }), {
+            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+          });
+        }
+      } catch (_) {}
+
       const generatedQA = await callGroqQA(q, groqKey);
 
     if (generatedQA) {

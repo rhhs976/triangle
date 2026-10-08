@@ -2,7 +2,7 @@
 // and caches them semantically in Turso Cloud
 
 import { turso } from './turso_client.js';
-import { lookupSemanticQA, saveSemanticQA, normalizeQuestionToCanonicalKey } from './semantic_qa_cache.js';
+import { lookupSemanticQA, saveSemanticQA, normalizeQuestionToCanonicalKey, isCacheLimitReached, MAX_QA_CACHE_LIMIT } from './semantic_qa_cache.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -55,6 +55,26 @@ export class GroqQAEngine {
           downvotes: cached.downvotes,
           accessCount: cached.accessCount,
           cachedFromTurso: true
+        }
+      };
+    }
+
+    // 2. Storage Guard: If database reached the limit, stop generating new questions!
+    const limitReached = await isCacheLimitReached(turso);
+    if (limitReached) {
+      console.warn(`[STORAGE LIMIT] Reached maximum allowed questions (${MAX_QA_CACHE_LIMIT}). Generation stopped.`);
+      return {
+        found: true,
+        query: cleanQ,
+        category: 'Storage Limit',
+        title: '**The knowledge database has reached its maximum storage capacity limit.**',
+        directAnswer: '**The knowledge database has reached its maximum storage capacity limit.**',
+        fullExplanation: `The search engine has safely stored the maximum allowed quota of ${MAX_QA_CACHE_LIMIT.toLocaleString()} questions. New background generation has stopped to protect your free-tier storage, while all existing cached answers continue to be served instantly.`,
+        snippet: 'Storage capacity limit reached.',
+        details: {
+          storageLimitReached: true,
+          maxLimit: MAX_QA_CACHE_LIMIT,
+          cachedFromTurso: false
         }
       };
     }

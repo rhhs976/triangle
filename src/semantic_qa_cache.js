@@ -183,12 +183,47 @@ export async function lookupSemanticQA(question, client) {
   return null;
 }
 
+// Hard Storage & Quota Limit (Default 5,000,000 entries = ~2.8 GB in Turso, well under 9 GB free tier)
+export const MAX_QA_CACHE_LIMIT = parseInt(process.env.MAX_QA_CACHE_LIMIT || '5000000', 10);
+
+let cachedEntryCount = null;
+let lastCountCheckTime = 0;
+const COUNT_CACHE_TTL_MS = 5 * 60 * 1000; // Recalculate from DB every 5 minutes
+
+export async function getCachedQuestionCount(client) {
+  const now = Date.now();
+  if (cachedEntryCount !== null && (now - lastCountCheckTime) < COUNT_CACHE_TTL_MS) {
+    return cachedEntryCount;
+  }
+  try {
+    const res = await client.execute('SELECT COUNT(1) AS total FROM qa_cache');
+    if (res && res.rows && res.rows.length > 0) {
+      cachedEntryCount = Number(res.rows[0].total) || 0;
+      lastCountCheckTime = now;
+      return cachedEntryCount;
+    }
+  } catch (_) {}
+  return cachedEntryCount || 0;
+}
+
+export async function isCacheLimitReached(client) {
+  const count = await getCachedQuestionCount(client);
+  return count >= MAX_QA_CACHE_LIMIT;
+}
+
 /**
  * Save newly generated Groq QA into Turso Cloud
  */
 export async function saveSemanticQA({ question, directAnswer, fullExplanation, category = 'Knowledge' }, client) {
   const canonicalKey = normalizeQuestionToCanonicalKey(question);
   if (!canonicalKey || !directAnswer) return null;
+
+  // Storage Guard: Stop saving once the safety limit is reached
+  const reached = await isCacheLimitReached(client);
+  if (reached) {
+    console.warn(`[TURSO STORAGE CAP] Maximum limit of ${MAX_QA_CACHE_LIMIT} reached. Halting new database insertions.`);
+    return null;
+  }
 
   const isTemporal = isTemporalQuestion(question);
   const now = new Date().toISOString();
@@ -200,6 +235,7 @@ export async function saveSemanticQA({ question, directAnswer, fullExplanation, 
             VALUES (?, ?, ?, ?, ?, ?, 1, 0, 1, ?, ?)`,
       args: [canonicalKey, question, directAnswer, fullExplanation, category, isTemporal, now, now]
     });
+    if (cachedEntryCount !== null) cachedEntryCount++;
     return res;
   } catch (err) {
     console.error('Failed to save QA into Turso:', err.message);
