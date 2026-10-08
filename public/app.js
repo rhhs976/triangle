@@ -13,6 +13,24 @@ const brandLogoSmall = document.getElementById('brand-logo-small');
 const resultsWrapper = document.getElementById('results-wrapper');
 const randomSearchBtn = document.getElementById('random-search-btn');
 
+// Image & Tabs Elements
+const searchTabsBar = document.getElementById('search-tabs-bar');
+const tabBtnAll = document.getElementById('tab-btn-all');
+const tabBtnImages = document.getElementById('tab-btn-images');
+const imagesWrapper = document.getElementById('images-wrapper');
+
+const imageModal = document.getElementById('image-modal');
+const imageModalBackdrop = document.getElementById('image-modal-backdrop');
+const modalCloseBtn = document.getElementById('modal-close-btn');
+const modalImg = document.getElementById('modal-img');
+const modalTitle = document.getElementById('modal-title');
+const modalSource = document.getElementById('modal-source');
+const modalLink = document.getElementById('modal-link');
+
+let currentQuery = '';
+let currentTab = 'all';
+let cachedImages = null;
+
 // Sample queries
 const sampleQueries = [
   'Apollo 11',
@@ -33,8 +51,15 @@ function showHomeView() {
   centerInput.value = '';
   topInput.value = '';
   resultsWrapper.innerHTML = '';
+  imagesWrapper.innerHTML = '';
+  if (searchTabsBar) searchTabsBar.style.display = 'none';
+  resultsWrapper.style.display = 'block';
+  imagesWrapper.style.display = 'none';
+  switchTab('all');
   centerClearBtn.style.display = 'none';
   topClearBtn.style.display = 'none';
+  currentQuery = '';
+  cachedImages = null;
   window.history.pushState({}, '', window.location.pathname);
   setTimeout(() => centerInput.focus(), 50);
 }
@@ -44,9 +69,29 @@ function showResultsView(query) {
   body.className = 'results-view';
   topInput.value = query;
   centerInput.value = query;
+  if (searchTabsBar) searchTabsBar.style.display = 'block';
   topClearBtn.style.display = query ? 'block' : 'none';
   centerClearBtn.style.display = query ? 'block' : 'none';
   topInput.focus();
+}
+
+// Tab Switching ("All" vs "Image")
+function switchTab(tab) {
+  currentTab = tab;
+  if (tab === 'all') {
+    tabBtnAll.classList.add('active');
+    tabBtnImages.classList.remove('active');
+    resultsWrapper.style.display = 'block';
+    imagesWrapper.style.display = 'none';
+  } else if (tab === 'images') {
+    tabBtnImages.classList.add('active');
+    tabBtnAll.classList.remove('active');
+    resultsWrapper.style.display = 'none';
+    imagesWrapper.style.display = 'block';
+    if (currentQuery) {
+      loadAndRenderImages(currentQuery);
+    }
+  }
 }
 
 // Perform Search
@@ -54,8 +99,15 @@ async function performSearch(query) {
   const clean = (query || '').trim();
   if (!clean) return;
 
+  currentQuery = clean;
+  cachedImages = null; // Invalidate previous cached images on new search
   showResultsView(clean);
   window.history.pushState({ q: clean }, '', `?q=${encodeURIComponent(clean)}`);
+
+  if (currentTab === 'images') {
+    loadAndRenderImages(clean);
+    return;
+  }
 
   resultsWrapper.innerHTML = `
     <div class="loading-spinner">Searching triangle knowledge index...</div>
@@ -72,6 +124,106 @@ async function performSearch(query) {
       </div>
     `;
   }
+}
+
+// Load and Render Scraped Images
+async function loadAndRenderImages(query) {
+  if (cachedImages && cachedImages.query === query) {
+    renderImages(cachedImages);
+    return;
+  }
+
+  imagesWrapper.innerHTML = `
+    <div class="images-loading-wrap">
+      <div class="loading-spinner">Scraping online images for "${escapeHtml(query)}"...</div>
+    </div>
+  `;
+
+  try {
+    const res = await fetch(`/api/images?q=${encodeURIComponent(query)}`);
+    const data = await res.json();
+    cachedImages = data;
+    renderImages(data);
+  } catch (err) {
+    imagesWrapper.innerHTML = `
+      <div class="result-card no-results-card">
+        <div class="no-images-blocked-card">
+          <svg viewBox="0 0 24 24" width="36" height="36" class="blocked-icon"><path fill="#5f6368" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+          <h3 class="blocked-title">No images available</h3>
+          <p class="blocked-desc">No image results found due to copyright protections, Cloudflare verification, or CAPTCHA restrictions.</p>
+        </div>
+      </div>
+    `;
+  }
+}
+
+function renderImages(data) {
+  if (!data || !data.found || !data.images || data.images.length === 0) {
+    imagesWrapper.innerHTML = `
+      <div class="result-card no-results-card">
+        <div class="no-images-blocked-card">
+          <svg viewBox="0 0 24 24" width="36" height="36" class="blocked-icon"><path fill="#5f6368" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+          <h3 class="blocked-title">No images available</h3>
+          <p class="blocked-desc">${escapeHtml(data?.message || 'No image results found due to copyright protections, Cloudflare verification, or CAPTCHA restrictions.')}</p>
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  imagesWrapper.innerHTML = `
+    <div class="images-container">
+      <div class="images-header-meta">
+        <span class="images-count-tag">${data.images.length} verified public images found</span>
+      </div>
+      <div class="images-grid">
+        ${data.images.map(img => `
+          <div class="image-grid-item" data-full="${escapeHtml(img.url)}" data-title="${escapeHtml(img.title)}" data-source="${escapeHtml(img.source)}" data-source-url="${escapeHtml(img.sourceUrl || img.url)}">
+            <div class="image-thumb-box">
+              <img src="${escapeHtml(img.thumbnail || img.url)}" alt="${escapeHtml(img.title)}" loading="lazy" onerror="this.closest('.image-grid-item').style.display='none'" />
+            </div>
+            <div class="image-info-bar">
+              <span class="image-item-title" title="${escapeHtml(img.title)}">${escapeHtml(img.title)}</span>
+              <span class="image-item-source">${escapeHtml(img.source)}</span>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
+  // Hook up image modal lightbox click events
+  imagesWrapper.querySelectorAll('.image-grid-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const fullUrl = item.getAttribute('data-full');
+      const title = item.getAttribute('data-title');
+      const source = item.getAttribute('data-source');
+      const sourceUrl = item.getAttribute('data-source-url');
+
+      modalImg.src = fullUrl;
+      modalImg.alt = title;
+      modalTitle.textContent = title;
+      modalSource.textContent = `Source: ${source}`;
+      modalLink.href = sourceUrl || fullUrl;
+      imageModal.style.display = 'flex';
+    });
+  });
+}
+
+function closeModal() {
+  if (imageModal) {
+    imageModal.style.display = 'none';
+    modalImg.src = '';
+  }
+}
+
+if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+if (imageModalBackdrop) imageModalBackdrop.addEventListener('click', closeModal);
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && imageModal && imageModal.style.display === 'flex') {
+    closeModal();
+  }
+});
 }
 
 function escapeHtml(text) {
@@ -405,6 +557,20 @@ topClearBtn.addEventListener('click', () => {
   syncInputs('');
   topInput.focus();
 });
+
+// Tabs ("All" & "Image")
+if (tabBtnAll) {
+  tabBtnAll.addEventListener('click', (e) => {
+    e.preventDefault();
+    switchTab('all');
+  });
+}
+if (tabBtnImages) {
+  tabBtnImages.addEventListener('click', (e) => {
+    e.preventDefault();
+    switchTab('images');
+  });
+}
 
 // Form Submissions
 centerForm.addEventListener('submit', (e) => {

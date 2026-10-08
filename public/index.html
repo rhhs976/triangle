@@ -59,10 +59,46 @@
 
     <!-- Results Area (Underneath the Search Bar) -->
     <section class="results-container" id="results-container">
+      <!-- Search Mode Tabs: "All" and "Image" on top of the answer -->
+      <nav class="search-tabs-bar" id="search-tabs-bar">
+        <div class="tabs-inner">
+          <button type="button" class="tab-btn active" id="tab-btn-all" data-tab="all">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            <span>All</span>
+          </button>
+          <button type="button" class="tab-btn" id="tab-btn-images" data-tab="images">
+            <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            <span>Image</span>
+          </button>
+        </div>
+      </nav>
+
       <div class="results-wrapper" id="results-wrapper">
         <!-- Results injected here via JavaScript -->
       </div>
+
+      <div class="images-wrapper" id="images-wrapper" style="display: none;">
+        <!-- Image scraper gallery injected here via JavaScript -->
+      </div>
     </section>
+
+    <!-- Image Lightbox Modal -->
+    <div class="image-modal" id="image-modal" style="display: none;">
+      <div class="image-modal-backdrop" id="image-modal-backdrop"></div>
+      <div class="image-modal-content">
+        <button type="button" class="modal-close-btn" id="modal-close-btn">✕</button>
+        <div class="modal-image-wrap">
+          <img src="" alt="" id="modal-img" />
+        </div>
+        <div class="modal-meta">
+          <h3 id="modal-title"></h3>
+          <div class="modal-source-row">
+            <span id="modal-source"></span>
+            <a href="#" target="_blank" rel="noopener noreferrer" id="modal-link">View Full Source ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
 

@@ -13,6 +13,7 @@ import { formatDictionaryEntry } from './dictionary_formatter.js';
 import { DictionaryQAEngine } from './dictionary_qa_engine.js';
 import { getTopicWebsites } from './topic_sources.js';
 import { DisambiguationEngine } from './disambiguation_engine.js';
+import { scrapeOnlineImages } from './image_scraper.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.resolve(__dirname, '../public');
@@ -327,6 +328,37 @@ const server = http.createServer((req, res) => {
       sendJson(res, 200, result);
     }).catch(err => {
       sendJson(res, 500, { error: err.message });
+    });
+    return;
+  }
+
+  // GET /api/images?q=...
+  if (url.pathname === '/api/images' && req.method === 'GET') {
+    const q = url.searchParams.get('q') || '';
+    searchQueue.enqueue(() => scrapeOnlineImages(q)).then(result => {
+      sendJson(res, 200, result);
+    }).catch(err => {
+      sendJson(res, 500, { error: err.message });
+    });
+    return;
+  }
+
+  // POST /api/images
+  if (url.pathname === '/api/images' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', () => {
+      try {
+        const parsed = JSON.parse(body || '{}');
+        const q = parsed.query || parsed.q || '';
+        searchQueue.enqueue(() => scrapeOnlineImages(q)).then(result => {
+          sendJson(res, 200, result);
+        }).catch(err => {
+          sendJson(res, 500, { error: err.message });
+        });
+      } catch (e) {
+        sendJson(res, 400, { error: 'Invalid JSON request' });
+      }
     });
     return;
   }
