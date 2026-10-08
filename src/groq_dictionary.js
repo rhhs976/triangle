@@ -34,6 +34,7 @@ const MODELS = [
 export class GroqDictionaryEngine {
   constructor() {
     this.initDb();
+    this.inFlight = new Map(); // Single-flight coalescing: prevents duplicate concurrent Groq calls
   }
 
   initDb() {
@@ -70,6 +71,8 @@ export class GroqDictionaryEngine {
       // Groq is explicitly stopped to prevent bans or quota exhaustion
       return null;
     }
+
+    console.log(`[GROQ CALL] Initiating single on-demand Groq synthesis for: "${targetWord}"`);
 
     const apiKey = getGroqKey();
     if (!apiKey) {
@@ -282,27 +285,41 @@ Do NOT guess, fabricate, or improvise definitions for fake words.
       };
     }
 
-    // 4. Generate on-demand using Groq (only for unindexed words searched by the user)
-    const generated = await this.callGroq(clean);
-    if (generated) {
-      return {
-        found: true,
-        word: clean,
-        heading: generated.heading,
-        explanation: generated.explanation,
-        usage: generated.usage,
-        raw_entry: generated.raw_entry,
-        cached: false
-      };
+    // 4. Single-Flight Coalescing: If another person is already generating this word right now,
+    // wait for their result rather than sending 200 parallel requests to Groq!
+    if (this.inFlight.has(clean)) {
+      return await this.inFlight.get(clean);
     }
 
-    // 5. Word could not be generated (either invalid or severe typo)
-    const suggestion = findSpellingSuggestion(clean);
-    return {
-      found: false,
-      word: clean,
-      suggestion
-    };
+    const generatePromise = (async () => {
+      try {
+        const generated = await this.callGroq(clean);
+        if (generated) {
+          return {
+            found: true,
+            word: clean,
+            heading: generated.heading,
+            explanation: generated.explanation,
+            usage: generated.usage,
+            raw_entry: generated.raw_entry,
+            cached: false
+          };
+        }
+
+        // 5. Word could not be generated (either invalid or severe typo)
+        const suggestion = findSpellingSuggestion(clean);
+        return {
+          found: false,
+          word: clean,
+          suggestion
+        };
+      } finally {
+        this.inFlight.delete(clean);
+      }
+    })();
+
+    this.inFlight.set(clean, generatePromise);
+    return await generatePromise;
   }
 }
 
