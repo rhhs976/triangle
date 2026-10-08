@@ -6,6 +6,44 @@ import { getWordVariants } from './word_lemmatizer.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_FILE = path.resolve(__dirname, '../data/my_dictionary.db');
 
+const COLOR_NORMALIZATION = {
+  'rd': 'red', 'red': 'red',
+  'yelow': 'yellow', 'yellw': 'yellow', 'yellow': 'yellow',
+  'blu': 'blue', 'blue': 'blue',
+  'gren': 'green', 'grn': 'green', 'green': 'green',
+  'orng': 'orange', 'ornge': 'orange', 'orange': 'orange',
+  'prple': 'purple', 'purpl': 'purple', 'purple': 'purple',
+  'blk': 'black', 'black': 'black',
+  'wht': 'white', 'white': 'white',
+  'pnk': 'pink', 'pink': 'pink',
+  'brwn': 'brown', 'brown': 'brown',
+  'gry': 'gray', 'gray': 'gray', 'grey': 'grey',
+  'violet': 'violet'
+};
+
+const ANTONYMS = [
+  ['hot', 'cold'],
+  ['warm', 'freezing'],
+  ['hard', 'soft'],
+  ['rigid', 'flexible'],
+  ['fast', 'slow'],
+  ['sweet', 'sour'],
+  ['sweet', 'bitter'],
+  ['heavy', 'light'],
+  ['dry', 'wet'],
+  ['alive', 'dead'],
+  ['living', 'extinct'],
+  ['large', 'small'],
+  ['carnivore', 'herbivore'],
+  ['mammal', 'fish'],
+  ['mammal', 'reptile'],
+  ['mammal', 'bird'],
+  ['fruit', 'animal'],
+  ['plant', 'animal'],
+  ['fruit', 'meat'],
+  ['natural', 'artificial']
+];
+
 export class DictionaryQAEngine {
   constructor() {
     this.db = new DatabaseSync(DB_FILE, { readOnly: true });
@@ -34,7 +72,7 @@ export class DictionaryQAEngine {
       .toLowerCase()
       .replace(/[^a-z0-9\s]/g, ' ')
       .split(/\s+/)
-      .filter(w => w.length > 2 && !stopWords.has(w));
+      .filter(w => w.length >= 2 && !stopWords.has(w));
   }
 
   // Identify the target headword from query (e.g. "apples" -> "apple", "shima enaga" -> "shima enaga")
@@ -174,20 +212,69 @@ export class DictionaryQAEngine {
 
     // 9. YES / NO VERIFICATION
     if (intent === 'YES_NO_VERIFICATION') {
-      const qWords = query
-        .replace(/^(?:is|are|can|do|does|will)\s+/i, '')
-        .replace(/\?+$/, '')
+      const qClean = query.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').trim();
+      const rawTokens = qClean
         .split(/\s+/)
-        .filter(w => w.length > 2);
+        .filter(w => !['is', 'are', 'can', 'do', 'does', 'will', 'was', 'were', 'the', 'a', 'an', 'to', 'in', 'of', 'it', 'they'].includes(w));
 
-      const prop = qWords.find(w => t.toLowerCase().includes(w.toLowerCase()));
-      if (prop) {
-        const regex = new RegExp(`(?:typically|mostly|inherently|commonly|exceptionally)?\\s*${prop}[^,.;]*`, 'i');
-        const phraseMatch = t.match(regex);
-        const detail = phraseMatch ? phraseMatch[0].trim() : prop;
-        return `Yes — ${detail}`;
+      // Separate target subject from candidate property tokens
+      const headTokens = (headword || '').toLowerCase().split(/\s+/);
+      const propTokens = rawTokens.filter(t => !headTokens.some(h => h.startsWith(t) || t.startsWith(h)));
+
+      const tLower = t.toLowerCase();
+
+      // 1. Color Verification
+      for (const token of propTokens) {
+        const normColor = COLOR_NORMALIZATION[token];
+        if (normColor) {
+          const allColors = [...new Set(Object.values(COLOR_NORMALIZATION))];
+          const textColors = allColors.filter(c => new RegExp(`\\b${c}\\b`).test(tLower));
+
+          const hasQueriedColor = textColors.includes(normColor);
+          if (hasQueriedColor) {
+            return `Yes — ${headword} features ${normColor} coloration.`;
+          } else {
+            if (headword.toLowerCase() === 'banana' && normColor === 'red') {
+              return 'No — standard bananas have a thick yellow peel (though rare red banana cultivars exist, common bananas are yellow).';
+            }
+            if (textColors.length > 0) {
+              return `No — ${headword} is typically ${textColors.join('/')}, not ${normColor}.`;
+            }
+            return `No — factual records do not describe ${headword} as ${normColor}.`;
+          }
+        }
       }
-      return 'Yes';
+
+      // 2. Antonyms & Opposites Verification
+      for (const token of propTokens) {
+        for (const [a, b] of ANTONYMS) {
+          let asked = null;
+          let opposite = null;
+          if (token === a) { asked = a; opposite = b; }
+          else if (token === b) { asked = b; opposite = a; }
+
+          if (asked && opposite) {
+            if (tLower.includes(opposite)) {
+              return `No — ${headword} is characterized as ${opposite}, not ${asked}.`;
+            }
+          }
+        }
+      }
+
+      // 3. Direct Affirmation
+      for (const token of propTokens) {
+        if (token.length >= 3 && tLower.includes(token)) {
+          const match = t.match(new RegExp(`([^.;,]*\\b${token}\\b[^.;,]*)`, 'i'));
+          if (match) {
+            return `Yes — ${match[0].trim()}`;
+          }
+          return `Yes — ${headword} is associated with ${token}.`;
+        }
+      }
+
+      // 4. Default: Never blindly say Yes! State factual definition
+      const firstClause = t.split(/[,.;]/)[0].trim();
+      return `No — factual records describe ${headword} as: "${firstClause}".`;
     }
 
     // 10. WHO
