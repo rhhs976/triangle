@@ -12,6 +12,7 @@ import { extractDirectAnswer } from './answer_extractor.js';
 import { formatDictionaryEntry } from './dictionary_formatter.js';
 import { DictionaryQAEngine } from './dictionary_qa_engine.js';
 import { getTopicWebsites } from './topic_sources.js';
+import { DisambiguationEngine } from './disambiguation_engine.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.resolve(__dirname, '../public');
@@ -19,6 +20,7 @@ const PORT = process.env.PORT || 3000;
 
 const historyEngine = new HistoryRAGEngine();
 const dictQA = new DictionaryQAEngine();
+const disambigEngine = new DisambiguationEngine();
 
 // ========================================================
 // 100-LANE QUEUE SYSTEM: 100 parallel lines so nobody waits
@@ -106,8 +108,11 @@ function cleanDefinition(raw) {
 async function executeSearch(rawQuery) {
   const result = await doSearch(rawQuery);
   if (result && result.found && result.category !== 'Math') {
-    const topic = result.sourceWord || result.details?.word || result.title || rawQuery;
-    result.sources = getTopicWebsites(topic, result.category, result.details);
+    // Preserve custom specific sources if already assigned (e.g. IMDb for movie disambiguation)
+    if (!result.sources || !result.sources.length) {
+      const topic = result.sourceWord || result.details?.word || result.title || rawQuery;
+      result.sources = getTopicWebsites(topic, result.category, result.details);
+    }
   }
   return result;
 }
@@ -173,7 +178,15 @@ async function doSearch(rawQuery) {
     }
   }
 
-  // 3. Explicit Grammar & Part of Speech Tagging ("tag: ...", "pos: ...", "syntax: ...")
+  // 3. Local Disambiguation Engine (100% OFFLINE, ZERO Groq):
+  // Handles multi-meaning queries where user specifies a sense descriptor or qualifier
+  // (e.g. "movie madagascar", "movie madacasgar", "island madagascar", "apple company", "python snake")
+  const disambigRes = disambigEngine.resolveQuery(query);
+  if (disambigRes && disambigRes.found) {
+    return disambigRes;
+  }
+
+  // 4. Explicit Grammar & Part of Speech Tagging ("tag: ...", "pos: ...", "syntax: ...")
   const tagMatch = query.match(/^(?:tag|pos|grammar|syntax|analyze):\s*(.+)$/i);
   if (tagMatch) {
     const sentenceToTag = tagMatch[1].trim();
@@ -228,7 +241,7 @@ async function doSearch(rawQuery) {
     };
   }
 
-  // 5. Dictionary, Book, Song, & Reference Lookup (Local DB + On-demand Groq synthesis)
+  // 6. Dictionary, Book, Song, & Reference Lookup (Local DB + On-demand Groq synthesis)
   const defMatch = query.match(/^(?:define|definition of|what is the definition of|what does|meaning of|lookup|what is an?|what is|what are)\s+(.+?)(?:\s+mean)?\??$/i);
   const termToLookup = defMatch ? defMatch[1].trim() : query.trim();
 
@@ -237,6 +250,18 @@ async function doSearch(rawQuery) {
 
     if (dictRes && dictRes.found) {
       const cleanTitle = termToLookup.charAt(0).toUpperCase() + termToLookup.slice(1);
+
+      // Check if term has alternate disambiguation senses
+      const senses = disambigEngine.getSenses(termToLookup);
+      let alternates = null;
+      if (senses && senses.length > 1) {
+        alternates = senses.map(s => ({
+          title: s.title,
+          sense: s.sense_key,
+          suggestedQuery: `${s.sense_key} ${termToLookup}`
+        }));
+      }
+
       return {
         found: true,
         query,
@@ -247,6 +272,7 @@ async function doSearch(rawQuery) {
         usage: dictRes.usage,
         raw_entry: dictRes.raw_entry,
         snippet: dictRes.explanation,
+        alternates,
         details: {
           word: dictRes.word,
           heading: dictRes.heading,

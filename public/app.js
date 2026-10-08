@@ -371,6 +371,18 @@ function renderResults(data) {
   } else {
     resultsWrapper.innerHTML = cardHtml;
   }
+
+  // Hook up alternate sense pill buttons
+  document.querySelectorAll('.alternate-sense-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const q = btn.getAttribute('data-query');
+      if (q) {
+        syncInputs(q);
+        performSearch(q);
+      }
+    });
+  });
 }
 
 // Input sync & clear button toggling
