@@ -173,57 +173,19 @@ async function doSearch(rawQuery) {
     }
   }
 
-  // 3. Dictionary / Vocabulary Query ("define X", "meaning of X", "what is X", "the X", or single word)
-  const defMatch = lower.match(/^(?:define|definition of|what is the definition of|what does|meaning of|lookup|what is an?|what is|what are)\s+([a-zA-Z\-]+)(?:\s+mean)?\??$/i);
-  const words = query.split(/\s+/);
-  const singleWord = words.length === 1 && /^[a-zA-Z\-]+$/.test(query);
-  const articleWord = words.length === 2 && /^(?:the|a|an)\s+([a-zA-Z\-]+)$/i.test(query);
-
-  if (defMatch || singleWord || articleWord) {
-    const word = defMatch ? defMatch[1] : (articleWord ? words[1] : query);
-    const dictRes = await myDictionary.lookup(word);
-
-    if (dictRes.found) {
-      return {
-        found: true,
-        query,
-        category: 'Dictionary',
-        title: word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
-        heading: dictRes.heading,
-        explanation: dictRes.explanation,
-        usage: dictRes.usage,
-        raw_entry: dictRes.raw_entry,
-        snippet: dictRes.explanation,
-        details: {
-          word: dictRes.word,
-          heading: dictRes.heading,
-          explanation: dictRes.explanation,
-          usage: dictRes.usage,
-          raw_entry: dictRes.raw_entry
-        }
-      };
-    } else {
-      return {
-        found: false,
-        query,
-        message: dictRes.message || `No valid definition found for "${word}".`,
-        suggestion: dictRes.suggestion || null
-      };
-    }
-  }
-
-  // 4. Grammar & Part of Speech Tagging ("tag: ...", "pos: ...", or complex sentences)
+  // 3. Explicit Grammar & Part of Speech Tagging ("tag: ...", "pos: ...", "syntax: ...")
   const tagMatch = query.match(/^(?:tag|pos|grammar|syntax|analyze):\s*(.+)$/i);
-  if (tagMatch || (words.length >= 4 && !isQuestionQuery)) {
-    const sentenceToTag = tagMatch ? tagMatch[1] : query;
+  if (tagMatch) {
+    const sentenceToTag = tagMatch[1].trim();
     const tagResult = tagSentence(sentenceToTag);
+    const taggedTokens = tagResult.tagged || [];
 
-    if (tagResult.tokens.length > 0) {
-      const formula = tagResult.tokens.map(t => `${t.word} [${t.pos}]`).join(' ');
-      const verbs = tagResult.tokens.filter(t => t.pos === 'VERB').map(t => t.word);
-      const nouns = tagResult.tokens.filter(t => t.pos === 'NOUN').map(t => t.word);
-      const adjectives = tagResult.tokens.filter(t => t.pos === 'ADJ').map(t => t.word);
-      const adverbs = tagResult.tokens.filter(t => t.pos === 'ADV').map(t => t.word);
+    if (taggedTokens.length > 0) {
+      const formula = taggedTokens.map(t => `${t.word} [${t.tag}]`).join(' ');
+      const verbs = taggedTokens.filter(t => t.tag === 'VERB').map(t => t.word);
+      const nouns = taggedTokens.filter(t => t.tag === 'NOUN').map(t => t.word);
+      const adjectives = taggedTokens.filter(t => t.tag === 'ADJ').map(t => t.word);
+      const adverbs = taggedTokens.filter(t => t.tag === 'ADV').map(t => t.word);
 
       return {
         found: true,
@@ -233,7 +195,7 @@ async function doSearch(rawQuery) {
         subtitle: `Formula: ${formula}`,
         snippet: `Parts of speech: ${nouns.length} nouns, ${verbs.length} verbs, ${adjectives.length} adjectives, ${adverbs.length} adverbs.`,
         details: {
-          tokens: tagResult.tokens,
+          tokens: taggedTokens,
           posFormula: formula,
           verbs,
           nouns,
@@ -244,7 +206,7 @@ async function doSearch(rawQuery) {
     }
   }
 
-  // 5. Historical & Scientific Fact Search (RAG)
+  // 4. Historical & Scientific Fact Search (RAG)
   const ragResult = historyEngine.search(query);
   if (ragResult && ragResult.found && (ragResult.score >= 5 || ragResult.verifiedFact)) {
     const factText = ragResult.verifiedFact || ragResult.summary || '';
@@ -264,6 +226,43 @@ async function doSearch(rawQuery) {
         fullFact: factText
       }
     };
+  }
+
+  // 5. Dictionary, Book, Song, & Reference Lookup (Local DB + On-demand Groq synthesis)
+  const defMatch = query.match(/^(?:define|definition of|what is the definition of|what does|meaning of|lookup|what is an?|what is|what are)\s+(.+?)(?:\s+mean)?\??$/i);
+  const termToLookup = defMatch ? defMatch[1].trim() : query.trim();
+
+  if (termToLookup) {
+    const dictRes = await myDictionary.lookup(termToLookup);
+
+    if (dictRes && dictRes.found) {
+      const cleanTitle = termToLookup.charAt(0).toUpperCase() + termToLookup.slice(1);
+      return {
+        found: true,
+        query,
+        category: 'Dictionary',
+        title: cleanTitle,
+        heading: dictRes.heading,
+        explanation: dictRes.explanation,
+        usage: dictRes.usage,
+        raw_entry: dictRes.raw_entry,
+        snippet: dictRes.explanation,
+        details: {
+          word: dictRes.word,
+          heading: dictRes.heading,
+          explanation: dictRes.explanation,
+          usage: dictRes.usage,
+          raw_entry: dictRes.raw_entry
+        }
+      };
+    } else if (dictRes && dictRes.suggestion) {
+      return {
+        found: false,
+        query,
+        message: dictRes.message || `No valid definition found for "${termToLookup}".`,
+        suggestion: dictRes.suggestion
+      };
+    }
   }
 
   // Fallback: If nothing matched, suggest related terms

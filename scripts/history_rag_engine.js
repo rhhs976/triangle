@@ -130,6 +130,20 @@ export class HistoryRAGEngine {
         }
       }
 
+      // Require strong token coverage for multi-word queries to prevent accidental collisions (e.g. The Great Gatsby matching Great Pyramid)
+      if (queryTokens.length > 1) {
+        let matchedTokens = 0;
+        for (const token of queryTokens) {
+          if (titleLower.includes(token) || kwList.some(k => k.includes(token)) || summaryLower.includes(token)) {
+            matchedTokens++;
+          }
+        }
+        const coverage = matchedTokens / queryTokens.length;
+        if (coverage < 0.6) {
+          score = 0;
+        }
+      }
+
       return { event: ev, score };
     });
 

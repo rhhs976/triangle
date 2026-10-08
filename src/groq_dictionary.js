@@ -7,16 +7,28 @@ import { isKnownWord, isLikelyGibberish, findSpellingSuggestion } from './spell_
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_FILE = path.resolve(__dirname, '../data/my_dictionary.db');
-const GROQ_API_KEY = process.env.GROQ_API_KEY || '';
+
+function getGroqKey() {
+  if (process.env.GROQ_API_KEY) return process.env.GROQ_API_KEY;
+  try {
+    const envFile = path.resolve(__dirname, '../.env');
+    if (fs.existsSync(envFile)) {
+      const txt = fs.readFileSync(envFile, 'utf8');
+      const m = txt.match(/GROQ_API_KEY\s*=\s*([^\r\n]+)/);
+      if (m) return m[1].trim().replace(/^['"]|['"]$/g, '');
+    }
+  } catch (_) {}
+  return '';
+}
 
 // On-demand Groq mode: enabled for user searches when a word does not exist in local DB.
 // Background batch builders remain offline to protect quota.
 export let GROQ_PAUSED = false;
 
 const MODELS = [
+  'qwen/qwen3.8-27b',
   'openai/gpt-oss-120b',
-  'openai/gpt-oss-20b',
-  'qwen/qwen3.8-27b'
+  'openai/gpt-oss-20b'
 ];
 
 export class GroqDictionaryEngine {
@@ -59,29 +71,36 @@ export class GroqDictionaryEngine {
       return null;
     }
 
-    const wordClean = targetWord.trim();
-    const systemPrompt = `You are an authoritative, factually rigorous modern encyclopedic dictionary generator.
-For the word or term provided by the user, you must output an accurate, high-quality definition following this EXACT format:
+    const apiKey = getGroqKey();
+    if (!apiKey) {
+      console.warn('[GROQ] No API key available');
+      return null;
+    }
 
-**[Word or Term in bold]**
+    const wordClean = targetWord.trim();
+    const systemPrompt = `You are an authoritative, factually rigorous modern encyclopedic dictionary and reference generator.
+For the word, book title, song, film, entity, or term provided by the user, you must output an accurate, high-quality reference definition following this EXACT format:
+
+**[Title or Word in bold]**
 
 Explanation:
-[A rich, factually accurate, comprehensive, modern single-paragraph explanation of what the word or entity actually is, its real-world nature, biological/scientific taxonomy if applicable, history, or context]
+[A rich, comprehensive, modern single-paragraph explanation: if a vocabulary word, its definition, etymology, and characteristics; if a book series or novel, identify author/publisher, plot premise, genre, and significance; if a song or film, identify artists, release year, genre, and themes]
 
 Usage:
-[1-2 clear, natural, modern example sentences demonstrating the word used correctly in authentic context]
+1. [Clear, natural, authentic example sentence 1]
+2. [Clear, natural, authentic example sentence 2]
 
 CRITICAL RULES:
-- The first line MUST be the word or term surrounded by double asterisks (e.g. **Shima Enaga**).
-- Followed by 'Explanation:' and the factual explanation paragraph.
-- Followed by 'Usage:' and the usage examples.
-- FACTUAL INTEGRITY: NEVER invent or hallucinate fictitious neologisms or poetic metaphors for real organisms, flora, fauna, geographic features, loanwords, or cultural terms.
-- NON-WORD / GIBBERISH GUARD: If the query "${wordClean}" is a severe misspelling, unpronounceable keyboard mash, gibberish, or does NOT exist as a legitimate real-world word, scientific taxon, proper noun, or entity in any language, you MUST respond with ONLY:
+- The first line MUST be the title or word in bold surrounded by double asterisks (e.g. **I Survived** or **Die With a Smile**).
+- Followed by 'Explanation:' and the comprehensive paragraph.
+- Followed by 'Usage:' and the two example sentences.
+- FACTUAL INTEGRITY: NEVER invent or hallucinate fictitious neologisms or poetic metaphors for real organisms, flora, fauna, books, songs, or entities.
+- NON-WORD / GIBBERISH GUARD: If the query "${wordClean}" is a severe misspelling, unpronounceable keyboard mash, or pure gibberish, you MUST respond with ONLY:
 NOT_A_VALID_WORD
-Do NOT guess, fabricate, or improvise definitions for fake or misspelled words.
-- Do NOT output any introductory or concluding remarks, greetings, notes, or meta commentary.`;
+Do NOT guess, fabricate, or improvise definitions for fake words.
+- Do NOT output any introductory notes, greetings, or conversational meta-commentary.`;
 
-    const userPrompt = `Define the word: ${wordClean}`;
+    const userPrompt = `Define or explain: ${wordClean}`;
 
     for (const model of MODELS) {
       try {
@@ -91,14 +110,15 @@ Do NOT guess, fabricate, or improvise definitions for fake or misspelled words.
             { role: 'system', content: systemPrompt },
             { role: 'user', content: userPrompt }
           ],
-          temperature: 0.2
+          temperature: 0.2,
+          max_tokens: 800
         });
 
         const resBody = await new Promise((resolve, reject) => {
           const req = https.request('https://api.groq.com/openai/v1/chat/completions', {
             method: 'POST',
             headers: {
-              'Authorization': `Bearer ${GROQ_API_KEY}`,
+              'Authorization': `Bearer ${apiKey}`,
               'Content-Type': 'application/json',
               'Content-Length': Buffer.byteLength(postData)
             },
