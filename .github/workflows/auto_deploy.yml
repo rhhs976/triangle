@@ -1,0 +1,16 @@
+name: Auto Deploy to Render
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render Deploy Hook
+        run: |
+          echo "Triggering Render deployment for latest commit..."
+          curl -s -X POST "https://api.render.com/deploy/srv-db3tk0vf3r2c73dhrjf0?key=KRpOXtioK8M"
+          echo "Deployment triggered successfully!"
