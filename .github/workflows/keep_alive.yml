@@ -1,0 +1,17 @@
+name: Keep Triangle Awake
+
+on:
+  schedule:
+    # Run every 10 minutes to prevent Render free instance from sleeping
+    - cron: '*/10 * * * *'
+  workflow_dispatch: # Allows manual trigger anytime from GitHub dashboard
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Triangle Search Engine
+        run: |
+          echo "Pinging https://triangle-f5a7.onrender.com to keep awake..."
+          curl -s -f -m 30 "https://triangle-f5a7.onrender.com" > /dev/null || true
+          echo "Ping successful! Service is kept active."
