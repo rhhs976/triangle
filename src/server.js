@@ -154,39 +154,43 @@ async function doSearch(rawQuery) {
     };
   }
 
-  // 2. Direct Question Answering from Dictionary Explanations & Turso Cloud QA
+  // 2. Direct Question Answering & Knowledge Synthesis (Turso Cloud QA Cache + Groq)
   const isQuestionQuery = /^(?:where|what|who|when|how|which|why|is|are|can|does|do|tell me)\b/i.test(query) || query.endsWith('?');
   if (isQuestionQuery) {
-    const qaRes = dictQA.answerQuestion(query);
-    if (qaRes && qaRes.found) {
-      return {
-        found: true,
-        query,
-        category: 'Direct QA',
-        title: qaRes.directAnswer,
-        directAnswer: qaRes.directAnswer,
-        matchedSentence: qaRes.matchedSentence,
-        sourceWord: qaRes.sourceWord,
-        extraInfo: qaRes.extraInfo,
-        fullExplanation: qaRes.fullExplanation,
-        usage: qaRes.usage,
-        snippet: qaRes.directAnswer,
-        details: {
+    // Primary: Semantic Turso Cloud QA Cache + Groq (Answers questions with rich 1-paragraph explanations)
+    const groqQARes = await groqQAEngine.answerQuestion(query);
+    if (groqQARes && groqQARes.found) {
+      groqQARes.sources = getTopicWebsites(query, groqQARes.category, groqQARes.details);
+      return groqQARes;
+    }
+
+    // Secondary Fallback: Local Dictionary attribute verification (e.g. "is banana red")
+    const isWhyOrComplex = /^(?:why\b|how\b|what\s+causes?|what\s+makes?)/i.test(query.trim());
+    if (!isWhyOrComplex) {
+      const qaRes = dictQA.answerQuestion(query);
+      if (qaRes && qaRes.found) {
+        return {
+          found: true,
+          query,
+          category: 'Direct QA',
+          title: qaRes.directAnswer,
           directAnswer: qaRes.directAnswer,
           matchedSentence: qaRes.matchedSentence,
           sourceWord: qaRes.sourceWord,
           extraInfo: qaRes.extraInfo,
           fullExplanation: qaRes.fullExplanation,
-          usage: qaRes.usage
-        }
-      };
-    }
-
-    // Dynamic Encyclopedic QA with Groq + Turso Semantic Cache (At least 1 rich paragraph)
-    const groqQARes = await groqQAEngine.answerQuestion(query);
-    if (groqQARes && groqQARes.found) {
-      groqQARes.sources = getTopicWebsites(query, groqQARes.category, groqQARes.details);
-      return groqQARes;
+          usage: qaRes.usage,
+          snippet: qaRes.directAnswer,
+          details: {
+            directAnswer: qaRes.directAnswer,
+            matchedSentence: qaRes.matchedSentence,
+            sourceWord: qaRes.sourceWord,
+            extraInfo: qaRes.extraInfo,
+            fullExplanation: qaRes.fullExplanation,
+            usage: qaRes.usage
+          }
+        };
+      }
     }
   }
 
