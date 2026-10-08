@@ -20,6 +20,51 @@ const PORT = process.env.PORT || 3000;
 const historyEngine = new HistoryRAGEngine();
 const dictQA = new DictionaryQAEngine();
 
+// ========================================================
+// 100-LANE QUEUE SYSTEM: 100 parallel lines so nobody waits
+// ========================================================
+class HundredLaneQueue {
+  constructor(laneCount = 100) {
+    this.laneCount = laneCount;
+    this.lanes = Array.from({ length: laneCount }, (_, id) => ({
+      id,
+      queue: [],
+      active: false
+    }));
+    this.laneCursor = 0;
+  }
+
+  enqueue(task) {
+    // Distribute incoming searches evenly across the 100 lines
+    const lane = this.lanes[this.laneCursor];
+    this.laneCursor = (this.laneCursor + 1) % this.laneCount;
+
+    return new Promise((resolve, reject) => {
+      lane.queue.push({ task, resolve, reject });
+      this.drain(lane);
+    });
+  }
+
+  async drain(lane) {
+    if (lane.active) return;
+    lane.active = true;
+
+    while (lane.queue.length > 0) {
+      const item = lane.queue.shift();
+      try {
+        const res = await item.task();
+        item.resolve(res);
+      } catch (err) {
+        item.reject(err);
+      }
+    }
+
+    lane.active = false;
+  }
+}
+
+const searchQueue = new HundredLaneQueue(100);
+
 // Helper to send JSON responses
 function sendJson(res, statusCode, data) {
   res.writeHead(statusCode, {
@@ -253,7 +298,7 @@ const server = http.createServer((req, res) => {
   // GET /api/search?q=...
   if (url.pathname === '/api/search' && req.method === 'GET') {
     const q = url.searchParams.get('q') || '';
-    executeSearch(q).then(result => {
+    searchQueue.enqueue(() => executeSearch(q)).then(result => {
       sendJson(res, 200, result);
     }).catch(err => {
       sendJson(res, 500, { error: err.message });
@@ -269,7 +314,7 @@ const server = http.createServer((req, res) => {
       try {
         const parsed = JSON.parse(body || '{}');
         const q = parsed.query || parsed.message || parsed.q || '';
-        executeSearch(q).then(result => {
+        searchQueue.enqueue(() => executeSearch(q)).then(result => {
           sendJson(res, 200, result);
         }).catch(err => {
           sendJson(res, 500, { error: err.message });
