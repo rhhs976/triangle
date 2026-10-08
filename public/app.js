@@ -224,7 +224,6 @@ window.addEventListener('keydown', (e) => {
     closeModal();
   }
 });
-}
 
 function escapeHtml(text) {
   if (!text) return '';
