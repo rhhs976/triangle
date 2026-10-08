@@ -6,14 +6,23 @@ import { DatabaseSync } from 'node:sqlite';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_FILE = path.resolve(__dirname, '../data/my_dictionary.db');
-const OLD_DICT_FILE = path.resolve(__dirname, '../data/dictionary.db');
+const LEXICON_FILE = path.resolve(__dirname, '../data/english_pos_lexicon.db');
 const STATE_FILE = path.resolve(__dirname, '../dictionary_generator_state.json');
-const GROQ_API_KEY = process.env.GROQ_API_KEY || '';
+
+// Read GROQ_API_KEY from env or .env file
+let GROQ_API_KEY = process.env.GROQ_API_KEY || '';
+if (!GROQ_API_KEY) {
+  try {
+    const envContent = fs.readFileSync(path.resolve(__dirname, '../.env'), 'utf-8');
+    const match = envContent.match(/GROQ_API_KEY=([^\r\n]+)/);
+    if (match) GROQ_API_KEY = match[1].trim();
+  } catch (_) {}
+}
 
 const MODELS = [
+  'qwen/qwen3.8-27b',
   'openai/gpt-oss-120b',
-  'openai/gpt-oss-20b',
-  'qwen/qwen3.8-27b'
+  'openai/gpt-oss-20b'
 ];
 
 // High priority common words
@@ -94,7 +103,7 @@ function updateStateFile(state, extra = {}) {
 function checkGroqQuota() {
   return new Promise((resolve) => {
     const postData = JSON.stringify({
-      model: 'openai/gpt-oss-120b',
+      model: 'qwen/qwen3.8-27b',
       messages: [{ role: 'user', content: 'probe' }],
       max_tokens: 1
     });
@@ -189,14 +198,15 @@ function getTargetWords() {
   const seen = new Set();
 
   try {
-    const oldDb = new DatabaseSync(OLD_DICT_FILE, { readOnly: true });
-    // Pull all valid English dictionary words strictly in alphabetical order (all 'a', then all 'b', etc.)
-    const rows = oldDb.prepare(`
-      SELECT word FROM dictionary
-      WHERE length(word) BETWEEN 3 AND 15
+    const lexDb = new DatabaseSync(LEXICON_FILE, { readOnly: true });
+    // Pull valid English vocabulary words from the 147k verified lexicon
+    const rows = lexDb.prepare(`
+      SELECT word FROM pos_lexicon
+      WHERE length(word) BETWEEN 3 AND 16
         AND word NOT LIKE '-%'
         AND word NOT LIKE '%-%'
         AND word NOT LIKE '% %'
+        AND word NOT LIKE '%''%'
       ORDER BY word ASC
     `).all();
 
@@ -208,7 +218,7 @@ function getTargetWords() {
       }
     }
   } catch (e) {
-    console.error('Could not load extra words from old db:', e.message);
+    console.error('Could not load words from lexicon:', e.message);
   }
 
   return targets;
@@ -281,7 +291,8 @@ CRITICAL RULES:
           { role: 'system', content: systemPrompt },
           { role: 'user', content: userPrompt }
         ],
-        temperature: 0.2
+        temperature: 0.2,
+        max_tokens: 800
       });
 
       try {

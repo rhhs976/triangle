@@ -11,6 +11,11 @@ if [ -f "$PIDFILE" ]; then
   fi
 fi
 
+# Load environment variables from .env
+if [ -f "/home/lumen/louie/AI/.env" ]; then
+  export $(grep -v '^#' /home/lumen/louie/AI/.env | xargs)
+fi
+
 echo "Starting Continuous Groq Dictionary Background Generator..."
 nohup node /home/lumen/louie/AI/scripts/background_dictionary_builder.js > "$LOGFILE" 2>&1 &
 NEW_PID=$!

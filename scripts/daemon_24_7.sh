@@ -23,8 +23,8 @@ while true; do
   fi
 
   if [ "$WORKER_RUNNING" -eq 0 ]; then
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Worker not running. Launching worker now..." >> "$DAEMON_LOGFILE"
-    nohup node "$DIR/scripts/continuous_24_7_generator.js" >> "$WORKER_LOGFILE" 2>&1 &
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Worker not running. Launching Groq background builder now..." >> "$DAEMON_LOGFILE"
+    nohup node "$DIR/scripts/background_dictionary_builder.js" >> "$WORKER_LOGFILE" 2>&1 &
     NEW_PID=$!
     echo "$NEW_PID" > "$WORKER_PIDFILE"
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] Worker started with PID: $NEW_PID." >> "$DAEMON_LOGFILE"
