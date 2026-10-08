@@ -458,39 +458,54 @@ function renderResults(data) {
       </div>
     `;
   }
-  // 2. Direct QA Result (Local Answer Separation without Groq)
-  else if (data.category === 'Direct QA') {
+  // 2. Direct QA Result (Local Answer Separation or Groq + Turso Cloud QA)
+  else if (data.category === 'Direct QA' || data.directAnswer || data.category === 'Geography' || data.category === 'Science' || data.category === 'General Knowledge') {
     const d = data.details || {};
-    const directAns = d.directAnswer || data.title;
+    const directAns = (d.directAnswer || data.directAnswer || data.title || '').replace(/\*\*/g, '');
     const sentence = d.matchedSentence || '';
     const extraInfo = d.extraInfo || '';
     const sourceWord = d.sourceWord || '';
+    const fullExpl = d.fullExplanation || data.fullExplanation || '';
+    const qaId = data.id || d.id || null;
 
     cardHtml = `
       <div class="result-card qa-card">
         <div class="qa-badge-row" style="display:flex; align-items:center; margin-bottom:10px;">
           <span class="result-category-badge" style="background:#000; color:#fff; font-weight:600;">Direct Answer</span>
-          <span style="font-size:13px; color:#5f6368; margin-left:10px;">From: <strong>${escapeHtml(sourceWord)}</strong></span>
+          ${sourceWord ? `<span style="font-size:13px; color:#5f6368; margin-left:10px;">From: <strong>${escapeHtml(sourceWord)}</strong></span>` : ''}
+          ${d.cachedFromTurso ? `<span style="font-size:12px; color:#188038; margin-left:auto; display:flex; align-items:center; gap:4px;">⚡ Verified Cloud Answer</span>` : ''}
         </div>
 
-        <div class="qa-main-answer" style="font-size:26px; font-weight:700; color:#000; margin:8px 0 12px 0; line-height:1.25;">
+        <div class="qa-main-answer" style="font-size:24px; font-weight:700; color:#000; margin:8px 0 14px 0; line-height:1.3;">
           ${escapeHtml(directAns)}
         </div>
 
-        ${sentence ? `
+        ${fullExpl ? `
+          <div class="qa-explanation-paragraph" style="font-size:15px; color:#202124; line-height:1.65; margin-bottom:14px; text-align:justify;">
+            ${escapeHtml(fullExpl)}
+          </div>
+        ` : (sentence ? `
           <div class="qa-evidence" style="font-size:15px; color:#202124; line-height:1.5; margin-bottom:18px; padding-left:12px; border-left:3px solid #000; background:#f8f9fa; padding:10px 12px; border-radius:0 4px 4px 0;">
             ${escapeHtml(sentence)}
           </div>
-        ` : ''}
+        ` : '')}
 
         ${extraInfo && extraInfo !== '(No further background notes)' ? `
           <div class="qa-separated-section" style="margin-top:16px; padding-top:14px; border-top:1px solid #e8eaed;">
             <div style="font-size:12px; text-transform:uppercase; letter-spacing:0.5px; font-weight:600; color:#70757a; margin-bottom:6px;">
-              Additional Context (Not specifically requested)
+              Additional Context
             </div>
             <div style="font-size:14px; color:#5f6368; line-height:1.5;">
               ${escapeHtml(extraInfo)}
             </div>
+          </div>
+        ` : ''}
+
+        ${qaId ? `
+          <div class="qa-feedback-row" id="qa-feedback-${qaId}" style="display:flex; align-items:center; gap:8px; margin-top:14px; padding-top:10px; border-top:1px solid #f1f3f4;">
+            <span style="font-size:12px; color:#70757a;">Helpful answer?</span>
+            <button type="button" class="qa-vote-btn" onclick="window.handleQAVote(${qaId}, 'up')" title="Thumbs up">👍</button>
+            <button type="button" class="qa-vote-btn" onclick="window.handleQAVote(${qaId}, 'down')" title="Thumbs down">👎</button>
           </div>
         ` : ''}
       </div>
@@ -723,6 +738,33 @@ window.addEventListener('popstate', (e) => {
 });
 
 // Initial Load Check
+window.handleQAVote = async function(id, vote) {
+  const container = document.getElementById(`qa-feedback-${id}`);
+  if (container) {
+    container.innerHTML = `<span style="font-size:12px; color:#5f6368; font-style:italic;">Submitting feedback...</span>`;
+  }
+
+  try {
+    const res = await fetch('/api/qa/vote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id, vote })
+    });
+    const data = await res.json();
+    if (container) {
+      if (data.purged) {
+        container.innerHTML = `<span style="font-size:12px; color:#d93025;">Answer flagged and queued for regeneration.</span>`;
+      } else {
+        container.innerHTML = `<span style="font-size:12px; color:#188038;">✓ Thank you for your feedback!</span>`;
+      }
+    }
+  } catch (err) {
+    if (container) {
+      container.innerHTML = `<span style="font-size:12px; color:#5f6368;">Thanks for your input.</span>`;
+    }
+  }
+};
+
 window.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const q = params.get('q');

@@ -1213,3 +1213,21 @@ body {
 .video-link:hover {
   text-decoration: underline;
 }
+
+/* QA Thumbs Up / Down Feedback */
+.qa-vote-btn {
+  background: #f1f3f4;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 3px 8px;
+  font-size: 13px;
+  transition: all 0.15s ease;
+  line-height: 1;
+}
+
+.qa-vote-btn:hover {
+  background: #e8eaed;
+  border-color: #bdc1c6;
+  transform: scale(1.05);
+}

@@ -1,16 +1,31 @@
 // Cloudflare Pages Function: /api/search
-// 100% Serverless, Edge-Native Search with Turso Cloud & Groq API
+// 100% Serverless Edge Search with Turso Cloud, Semantic QA Cache & Groq
 
 import { createClient } from '@libsql/client/web';
 
 const TURSO_URL = 'libsql://triangle-search-triangle-search.aws-ap-southeast-2.turso.io';
 const TURSO_AUTH_TOKEN = 'eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3OTE0ODgyOTQsImlkIjoiMDFhMTFjZmYtYWMwMS03NjZjLThjZjUtYmVhYTM4NWQxNTQ2Iiwia2lkIjoiRUdaeGxicFhLdUpjem85RkVBcFBhVVN5ems2a0dVcTlxc3NfNzlqd1dUVSIsInJpZCI6ImE0NTBlMTAxLTZhNTUtNDc3Zi05MjI0LWEwZWNlOTQxODc5NiJ9.ew0u8RMGKOfAhrMIaCoPFtT9XlhCCYnnPsB3Bbyqm07srFgnT9yaajEM8TAk8rMS07CuqJSK6PpVea9QOJLZAA';
 
+
+const STOP_WORDS = new Set([
+  'what', 'whats', 'what\'s', 'is', 'the', 'of', 'in', 'a', 'an', 'are', 'was', 'were',
+  'tell', 'me', 'who', 'whos', 'who\'s', 'where', 'wheres', 'where\'s', 'when', 'whens',
+  'how', 'why', 'can', 'you', 'give', 'do', 'does', 'did', 'about', 'and', 'or', 'for',
+  'to', 'from', 'with', 'by', 'at', 'on', 'know', 'please', 'explain', 'describe', 'city', 'country'
+]);
+
 function getTursoClient(env) {
   return createClient({
     url: env?.TURSO_DATABASE_URL || TURSO_URL,
     authToken: env?.TURSO_AUTH_TOKEN || TURSO_AUTH_TOKEN
   });
+}
+
+function normalizeToCanonicalKey(str) {
+  if (!str) return '';
+  const cleaned = str.toLowerCase().replace(/'s\b/g, '').replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim();
+  const words = cleaned.split(' ').map(w => w.trim()).filter(w => w.length > 1 && !STOP_WORDS.has(w));
+  return Array.from(new Set(words)).sort().join(' ');
 }
 
 function solveArithmetic(input) {
@@ -20,11 +35,7 @@ function solveArithmetic(input) {
       const sanitized = clean.replace(/\^/g, '**');
       const val = Function(`"use strict"; return (${sanitized});`)();
       if (typeof val === 'number' && !isNaN(val) && isFinite(val)) {
-        return {
-          success: true,
-          expression: clean,
-          answer: String(val)
-        };
+        return { success: true, expression: clean, answer: String(val) };
       }
     }
   } catch (_) {}
@@ -53,32 +64,35 @@ function getWebsites(topic) {
   ];
 }
 
-async function callGroq(word, apiKey) {
+async function callGroqQA(question, apiKey) {
   const models = ['qwen/qwen3.8-27b', 'openai/gpt-oss-120b', 'openai/gpt-oss-20b'];
-  const prompt = `You are an authoritative encyclopedic dictionary. Define: "${word.trim()}".
+  const prompt = `You are an authoritative encyclopedic knowledge search engine. Provide a comprehensive, accurate answer to the question: "${question}".
+
+Strict Requirements:
+1. Provide an exact, bold direct answer first.
+2. The explanation MUST be at least 1 rich, informative, factual paragraph long (minimum 4 to 6 full sentences), explaining the background, context, mechanics, and key details.
+3. No conversational filler or chatbot greetings.
+
 Format EXACTLY:
-**${word.trim()}**
+Direct Answer:
+[Bold, exact factual answer]
 
 Explanation:
-[1 clear, modern, comprehensive factual paragraph]
+[At least 1 rich, comprehensive factual paragraph containing 4-6 sentences]
 
-Usage:
-1. [Example sentence 1]
-2. [Example sentence 2]`;
+Category:
+[e.g. Geography, Science, History, Technology, Nature, General Knowledge]`;
 
   for (const model of models) {
     try {
       const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({
           model,
           messages: [{ role: 'user', content: prompt }],
           temperature: 0.2,
-          max_tokens: 600
+          max_tokens: 700
         })
       });
 
@@ -86,34 +100,28 @@ Usage:
         const json = await res.json();
         const content = json.choices?.[0]?.message?.content?.trim();
         if (content) {
-          let heading = `**${word.charAt(0).toUpperCase() + word.slice(1)}**`;
-          const headingMatch = content.match(/^\*\*([^*]+)\*\*/m);
-          if (headingMatch) heading = `**${headingMatch[1].trim()}**`;
+          let directAnswer = '';
+          let fullExplanation = '';
+          let category = 'General Knowledge';
 
-          let explanation = '';
-          const explMatch = content.match(/Explanation:\s*([\s\S]*?)(?=(?:\n\s*Usage:|$))/i);
-          if (explMatch) explanation = explMatch[1].trim();
+          const directMatch = content.match(/Direct Answer:\s*([\s\S]*?)(?=(?:\n\s*Explanation:|$))/i);
+          if (directMatch) directAnswer = directMatch[1].trim();
 
-          let usage = '';
-          const usageMatch = content.match(/Usage:\s*([\s\S]*?)$/i);
-          if (usageMatch) usage = usageMatch[1].trim();
+          const explMatch = content.match(/Explanation:\s*([\s\S]*?)(?=(?:\n\s*Category:|$))/i);
+          if (explMatch) fullExplanation = explMatch[1].trim();
 
-          if (!explanation) {
-            const lines = content.split('\n').filter(l => l.trim().length > 0);
-            explanation = lines.slice(1).join(' ').trim();
+          const catMatch = content.match(/Category:\s*([\s\S]*?)$/i);
+          if (catMatch) category = catMatch[1].trim();
+
+          if (!directAnswer || !fullExplanation) {
+            const parts = content.split('\n\n').filter(p => p.trim().length > 0);
+            directAnswer = parts[0]?.trim() || question;
+            fullExplanation = parts.slice(1).join('\n\n').trim() || content;
           }
-          if (!usage) {
-            usage = `The term "${word}" is commonly utilized in modern English.`;
-          }
 
-          return {
-            word: word.toLowerCase().trim(),
-            heading,
-            explanation,
-            usage,
-            raw_entry: content,
-            created_at: new Date().toISOString()
-          };
+          if (fullExplanation.length >= 150) {
+            return { directAnswer, fullExplanation, category };
+          }
         }
       }
     } catch (_) {}
@@ -148,9 +156,84 @@ export async function onRequestGet(context) {
   }
 
   const client = getTursoClient(env);
-  const clean = q.toLowerCase();
+  const isQuestion = /^(?:where|what|who|when|how|which|why|is|are|can|does|do|tell me)\b/i.test(q) || q.endsWith('?');
+  const canonicalKey = normalizeToCanonicalKey(q);
 
-  // 2. Query Turso Cloud Database
+  // 2. Question Answering: Check Turso Cloud QA Cache first
+  if (isQuestion && canonicalKey) {
+    try {
+      const qaRes = await client.execute({
+        sql: 'SELECT id, canonical_key, direct_answer, full_explanation, category, upvotes, downvotes, is_temporal, created_at FROM qa_cache WHERE canonical_key = ? LIMIT 1',
+        args: [canonicalKey]
+      });
+
+      if (qaRes.rows && qaRes.rows.length > 0) {
+        const row = qaRes.rows[0];
+        if (Number(row.downvotes) <= Number(row.upvotes)) {
+          return new Response(JSON.stringify({
+            found: true,
+            id: row.id,
+            query: q,
+            category: row.category || 'Direct QA',
+            title: row.direct_answer,
+            directAnswer: row.direct_answer,
+            fullExplanation: row.full_explanation,
+            snippet: row.direct_answer,
+            details: {
+              id: row.id,
+              directAnswer: row.direct_answer,
+              fullExplanation: row.full_explanation,
+              cachedFromTurso: true
+            },
+            sources: getWebsites(q)
+          }), {
+            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+          });
+        }
+      }
+    } catch (_) {}
+
+    // Groq On-Demand Generation for Question (At least 1 full paragraph)
+    const groqKey = env?.GROQ_API_KEY;
+    if (groqKey) {
+      const generatedQA = await callGroqQA(q, groqKey);
+
+    if (generatedQA) {
+      const now = new Date().toISOString();
+      let newId = null;
+      try {
+        const ins = await client.execute({
+          sql: `INSERT OR REPLACE INTO qa_cache (canonical_key, original_question, direct_answer, full_explanation, category, is_temporal, upvotes, downvotes, access_count, created_at, updated_at)
+                VALUES (?, ?, ?, ?, ?, 0, 1, 0, 1, ?, ?)`,
+          args: [canonicalKey, q, generatedQA.directAnswer, generatedQA.fullExplanation, generatedQA.category, now, now]
+        });
+        newId = ins.lastInsertRowid;
+      } catch (_) {}
+
+      return new Response(JSON.stringify({
+        found: true,
+        id: newId,
+        query: q,
+        category: 'Direct QA',
+        title: generatedQA.directAnswer,
+        directAnswer: generatedQA.directAnswer,
+        fullExplanation: generatedQA.fullExplanation,
+        snippet: generatedQA.directAnswer,
+        details: {
+          id: newId,
+          directAnswer: generatedQA.directAnswer,
+          fullExplanation: generatedQA.fullExplanation,
+          cachedFromTurso: false
+        },
+        sources: getWebsites(q)
+      }), {
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
+  }
+
+  // 3. Dictionary Term Lookup in Turso Cloud
+  const clean = q.toLowerCase();
   try {
     const rs = await client.execute({
       sql: 'SELECT word, heading, explanation, usage, raw_entry FROM my_dictionary WHERE word = ? LIMIT 1',
@@ -176,45 +259,6 @@ export async function onRequestGet(context) {
       });
     }
   } catch (_) {}
-
-  // 3. Groq On-Demand Synthesis & Cloud Save
-  const groqKey = env?.GROQ_API_KEY;
-  if (!groqKey) {
-    return new Response(JSON.stringify({
-      found: false,
-      query: q,
-      message: 'Word not found in database.'
-    }), {
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-    });
-  }
-
-  const record = await callGroq(q, groqKey);
-
-  if (record) {
-    try {
-      await client.execute({
-        sql: 'INSERT OR REPLACE INTO my_dictionary (word, heading, explanation, usage, raw_entry, created_at) VALUES (?, ?, ?, ?, ?, ?)',
-        args: [record.word, record.heading, record.explanation, record.usage, record.raw_entry, record.created_at]
-      });
-    } catch (_) {}
-
-    return new Response(JSON.stringify({
-      found: true,
-      query: q,
-      category: 'Dictionary',
-      title: q.charAt(0).toUpperCase() + q.slice(1),
-      heading: record.heading,
-      explanation: record.explanation,
-      usage: record.usage,
-      raw_entry: record.raw_entry,
-      snippet: record.explanation,
-      details: record,
-      sources: getWebsites(q)
-    }), {
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-    });
-  }
 
   return new Response(JSON.stringify({
     found: false,

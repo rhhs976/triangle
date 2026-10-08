@@ -15,6 +15,9 @@ import { getTopicWebsites } from './topic_sources.js';
 import { DisambiguationEngine } from './disambiguation_engine.js';
 import { scrapeOnlineImages } from './image_scraper.js';
 import { scrapeOnlineVideos } from './video_scraper.js';
+import { groqQAEngine } from './groq_qa_engine.js';
+import { voteQA } from './semantic_qa_cache.js';
+import { turso } from './turso_client.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.resolve(__dirname, '../public');
@@ -151,8 +154,8 @@ async function doSearch(rawQuery) {
     };
   }
 
-  // 2. Direct Question Answering from Dictionary Explanations (Pure local, ZERO Groq)
-  const isQuestionQuery = /^(?:where|what|who|when|how|which|why|is|are|can|does|do)\b/i.test(query) || query.endsWith('?');
+  // 2. Direct Question Answering from Dictionary Explanations & Turso Cloud QA
+  const isQuestionQuery = /^(?:where|what|who|when|how|which|why|is|are|can|does|do|tell me)\b/i.test(query) || query.endsWith('?');
   if (isQuestionQuery) {
     const qaRes = dictQA.answerQuestion(query);
     if (qaRes && qaRes.found) {
@@ -177,6 +180,13 @@ async function doSearch(rawQuery) {
           usage: qaRes.usage
         }
       };
+    }
+
+    // Dynamic Encyclopedic QA with Groq + Turso Semantic Cache (At least 1 rich paragraph)
+    const groqQARes = await groqQAEngine.answerQuestion(query);
+    if (groqQARes && groqQARes.found) {
+      groqQARes.sources = getTopicWebsites(query, groqQARes.category, groqQARes.details);
+      return groqQARes;
     }
   }
 
@@ -390,6 +400,27 @@ const server = http.createServer((req, res) => {
         });
       } catch (e) {
         sendJson(res, 400, { error: 'Invalid JSON request' });
+      }
+    });
+    return;
+  }
+
+  // POST /api/qa/vote (Thumbs up / Thumbs down feedback for quality control)
+  if (url.pathname === '/api/qa/vote' && req.method === 'POST') {
+    let body = '';
+    req.on('data', chunk => body += chunk);
+    req.on('end', async () => {
+      try {
+        const parsed = JSON.parse(body || '{}');
+        const id = parsed.id;
+        const vote = parsed.vote;
+        if (!id || !['up', 'down'].includes(vote)) {
+          return sendJson(res, 400, { error: 'Invalid id or vote (must be up or down)' });
+        }
+        const result = await voteQA(id, vote, turso);
+        sendJson(res, 200, result);
+      } catch (err) {
+        sendJson(res, 500, { error: err.message });
       }
     });
     return;
