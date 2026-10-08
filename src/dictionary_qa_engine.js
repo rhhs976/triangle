@@ -1,5 +1,6 @@
 import { DatabaseSync } from 'node:sqlite';
 import path from 'node:path';
+import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { getWordVariants } from './word_lemmatizer.js';
 
@@ -45,9 +46,38 @@ const ANTONYMS = [
 ];
 
 export class DictionaryQAEngine {
-  constructor() {
-    this.db = new DatabaseSync(DB_FILE, { readOnly: true });
+  constructor(sharedDict = null) {
+    this.sharedDict = sharedDict;
+    let dbPath = ':memory:';
+    try {
+      if (fs.existsSync(DB_FILE)) dbPath = DB_FILE;
+    } catch (_) {}
+    this.db = new DatabaseSync(dbPath);
+    this.db.exec(`
+      CREATE TABLE IF NOT EXISTS my_dictionary (
+        word TEXT PRIMARY KEY,
+        heading TEXT,
+        explanation TEXT,
+        usage TEXT,
+        raw_entry TEXT,
+        created_at TEXT
+      );
+    `);
     this.findWordStmt = this.db.prepare('SELECT word, heading, explanation, usage FROM my_dictionary WHERE word = ? LIMIT 1');
+  }
+
+  getWord(word) {
+    if (!word) return null;
+    const clean = word.toLowerCase().trim();
+    if (this.sharedDict && typeof this.sharedDict.getWordLocal === 'function') {
+      const found = this.sharedDict.getWordLocal(clean);
+      if (found) return found;
+    }
+    try {
+      return this.findWordStmt.get(clean);
+    } catch (_) {
+      return null;
+    }
   }
 
   // Split into sentences cleanly
@@ -91,7 +121,7 @@ export class DictionaryQAEngine {
     for (let len = 3; len >= 2; len--) {
       for (let i = 0; i <= words.length - len; i++) {
         const phrase = words.slice(i, i + len).join(' ');
-        const found = this.findWordStmt.get(phrase);
+        const found = this.getWord(phrase);
         if (found) return found;
       }
     }
@@ -103,7 +133,7 @@ export class DictionaryQAEngine {
       if (categoryWords.has(w)) continue;
       const variants = getWordVariants(w);
       for (const v of variants) {
-        const found = this.findWordStmt.get(v);
+        const found = this.getWord(v);
         if (found) return found;
       }
     }
@@ -112,7 +142,7 @@ export class DictionaryQAEngine {
     for (const w of candidateWords) {
       const variants = getWordVariants(w);
       for (const v of variants) {
-        const found = this.findWordStmt.get(v);
+        const found = this.getWord(v);
         if (found) return found;
       }
     }

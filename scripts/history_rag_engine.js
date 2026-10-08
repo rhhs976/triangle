@@ -10,7 +10,20 @@ const DB_PATH = path.join(FILES_DIR, 'historical_events_dictionary.db');
 
 export class HistoryRAGEngine {
   constructor() {
-    this.db = new DatabaseSync(DB_PATH);
+    try {
+      this.db = new DatabaseSync(fs.existsSync(DB_PATH) ? DB_PATH : ':memory:');
+    } catch (_) {
+      this.db = new DatabaseSync(':memory:');
+    }
+    this.db.exec(`
+      CREATE TABLE IF NOT EXISTS history_dictionary (
+        entity_id TEXT PRIMARY KEY,
+        entity_name TEXT NOT NULL,
+        exact_date TEXT,
+        verified_fact TEXT NOT NULL
+      );
+    `);
+    this.lookupStmt = this.db.prepare('SELECT entity_id, entity_name, exact_date, verified_fact FROM history_dictionary WHERE entity_id = ? LIMIT 1');
     const raw = fs.readFileSync(JSON_PATH, 'utf-8');
     this.seedData = JSON.parse(raw);
 

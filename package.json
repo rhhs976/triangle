@@ -19,6 +19,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@libsql/client": "^0.18.0",
     "youtubei.js": "^18.1.0"
   }
 }

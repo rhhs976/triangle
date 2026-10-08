@@ -4,6 +4,7 @@ import https from 'node:https';
 import { fileURLToPath } from 'node:url';
 import { DatabaseSync } from 'node:sqlite';
 import { isKnownWord, isLikelyGibberish, findSpellingSuggestion } from './spell_checker.js';
+import { turso } from './turso_client.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_FILE = path.resolve(__dirname, '../data/my_dictionary.db');
@@ -38,7 +39,14 @@ export class GroqDictionaryEngine {
   }
 
   initDb() {
-    this.db = new DatabaseSync(DB_FILE);
+    let dbPath = ':memory:';
+    try {
+      if (fs.existsSync(DB_FILE)) {
+        dbPath = DB_FILE;
+      }
+    } catch (_) {}
+
+    this.db = new DatabaseSync(dbPath);
     this.db.exec(`
       CREATE TABLE IF NOT EXISTS my_dictionary (
         word TEXT PRIMARY KEY,
@@ -56,6 +64,36 @@ export class GroqDictionaryEngine {
       INSERT OR REPLACE INTO my_dictionary (word, heading, explanation, usage, raw_entry, created_at)
       VALUES (?, ?, ?, ?, ?, ?)
     `);
+
+    // Sync entries from Turso cloud into local memory
+    this.syncFromTurso();
+  }
+
+  async syncFromTurso() {
+    try {
+      const res = await turso.execute('SELECT word, heading, explanation, usage, raw_entry, created_at FROM my_dictionary');
+      if (res && res.rows) {
+        for (const r of res.rows) {
+          try {
+            this.insertStmt.run(r.word, r.heading, r.explanation, r.usage, r.raw_entry, r.created_at);
+          } catch (_) {}
+        }
+        console.log(`[TURSO CLOUD] Loaded ${res.rows.length} dictionary words into memory.`);
+      }
+    } catch (e) {
+      console.warn('[TURSO CLOUD SYNC]', e.message);
+    }
+  }
+
+  async saveWordToTurso(record) {
+    try {
+      await turso.execute({
+        sql: `INSERT OR REPLACE INTO my_dictionary (word, heading, explanation, usage, raw_entry, created_at) VALUES (?, ?, ?, ?, ?, ?)`,
+        args: [record.word, record.heading, record.explanation, record.usage, record.raw_entry, record.created_at]
+      });
+    } catch (e) {
+      console.warn('[TURSO CLOUD SAVE]', e.message);
+    }
   }
 
   // Synchronous lookup from local SQLite DB
@@ -201,7 +239,7 @@ Do NOT guess, fabricate, or improvise definitions for fake words.
       created_at: new Date().toISOString()
     };
 
-    // Save to SQLite
+    // Save to local memory SQLite
     this.insertStmt.run(
       record.word,
       record.heading,
@@ -211,6 +249,9 @@ Do NOT guess, fabricate, or improvise definitions for fake words.
       record.created_at
     );
 
+    // Save permanently to Turso cloud database
+    this.saveWordToTurso(record);
+
     return record;
   }
 
@@ -219,8 +260,22 @@ Do NOT guess, fabricate, or improvise definitions for fake words.
     if (!word) return { found: false };
     const clean = word.toLowerCase().trim();
 
-    // 1. Check local DB
-    const cached = this.getWordLocal(clean);
+    // 1. Check local DB / in-memory cache
+    let cached = this.getWordLocal(clean);
+    if (!cached) {
+      try {
+        const cloudRes = await turso.execute({
+          sql: 'SELECT word, heading, explanation, usage, raw_entry, created_at FROM my_dictionary WHERE word = ? LIMIT 1',
+          args: [clean]
+        });
+        if (cloudRes.rows && cloudRes.rows.length > 0) {
+          const r = cloudRes.rows[0];
+          this.insertStmt.run(r.word, r.heading, r.explanation, r.usage, r.raw_entry, r.created_at);
+          cached = r;
+        }
+      } catch (_) {}
+    }
+
     if (cached) {
       return {
         found: true,

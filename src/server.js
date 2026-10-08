@@ -21,7 +21,7 @@ const PUBLIC_DIR = path.resolve(__dirname, '../public');
 const PORT = process.env.PORT || 3000;
 
 const historyEngine = new HistoryRAGEngine();
-const dictQA = new DictionaryQAEngine();
+const dictQA = new DictionaryQAEngine(myDictionary);
 const disambigEngine = new DisambiguationEngine();
 
 // ========================================================

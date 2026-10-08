@@ -1,5 +1,6 @@
 import { DatabaseSync } from 'node:sqlite';
 import path from 'node:path';
+import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -10,7 +11,12 @@ let exactStmt = null;
 
 function getDb() {
   if (!db) {
-    db = new DatabaseSync(DICT_FILE, { readOnly: true });
+    try {
+      db = new DatabaseSync(fs.existsSync(DICT_FILE) ? DICT_FILE : ':memory:', { readOnly: fs.existsSync(DICT_FILE) });
+    } catch (_) {
+      db = new DatabaseSync(':memory:');
+    }
+    db.exec(`CREATE TABLE IF NOT EXISTS pos_lexicon (word TEXT PRIMARY KEY, primary_pos TEXT, all_pos TEXT);`);
     exactStmt = db.prepare('SELECT word FROM pos_lexicon WHERE word = ? LIMIT 1');
   }
   return db;

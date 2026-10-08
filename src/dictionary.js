@@ -1,4 +1,5 @@
 import path from 'node:path';
+import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { DatabaseSync } from 'node:sqlite';
 
@@ -7,7 +8,12 @@ const DB_FILE = path.resolve(__dirname, '../data/modern_dictionary.db');
 
 class DictionaryEngine {
   constructor() {
-    this.db = new DatabaseSync(DB_FILE, { readOnly: true });
+    try {
+      this.db = new DatabaseSync(fs.existsSync(DB_FILE) ? DB_FILE : ':memory:', { readOnly: fs.existsSync(DB_FILE) });
+    } catch (_) {
+      this.db = new DatabaseSync(':memory:');
+    }
+    this.db.exec(`CREATE TABLE IF NOT EXISTS modern_dictionary (word TEXT PRIMARY KEY, definition TEXT);`);
     this.lookupStmt = this.db.prepare('SELECT definition FROM modern_dictionary WHERE word = ? LIMIT 1');
   }
 

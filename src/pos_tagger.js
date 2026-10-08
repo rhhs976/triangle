@@ -11,10 +11,12 @@ let lookupStmt = null;
 
 function getDb() {
   if (!db) {
-    if (!fs.existsSync(DB_FILE)) {
-      throw new Error(`POS database not found at ${DB_FILE}. Please run scripts/build_pos_lexicon.js first.`);
+    try {
+      db = new DatabaseSync(fs.existsSync(DB_FILE) ? DB_FILE : ':memory:');
+    } catch (_) {
+      db = new DatabaseSync(':memory:');
     }
-    db = new DatabaseSync(DB_FILE);
+    db.exec(`CREATE TABLE IF NOT EXISTS pos_lexicon (word TEXT PRIMARY KEY, primary_pos TEXT, all_pos TEXT);`);
     lookupStmt = db.prepare('SELECT primary_pos, all_pos FROM pos_lexicon WHERE word = ? LIMIT 1');
   }
   return { db, lookupStmt };
