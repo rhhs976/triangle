@@ -1,7 +1,7 @@
 {
-  "name": "ilascope",
+  "name": "triangulate",
   "version": "1.0.0",
-  "description": "Ilascope — High-speed, self-contained knowledge & dictionary search engine",
+  "description": "Triangulate — High-speed, self-contained knowledge & dictionary search engine",
   "type": "module",
   "main": "src/server.js",
   "scripts": {
