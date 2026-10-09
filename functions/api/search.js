@@ -68,9 +68,24 @@ function splitSentences(text) {
   return rawSentences.map(s => s.replace(/___DOT___/g, '.').trim()).filter(Boolean);
 }
 
+function isEligibleForLiveProbe(rawQuery) {
+  const q = (rawQuery || '').trim().toLowerCase();
+  if (/^(?:is|are|can|could|do|does|did|will|would|should|has|have|am|why|how)\b/i.test(q)) {
+    return false;
+  }
+  const hasMarker = TEMPORAL_MARKERS.some(m => q.includes(m));
+  if (hasMarker) return true;
+  if (/^(?:who\s+(?:is|was)|what\s+is\s+the\s+(?:capital|population|currency|gdp|height|age|birthday|net\s*worth)\s+of)\b/i.test(q)) {
+    return true;
+  }
+  return false;
+}
+
 async function probeLiveKnowledge(rawQuery) {
   const cleanQ = (rawQuery || '').trim();
   if (!cleanQ) return null;
+
+  if (!isEligibleForLiveProbe(cleanQ)) return null;
 
   const entity = extractTargetEntity(cleanQ);
   if (!entity || entity.length < 3) return null;
