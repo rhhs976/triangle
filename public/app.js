@@ -625,16 +625,6 @@ function renderResults(data) {
       </div>
     `;
   }
-        <div class="result-subtitle">${data.subtitle || ''}</div>
-        <div class="result-snippet">${d.fullFact || data.snippet}</div>
-        ${tags.length ? `
-          <div class="knowledge-tags">
-            ${tags.map(t => `<span class="tag-pill">${t}</span>`).join('')}
-          </div>
-        ` : ''}
-      </div>
-    `;
-  }
   // 5. Grammar / POS Tagging Result
   else if (data.category === 'Grammar & Syntax') {
     const d = data.details || {};
