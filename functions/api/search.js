@@ -21,38 +21,10 @@ function getTursoClient(env) {
   });
 }
 
-const COMMON_TYPOS = {
-  'te': 'the', 'th': 'the', 'da': 'the', 'wht': 'what', 'wat': 'what',
-  'hw': 'how', 'whos': 'who', 'whm': 'whom', 'wer': 'where', 'wen': 'when',
-  'wy': 'why', 'answr': 'answer', 'curent': 'current', 'currnt': 'current',
-  'pres': 'president', 'prez': 'president', 'minstr': 'minister', 'ti': 'it',
-  'nd': 'and', 'ot': 'to', 'fro': 'from', 'abt': 'about', 'whch': 'which'
-};
-
-const TEMPORAL_MARKERS = [
-  'current', 'currently', 'now', 'today', 'latest', 'recent', 'present', 'this year',
-  'president', 'prime minister', 'ceo', 'chancellor', 'leader', 'governor', 'mayor',
-  'monarch', 'king', 'queen', 'pope', 'senator', 'vice president', 'premier',
-  'champion', 'winner', 'reigning', 'titleholder', 'number 1', 'no 1',
-  'price', 'stock', 'worth', 'net worth', 'market cap', 'exchange rate',
-  'weather', 'population', 'inflation', 'gdp', 'age', 'how old', 'salary'
-];
-
-function isTemporalQuery(q) {
-  const lower = (q || '').toLowerCase();
-  if (TEMPORAL_MARKERS.some(m => lower.includes(m))) return true;
-  const currentYear = new Date().getFullYear();
-  if (lower.includes(String(currentYear)) || lower.includes(String(currentYear - 1))) return true;
-  return false;
-}
-
 function normalizeToCanonicalKey(str) {
   if (!str) return '';
   const cleaned = str.toLowerCase().replace(/'s\b/g, '').replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim();
-  const words = cleaned.split(' ')
-    .map(w => w.trim())
-    .map(w => COMMON_TYPOS[w] || w)
-    .filter(w => w.length > 1 && !STOP_WORDS.has(w));
+  const words = cleaned.split(' ').map(w => w.trim()).filter(w => w.length > 1 && !STOP_WORDS.has(w));
   return Array.from(new Set(words)).sort().join(' ');
 }
 
@@ -93,21 +65,14 @@ function getWebsites(topic) {
 }
 
 async function callGroqQA(question, apiKey) {
-  const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-  const isTemporal = isTemporalQuery(question);
-  const temporalInstruction = isTemporal
-    ? `\n5. This question asks about dynamic/current information (e.g. leaders, roles, champions, populations). You MUST state the verified status as of today (${today}) accurately.`
-    : '';
-
   const models = ['qwen/qwen3.8-27b', 'openai/gpt-oss-120b', 'openai/gpt-oss-20b'];
-  const prompt = `Today's Date: ${today}.
-You are an authoritative encyclopedic knowledge search engine. Answer the question: "${question}".
+  const prompt = `You are an authoritative encyclopedic knowledge search engine. Answer the question: "${question}".
 
 Strict Formatting Requirements:
 1. Provide an answer of EXACTLY 4 sentences in total.
 2. Sentence 1 MUST be the direct, bold answer.
 3. The remaining 3 sentences MUST provide clear, factual context and mechanics underneath.
-4. Absolutely no conversational filler, chatbot greetings, or intros.${temporalInstruction}
+4. Absolutely no conversational filler, chatbot greetings, or intros.
 
 Format EXACTLY:
 Direct Answer:
@@ -117,7 +82,7 @@ Explanation:
 [Sentences 2, 3, and 4: Exactly 3 sentences of concise factual context and explanation]
 
 Category:
-[e.g. Politics, Science, Geography, History, Technology, General Knowledge]`;
+[e.g. Science, Geography, History, Technology, General Knowledge]`;
 
   for (const model of models) {
     try {
@@ -205,14 +170,7 @@ export async function onRequestGet(context) {
 
       if (qaRes.rows && qaRes.rows.length > 0) {
         const row = qaRes.rows[0];
-        
-        // Check TTL expiration: 1 day for temporal facts, 90 days for evergreen
-        const created = new Date(row.created_at || Date.now()).getTime();
-        const ageDays = (Date.now() - created) / (1000 * 60 * 60 * 24);
-        const maxDays = (row.is_temporal === 1 || row.is_temporal === '1' || row.is_temporal === true) ? 1 : 90;
-        const isExpired = ageDays > maxDays;
-
-        if (!isExpired && Number(row.downvotes) <= Number(row.upvotes)) {
+        if (Number(row.downvotes) <= Number(row.upvotes)) {
           return new Response(JSON.stringify({
             found: true,
             id: row.id,

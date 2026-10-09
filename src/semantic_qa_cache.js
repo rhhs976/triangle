@@ -1,15 +1,6 @@
 // Semantic QA Cache Engine for triangle search engine
 // Connected to Turso Cloud with semantic matching, TTL expiration, and quality control
 
-const COMMON_TYPOS = {
-  'te': 'the', 'th': 'the', 'da': 'the', 'wht': 'what', 'wat': 'what',
-  'hw': 'how', 'whos': 'who', 'whm': 'whom', 'wer': 'where', 'wen': 'when',
-  'wy': 'why', 'answr': 'answer', 'curent': 'current', 'currnt': 'current',
-  'pres': 'president', 'prez': 'president', 'minstr': 'minister', 'ti': 'it',
-  'nd': 'and', 'ot': 'to', 'fro': 'from', 'abt': 'about', 'whch': 'which',
-  'pople': 'people', 'cntry': 'country', 'wrld': 'world', 'leadrs': 'leaders'
-};
-
 const STOP_WORDS = new Set([
   'what', 'whats', 'what\'s', 'is', 'the', 'of', 'in', 'a', 'an', 'are', 'was', 'were',
   'tell', 'me', 'who', 'whos', 'who\'s', 'where', 'wheres', 'where\'s', 'when', 'whens',
@@ -18,7 +9,7 @@ const STOP_WORDS = new Set([
   'meaning', 'definition', 'mean', 'find', 'city', 'country', 'during', 'cause', 'causes',
   'caused', 'causing', 'happen', 'happens', 'happened', 'happening', 'occur', 'occurs',
   'occurred', 'occurring', 'make', 'makes', 'made', 'making', 'work', 'works', 'working',
-  'look', 'looks', 'appear', 'appears', 'called', 'come', 'comes', 'it', 'its'
+  'look', 'looks', 'appear', 'appears', 'called', 'come', 'comes'
 ]);
 
 function stemToken(w) {
@@ -28,22 +19,18 @@ function stemToken(w) {
   return w;
 }
 
-// Temporal markers indicating facts that change over time (leaders, roles, statistics, titles)
+// Temporal markers indicating facts that change over time
 const TEMPORAL_MARKERS = [
-  'current', 'currently', 'now', 'today', 'latest', 'recent', 'present', 'this year',
-  'president', 'prime minister', 'ceo', 'chancellor', 'leader', 'governor', 'mayor',
-  'monarch', 'king', 'queen', 'pope', 'senator', 'vice president', 'premier',
-  'champion', 'winner', 'reigning', 'titleholder', 'number 1', 'no 1', 'top ranked',
-  'price', 'stock', 'worth', 'net worth', 'market cap', 'exchange rate',
-  'weather', 'temperature', 'forecast', 'population', 'inflation', 'gdp',
-  'age', 'how old', 'salary', 'rank', 'ranking'
+  'current', 'currently', 'now', 'today', 'latest', 'recent', 'president', 'prime minister',
+  'price', 'stock', 'worth', 'ceo', 'champion', 'weather', 'population', 'governor', 'senator',
+  'age', 'salary', 'net worth'
 ];
 
 /**
- * Converts any query into a canonical intent key, handling typos & synonyms.
+ * Converts any query into a canonical intent key.
  * Example:
- * "who is te current prime minister of new zealand" -> "current minister new prime zealand"
- * "who is the current prime minister of new zealand" -> "current minister new prime zealand"
+ * "What is the capital of France?" -> "capital france"
+ * "Tell me France's capital city"  -> "capital france"
  */
 export function normalizeQuestionToCanonicalKey(question) {
   if (!question) return '';
@@ -58,7 +45,6 @@ export function normalizeQuestionToCanonicalKey(question) {
 
   const words = cleaned.split(' ')
     .map(w => w.trim())
-    .map(w => COMMON_TYPOS[w] || w)
     .filter(w => w.length > 1 && !STOP_WORDS.has(w))
     .map(w => stemToken(w))
     .filter(w => w.length > 1 && !STOP_WORDS.has(w));
@@ -69,20 +55,15 @@ export function normalizeQuestionToCanonicalKey(question) {
 }
 
 /**
- * Checks if a question has dynamic or time-sensitive information
+ * Checks if a question has time-sensitive information
  */
 export function isTemporalQuestion(question) {
   const lower = (question || '').toLowerCase();
-  if (TEMPORAL_MARKERS.some(m => lower.includes(m))) return 1;
-  const currentYear = new Date().getFullYear();
-  if (lower.includes(String(currentYear)) || lower.includes(String(currentYear - 1))) return 1;
-  return 0;
+  return TEMPORAL_MARKERS.some(m => lower.includes(m)) ? 1 : 0;
 }
 
 /**
  * Checks if a cached QA row has expired
- * Temporal/fluid queries expire after 24 hours (1 day).
- * Evergreen facts expire after 90 days.
  */
 export function isQAExpired(row) {
   if (!row || !row.created_at) return true;
@@ -90,7 +71,8 @@ export function isQAExpired(row) {
   const now = Date.now();
   const ageDays = (now - created) / (1000 * 60 * 60 * 24);
 
-  const maxDays = (row.is_temporal === 1 || row.is_temporal === '1' || row.is_temporal === true) ? 1 : 90;
+  // Temporal facts expire after 7 days; evergreen facts expire after 90 days
+  const maxDays = row.is_temporal ? 7 : 90;
   return ageDays > maxDays;
 }
 
