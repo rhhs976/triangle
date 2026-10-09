@@ -1,7 +1,7 @@
 {
-  "name": "triangle",
+  "name": "ilascope",
   "version": "1.0.0",
-  "description": "triangle — High-speed, self-contained knowledge & dictionary search engine",
+  "description": "ilascope — High-speed, self-contained knowledge & dictionary search engine",
   "type": "module",
   "main": "src/server.js",
   "scripts": {
