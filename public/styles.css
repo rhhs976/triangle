@@ -1388,3 +1388,338 @@ body {
   line-height: 1.6;
 }
 
+/* ========================================================
+   TITLE WITH COPY BUTTON (Right Next to Bold Title)
+   ======================================================== */
+.title-with-copy-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.copy-title-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 6px;
+  cursor: pointer;
+  color: #70757a;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.copy-title-btn:hover {
+  background: #f1f3f4;
+  border-color: #dadce0;
+  color: #202124;
+}
+
+.copy-title-btn:active {
+  transform: scale(0.92);
+}
+
+/* ========================================================
+   THEME TOGGLE BUTTON (Dark / Light Mode)
+   ======================================================== */
+.theme-toggle-btn {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  z-index: 1000;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid #dfe1e5;
+  background: #ffffff;
+  color: #5f6368;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  background: #f8f9fa;
+  color: #202124;
+  border-color: #dadce0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+/* ========================================================
+   CLEAN MINIMAL DARK MODE THEME (Zero Clutter)
+   ======================================================== */
+body.dark-mode {
+  background-color: #121212;
+  color: #e8eaed;
+}
+
+body.dark-mode .brand-title {
+  color: #ffffff;
+}
+
+body.dark-mode .brand-small {
+  color: #ffffff;
+}
+
+body.dark-mode .top-header {
+  background-color: #121212;
+  border-bottom: 1px solid #282a2d;
+}
+
+body.dark-mode .search-input {
+  background-color: #202124;
+  border-color: #3c4043;
+  color: #ffffff;
+}
+
+body.dark-mode .search-input::placeholder {
+  color: #9aa0a6;
+}
+
+body.dark-mode .search-input:focus {
+  border-color: #8ab4f8;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .search-icon path {
+  fill: #9aa0a6;
+}
+
+body.dark-mode .search-btn {
+  background-color: #202124;
+  border-color: #3c4043;
+  color: #e8eaed;
+}
+
+body.dark-mode .search-btn:hover {
+  background-color: #303134;
+  border-color: #5f6368;
+  color: #ffffff;
+}
+
+body.dark-mode .sample-queries span {
+  color: #9aa0a6;
+}
+
+body.dark-mode .sample-link {
+  background-color: #202124;
+  color: #bdc1c6;
+  border: 1px solid #3c4043;
+}
+
+body.dark-mode .sample-link:hover {
+  background-color: #303134;
+  color: #8ab4f8;
+  border-color: #5f6368;
+}
+
+body.dark-mode .search-tabs-bar {
+  border-bottom: 1px solid #282a2d;
+}
+
+body.dark-mode .tab-btn {
+  color: #9aa0a6;
+}
+
+body.dark-mode .tab-btn:hover {
+  color: #e8eaed;
+}
+
+body.dark-mode .tab-btn.active {
+  color: #8ab4f8;
+  border-bottom-color: #8ab4f8;
+}
+
+body.dark-mode .result-card {
+  background-color: #1e1f20;
+  border-color: #303134;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .qa-card,
+body.dark-mode .dict-card,
+body.dark-mode .math-card,
+body.dark-mode .conversion-card,
+body.dark-mode .knowledge-card {
+  background-color: #1e1f20;
+  border-color: #303134;
+}
+
+body.dark-mode .qa-main-answer {
+  color: #ffffff !important;
+}
+
+body.dark-mode .qa-explanation-paragraph {
+  color: #e8eaed !important;
+}
+
+body.dark-mode .result-title {
+  color: #8ab4f8;
+}
+
+body.dark-mode .result-snippet {
+  color: #bdc1c6;
+}
+
+body.dark-mode .dict-heading-bold {
+  color: #ffffff !important;
+}
+
+body.dark-mode .dict-section-label {
+  color: #9aa0a6;
+}
+
+body.dark-mode .dict-section-content {
+  color: #e8eaed;
+}
+
+body.dark-mode .dict-usage-content {
+  color: #bdc1c6;
+  border-left-color: #3c4043;
+}
+
+body.dark-mode .audio-pronounce-btn {
+  background-color: #202124;
+  border-color: #3c4043;
+  color: #8ab4f8;
+}
+
+body.dark-mode .audio-pronounce-btn:hover {
+  background-color: #303134;
+  color: #aecbfa;
+}
+
+body.dark-mode .copy-title-btn {
+  color: #9aa0a6;
+}
+
+body.dark-mode .copy-title-btn:hover {
+  background: #303134;
+  border-color: #3c4043;
+  color: #ffffff;
+}
+
+body.dark-mode .side-sources-box {
+  background-color: #1e1f20;
+  border-color: #303134;
+}
+
+body.dark-mode .source-divider {
+  background-color: #303134;
+}
+
+body.dark-mode .source-site {
+  color: #e8eaed;
+}
+
+body.dark-mode .source-description {
+  color: #bdc1c6;
+}
+
+body.dark-mode .search-suggestions-dropdown {
+  background-color: #202124;
+  border-color: #3c4043;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode .suggestion-item {
+  color: #e8eaed;
+}
+
+body.dark-mode .suggestion-item:hover,
+body.dark-mode .suggestion-item.selected {
+  background-color: #303134;
+}
+
+body.dark-mode .related-label {
+  color: #9aa0a6;
+}
+
+body.dark-mode .related-pill {
+  background-color: #202124;
+  border-color: #3c4043;
+  color: #8ab4f8;
+}
+
+body.dark-mode .related-pill:hover {
+  background-color: #303134;
+  color: #aecbfa;
+}
+
+body.dark-mode .conversion-main {
+  color: #8ab4f8;
+}
+
+body.dark-mode .conversion-desc {
+  color: #bdc1c6;
+}
+
+body.dark-mode .math-expression {
+  color: #bdc1c6;
+}
+
+body.dark-mode .math-answer {
+  color: #ffffff;
+}
+
+body.dark-mode .media-card {
+  background-color: #1e1f20;
+  border-color: #303134;
+}
+
+body.dark-mode .media-caption {
+  color: #e8eaed;
+}
+
+body.dark-mode .media-domain {
+  color: #9aa0a6;
+}
+
+body.dark-mode .lightbox-content {
+  background-color: #1e1f20;
+}
+
+body.dark-mode .lightbox-title {
+  color: #ffffff;
+}
+
+body.dark-mode .lightbox-domain {
+  color: #9aa0a6;
+}
+
+body.dark-mode .clear-btn {
+  color: #9aa0a6;
+}
+
+body.dark-mode .clear-btn:hover {
+  color: #ffffff;
+}
+
+body.dark-mode .theme-toggle-btn {
+  background: #202124;
+  border-color: #3c4043;
+  color: #fbbc04;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .theme-toggle-btn:hover {
+  background: #303134;
+  border-color: #5f6368;
+}
+
+body.dark-mode .theme-icon-moon {
+  display: none !important;
+}
+
+body.dark-mode .theme-icon-sun {
+  display: inline-block !important;
+}
+
+

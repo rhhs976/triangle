@@ -50,7 +50,8 @@ const sampleQueries = [
 
 // Switch to Home View
 function showHomeView() {
-  body.className = 'home-view';
+  body.classList.remove('results-view');
+  body.classList.add('home-view');
   centerInput.value = '';
   topInput.value = '';
   resultsWrapper.innerHTML = '';
@@ -72,7 +73,8 @@ function showHomeView() {
 
 // Switch to Results View
 function showResultsView(query) {
-  body.className = 'results-view';
+  body.classList.remove('home-view');
+  body.classList.add('results-view');
   topInput.value = query;
   centerInput.value = query;
   if (searchTabsBar) searchTabsBar.style.display = 'block';
@@ -406,6 +408,16 @@ async function checkWikipediaThumbnail(topic) {
   }
 }
 
+// Copy button renderer for placing next to bold titles
+function renderCopyButton(textToCopy, label = 'Copy to clipboard') {
+  return `
+    <button type="button" class="copy-title-btn" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}" data-copy="${escapeHtml(textToCopy)}">
+      <svg class="copy-icon" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+      <svg class="check-icon" viewBox="0 0 24 24" width="16" height="16" style="display:none;"><path fill="#188038" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+    </button>
+  `;
+}
+
 // Render Results Underneath Search Bar
 function renderResults(data) {
   if (!data || !data.found) {
@@ -449,7 +461,10 @@ function renderResults(data) {
     cardHtml = `
       <div class="result-card math-card">
         <span class="result-category-badge">Calculator</span>
-        <div class="math-expression">${d.expression || data.title}</div>
+        <div class="title-with-copy-row">
+          <div class="math-expression">${d.expression || data.title}</div>
+          ${renderCopyButton(`${d.expression || data.title} = ${d.answer || ''}`, 'Copy math answer')}
+        </div>
         <div class="math-answer">${d.answer || ''}</div>
         ${d.workingOut ? `
           <div class="math-derivation">
@@ -466,7 +481,10 @@ function renderResults(data) {
     cardHtml = `
       <div class="result-card conversion-card">
         <span class="result-category-badge" style="background:#1a73e8; color:#fff; font-weight:600;">${data.category}</span>
-        <div class="conversion-main">${escapeHtml(directAns)}</div>
+        <div class="title-with-copy-row">
+          <div class="conversion-main">${escapeHtml(directAns)}</div>
+          ${renderCopyButton(`${directAns}\n${data.fullExplanation || data.snippet || ''}`, 'Copy conversion')}
+        </div>
         <div class="conversion-desc">${escapeHtml(data.fullExplanation || data.snippet || '')}</div>
       </div>
     `;
@@ -489,8 +507,11 @@ function renderResults(data) {
           ${d.cachedFromTurso ? `<span style="font-size:12px; color:#188038; margin-left:auto; display:flex; align-items:center; gap:4px;">⚡ Verified Cloud Answer</span>` : ''}
         </div>
 
-        <div class="qa-main-answer" style="font-size:24px; font-weight:700; color:#000; margin:8px 0 14px 0; line-height:1.3;">
-          ${escapeHtml(directAns)}
+        <div class="title-with-copy-row">
+          <div class="qa-main-answer" style="font-size:24px; font-weight:700; color:#000; margin:8px 0 14px 0; line-height:1.3;">
+            ${escapeHtml(directAns)}
+          </div>
+          ${renderCopyButton(`**${directAns}**\n\n${fullExpl || sentence}`, 'Copy answer')}
         </div>
 
         ${fullExpl ? `
@@ -547,6 +568,7 @@ function renderResults(data) {
               <path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
             </svg>
           </button>
+          ${renderCopyButton(`**${headingText}**\n\nExplanation:\n${explanationText}${usageText ? `\n\nUsage:\n${usageText}` : ''}`, 'Copy definition')}
         </div>
         
         <div class="dict-section">
@@ -576,7 +598,10 @@ function renderResults(data) {
       directHtml = `
         <div class="direct-answer-card">
           <div class="direct-answer-label">${direct.label || 'Quick Answer'}</div>
-          <div class="direct-answer-main">${direct.answer}</div>
+          <div class="title-with-copy-row">
+            <div class="direct-answer-main">${direct.answer}</div>
+            ${renderCopyButton(`${direct.answer}\n${direct.subAnswer || ''}`, 'Copy quick answer')}
+          </div>
           ${direct.subAnswer && direct.subAnswer !== direct.answer ? `<div class="direct-answer-context">${direct.subAnswer}</div>` : ''}
         </div>
       `;
@@ -586,7 +611,20 @@ function renderResults(data) {
       ${directHtml}
       <div class="result-card knowledge-card">
         <span class="result-category-badge">Verified Source</span>
-        <h2 class="result-title">${data.title}</h2>
+        <div class="title-with-copy-row">
+          <h2 class="result-title">${data.title}</h2>
+          ${renderCopyButton(`${data.title}\n\n${d.fullFact || data.snippet}`, 'Copy fact')}
+        </div>
+        <div class="result-subtitle">${data.subtitle || ''}</div>
+        <div class="result-snippet">${d.fullFact || data.snippet}</div>
+        ${tags.length ? `
+          <div class="knowledge-tags">
+            ${tags.map(t => `<span class="tag-pill">${t}</span>`).join('')}
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
         <div class="result-subtitle">${data.subtitle || ''}</div>
         <div class="result-snippet">${d.fullFact || data.snippet}</div>
         ${tags.length ? `
@@ -632,7 +670,10 @@ function renderResults(data) {
     cardHtml = `
       <div class="result-card">
         <span class="result-category-badge">${data.category || 'Result'}</span>
-        <h2 class="result-title">${data.title}</h2>
+        <div class="title-with-copy-row">
+          <h2 class="result-title">${data.title}</h2>
+          ${renderCopyButton(`${data.title}\n\n${data.snippet || ''}`, 'Copy result')}
+        </div>
         ${data.subtitle ? `<div class="result-subtitle">${data.subtitle}</div>` : ''}
         <div class="result-snippet">${data.snippet}</div>
       </div>
@@ -948,6 +989,103 @@ function setupAutocomplete(inputEl, dropdownEl) {
 // Wire up Autocomplete for both search inputs
 setupAutocomplete(centerInput, document.getElementById('center-suggestions'));
 setupAutocomplete(topInput, document.getElementById('top-suggestions'));
+
+// ========================================================
+// 1. COPY TO CLIPBOARD HANDLER (Next to Bold Title)
+// ========================================================
+document.addEventListener('click', async (e) => {
+  const btn = e.target.closest('.copy-title-btn');
+  if (!btn) return;
+  e.preventDefault();
+  const text = btn.getAttribute('data-copy');
+  if (!text) return;
+
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+
+    const copyIcon = btn.querySelector('.copy-icon');
+    const checkIcon = btn.querySelector('.check-icon');
+    if (copyIcon && checkIcon) {
+      copyIcon.style.display = 'none';
+      checkIcon.style.display = 'inline-block';
+      const origTitle = btn.getAttribute('title') || 'Copy';
+      btn.setAttribute('title', 'Copied!');
+      setTimeout(() => {
+        copyIcon.style.display = 'inline-block';
+        checkIcon.style.display = 'none';
+        btn.setAttribute('title', origTitle);
+      }, 1800);
+    }
+  } catch (err) {
+    console.error('Failed to copy text:', err);
+  }
+});
+
+// ========================================================
+// 2. THEME TOGGLE (Dark / Light Mode - strictly in-memory)
+// ========================================================
+const themeToggleBtn = document.getElementById('theme-toggle-btn');
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
+}
+
+// ========================================================
+// 3. NATIVE POWER KEYBOARD SHORTCUTS ('/' and 'Escape')
+// ========================================================
+document.addEventListener('keydown', (e) => {
+  const target = e.target;
+  const isInput = target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable);
+
+  // Press '/' anywhere when not typing inside an input to focus and select search bar
+  if (e.key === '/' && !isInput && !e.ctrlKey && !e.metaKey && !e.altKey) {
+    e.preventDefault();
+    const isHome = document.body.classList.contains('home-view');
+    const input = isHome ? centerInput : topInput;
+    if (input) {
+      input.focus();
+      input.select();
+    }
+    return;
+  }
+
+  // Press 'Escape'
+  if (e.key === 'Escape') {
+    const centerSug = document.getElementById('center-suggestions');
+    const topSug = document.getElementById('top-suggestions');
+    let closedDropdown = false;
+    if (centerSug && centerSug.style.display === 'block') {
+      centerSug.style.display = 'none';
+      closedDropdown = true;
+    }
+    if (topSug && topSug.style.display === 'block') {
+      topSug.style.display = 'none';
+      closedDropdown = true;
+    }
+    if (closedDropdown) return;
+
+    // If on results view, return to clean home view
+    if (!document.body.classList.contains('home-view')) {
+      showHomeView();
+    } else {
+      // Clear input and blur on home view
+      syncInputs('');
+      if (centerInput) centerInput.blur();
+    }
+  }
+});
 
 window.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
