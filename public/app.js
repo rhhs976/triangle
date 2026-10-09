@@ -1023,17 +1023,7 @@ document.addEventListener('click', async (e) => {
 });
 
 // ========================================================
-// 2. THEME TOGGLE (Dark / Light Mode - strictly in-memory)
-// ========================================================
-const themeToggleBtn = document.getElementById('theme-toggle-btn');
-if (themeToggleBtn) {
-  themeToggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-  });
-}
-
-// ========================================================
-// 3. NATIVE POWER KEYBOARD SHORTCUTS ('/' and 'Escape')
+// 2. NATIVE POWER KEYBOARD SHORTCUTS ('/' and 'Escape')
 // ========================================================
 document.addEventListener('keydown', (e) => {
   const target = e.target;
