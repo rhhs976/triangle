@@ -14,10 +14,11 @@ import { dictionary } from './dictionary.js';
 import { myDictionary } from './groq_dictionary.js';
 import { tagSentence, classifyWord } from './pos_tagger.js';
 import { solveArithmetic } from '../scripts/solve_math_arithmetic.js';
+import { convertUnit } from './unit_converter.js';
 import { extractDirectAnswer } from './answer_extractor.js';
 import { formatDictionaryEntry } from './dictionary_formatter.js';
 import { DictionaryQAEngine } from './dictionary_qa_engine.js';
-import { getTopicWebsites } from './topic_sources.js';
+import { getTopicWebsites, getRelatedQueries } from './topic_sources.js';
 import { DisambiguationEngine } from './disambiguation_engine.js';
 import { scrapeOnlineImages } from './image_scraper.js';
 import { scrapeOnlineVideos } from './video_scraper.js';
@@ -117,11 +118,13 @@ function cleanDefinition(raw) {
 // Core search function wrapped with topic sources
 async function executeSearch(rawQuery) {
   const result = await doSearch(rawQuery);
-  if (result && result.found && result.category !== 'Math') {
-    // Preserve custom specific sources if already assigned (e.g. IMDb for movie disambiguation)
-    if (!result.sources || !result.sources.length) {
+  if (result && result.found) {
+    if (result.category !== 'Math' && (!result.sources || !result.sources.length)) {
       const topic = result.sourceWord || result.details?.word || result.title || rawQuery;
       result.sources = getTopicWebsites(topic, result.category, result.details);
+    }
+    if (!result.related || !result.related.length) {
+      result.related = getRelatedQueries(rawQuery, result.category, result.title, result.details);
     }
   }
   return result;
@@ -157,6 +160,12 @@ async function doSearch(rawQuery) {
         workingOut: mathRes.derivation
       }
     };
+  }
+
+  // 1.5 Unit & Currency Conversion (Zero-Token Deterministic Engine)
+  const convRes = convertUnit(query);
+  if (convRes && convRes.found) {
+    return convRes;
   }
 
   // 2. Direct Question Answering & Knowledge Synthesis (Turso Cloud QA Cache + Groq)
@@ -327,6 +336,14 @@ const server = http.createServer((req, res) => {
     }).catch(err => {
       sendJson(res, 500, { error: err.message });
     });
+    return;
+  }
+
+  // GET /api/suggest?q=...
+  if (url.pathname === '/api/suggest' && req.method === 'GET') {
+    const q = (url.searchParams.get('q') || '').trim();
+    const suggestions = myDictionary.getSuggestions(q, 6);
+    sendJson(res, 200, { query: q, suggestions });
     return;
   }
 

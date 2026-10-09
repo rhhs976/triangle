@@ -445,16 +445,29 @@ function renderResults(data) {
 
   // 1. Math Result
   if (data.category === 'Math') {
-    const d = data.details;
+    const d = data.details || {};
     cardHtml = `
       <div class="result-card math-card">
         <span class="result-category-badge">Calculator</span>
-        <div class="math-expression">${d.expression}</div>
-        <div class="math-answer">${d.answer}</div>
-        <div class="math-derivation">
-          <div class="math-derivation-title">Step-by-Step Working Out (${d.pattern})</div>
-          <div class="math-steps">${d.workingOut}</div>
-        </div>
+        <div class="math-expression">${d.expression || data.title}</div>
+        <div class="math-answer">${d.answer || ''}</div>
+        ${d.workingOut ? `
+          <div class="math-derivation">
+            <div class="math-derivation-title">Step-by-Step Working Out (${d.pattern || 'Arithmetic'})</div>
+            <div class="math-steps">${d.workingOut}</div>
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+  // 1.5 Unit & Currency Conversion
+  else if (data.category === 'Unit Conversion' || data.category === 'Currency Conversion') {
+    const directAns = (data.directAnswer || data.title || '').replace(/\*\*/g, '');
+    cardHtml = `
+      <div class="result-card conversion-card">
+        <span class="result-category-badge" style="background:#1a73e8; color:#fff; font-weight:600;">${data.category}</span>
+        <div class="conversion-main">${escapeHtml(directAns)}</div>
+        <div class="conversion-desc">${escapeHtml(data.fullExplanation || data.snippet || '')}</div>
       </div>
     `;
   }
@@ -527,7 +540,14 @@ function renderResults(data) {
 
     cardHtml = `
       <div class="result-card dict-card">
-        <h2 class="dict-heading-bold"><strong>${escapeHtml(headingText)}</strong></h2>
+        <div class="dict-heading-row">
+          <h2 class="dict-heading-bold" style="margin-bottom:0;"><strong>${escapeHtml(headingText)}</strong></h2>
+          <button type="button" class="audio-pronounce-btn" onclick="window.pronounceText('${escapeHtml(headingText.replace(/'/g, "\\'"))}')" title="Listen to pronunciation" aria-label="Pronounce">
+            <svg viewBox="0 0 24 24" width="18" height="18">
+              <path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+            </svg>
+          </button>
+        </div>
         
         <div class="dict-section">
           <div class="dict-section-label">Explanation:</div>
@@ -619,6 +639,24 @@ function renderResults(data) {
     `;
   }
 
+  // Related Inquiries Discovery Pills
+  let relatedHtml = '';
+  if (data.related && Array.isArray(data.related) && data.related.length > 0) {
+    relatedHtml = `
+      <div class="related-queries-row">
+        <span class="related-label">Related:</span>
+        ${data.related.map(r => `
+          <button type="button" class="related-pill" data-query="${escapeHtml(r)}">
+            <svg viewBox="0 0 24 24" width="13" height="13"><path fill="#1a0dab" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            <span>${escapeHtml(r)}</span>
+          </button>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  const finalMainHtml = cardHtml + relatedHtml;
+
   // Render two-column layout with right-side website box in halves
   const sourcesBoxHtml = renderSourcesBox(data.sources);
 
@@ -626,7 +664,7 @@ function renderResults(data) {
     resultsWrapper.innerHTML = `
       <div class="results-layout">
         <div class="results-main-col">
-          ${cardHtml}
+          ${finalMainHtml}
         </div>
         ${sourcesBoxHtml}
       </div>
@@ -638,8 +676,20 @@ function renderResults(data) {
       checkWikipediaThumbnail(topic);
     }
   } else {
-    resultsWrapper.innerHTML = cardHtml;
+    resultsWrapper.innerHTML = finalMainHtml;
   }
+
+  // Hook up related pills
+  document.querySelectorAll('.related-pill').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const q = btn.getAttribute('data-query');
+      if (q) {
+        syncInputs(q);
+        performSearch(q);
+      }
+    });
+  });
 
   // Hook up alternate sense pill buttons
   document.querySelectorAll('.alternate-sense-btn').forEach(btn => {
@@ -764,6 +814,140 @@ window.handleQAVote = async function(id, vote) {
     }
   }
 };
+
+// Audio Pronunciation using native Web Speech API (0 server calls)
+window.pronounceText = function(text) {
+  if (!('speechSynthesis' in window)) return;
+  try {
+    window.speechSynthesis.cancel();
+    const clean = (text || '').replace(/[^\w\s-]/g, '').trim();
+    if (!clean) return;
+    const utterance = new SpeechSynthesisUtterance(clean);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.9;
+    window.speechSynthesis.speak(utterance);
+  } catch (_) {}
+};
+
+// Autocomplete Typeahead Controller
+function setupAutocomplete(inputEl, dropdownEl) {
+  if (!inputEl || !dropdownEl) return;
+  let activeIndex = -1;
+  let debounceTimer = null;
+
+  function closeDropdown() {
+    dropdownEl.style.display = 'none';
+    dropdownEl.innerHTML = '';
+    activeIndex = -1;
+  }
+
+  function renderDropdown(items) {
+    activeIndex = -1;
+    if (!items || items.length === 0) {
+      closeDropdown();
+      return;
+    }
+
+    dropdownEl.innerHTML = items.map((item, idx) => `
+      <div class="suggestion-item" data-index="${idx}" data-val="${escapeHtml(item)}">
+        <span class="suggestion-icon">
+          <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        </span>
+        <span class="suggestion-text">${escapeHtml(item)}</span>
+      </div>
+    `).join('');
+
+    dropdownEl.style.display = 'block';
+
+    dropdownEl.querySelectorAll('.suggestion-item').forEach(el => {
+      el.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        const val = el.getAttribute('data-val');
+        if (val) {
+          syncInputs(val);
+          closeDropdown();
+          performSearch(val);
+        }
+      });
+    });
+  }
+
+  async function fetchSuggestions(q) {
+    if (!q || q.trim().length < 1) {
+      closeDropdown();
+      return;
+    }
+    try {
+      const res = await fetch(`/api/suggest?q=${encodeURIComponent(q.trim())}`);
+      if (res.ok) {
+        const data = await res.json();
+        renderDropdown(data.suggestions || []);
+      }
+    } catch (_) {
+      closeDropdown();
+    }
+  }
+
+  inputEl.addEventListener('input', (e) => {
+    clearTimeout(debounceTimer);
+    const q = e.target.value.trim();
+    if (!q) {
+      closeDropdown();
+      return;
+    }
+    debounceTimer = setTimeout(() => fetchSuggestions(q), 100);
+  });
+
+  inputEl.addEventListener('keydown', (e) => {
+    if (dropdownEl.style.display !== 'block') return;
+
+    const items = dropdownEl.querySelectorAll('.suggestion-item');
+    if (!items.length) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      activeIndex = (activeIndex + 1) % items.length;
+      updateSelection(items);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      activeIndex = (activeIndex - 1 + items.length) % items.length;
+      updateSelection(items);
+    } else if (e.key === 'Enter') {
+      if (activeIndex >= 0 && activeIndex < items.length) {
+        e.preventDefault();
+        const val = items[activeIndex].getAttribute('data-val');
+        if (val) {
+          syncInputs(val);
+          closeDropdown();
+          performSearch(val);
+        }
+      } else {
+        closeDropdown();
+      }
+    } else if (e.key === 'Escape') {
+      closeDropdown();
+    }
+  });
+
+  function updateSelection(items) {
+    items.forEach((item, idx) => {
+      if (idx === activeIndex) {
+        item.classList.add('selected');
+        syncInputs(item.getAttribute('data-val'));
+      } else {
+        item.classList.remove('selected');
+      }
+    });
+  }
+
+  inputEl.addEventListener('blur', () => {
+    setTimeout(closeDropdown, 220);
+  });
+}
+
+// Wire up Autocomplete for both search inputs
+setupAutocomplete(centerInput, document.getElementById('center-suggestions'));
+setupAutocomplete(topInput, document.getElementById('top-suggestions'));
 
 window.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);

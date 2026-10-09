@@ -103,6 +103,21 @@ export class GroqDictionaryEngine {
     return this.getStmt.get(clean);
   }
 
+  // Instant in-memory autocomplete suggestions
+  getSuggestions(prefix, limit = 6) {
+    if (!prefix || prefix.trim().length === 0) return [];
+    const clean = prefix.toLowerCase().trim();
+    try {
+      if (!this.suggestStmt) {
+        this.suggestStmt = this.db.prepare('SELECT word FROM my_dictionary WHERE word LIKE ? ORDER BY length(word) ASC, word ASC LIMIT ?');
+      }
+      const rows = this.suggestStmt.all(clean + '%', limit);
+      return rows.map(r => r.word);
+    } catch (_) {
+      return [];
+    }
+  }
+
   // Call Groq API with model rotation
   async callGroq(targetWord) {
     if (GROQ_PAUSED) {

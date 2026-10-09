@@ -217,6 +217,251 @@ function getWebsites(topic) {
   ];
 }
 
+const LENGTH_FACTORS = {
+  m: 1, meter: 1, meters: 1, km: 1000, kilometer: 1000, kilometers: 1000,
+  cm: 0.01, centimeter: 0.01, centimeters: 0.01, mm: 0.001, millimeter: 0.001, millimeters: 0.001,
+  mi: 1609.344, mile: 1609.344, miles: 1609.344, yd: 0.9144, yard: 0.9144, yards: 0.9144,
+  ft: 0.3048, foot: 0.3048, feet: 0.3048, in: 0.0254, inch: 0.0254, inches: 0.0254
+};
+const MASS_FACTORS = {
+  kg: 1, kilogram: 1, kilograms: 1, g: 0.001, gram: 0.001, grams: 0.001,
+  lb: 0.45359237, lbs: 0.45359237, pound: 0.45359237, pounds: 0.45359237,
+  oz: 0.028349523125, ounce: 0.028349523125, ounces: 0.028349523125,
+  ton: 907.18474, tons: 907.18474
+};
+const SPEED_FACTORS = {
+  'm/s': 1, 'km/h': 0.27777777777778, 'kph': 0.27777777777778, 'mph': 0.44704, 'knot': 0.514444, 'knots': 0.514444
+};
+const VOLUME_FACTORS = {
+  l: 1, liter: 1, liters: 1, ml: 0.001, milliliter: 0.001, milliliters: 0.001,
+  gal: 3.785411784, gallon: 3.785411784, gallons: 3.785411784, cup: 0.2365882365, cups: 0.2365882365
+};
+const DATA_FACTORS = {
+  b: 1, byte: 1, bytes: 1, kb: 1024, mb: 1024*1024, gb: 1024*1024*1024, tb: 1024*1024*1024*1024
+};
+const CURRENCY_RATES = {
+  usd: 1.0, eur: 0.92, gbp: 0.78, jpy: 153.2, aud: 1.52, cad: 1.38, nzd: 1.66, chf: 0.88, cny: 7.23, inr: 83.9
+};
+
+function formatNum(n) {
+  if (Math.abs(n) >= 1000) return Number(n.toFixed(2)).toLocaleString();
+  return Number(n.toFixed(4)).toString();
+}
+
+function convertUnit(rawQuery) {
+  if (!rawQuery) return null;
+  const q = rawQuery.toLowerCase().trim();
+
+  // Pattern A: "X ft Y in to cm"
+  const comp = q.match(/^(\d+(?:\.\d+)?)\s*(?:ft|feet|foot)\s*(\d+(?:\.\d+)?)\s*(?:in|inch|inches)\s+(?:to|in|into)\s+([a-z]+)$/i);
+  if (comp) {
+    const feet = parseFloat(comp[1]);
+    const inches = parseFloat(comp[2]);
+    const tu = comp[3].toLowerCase();
+    const tf = LENGTH_FACTORS[tu];
+    if (tf) {
+      const conv = ((feet * 0.3048) + (inches * 0.0254)) / tf;
+      const direct = `${feet} ft ${inches} in = ${formatNum(conv)} ${tu}`;
+      return {
+        found: true,
+        category: 'Unit Conversion',
+        title: `**${direct}**`,
+        directAnswer: direct,
+        fullExplanation: `${feet} feet and ${inches} inches is equivalent to ${formatNum(conv)} ${tu}. Length conversions utilize standard SI dimensional equivalence.`,
+        snippet: direct,
+        details: { fromValue: `${feet} ft ${inches} in`, toValue: formatNum(conv), type: 'Length' }
+      };
+    }
+  }
+
+  // Pattern B: "[val] [u1] to [u2]"
+  const m = q.match(/^(?:convert\s+)?(\d+(?:\.\d+)?)\s*([a-z°\/\s]+?)\s+(?:to|in|into)\s+([a-z°\/\s]+)$/i);
+  if (!m) return null;
+
+  const val = parseFloat(m[1]);
+  if (isNaN(val)) return null;
+  const u1 = m[2].trim().toLowerCase();
+  const u2 = m[3].trim().toLowerCase();
+
+  // Temperature
+  const isC1 = /^(c|celsius|centigrade)$/.test(u1);
+  const isC2 = /^(c|celsius|centigrade)$/.test(u2);
+  const isF1 = /^(f|fahrenheit)$/.test(u1);
+  const isF2 = /^(f|fahrenheit)$/.test(u2);
+  const isK1 = /^(k|kelvin)$/.test(u1);
+  const isK2 = /^(k|kelvin)$/.test(u2);
+
+  if ((isC1 || isF1 || isK1) && (isC2 || isF2 || isK2)) {
+    let res = null;
+    let formula = '';
+    const l1 = isC1 ? '°C' : (isF1 ? '°F' : 'K');
+    const l2 = isC2 ? '°C' : (isF2 ? '°F' : 'K');
+    if (isC1 && isF2) { res = (val * 9/5) + 32; formula = `(${val} °C × 9/5) + 32 = ${formatNum(res)} °F`; }
+    else if (isF1 && isC2) { res = (val - 32) * 5/9; formula = `(${val} °F - 32) × 5/9 = ${formatNum(res)} °C`; }
+    else if (isC1 && isK2) { res = val + 273.15; formula = `${val} °C + 273.15 = ${formatNum(res)} K`; }
+    else if (isK1 && isC2) { res = val - 273.15; formula = `${val} K - 273.15 = ${formatNum(res)} °C`; }
+    else if (isF1 && isK2) { res = ((val - 32) * 5/9) + 273.15; formula = `((${val} °F - 32) × 5/9) + 273.15 = ${formatNum(res)} K`; }
+    else if (isK1 && isF2) { res = ((val - 273.15) * 9/5) + 32; formula = `((${val} K - 273.15) × 9/5) + 32 = ${formatNum(res)} °F`; }
+    else if (u1 === u2) { res = val; formula = `${val} ${l1} = ${val} ${l2}`; }
+
+    if (res !== null) {
+      const direct = `${val} ${l1} = ${formatNum(res)} ${l2}`;
+      return {
+        found: true,
+        category: 'Unit Conversion',
+        title: `**${direct}**`,
+        directAnswer: direct,
+        fullExplanation: `${formula}. Temperature calculations represent thermodynamic scale conversions using fixed physical constants.`,
+        snippet: direct,
+        details: { fromValue: `${val} ${l1}`, toValue: `${formatNum(res)} ${l2}`, type: 'Temperature' }
+      };
+    }
+  }
+
+  // Length
+  if (LENGTH_FACTORS[u1] && LENGTH_FACTORS[u2]) {
+    const conv = (val * LENGTH_FACTORS[u1]) / LENGTH_FACTORS[u2];
+    const direct = `${val} ${u1} = ${formatNum(conv)} ${u2}`;
+    return {
+      found: true, category: 'Unit Conversion', title: `**${direct}**`, directAnswer: direct,
+      fullExplanation: `${val} ${u1} is equivalent to ${formatNum(conv)} ${u2}. Distance conversion uses standard SI metric-imperial ratios.`,
+      snippet: direct, details: { fromValue: `${val} ${u1}`, toValue: `${formatNum(conv)} ${u2}`, type: 'Length' }
+    };
+  }
+
+  // Mass
+  if (MASS_FACTORS[u1] && MASS_FACTORS[u2]) {
+    const conv = (val * MASS_FACTORS[u1]) / MASS_FACTORS[u2];
+    const direct = `${val} ${u1} = ${formatNum(conv)} ${u2}`;
+    return {
+      found: true, category: 'Unit Conversion', title: `**${direct}**`, directAnswer: direct,
+      fullExplanation: `${val} ${u1} equals ${formatNum(conv)} ${u2}. Mass metrics follow international avoirdupois standards calibrated to the kilogram.`,
+      snippet: direct, details: { fromValue: `${val} ${u1}`, toValue: `${formatNum(conv)} ${u2}`, type: 'Weight' }
+    };
+  }
+
+  // Speed
+  if (SPEED_FACTORS[u1] && SPEED_FACTORS[u2]) {
+    const conv = (val * SPEED_FACTORS[u1]) / SPEED_FACTORS[u2];
+    const direct = `${val} ${u1} = ${formatNum(conv)} ${u2}`;
+    return {
+      found: true, category: 'Unit Conversion', title: `**${direct}**`, directAnswer: direct,
+      fullExplanation: `${val} ${u1} equals ${formatNum(conv)} ${u2}. Velocity metrics represent kinematic rates of displacement calibrated to meters per second.`,
+      snippet: direct, details: { fromValue: `${val} ${u1}`, toValue: `${formatNum(conv)} ${u2}`, type: 'Speed' }
+    };
+  }
+
+  // Volume
+  if (VOLUME_FACTORS[u1] && VOLUME_FACTORS[u2]) {
+    const conv = (val * VOLUME_FACTORS[u1]) / VOLUME_FACTORS[u2];
+    const direct = `${val} ${u1} = ${formatNum(conv)} ${u2}`;
+    return {
+      found: true, category: 'Unit Conversion', title: `**${direct}**`, directAnswer: direct,
+      fullExplanation: `${val} ${u1} equals ${formatNum(conv)} ${u2}. Volumetric capacity is standardized to the liter.`,
+      snippet: direct, details: { fromValue: `${val} ${u1}`, toValue: `${formatNum(conv)} ${u2}`, type: 'Volume' }
+    };
+  }
+
+  // Data
+  if (DATA_FACTORS[u1] && DATA_FACTORS[u2]) {
+    const conv = (val * DATA_FACTORS[u1]) / DATA_FACTORS[u2];
+    const direct = `${val} ${u1.toUpperCase()} = ${formatNum(conv)} ${u2.toUpperCase()}`;
+    return {
+      found: true, category: 'Unit Conversion', title: `**${direct}**`, directAnswer: direct,
+      fullExplanation: `${val} ${u1.toUpperCase()} equals ${formatNum(conv)} ${u2.toUpperCase()}. Digital storage is computed via binary 1,024 factors.`,
+      snippet: direct, details: { fromValue: `${val} ${u1.toUpperCase()}`, toValue: `${formatNum(conv)} ${u2.toUpperCase()}`, type: 'Data' }
+    };
+  }
+
+  // Currency
+  if (CURRENCY_RATES[u1] && CURRENCY_RATES[u2]) {
+    const usd = val / CURRENCY_RATES[u1];
+    const conv = usd * CURRENCY_RATES[u2];
+    const direct = `${formatNum(val)} ${u1.toUpperCase()} = ${formatNum(conv)} ${u2.toUpperCase()}`;
+    return {
+      found: true, category: 'Currency Conversion', title: `**${direct}**`, directAnswer: direct,
+      fullExplanation: `${formatNum(val)} ${u1.toUpperCase()} is approximately ${formatNum(conv)} ${u2.toUpperCase()}. Currency estimates use interbank reference exchange rates.`,
+      snippet: direct, details: { fromValue: `${val} ${u1.toUpperCase()}`, toValue: `${formatNum(conv)} ${u2.toUpperCase()}`, type: 'Currency' }
+    };
+  }
+
+  return null;
+}
+
+function getRelatedQueries(query, category, title, details = {}) {
+  const cleanQ = (query || '').trim();
+  const lower = cleanQ.toLowerCase();
+
+  if (category === 'Unit Conversion' || category === 'Currency Conversion') {
+    const d = details || {};
+    if (d.type === 'Length') return ['100 km to miles', '50 miles to km', 'how many feet in a mile'];
+    if (d.type === 'Temperature') return ['0 celsius to fahrenheit', '100 celsius to fahrenheit', 'absolute zero in celsius'];
+    if (d.type === 'Weight') return ['100 lbs to kg', '50 kg to lbs', 'how many grams in an ounce'];
+    if (d.type === 'Currency') return ['100 usd to eur', '100 usd to gbp', '100 eur to usd'];
+    return ['100 km to miles', '32 f to c', '100 usd to eur'];
+  }
+
+  if (category === 'Math') {
+    return ['square root of 144', '15 percent of 200', '2 to the power of 10'];
+  }
+
+  if (category === 'Dictionary') {
+    const word = (title || cleanQ).replace(/\*\*/g, '').trim();
+    return [`synonyms of ${word}`, `antonyms of ${word}`, `how to use ${word} in a sentence`];
+  }
+
+  const pmMatch = cleanQ.match(/^who\s+is\s+(?:the\s+)?prime\s+minister\s+of\s+(.+)$/i);
+  if (pmMatch) {
+    const country = pmMatch[1].replace(/\?/g, '').trim();
+    return [`capital of ${country}`, `population of ${country}`, `parliament of ${country}`];
+  }
+
+  const presMatch = cleanQ.match(/^who\s+is\s+(?:the\s+)?president\s+of\s+(.+)$/i);
+  if (presMatch) {
+    const country = presMatch[1].replace(/\?/g, '').trim();
+    return [`capital of ${country}`, `government of ${country}`, `history of ${country}`];
+  }
+
+  const ceoMatch = cleanQ.match(/^who\s+is\s+(?:the\s+)?ceo\s+of\s+(.+)$/i);
+  if (ceoMatch) {
+    const company = ceoMatch[1].replace(/\?/g, '').trim();
+    return [`when was ${company} founded`, `headquarters of ${company}`, `revenue of ${company}`];
+  }
+
+  const capMatch = cleanQ.match(/^what\s+is\s+(?:the\s+)?capital\s+of\s+(.+)$/i);
+  if (capMatch) {
+    const country = capMatch[1].replace(/\?/g, '').trim();
+    return [`population of ${country}`, `currency of ${country}`, `languages of ${country}`];
+  }
+
+  if (lower.includes('apple')) return ['Why are apples red?', 'Are there naturally blue fruits?', 'Health benefits of apples'];
+  if (lower.includes('penguin')) return ['Where do penguins live?', 'Can penguins swim?', 'How do penguins stay warm?'];
+
+  const tokens = cleanQ.replace(/[?.,!]/g, '').split(/\s+/).filter(w => w.length > 3 && !['what', 'where', 'when', 'which', 'does', 'have', 'with'].includes(w.toLowerCase()));
+  if (tokens.length >= 2) {
+    const topic = tokens.slice(0, 2).join(' ');
+    return [`what causes ${topic}`, `why is ${topic} important`, `history of ${topic}`];
+  } else if (tokens.length === 1) {
+    return [`what is ${tokens[0]}`, `define ${tokens[0]}`, `facts about ${tokens[0]}`];
+  }
+
+  return ['what is photosynthesis', 'who is the ceo of microsoft', 'why is the sky blue'];
+}
+
+function sendEdgeResponse(data, q) {
+  if (data && data.found) {
+    if (!data.sources || !data.sources.length) {
+      data.sources = getWebsites(data.title || q);
+    }
+    if (!data.related || !data.related.length) {
+      data.related = getRelatedQueries(q, data.category, data.title, data.details);
+    }
+  }
+  return new Response(JSON.stringify(data), {
+    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+  });
+}
+
 async function callGroqQA(question, apiKey) {
   const models = ['qwen/qwen3.8-27b', 'openai/gpt-oss-120b', 'openai/gpt-oss-20b'];
   const prompt = `You are an authoritative encyclopedic knowledge search engine. Answer the question: "${question}".
@@ -297,16 +542,19 @@ export async function onRequestGet(context) {
   // 1. Math calculation
   const math = solveArithmetic(q);
   if (math.success) {
-    return new Response(JSON.stringify({
+    return sendEdgeResponse({
       found: true,
       query: q,
       category: 'Math',
       title: `${math.expression} = ${math.answer}`,
-      snippet: `Calculated answer: ${math.answer}`,
-      sources: getWebsites(q)
-    }), {
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-    });
+      snippet: `Calculated answer: ${math.answer}`
+    }, q);
+  }
+
+  // 1.5 Unit & Currency Conversion
+  const conv = convertUnit(q);
+  if (conv && conv.found) {
+    return sendEdgeResponse(conv, q);
   }
 
   const client = getTursoClient(env);
@@ -327,7 +575,7 @@ export async function onRequestGet(context) {
         if (Number(row.downvotes) <= Number(row.upvotes)) {
           // If not temporal, serve immediately from cache
           if (row.is_temporal !== 1 && row.is_temporal !== '1') {
-            return new Response(JSON.stringify({
+            return sendEdgeResponse({
               found: true,
               id: row.id,
               query: q,
@@ -341,11 +589,8 @@ export async function onRequestGet(context) {
                 directAnswer: row.direct_answer,
                 fullExplanation: row.full_explanation,
                 cachedFromTurso: true
-              },
-              sources: getWebsites(q)
-            }), {
-              headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-            });
+              }
+            }, q);
           }
           cachedRow = row;
         }
@@ -367,7 +612,7 @@ export async function onRequestGet(context) {
           savedId = ins.lastInsertRowid;
         } catch (_) {}
 
-        return new Response(JSON.stringify({
+        return sendEdgeResponse({
           found: true,
           id: savedId,
           query: q,
@@ -383,17 +628,14 @@ export async function onRequestGet(context) {
             tokensUsed: 0,
             cachedFromTurso: false,
             liveProbe: true
-          },
-          sources: getWebsites(q)
-        }), {
-          headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-        });
+          }
+        }, q);
       }
     } catch (_) {}
 
     // If live probe didn't match but we had a cached row, return it
     if (cachedRow) {
-      return new Response(JSON.stringify({
+      return sendEdgeResponse({
         found: true,
         id: cachedRow.id,
         query: q,
@@ -407,11 +649,8 @@ export async function onRequestGet(context) {
           directAnswer: cachedRow.direct_answer,
           fullExplanation: cachedRow.full_explanation,
           cachedFromTurso: true
-        },
-        sources: getWebsites(q)
-      }), {
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-      });
+        }
+      }, q);
     }
 
     // Groq On-Demand Generation for Question (with Storage Cap Guard)
@@ -452,7 +691,7 @@ export async function onRequestGet(context) {
         newId = ins.lastInsertRowid;
       } catch (_) {}
 
-      return new Response(JSON.stringify({
+      return sendEdgeResponse({
         found: true,
         id: newId,
         query: q,
@@ -466,11 +705,8 @@ export async function onRequestGet(context) {
           directAnswer: generatedQA.directAnswer,
           fullExplanation: generatedQA.fullExplanation,
           cachedFromTurso: false
-        },
-        sources: getWebsites(q)
-      }), {
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-      });
+        }
+      }, q);
     }
   }
 
@@ -484,7 +720,7 @@ export async function onRequestGet(context) {
 
     if (rs.rows && rs.rows.length > 0) {
       const row = rs.rows[0];
-      return new Response(JSON.stringify({
+      return sendEdgeResponse({
         found: true,
         query: q,
         category: 'Dictionary',
@@ -494,11 +730,8 @@ export async function onRequestGet(context) {
         usage: row.usage,
         raw_entry: row.raw_entry,
         snippet: row.explanation,
-        details: row,
-        sources: getWebsites(clean)
-      }), {
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-      });
+        details: row
+      }, q);
     }
   } catch (_) {}
 

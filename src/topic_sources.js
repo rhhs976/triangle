@@ -114,3 +114,107 @@ export function getTopicWebsites(topic, category, details = {}) {
     }
   ];
 }
+
+/**
+ * Returns 3 clean, highly-relevant related search inquiries
+ */
+export function getRelatedQueries(query, category, title, details = {}) {
+  const cleanQ = (query || '').trim();
+  const lower = cleanQ.toLowerCase();
+
+  // Unit / Currency conversion queries
+  if (category === 'Unit Conversion' || category === 'Currency Conversion') {
+    const d = details || {};
+    if (d.type === 'Length') {
+      return ['100 km to miles', '50 miles to km', 'how many feet in a mile'];
+    }
+    if (d.type === 'Temperature') {
+      return ['0 celsius to fahrenheit', '100 celsius to fahrenheit', 'absolute zero in celsius'];
+    }
+    if (d.type === 'Weight') {
+      return ['100 lbs to kg', '50 kg to lbs', 'how many grams in an ounce'];
+    }
+    if (d.type === 'Currency') {
+      return ['100 usd to eur', '100 usd to gbp', '100 eur to usd'];
+    }
+    if (d.type === 'Data') {
+      return ['1024 mb to gb', '1 tb to gb', 'how many bytes in a kilobyte'];
+    }
+    return ['100 km to miles', '32 f to c', '100 usd to eur'];
+  }
+
+  // Math queries
+  if (category === 'Math') {
+    return ['square root of 144', '15 percent of 200', '2 to the power of 10'];
+  }
+
+  // Dictionary entries
+  if (category === 'Dictionary') {
+    const word = (title || cleanQ).replace(/\*\*/g, '').trim();
+    return [
+      `synonyms of ${word}`,
+      `antonyms of ${word}`,
+      `how to use ${word} in a sentence`
+    ];
+  }
+
+  // Specific political or entity inquiries
+  const pmMatch = cleanQ.match(/^who\s+is\s+(?:the\s+)?prime\s+minister\s+of\s+(.+)$/i);
+  if (pmMatch) {
+    const country = pmMatch[1].replace(/\?/g, '').trim();
+    return [`capital of ${country}`, `population of ${country}`, `parliament of ${country}`];
+  }
+
+  const presMatch = cleanQ.match(/^who\s+is\s+(?:the\s+)?president\s+of\s+(.+)$/i);
+  if (presMatch) {
+    const country = presMatch[1].replace(/\?/g, '').trim();
+    return [`capital of ${country}`, `government of ${country}`, `history of ${country}`];
+  }
+
+  const ceoMatch = cleanQ.match(/^who\s+is\s+(?:the\s+)?ceo\s+of\s+(.+)$/i);
+  if (ceoMatch) {
+    const company = ceoMatch[1].replace(/\?/g, '').trim();
+    return [`when was ${company} founded`, `headquarters of ${company}`, `revenue of ${company}`];
+  }
+
+  const capMatch = cleanQ.match(/^what\s+is\s+(?:the\s+)?capital\s+of\s+(.+)$/i);
+  if (capMatch) {
+    const country = capMatch[1].replace(/\?/g, '').trim();
+    return [`population of ${country}`, `currency of ${country}`, `languages of ${country}`];
+  }
+
+  // Questions about fruits, animals, nature
+  if (lower.includes('apple')) {
+    return ['Why are apples red?', 'Are there naturally blue fruits?', 'Health benefits of apples'];
+  }
+  if (lower.includes('penguin')) {
+    return ['Where do penguins live?', 'Can penguins swim?', 'How do penguins stay warm?'];
+  }
+  if (lower.includes('sky')) {
+    return ['Why is the sunset red?', 'Why is space black?', 'What is Rayleigh scattering?'];
+  }
+
+  // Dynamic entity/topic decomposition
+  const tokens = cleanQ.replace(/[?.,!]/g, '').split(/\s+/).filter(w => w.length > 3 && !['what', 'where', 'when', 'which', 'does', 'have', 'with', 'about'].includes(w.toLowerCase()));
+  if (tokens.length >= 2) {
+    const topic = tokens.slice(0, 2).join(' ');
+    return [
+      `what causes ${topic}`,
+      `why is ${topic} important`,
+      `history of ${topic}`
+    ];
+  } else if (tokens.length === 1) {
+    return [
+      `what is ${tokens[0]}`,
+      `define ${tokens[0]}`,
+      `facts about ${tokens[0]}`
+    ];
+  }
+
+  return [
+    'what is photosynthesis',
+    'who is the ceo of microsoft',
+    'why is the sky blue'
+  ];
+}
+
