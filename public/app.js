@@ -135,7 +135,7 @@ async function performSearch(query) {
   }
 
   resultsWrapper.innerHTML = `
-    <div class="loading-spinner">Searching ilascope knowledge index...</div>
+    <div class="loading-spinner">Searching Ilascope knowledge index...</div>
   `;
 
   try {
