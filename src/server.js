@@ -13,7 +13,6 @@ try {
 import { dictionary } from './dictionary.js';
 import { myDictionary } from './groq_dictionary.js';
 import { tagSentence, classifyWord } from './pos_tagger.js';
-import { HistoryRAGEngine } from '../scripts/history_rag_engine.js';
 import { solveArithmetic } from '../scripts/solve_math_arithmetic.js';
 import { extractDirectAnswer } from './answer_extractor.js';
 import { formatDictionaryEntry } from './dictionary_formatter.js';
@@ -30,7 +29,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.resolve(__dirname, '../public');
 const PORT = process.env.PORT || 3000;
 
-const historyEngine = new HistoryRAGEngine();
 const dictQA = new DictionaryQAEngine(myDictionary);
 const disambigEngine = new DisambiguationEngine();
 
@@ -242,29 +240,7 @@ async function doSearch(rawQuery) {
     }
   }
 
-  // 4. Historical & Scientific Fact Search (RAG)
-  const ragResult = historyEngine.search(query);
-  if (ragResult && ragResult.found && (ragResult.score >= 5 || ragResult.verifiedFact)) {
-    const factText = ragResult.verifiedFact || ragResult.summary || '';
-    const direct = extractDirectAnswer(query, factText);
-    return {
-      found: true,
-      query,
-      category: 'Knowledge Card',
-      title: ragResult.title,
-      subtitle: `${ragResult.era} (${ragResult.year})`,
-      snippet: ragResult.summary || factText,
-      directAnswer: direct,
-      details: {
-        era: ragResult.era,
-        year: ragResult.year,
-        keywords: ragResult.keywords,
-        fullFact: factText
-      }
-    };
-  }
-
-  // 6. Dictionary, Book, Song, & Reference Lookup (Local DB + On-demand Groq synthesis)
+  // 4. Dictionary, Book, Song, & Reference Lookup (Local DB + On-demand Groq synthesis)
   const defMatch = query.match(/^(?:define|definition of|what is the definition of|what does|meaning of|lookup|what is an?|what is|what are)\s+(.+?)(?:\s+mean)?\??$/i);
   const termToLookup = defMatch ? defMatch[1].trim() : query.trim();
 
