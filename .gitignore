@@ -5,3 +5,5 @@
 .env
 .DS_Store
 node_modules/
+.codegraph/
+data/disambiguation_senses.db

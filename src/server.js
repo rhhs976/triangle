@@ -2,6 +2,13 @@ import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import dns from 'node:dns';
+
+try {
+  if (dns?.setDefaultResultOrder) {
+    dns.setDefaultResultOrder('ipv4first');
+  }
+} catch (_) {}
 
 import { dictionary } from './dictionary.js';
 import { myDictionary } from './groq_dictionary.js';

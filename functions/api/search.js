@@ -21,11 +21,149 @@ function getTursoClient(env) {
   });
 }
 
+const COMMON_TYPOS = {
+  'te': 'the', 'th': 'the', 'da': 'the', 'wht': 'what', 'wat': 'what',
+  'hw': 'how', 'whos': 'who', 'whm': 'whom', 'wer': 'where', 'wen': 'when',
+  'wy': 'why', 'answr': 'answer', 'curent': 'current', 'currnt': 'current',
+  'pres': 'president', 'prez': 'president', 'minstr': 'minister', 'ti': 'it',
+  'nd': 'and', 'ot': 'to', 'fro': 'from', 'abt': 'about', 'whch': 'which'
+};
+
+const TEMPORAL_MARKERS = [
+  'current', 'currently', 'now', 'today', 'latest', 'recent', 'present',
+  'president', 'prime minister', 'ceo', 'chancellor', 'leader', 'governor', 'mayor',
+  'monarch', 'king', 'queen', 'pope', 'senator', 'vice president', 'premier',
+  'champion', 'winner', 'reigning', 'titleholder', 'capital', 'population'
+];
+
 function normalizeToCanonicalKey(str) {
   if (!str) return '';
   const cleaned = str.toLowerCase().replace(/'s\b/g, '').replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim();
-  const words = cleaned.split(' ').map(w => w.trim()).filter(w => w.length > 1 && !STOP_WORDS.has(w));
+  const words = cleaned.split(' ')
+    .map(w => w.trim())
+    .map(w => COMMON_TYPOS[w] || w)
+    .filter(w => w.length > 1 && !STOP_WORDS.has(w));
   return Array.from(new Set(words)).sort().join(' ');
+}
+
+function extractTargetEntity(raw) {
+  const cleaned = (raw || '').toLowerCase().replace(/'s\b/g, '').replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim();
+  const tokens = cleaned.split(' ').map(w => COMMON_TYPOS[w] || w);
+  const normalized = tokens.join(' ');
+  const stripped = normalized
+    .replace(/^(who|what|where|when|which|how|tell me about|do you know)\s+(is|was|are|were)?\s*(the)?\s*/i, '')
+    .replace(/\b(current|currently|present|now|latest|today)\b/gi, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return stripped || normalized;
+}
+
+function splitSentences(text) {
+  if (!text) return [];
+  const protectedText = text
+    .replace(/\b([A-Z])\.\s+/g, '$1___DOT___ ')
+    .replace(/\b(U\.S\.|e\.g\.|i\.e\.|vs\.|Dr\.|Mr\.|Mrs\.|Ms\.)/gi, m => m.replace(/\./g, '___DOT___'));
+
+  const rawSentences = protectedText.match(/[^.!?]+[.!?]+(?:\s|$)/g) || [protectedText];
+  return rawSentences.map(s => s.replace(/___DOT___/g, '.').trim()).filter(Boolean);
+}
+
+async function probeLiveKnowledge(rawQuery) {
+  const cleanQ = (rawQuery || '').trim();
+  if (!cleanQ) return null;
+
+  const entity = extractTargetEntity(cleanQ);
+  if (!entity || entity.length < 3) return null;
+
+  // 1. DuckDuckGo Instant Knowledge API
+  try {
+    const ddgUrl = `https://api.duckduckgo.com/?q=${encodeURIComponent(entity)}&format=json&no_html=1&skip_disambig=1`;
+    const ddgRes = await fetch(ddgUrl, {
+      headers: { 'User-Agent': 'TriangleSearch/1.0 (https://github.com/rhhs976/triangle)' },
+      signal: AbortSignal.timeout(1800)
+    });
+
+    if (ddgRes.ok) {
+      const data = await ddgRes.json();
+      if (data && data.AbstractText && data.AbstractText.length > 40) {
+        return formatEncyclopedicAnswer(cleanQ, data.Heading || entity, data.AbstractText, 'Knowledge Graph');
+      }
+    }
+  } catch (_) {}
+
+  // 2. Wikipedia Cirrus Search + Summary API
+  try {
+    const wikiSearchUrl = `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(entity)}&srlimit=3&format=json`;
+    const searchRes = await fetch(wikiSearchUrl, {
+      headers: { 'User-Agent': 'TriangleSearch/1.0 (contact@triangle.org)' },
+      signal: AbortSignal.timeout(1800)
+    });
+
+    if (searchRes.ok) {
+      const searchData = await searchRes.json();
+      const topHit = searchData.query?.search?.[0];
+      if (topHit && topHit.title) {
+        const sumUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(topHit.title.replace(/ /g, '_'))}`;
+        const sumRes = await fetch(sumUrl, {
+          headers: { 'User-Agent': 'TriangleSearch/1.0 (contact@triangle.org)' },
+          signal: AbortSignal.timeout(1800)
+        });
+
+        if (sumRes.ok) {
+          const sumData = await sumRes.json();
+          if (sumData && sumData.extract && sumData.type !== 'disambiguation' && sumData.extract.length > 40) {
+            return formatEncyclopedicAnswer(
+              cleanQ,
+              sumData.title,
+              sumData.extract,
+              sumData.description || 'Knowledge Graph'
+            );
+          }
+        }
+      }
+    }
+  } catch (_) {}
+
+  return null;
+}
+
+function formatEncyclopedicAnswer(query, title, text, category) {
+  const sentences = splitSentences(text);
+  if (!sentences.length) return null;
+
+  const isWho = /\b(who|whose|whom)\b/i.test(query);
+  let directIdx = 0;
+
+  if (isWho) {
+    for (let i = 0; i < sentences.length; i++) {
+      if (/(?:incumbent|took office|assumed office|served as|is an? \w+ (?:business executive|politician|statesman|leader)|succeeding)/i.test(sentences[i])) {
+        directIdx = i;
+        break;
+      }
+    }
+  } else {
+    for (let i = 0; i < sentences.length; i++) {
+      if (/(?:capital|located|headquarters|founded|defined as|refers to)/i.test(sentences[i])) {
+        directIdx = i;
+        break;
+      }
+    }
+  }
+
+  const directSentence = sentences[directIdx];
+  const explanationSentences = sentences.filter((_, idx) => idx !== directIdx).slice(0, 3);
+  const fullExplanation = explanationSentences.join(' ') || `${title} is documented in verified public records.`;
+  const isTemporal = TEMPORAL_MARKERS.some(m => (query || '').toLowerCase().includes(m));
+
+  return {
+    found: true,
+    title: directSentence,
+    directAnswer: `**${directSentence}**`,
+    fullExplanation: fullExplanation,
+    category: category || 'Knowledge Graph',
+    isTemporal: isTemporal ? 1 : 0,
+    tokensUsed: 0
+  };
 }
 
 function solveArithmetic(input) {
@@ -162,6 +300,7 @@ export async function onRequestGet(context) {
 
   // 2. Question Answering: Check Turso Cloud QA Cache first
   if (isQuestion && canonicalKey) {
+    let cachedRow = null;
     try {
       const qaRes = await client.execute({
         sql: 'SELECT id, canonical_key, direct_answer, full_explanation, category, upvotes, downvotes, is_temporal, created_at FROM qa_cache WHERE canonical_key = ? LIMIT 1',
@@ -171,28 +310,94 @@ export async function onRequestGet(context) {
       if (qaRes.rows && qaRes.rows.length > 0) {
         const row = qaRes.rows[0];
         if (Number(row.downvotes) <= Number(row.upvotes)) {
-          return new Response(JSON.stringify({
-            found: true,
-            id: row.id,
-            query: q,
-            category: row.category || 'Direct QA',
-            title: row.direct_answer,
-            directAnswer: row.direct_answer,
-            fullExplanation: row.full_explanation,
-            snippet: row.direct_answer,
-            details: {
+          // If not temporal, serve immediately from cache
+          if (row.is_temporal !== 1 && row.is_temporal !== '1') {
+            return new Response(JSON.stringify({
+              found: true,
               id: row.id,
+              query: q,
+              category: row.category || 'Direct QA',
+              title: row.direct_answer,
               directAnswer: row.direct_answer,
               fullExplanation: row.full_explanation,
-              cachedFromTurso: true
-            },
-            sources: getWebsites(q)
-          }), {
-            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-          });
+              snippet: row.direct_answer,
+              details: {
+                id: row.id,
+                directAnswer: row.direct_answer,
+                fullExplanation: row.full_explanation,
+                cachedFromTurso: true
+              },
+              sources: getWebsites(q)
+            }), {
+              headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+            });
+          }
+          cachedRow = row;
         }
       }
     } catch (_) {}
+
+    // Zero-Token Live Encyclopedic Probe (Instant verified answers for leaders, offices, entities, facts)
+    try {
+      const liveFact = await probeLiveKnowledge(q);
+      if (liveFact && liveFact.found) {
+        const now = new Date().toISOString();
+        let savedId = cachedRow ? cachedRow.id : null;
+        try {
+          const ins = await client.execute({
+            sql: `INSERT OR REPLACE INTO qa_cache (canonical_key, original_question, direct_answer, full_explanation, category, is_temporal, upvotes, downvotes, access_count, created_at, updated_at)
+                  VALUES (?, ?, ?, ?, ?, ?, 1, 0, 1, ?, ?)`,
+            args: [canonicalKey, q, liveFact.directAnswer, liveFact.fullExplanation, liveFact.category, liveFact.isTemporal || 0, now, now]
+          });
+          savedId = ins.lastInsertRowid;
+        } catch (_) {}
+
+        return new Response(JSON.stringify({
+          found: true,
+          id: savedId,
+          query: q,
+          category: liveFact.category || 'Knowledge Graph',
+          title: liveFact.directAnswer,
+          directAnswer: liveFact.directAnswer,
+          fullExplanation: liveFact.fullExplanation,
+          snippet: liveFact.directAnswer,
+          details: {
+            id: savedId,
+            directAnswer: liveFact.directAnswer,
+            fullExplanation: liveFact.fullExplanation,
+            tokensUsed: 0,
+            cachedFromTurso: false,
+            liveProbe: true
+          },
+          sources: getWebsites(q)
+        }), {
+          headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+        });
+      }
+    } catch (_) {}
+
+    // If live probe didn't match but we had a cached row, return it
+    if (cachedRow) {
+      return new Response(JSON.stringify({
+        found: true,
+        id: cachedRow.id,
+        query: q,
+        category: cachedRow.category || 'Direct QA',
+        title: cachedRow.direct_answer,
+        directAnswer: cachedRow.direct_answer,
+        fullExplanation: cachedRow.full_explanation,
+        snippet: cachedRow.direct_answer,
+        details: {
+          id: cachedRow.id,
+          directAnswer: cachedRow.direct_answer,
+          fullExplanation: cachedRow.full_explanation,
+          cachedFromTurso: true
+        },
+        sources: getWebsites(q)
+      }), {
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
 
     // Groq On-Demand Generation for Question (with Storage Cap Guard)
     const MAX_LIMIT = parseInt(env?.MAX_QA_CACHE_LIMIT || '5000000', 10);

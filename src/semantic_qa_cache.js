@@ -26,6 +26,14 @@ const TEMPORAL_MARKERS = [
   'age', 'salary', 'net worth'
 ];
 
+const COMMON_TYPOS = {
+  'te': 'the', 'th': 'the', 'da': 'the', 'wht': 'what', 'wat': 'what',
+  'hw': 'how', 'whos': 'who', 'whm': 'whom', 'wer': 'where', 'wen': 'when',
+  'wy': 'why', 'answr': 'answer', 'curent': 'current', 'currnt': 'current',
+  'pres': 'president', 'prez': 'president', 'minstr': 'minister', 'ti': 'it',
+  'nd': 'and', 'ot': 'to', 'fro': 'from', 'abt': 'about', 'whch': 'which'
+};
+
 /**
  * Converts any query into a canonical intent key.
  * Example:
@@ -45,6 +53,7 @@ export function normalizeQuestionToCanonicalKey(question) {
 
   const words = cleaned.split(' ')
     .map(w => w.trim())
+    .map(w => COMMON_TYPOS[w] || w)
     .filter(w => w.length > 1 && !STOP_WORDS.has(w))
     .map(w => stemToken(w))
     .filter(w => w.length > 1 && !STOP_WORDS.has(w));
@@ -132,6 +141,7 @@ export async function lookupSemanticQA(question, client) {
         directAnswer: row.direct_answer,
         fullExplanation: row.full_explanation,
         category: row.category,
+        isTemporal: (row.is_temporal === 1 || row.is_temporal === '1'),
         upvotes: row.upvotes,
         downvotes: row.downvotes,
         accessCount: row.access_count + 1,
@@ -167,6 +177,7 @@ export async function lookupSemanticQA(question, client) {
             directAnswer: row.direct_answer,
             fullExplanation: row.full_explanation,
             category: row.category,
+            isTemporal: (row.is_temporal === 1 || row.is_temporal === '1'),
             upvotes: row.upvotes,
             downvotes: row.downvotes,
             accessCount: row.access_count + 1,

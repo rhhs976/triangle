@@ -3,6 +3,7 @@
 
 import { turso } from './turso_client.js';
 import { lookupSemanticQA, saveSemanticQA, normalizeQuestionToCanonicalKey, isCacheLimitReached, MAX_QA_CACHE_LIMIT } from './semantic_qa_cache.js';
+import { probeLiveKnowledge } from './live_knowledge_probe.js';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -36,7 +37,69 @@ export class GroqQAEngine {
     if (!cleanQ) return null;
 
     // 1. Check Turso Cloud QA Cache first (Semantic match)
+    const canonicalKey = normalizeQuestionToCanonicalKey(cleanQ);
     const cached = await lookupSemanticQA(cleanQ, turso);
+    if (cached && !cached.isTemporal) {
+      return {
+        found: true,
+        id: cached.id,
+        query: cleanQ,
+        category: cached.category || 'Knowledge',
+        title: cached.directAnswer,
+        directAnswer: cached.directAnswer,
+        fullExplanation: cached.fullExplanation,
+        snippet: cached.directAnswer,
+        details: {
+          directAnswer: cached.directAnswer,
+          fullExplanation: cached.fullExplanation,
+          canonicalKey: cached.canonicalKey,
+          upvotes: cached.upvotes,
+          downvotes: cached.downvotes,
+          accessCount: cached.accessCount,
+          cachedFromTurso: true
+        }
+      };
+    }
+
+    // 2. Zero-Token Live Encyclopedic Probe (Instant verified answers for leaders, offices, entities, facts)
+    try {
+      const liveFact = await probeLiveKnowledge(cleanQ);
+      if (liveFact && liveFact.found) {
+        let savedId = cached ? cached.id : null;
+        try {
+          savedId = await saveSemanticQA({
+            canonicalKey: canonicalKey || normalizeQuestionToCanonicalKey(cleanQ),
+            originalQuestion: cleanQ,
+            directAnswer: liveFact.directAnswer,
+            fullExplanation: liveFact.fullExplanation,
+            category: liveFact.category,
+            isTemporal: liveFact.isTemporal || 0
+          }, turso);
+        } catch (_) {}
+
+        return {
+          found: true,
+          id: savedId,
+          query: cleanQ,
+          category: liveFact.category || 'Knowledge Graph',
+          title: liveFact.directAnswer,
+          directAnswer: liveFact.directAnswer,
+          fullExplanation: liveFact.fullExplanation,
+          snippet: liveFact.directAnswer,
+          details: {
+            directAnswer: liveFact.directAnswer,
+            fullExplanation: liveFact.fullExplanation,
+            canonicalKey,
+            sourceUrl: liveFact.sourceUrl,
+            tokensUsed: 0,
+            cachedFromTurso: false,
+            liveProbe: true
+          }
+        };
+      }
+    } catch (_) {}
+
+    // If live probe didn't match but we have a valid cached answer (even temporal), serve it
     if (cached) {
       return {
         found: true,
@@ -59,7 +122,7 @@ export class GroqQAEngine {
       };
     }
 
-    // 2. Storage Guard: If database reached the limit, stop generating new questions!
+    // 3. Storage Guard: If database reached the limit, stop generating new questions!
     const limitReached = await isCacheLimitReached(turso);
     if (limitReached) {
       console.warn(`[STORAGE LIMIT] Reached maximum allowed questions (${MAX_QA_CACHE_LIMIT}). Generation stopped.`);
@@ -80,7 +143,6 @@ export class GroqQAEngine {
     }
 
     // Single-flight coalescing to prevent duplicate simultaneous Groq calls
-    const canonicalKey = normalizeQuestionToCanonicalKey(cleanQ);
     if (this.inFlight.has(canonicalKey)) {
       return await this.inFlight.get(canonicalKey);
     }
