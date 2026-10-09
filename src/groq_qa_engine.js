@@ -165,6 +165,7 @@ Strict Formatting Requirements:
 2. Sentence 1 MUST be the direct, bold answer.
 3. The remaining 3 sentences MUST provide clear, factual context and mechanics underneath.
 4. Absolutely no conversational filler, chatbot greetings, or intros (no "Sure", "Here is", "Certainly").
+5. DO NOT comment on typos, spelling, or state that a term is a misspelling. Always answer the intended factual entity, topic, or question directly.
 
 Format EXACTLY:
 Direct Answer:
@@ -204,6 +205,11 @@ Category:
         // Ensure both direct answer and 3-sentence explanation are present
         if (parsed.fullExplanation.length < 50 || parsed.directAnswer.length < 15) {
           continue; // Try next model if response was too sparse
+        }
+
+        // Quality guard: Reject pedantic misspelling lectures
+        if (/is\s+(?:a\s+)?(?:common\s+)?misspelling\s+of/i.test(parsed.directAnswer)) {
+          continue;
         }
 
         // Save to Turso Cloud QA Cache

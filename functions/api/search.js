@@ -471,6 +471,7 @@ Strict Formatting Requirements:
 2. Sentence 1 MUST be the direct, bold answer.
 3. The remaining 3 sentences MUST provide clear, factual context and mechanics underneath.
 4. Absolutely no conversational filler, chatbot greetings, or intros.
+5. DO NOT comment on typos, spelling, or state that a term is a misspelling. Always answer the intended factual entity, topic, or question directly.
 
 Format EXACTLY:
 Direct Answer:
@@ -519,7 +520,10 @@ Category:
           }
 
           if (fullExplanation.length >= 50 && directAnswer.length >= 10) {
-            return { directAnswer, fullExplanation, category };
+            // Quality guard: Reject pedantic misspelling lectures
+            if (!/is\s+(?:a\s+)?(?:common\s+)?misspelling\s+of/i.test(directAnswer)) {
+              return { directAnswer, fullExplanation, category };
+            }
           }
         }
       }
