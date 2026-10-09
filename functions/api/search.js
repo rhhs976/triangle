@@ -528,6 +528,32 @@ Category:
   return null;
 }
 
+function isKnowledgeOrQuestionQuery(rawQuery) {
+  if (!rawQuery) return false;
+  const q = rawQuery.trim().toLowerCase();
+  if (q.endsWith('?')) return true;
+  if (/^(?:what|whats|what's|wht|whts|wat|wats|who|whos|who's|whom|where|wheres|where's|wer|when|whens|when's|wen|why|whys|why's|wy|how|hows|how's|hw|which|whch|is|are|am|was|were|can|could|will|would|shall|should|may|might|must|do|does|did|has|have|had|tell me|give me|explain|describe|show me|find me)\b/i.test(q)) {
+    return true;
+  }
+  if (/\b(?:biggest|largest|smallest|tallest|shortest|fastest|slowest|highest|lowest|deepest|oldest|youngest|hottest|coldest|richest|first|last|most|least)\b/i.test(q)) {
+    return true;
+  }
+  if (/\b(?:in the world|in history|on earth|in space|in the universe|of the world|of all time)\b/i.test(q)) {
+    return true;
+  }
+  if (/\b(?:speed of|distance to|distance from|distance between|diameter of|mass of|radius of|temperature of|boiling point|melting point|capital of|population of|currency of|president of|prime minister of|ceo of|founder of|creator of|cause of|effect of)\b/i.test(q)) {
+    return true;
+  }
+  if (/^(?:define|definition of|meaning of)\s+/i.test(q)) {
+    return false;
+  }
+  const words = q.split(/\s+/).filter(Boolean);
+  if (words.length >= 4) {
+    return true;
+  }
+  return false;
+}
+
 export async function onRequestGet(context) {
   const { request, env } = context;
   const url = new URL(request.url);
@@ -558,7 +584,7 @@ export async function onRequestGet(context) {
   }
 
   const client = getTursoClient(env);
-  const isQuestion = /^(?:where|what|who|when|how|which|why|is|are|can|does|do|tell me)\b/i.test(q) || q.endsWith('?');
+  const isQuestion = isKnowledgeOrQuestionQuery(q);
   const canonicalKey = normalizeToCanonicalKey(q);
 
   // 2. Question Answering: Check Turso Cloud QA Cache first

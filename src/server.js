@@ -130,6 +130,48 @@ async function executeSearch(rawQuery) {
   return result;
 }
 
+// Determines whether a query is a question, factual inquiry, or multi-word search
+function isKnowledgeOrQuestionQuery(rawQuery) {
+  if (!rawQuery) return false;
+  const q = rawQuery.trim().toLowerCase();
+
+  // 1. Explicit question mark
+  if (q.endsWith('?')) return true;
+
+  // 2. Starts with question word, typo, contraction, or command
+  if (/^(?:what|whats|what's|wht|whts|wat|wats|who|whos|who's|whom|where|wheres|where's|wer|when|whens|when's|wen|why|whys|why's|wy|how|hows|how's|hw|which|whch|is|are|am|was|were|can|could|will|would|shall|should|may|might|must|do|does|did|has|have|had|tell me|give me|explain|describe|show me|find me)\b/i.test(q)) {
+    return true;
+  }
+
+  // 3. Superlatives and informational inquiries
+  if (/\b(?:biggest|largest|smallest|tallest|shortest|fastest|slowest|highest|lowest|deepest|oldest|youngest|hottest|coldest|richest|first|last|most|least)\b/i.test(q)) {
+    return true;
+  }
+
+  // 4. Inquiries with "in the world", "on earth", "in space", "in the universe"
+  if (/\b(?:in the world|in history|on earth|in space|in the universe|of the world|of all time)\b/i.test(q)) {
+    return true;
+  }
+
+  // 5. Inquiries about physical constants, metrics, locations, capitals
+  if (/\b(?:speed of|distance to|distance from|distance between|diameter of|mass of|radius of|temperature of|boiling point|melting point|capital of|population of|currency of|president of|prime minister of|ceo of|founder of|creator of|cause of|effect of)\b/i.test(q)) {
+    return true;
+  }
+
+  // 6. Explicit "define / definition / meaning" is NOT a general QA question (it's dictionary)
+  if (/^(?:define|definition of|meaning of)\s+/i.test(q)) {
+    return false;
+  }
+
+  // 7. Multi-word queries with 4 or more words (e.g. "how long do turtles live", "animals that lay eggs")
+  const words = q.split(/\s+/).filter(Boolean);
+  if (words.length >= 4) {
+    return true;
+  }
+
+  return false;
+}
+
 // Pure Search Engine Core
 async function doSearch(rawQuery) {
   const query = (rawQuery || '').trim();
@@ -169,8 +211,7 @@ async function doSearch(rawQuery) {
   }
 
   // 2. Direct Question Answering & Knowledge Synthesis (Turso Cloud QA Cache + Groq)
-  const isQuestionQuery = /^(?:where|what|who|when|how|which|why|is|are|can|does|do|tell me)\b/i.test(query) || query.endsWith('?');
-  if (isQuestionQuery) {
+  if (isKnowledgeOrQuestionQuery(query)) {
     // Primary: Semantic Turso Cloud QA Cache + Groq (Answers questions with rich 1-paragraph explanations)
     const groqQARes = await groqQAEngine.answerQuestion(query);
     if (groqQARes && groqQARes.found) {
@@ -290,12 +331,30 @@ async function doSearch(rawQuery) {
         }
       };
     } else if (dictRes && dictRes.suggestion) {
+      // If it has multiple words and wasn't in dictionary, attempt Groq QA synthesis before giving up
+      if (query.trim().split(/\s+/).length >= 2) {
+        const fallbackQARes = await groqQAEngine.answerQuestion(query);
+        if (fallbackQARes && fallbackQARes.found && fallbackQARes.directAnswer && !fallbackQARes.details?.storageLimitReached) {
+          fallbackQARes.sources = getTopicWebsites(query, fallbackQARes.category, fallbackQARes.details);
+          return fallbackQARes;
+        }
+      }
+
       return {
         found: false,
         query,
         message: dictRes.message || `No valid definition found for "${termToLookup}".`,
         suggestion: dictRes.suggestion
       };
+    }
+  }
+
+  // Safety Net: If dictionary lookup failed or skipped on a multi-word phrase, try Groq QA synthesis
+  if (query.trim().split(/\s+/).length >= 2) {
+    const fallbackQARes = await groqQAEngine.answerQuestion(query);
+    if (fallbackQARes && fallbackQARes.found && fallbackQARes.directAnswer && !fallbackQARes.details?.storageLimitReached) {
+      fallbackQARes.sources = getTopicWebsites(query, fallbackQARes.category, fallbackQARes.details);
+      return fallbackQARes;
     }
   }
 
