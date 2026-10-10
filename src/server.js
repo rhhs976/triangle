@@ -519,6 +519,9 @@ const server = http.createServer((req, res) => {
   if (url.pathname === '/app.js') {
     return serveStatic(res, path.join(PUBLIC_DIR, 'app.js'), 'application/javascript');
   }
+  if (url.pathname === '/logo.svg' || url.pathname === '/favicon.ico') {
+    return serveStatic(res, path.join(PUBLIC_DIR, 'logo.svg'), 'image/svg+xml');
+  }
 
   res.writeHead(404, { 'Content-Type': 'text/plain' });
   res.end('Not Found');
